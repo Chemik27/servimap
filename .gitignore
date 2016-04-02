@@ -1,0 +1,7 @@
+backend/.gradle/
+backend/.idea/
+backend/backend.iml
+backend/gradle/
+backend/.idea/workspace.xml
+backend/.idea/modules.xml
+frontend/frontend.iml

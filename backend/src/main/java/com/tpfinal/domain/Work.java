@@ -16,12 +16,14 @@ public class Work {
     private String description;
     private Category category;
     private User user;
+    private Address address;
 
-    public Work(String name, String description, Category category, User user) {
+    public Work(String name, String description, Category category, User user, Address address) {
         this.name = name;
         this.description = description;
         this.category = category;
         this.user = user;
+        this.address = address;
     }
 
     public Work() {
@@ -66,7 +68,7 @@ public class Work {
         this.category = category;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_user", nullable = false)
     public User getUser() {
         return user;
@@ -74,5 +76,15 @@ public class Work {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_address", nullable = true)
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

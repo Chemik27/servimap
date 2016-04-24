@@ -15,10 +15,6 @@ public class WorkService {
     @Autowired
     IWorkRepository workRepository;
 
-    public List<Work> findByIdBrand(String name) {
-        return workRepository.findByName(name);
-    }
-
     public Page<Work> findAll(PageRequest pageRequest) {
         return workRepository.findAll(pageRequest);
     }

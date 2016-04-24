@@ -79,7 +79,7 @@ public class Work {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_address", nullable = true)
+    @JoinColumn(name = "id_address", nullable = false)
     public Address getAddress() {
         return address;
     }

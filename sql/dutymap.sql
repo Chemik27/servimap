@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-04-2016 a las 22:10:55
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 7.0.1
+-- Tiempo de generación: 24-04-2016 a las 16:43:30
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,30 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `dutymap`
 --
+CREATE DATABASE IF NOT EXISTS `dutymap` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `dutymap`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `address`
+--
+
+CREATE TABLE `address` (
+  `id_address` bigint(20) NOT NULL,
+  `street` varchar(35) NOT NULL,
+  `number` int(11) NOT NULL,
+  `postal_code` int(11) NOT NULL,
+  `latitude` double DEFAULT NULL,
+  `length` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `address`
+--
+
+INSERT INTO `address` (`id_address`, `street`, `number`, `postal_code`, `latitude`, `length`) VALUES
+(1, 'falsa', 123, 1234, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -70,19 +94,27 @@ CREATE TABLE `work` (
   `name` varchar(35) NOT NULL,
   `description` varchar(200) NOT NULL,
   `id_category` bigint(20) NOT NULL,
-  `id_user` bigint(20) NOT NULL
+  `id_user` bigint(20) NOT NULL,
+  `id_address` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `work`
 --
 
-INSERT INTO `work` (`id_work`, `name`, `description`, `id_category`, `id_user`) VALUES
-(1, 'Pintor', 'Pintar casas', 1, 1);
+INSERT INTO `work` (`id_work`, `name`, `description`, `id_category`, `id_user`, `id_address`) VALUES
+(1, 'Pintor', 'Pintar casas', 1, 1, 1);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `address`
+--
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`id_address`),
+  ADD UNIQUE KEY `id_address` (`id_address`);
 
 --
 -- Indices de la tabla `category`
@@ -113,6 +145,11 @@ ALTER TABLE `work`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `address`
+--
+ALTER TABLE `address`
+  MODIFY `id_address` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `category`
 --

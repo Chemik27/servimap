@@ -1,10 +1,5 @@
 package com.tpfinal.domain;
 
-import ch.qos.logback.classic.ViewStatusMessagesServlet;
-import com.fasterxml.jackson.annotation.JsonView;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 
 @Entity

@@ -2,29 +2,28 @@
 
 /**
  * @ngdoc overview
- * @name tpfinal
+ * @name dutymap
  * @description
- * # tpfinal
+ * # dutmyap
  *
  * Main module of the application.
  */
 angular
-  .module('tpfinal', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    .module('dutymap', [
+            'ngAnimate',
+            'ngCookies',
+            'ngResource',
+            'ngRoute',
+            'ngSanitize',
+            'ngTouch'
+    ])
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/home.html',
+                controller: 'HomeCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    });

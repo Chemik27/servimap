@@ -1,5 +1,7 @@
 package com.tpfinal.domain;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,15 +12,17 @@ public class Address {
     private String street;
     private Long number;
     private Long postalCode;
-    private Double latitud;
+    private Double latitude;
     private Double length;
+    private District district;
 
-    public Address(String street, Long number, Long postalCode, Double latitud, Double length) {
+    public Address(String street, Long number, Long postalCode, Double latitude, Double length, District district) {
         this.street = street;
         this.number = number;
         this.postalCode = postalCode;
-        this.latitud = latitud;
+        this.latitude = latitude;
         this.length = length;
+        this.district = district;
     }
 
     public Address() {
@@ -63,12 +67,12 @@ public class Address {
     }
 
     @Column(name = "latitude")
-    public Double getLatitud() {
-        return latitud;
+    public Double getLatitude() {
+        return latitude;
     }
 
-    public void setLatitud(Double latitud) {
-        this.latitud = latitud;
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
     @Column(name = "length")
@@ -78,5 +82,15 @@ public class Address {
 
     public void setLength(Double length) {
         this.length = length;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_district")
+    public District getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
     }
 }

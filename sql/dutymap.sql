@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-04-2016 a las 16:43:30
--- Versión del servidor: 10.1.10-MariaDB
--- Versión de PHP: 5.6.19
+-- Tiempo de generación: 28-04-2016 a las 04:53:37
+-- Versión del servidor: 10.1.9-MariaDB
+-- Versión de PHP: 7.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `dutymap`
 --
-CREATE DATABASE IF NOT EXISTS `dutymap` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `dutymap`;
 
 -- --------------------------------------------------------
 
@@ -34,15 +32,16 @@ CREATE TABLE `address` (
   `number` int(11) NOT NULL,
   `postal_code` int(11) NOT NULL,
   `latitude` double DEFAULT NULL,
-  `length` double DEFAULT NULL
+  `length` double DEFAULT NULL,
+  `id_district` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `address`
 --
 
-INSERT INTO `address` (`id_address`, `street`, `number`, `postal_code`, `latitude`, `length`) VALUES
-(1, 'falsa', 123, 1234, NULL, NULL);
+INSERT INTO `address` (`id_address`, `street`, `number`, `postal_code`, `latitude`, `length`, `id_district`) VALUES
+(1, 'falsa', 123, 1234, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -61,6 +60,24 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`id_category`, `name`) VALUES
 (1, 'Carpintería');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `district`
+--
+
+CREATE TABLE `district` (
+  `id_district` bigint(20) NOT NULL,
+  `name` varchar(35) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `district`
+--
+
+INSERT INTO `district` (`id_district`, `name`) VALUES
+(1, 'La Matanza');
 
 -- --------------------------------------------------------
 
@@ -113,8 +130,7 @@ INSERT INTO `work` (`id_work`, `name`, `description`, `id_category`, `id_user`, 
 -- Indices de la tabla `address`
 --
 ALTER TABLE `address`
-  ADD PRIMARY KEY (`id_address`),
-  ADD UNIQUE KEY `id_address` (`id_address`);
+  ADD PRIMARY KEY (`id_address`);
 
 --
 -- Indices de la tabla `category`
@@ -123,6 +139,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id_category`),
   ADD UNIQUE KEY `id_category` (`id_category`),
   ADD KEY `id_category_2` (`id_category`);
+
+--
+-- Indices de la tabla `district`
+--
+ALTER TABLE `district`
+  ADD PRIMARY KEY (`id_district`);
 
 --
 -- Indices de la tabla `user`
@@ -155,6 +177,11 @@ ALTER TABLE `address`
 --
 ALTER TABLE `category`
   MODIFY `id_category` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `district`
+--
+ALTER TABLE `district`
+  MODIFY `id_district` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `user`
 --

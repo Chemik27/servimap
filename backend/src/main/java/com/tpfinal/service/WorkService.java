@@ -16,4 +16,8 @@ public class WorkService {
     public Page<Work> findAll(PageRequest pageRequest) {
         return workRepository.findAll(pageRequest);
     }
+
+    public List<Work> findByName(String name){
+        return workRepository.findByName(name);
+    }
 }

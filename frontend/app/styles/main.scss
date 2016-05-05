@@ -1,91 +1,306 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-// bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
 
-body {
+html, body {
+  height: 100%;
+  margin: 0;
   padding: 0;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+.logo-color-bg{
+  background-color: #336699;
+  color: white;
+
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
+.logo-color{
+  color: #336699;
+}
+.logo{
+  width: 200px;
+  height: 100px;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+
+.background{
+
+  background-color: black;
+  background: url('../images/Pin-Map.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
+.img-size{
+  height: 70px;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
+.paragraph{
+
+  font-size: 30px;
+  font-family:  Georgia, Serif;
+
+}
+
+.subparagraph{
+  font-size: 18px;
+  font-family:  Georgia, Serif;
+}
+
+.title-menu-landing{
+
+  font-size: 38px;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+}
 
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+.searchbox{
+  width: 30%;
+  height: 12%;
+
+  border: 3px solid #ccc;
+  font-size: 22px;
+  vertical-align: middle;
+}
+.searchbox:hover{
+  border:3px solid #336699;
+}
+
+.brand{
+  margin-left: 3%;
+}
+
+.circular {
+  width: 100px;
+  height: 100px;
+
+
+}
+
+.question-title{
+  font-size: 30px
+}
+
+.question{
+  font-size: 20px;
+  color: black;
+}
+
+
+.flip-container {
+  perspective: 1000;
+  background-color: white;
+}
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  width: 100%;
+  height: 350px;
+
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+.p{
+  display: inline;
+}
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+
+}
+
+
+.circular {
+  border-radius: 50%;
+
+}
+
+.img-circle{
+  width:120px;
+  height: 120px;
+
+}
+.marker{
+  width: 30px;
+  height: 30px;
+}
+
+
+.profile{
+  width:70%;
+}
+.hire{
+  width: 100%;
+  height: 40px;
+}
+
+.end-landing{
+  border: 1px solid grey;
+}
+
+
+.fixed {   width: 10% ;background:orange; }
+.scrollit { height:400px;  background:lightgray; }
+
+.block{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  float: right;
+  border-bottom: 1px solid grey;
+
+}
+
+.border{
+  border: 1px solid grey;
+}
+
+.padding{
+  padding: 10px;
+}
+
+.header-secondary{
+
+  display: table;
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+}
+
+.completed-work{
+  color: black;
+}
+
+.center{
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.premium{
+  color: green;
+  position: relative;
+  float: right;
+  border: 2px inset  green;
+  padding: 5px 5px 5px 5px;
+}
+
+.remark:hover ~ .block {
+  border: 2px solid red;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently not supported by any browser */
+  cursor:default;
+}
+
+.provider-name{
+  color:#336699;
+}
+
+.pagination>.active>a{
+  background-color:#336699;
+}
+
+.experience-name{
+  color: black;
+  font-size:15px;
+}
+
+.experience-title{
+  color: black;
+  font-size:17px;
+}
+
+.centered-form, textarea{
+
+}
+
+form{
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px
+}
+
+.service-icon{
+  width: 50px;
+  height: 55px;
+  position: relative;
+  margin-bottom: 19px;
+}
+
+.full-height {
+  height:100%;
+
+}
+
+
+.button-header{
+  margin-top: 70px;
+}
+
+#map{
+  height:700px;
+}
+
+@media only screen and (min-width: 990px){
+  .question-center{
+    margin-top: 100px;
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
+@media only screen and (min-width: 761px){
 
-  p + h4 {
-    margin-top: 28px;
+  .normal-screen >hr{
+    border: 1px solid white
+
+  }
+  .minimal-screen{
+    border: none;
   }
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
+@media only screen and (max-width:760px){
+
+  .normal-screen{
+    border: none;
   }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+  .minimal-screen{
+    border: 1px solid white;
+
   }
 }
+
+

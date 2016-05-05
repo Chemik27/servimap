@@ -11,8 +11,26 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="styles/stylish-portfolio.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
     <!-- endbuild -->
+
   </head>
   <body ng-app="tpfinal">
     <!--[if lte IE 8]>
@@ -20,41 +38,50 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+    <!-- Container -->
+    <div class="full-height">
+    <div class="full-height" ng-view=""></div>
+    </div>
 
-            <a class="navbar-brand" href="#/">frontend</a>
+
+        <footer>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <p>Mapa del sitio</p>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-lg-10 col-lg-offset-1 text-center">
+                <h4><strong>DutyMap</strong>
+                </h4>
+                <p>1903 San Justo<br>Buenos Aires, Argentina</p>
+                <ul class="list-unstyled">
+                  <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
+                  <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:name@example.com">dutymap@hotmail.com</a>
+                  </li>
+                </ul>
+                <br>
+                <ul class="list-inline">
+                  <li>
+                    <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
+                  </li>
+                </ul>
+                <hr class="small">
+                <p class="text-muted">Copyright &copy; Dutymap 2016</p>
+              </div>
+            </div>
           </div>
+        </footer>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -77,5 +104,19 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <!-- endbuild -->
+    <!-- jQuery -->
+
+    <script src="scripts/jquery.js"></script>
+
+    <script src="scripts/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="scripts/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+
+
 </body>
 </html>

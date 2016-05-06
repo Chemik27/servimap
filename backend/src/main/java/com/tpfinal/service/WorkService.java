@@ -7,19 +7,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class WorkService {
 
     @Autowired
     IWorkRepository workRepository;
 
-    public List<Work> findByIdBrand(String name) {
-        return workRepository.findByName(name);
-    }
-
     public Page<Work> findAll(PageRequest pageRequest) {
         return workRepository.findAll(pageRequest);
+    }
+
+    public List<Work> findByName(String name){
+        return workRepository.findByName(name);
     }
 }

@@ -6,20 +6,26 @@ import javax.persistence.*;
 @Table(name = "work")
 public class Work {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long idWork;
     private String name;
     private String description;
+    private Category category;
+    private User user;
+    private Address address;
 
-    public Work(String name, String description) {
+    public Work(String name, String description, Category category, User user, Address address) {
         this.name = name;
         this.description = description;
+        this.category = category;
+        this.user = user;
+        this.address = address;
     }
 
     public Work() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_work")
     public Long getIdWork() {
         return idWork;
@@ -45,5 +51,35 @@ public class Work {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_category", nullable = false)
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_user", nullable = false)
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_address", nullable = false)
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

@@ -30,6 +30,12 @@ angular
 
       })
 
+      .when('/provider-profile', {
+        templateUrl: 'views/provider-profile.html',
+        controller: 'profileCtrl',
+
+      })
+
       .otherwise({
         redirectTo: '/'
       });

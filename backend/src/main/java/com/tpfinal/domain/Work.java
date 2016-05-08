@@ -12,13 +12,16 @@ public class Work {
     private Category category;
     private User user;
     private Address address;
+    private Feedback feedback;
+    //private List<Comment> comments;
 
-    public Work(String name, String description, Category category, User user, Address address) {
+    public Work(String name, String description, Category category, User user, Address address, Feedback feedback) {
         this.name = name;
         this.description = description;
         this.category = category;
         this.user = user;
         this.address = address;
+        this.feedback = feedback;
     }
 
     public Work() {
@@ -81,5 +84,15 @@ public class Work {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_feedback", nullable = false)
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
     }
 }

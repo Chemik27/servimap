@@ -1,0 +1,36 @@
+package com.tpfinal.controller;
+
+import com.tpfinal.domain.User;
+import com.tpfinal.service.CommentService;
+import com.tpfinal.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/profile")
+public class ProfileController {
+
+    private static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    CommentService commentService;
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{idUser}")
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String, Object> getProfile(@PathVariable Long idUser){
+        logger.info("GET");
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("userinfo", userService.findByIdUser(idUser));
+        result.put("comments", commentService.findByToUser(idUser));
+        return result;
+    }
+}

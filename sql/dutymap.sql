@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-05-2016 a las 01:17:17
+-- Tiempo de generación: 13-05-2016 a las 03:51:33
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 5.6.19
 
@@ -130,6 +130,28 @@ INSERT INTO `feedback` (`id_feedback`, `positive`, `neutral`, `negative`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `transaction`
+--
+
+CREATE TABLE `transaction` (
+  `id_transaction` varchar(36) NOT NULL,
+  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `to_user` bigint(20) NOT NULL,
+  `from_user` bigint(20) NOT NULL,
+  `id_state` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `transaction`
+--
+
+INSERT INTO `transaction` (`id_transaction`, `creation_date`, `to_user`, `from_user`, `id_state`) VALUES
+('70fb32af-6ab8-4f63-bb67-b3de79706e8a', '2016-05-12 22:11:57', 1, 2, 1),
+('fbe058c5-18aa-11e6-9a78-001bb1516a26', '2016-05-12 22:35:33', 2, 1, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `user`
 --
 
@@ -218,6 +240,14 @@ ALTER TABLE `feedback`
   ADD UNIQUE KEY `id_feedback` (`id_feedback`);
 
 --
+-- Indices de la tabla `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`id_transaction`),
+  ADD UNIQUE KEY `id_transaction` (`id_transaction`),
+  ADD KEY `id_transaction_2` (`id_transaction`);
+
+--
 -- Indices de la tabla `user`
 --
 ALTER TABLE `user`
@@ -268,7 +298,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `work`
 --

@@ -1,7 +1,7 @@
 package com.tpfinal.controller;
 
-import com.tpfinal.domain.User;
 import com.tpfinal.service.CommentService;
+import com.tpfinal.service.TransactionService;
 import com.tpfinal.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +24,9 @@ public class ProfileController {
     @Autowired
     CommentService commentService;
 
+    @Autowired
+    TransactionService transactionService;
+
     @RequestMapping(method = RequestMethod.GET, value = "/{idUser}")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Object> getProfile(@PathVariable Long idUser){
@@ -31,6 +34,7 @@ public class ProfileController {
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("userinfo", userService.findByIdUser(idUser));
         result.put("comments", commentService.findByToUser(idUser));
+        result.put("last10Works", transactionService.findByToUser(idUser));
         return result;
     }
 }

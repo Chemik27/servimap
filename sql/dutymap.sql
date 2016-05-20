@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-04-2016 a las 04:53:37
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 7.0.1
+-- Tiempo de generación: 13-05-2016 a las 03:51:33
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `dutymap`
 --
+CREATE DATABASE IF NOT EXISTS `dutymap` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `dutymap`;
 
 -- --------------------------------------------------------
 
@@ -64,6 +66,32 @@ INSERT INTO `category` (`id_category`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `comment`
+--
+
+CREATE TABLE `comment` (
+  `id_comment` bigint(20) NOT NULL,
+  `text` varchar(140) NOT NULL,
+  `to_user` bigint(20) NOT NULL,
+  `from_user` bigint(20) NOT NULL,
+  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` datetime DEFAULT NULL,
+  `deleted_date` datetime DEFAULT NULL,
+  `version` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `comment`
+--
+
+INSERT INTO `comment` (`id_comment`, `text`, `to_user`, `from_user`, `creation_date`, `update_date`, `deleted_date`, `version`) VALUES
+(1, 'Gran trabajo! El mejor kinesiologo!!', 1, 2, '2016-05-08 19:41:40', NULL, NULL, 0),
+(3, 'Genial!', 2, 1, '2016-05-08 20:00:34', NULL, NULL, 0),
+(4, 'Me gusto su trabajo', 1, 2, '2016-05-08 20:00:34', NULL, NULL, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `district`
 --
 
@@ -82,6 +110,48 @@ INSERT INTO `district` (`id_district`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id_feedback` bigint(11) NOT NULL,
+  `positive` int(11) NOT NULL,
+  `neutral` int(11) NOT NULL,
+  `negative` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `feedback`
+--
+
+INSERT INTO `feedback` (`id_feedback`, `positive`, `neutral`, `negative`) VALUES
+(1, 12, 4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `transaction`
+--
+
+CREATE TABLE `transaction` (
+  `id_transaction` varchar(36) NOT NULL,
+  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `to_user` bigint(20) NOT NULL,
+  `from_user` bigint(20) NOT NULL,
+  `id_state` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `transaction`
+--
+
+INSERT INTO `transaction` (`id_transaction`, `creation_date`, `to_user`, `from_user`, `id_state`) VALUES
+('70fb32af-6ab8-4f63-bb67-b3de79706e8a', '2016-05-12 22:11:57', 1, 2, 1),
+('fbe058c5-18aa-11e6-9a78-001bb1516a26', '2016-05-12 22:35:33', 2, 1, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `user`
 --
 
@@ -89,16 +159,22 @@ CREATE TABLE `user` (
   `id_user` bigint(20) NOT NULL,
   `name` varchar(35) NOT NULL,
   `surname` varchar(35) NOT NULL,
+  `dni` bigint(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `phone` varchar(35) NOT NULL
+  `phone` varchar(35) NOT NULL,
+  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` datetime DEFAULT NULL,
+  `deleted_date` datetime DEFAULT NULL,
+  `version` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id_user`, `name`, `surname`, `email`, `phone`) VALUES
-(1, 'Jose', 'Perez', 'jose.perez@gmail.com', '1511112222');
+INSERT INTO `user` (`id_user`, `name`, `surname`, `dni`, `email`, `phone`, `creation_date`, `update_date`, `deleted_date`, `version`) VALUES
+(1, 'Jose', 'Perez', 33333333, 'jose.perez@gmail.com', '1511112222', '2016-05-08 15:09:32', NULL, NULL, 0),
+(2, 'Prueba', 'Prueba', 12345678, 'prueba@prueba.com.ar', '1143214321', '2016-05-08 19:58:31', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -112,15 +188,16 @@ CREATE TABLE `work` (
   `description` varchar(200) NOT NULL,
   `id_category` bigint(20) NOT NULL,
   `id_user` bigint(20) NOT NULL,
-  `id_address` bigint(20) NOT NULL
+  `id_address` bigint(20) NOT NULL,
+  `id_feedback` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `work`
 --
 
-INSERT INTO `work` (`id_work`, `name`, `description`, `id_category`, `id_user`, `id_address`) VALUES
-(1, 'Pintor', 'Pintar casas', 1, 1, 1);
+INSERT INTO `work` (`id_work`, `name`, `description`, `id_category`, `id_user`, `id_address`, `id_feedback`) VALUES
+(1, 'Pintor', 'Pintar casas', 1, 1, 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -130,7 +207,8 @@ INSERT INTO `work` (`id_work`, `name`, `description`, `id_category`, `id_user`, 
 -- Indices de la tabla `address`
 --
 ALTER TABLE `address`
-  ADD PRIMARY KEY (`id_address`);
+  ADD PRIMARY KEY (`id_address`),
+  ADD UNIQUE KEY `id_address` (`id_address`);
 
 --
 -- Indices de la tabla `category`
@@ -141,10 +219,33 @@ ALTER TABLE `category`
   ADD KEY `id_category_2` (`id_category`);
 
 --
+-- Indices de la tabla `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id_comment`),
+  ADD UNIQUE KEY `id_comment` (`id_comment`);
+
+--
 -- Indices de la tabla `district`
 --
 ALTER TABLE `district`
-  ADD PRIMARY KEY (`id_district`);
+  ADD PRIMARY KEY (`id_district`),
+  ADD UNIQUE KEY `id_district` (`id_district`);
+
+--
+-- Indices de la tabla `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id_feedback`),
+  ADD UNIQUE KEY `id_feedback` (`id_feedback`);
+
+--
+-- Indices de la tabla `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`id_transaction`),
+  ADD UNIQUE KEY `id_transaction` (`id_transaction`),
+  ADD KEY `id_transaction_2` (`id_transaction`);
 
 --
 -- Indices de la tabla `user`
@@ -152,6 +253,7 @@ ALTER TABLE `district`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`),
   ADD UNIQUE KEY `id_user` (`id_user`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `id_user_2` (`id_user`);
 
 --
@@ -178,15 +280,25 @@ ALTER TABLE `address`
 ALTER TABLE `category`
   MODIFY `id_category` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT de la tabla `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id_comment` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT de la tabla `district`
 --
 ALTER TABLE `district`
   MODIFY `id_district` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT de la tabla `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `id_feedback` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `work`
 --

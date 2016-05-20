@@ -17,7 +17,7 @@ body {
 }
 
 .text-vertical-center {
-    
+
     text-align: center;
     vertical-align: middle;
 }
@@ -160,7 +160,7 @@ hr.small {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    
+
 }
 
 /* About */
@@ -236,5 +236,5 @@ hr.small {
 /* Footer */
 
 footer {
-    padding: 100px 0;
+   /*padding: 100px 0;*/
 }

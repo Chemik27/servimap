@@ -15,12 +15,14 @@ public class Transaction {
     @Column(name = "id_transaction", unique = true)
     private String idTransaction;
     private Date creationDate;
+    private String comment;
     private Long toUser;
     private Long fromUser;
     private Long idState;
 
-    public Transaction(Date creationDate, Long toUser, Long fromUser, Long idState) {
+    public Transaction(Date creationDate, String comment, Long toUser, Long fromUser, Long idState) {
         this.creationDate = creationDate;
+        this.comment = comment;
         this.toUser = toUser;
         this.fromUser = fromUser;
         this.idState = idState;
@@ -45,6 +47,15 @@ public class Transaction {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    @Column(name = "comment")
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     @Column(name = "to_user")

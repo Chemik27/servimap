@@ -12,13 +12,15 @@ public class User extends BaseEntity {
     private Long dni;
     private String email;
     private String phone;
+    private Rating rating;
 
-    public User(String name, String surname, Long dni, String email, String phone) {
+    public User(String name, String surname, Long dni, String email, String phone, Rating rating) {
         this.name = name;
         this.surname = surname;
         this.dni = dni;
         this.email = email;
         this.phone = phone;
+        this.rating = rating;
     }
 
     public User() {
@@ -80,4 +82,13 @@ public class User extends BaseEntity {
         this.phone = phone;
     }
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_rating", nullable = false)
+    public Rating getRating() {
+        return rating;
+    }
+
+    public void setRating(Rating rating) {
+        this.rating = rating;
+    }
 }

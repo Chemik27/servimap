@@ -10,18 +10,15 @@ public class Work {
     private String name;
     private String description;
     private Category category;
-    private User user;
+    private Long idUser;
     private Address address;
-    private Feedback feedback;
-    //private List<Comment> comments;
 
-    public Work(String name, String description, Category category, User user, Address address, Feedback feedback) {
+    public Work(String name, String description, Category category, Long idUser, Address address) {
         this.name = name;
         this.description = description;
         this.category = category;
-        this.user = user;
+        this.idUser = idUser;
         this.address = address;
-        this.feedback = feedback;
     }
 
     public Work() {
@@ -66,14 +63,13 @@ public class Work {
         this.category = category;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_user", nullable = false)
-    public User getUser() {
-        return user;
+    @Column(name = "id_user")
+    public Long getIdUser() {
+        return idUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -86,13 +82,4 @@ public class Work {
         this.address = address;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_feedback", nullable = false)
-    public Feedback getFeedback() {
-        return feedback;
-    }
-
-    public void setFeedback(Feedback feedback) {
-        this.feedback = feedback;
-    }
 }

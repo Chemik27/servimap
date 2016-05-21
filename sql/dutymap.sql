@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-05-2016 a las 03:51:33
+-- Tiempo de generación: 21-05-2016 a las 18:15:42
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 5.6.19
 
@@ -66,32 +66,6 @@ INSERT INTO `category` (`id_category`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comment`
---
-
-CREATE TABLE `comment` (
-  `id_comment` bigint(20) NOT NULL,
-  `text` varchar(140) NOT NULL,
-  `to_user` bigint(20) NOT NULL,
-  `from_user` bigint(20) NOT NULL,
-  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_date` datetime DEFAULT NULL,
-  `deleted_date` datetime DEFAULT NULL,
-  `version` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `comment`
---
-
-INSERT INTO `comment` (`id_comment`, `text`, `to_user`, `from_user`, `creation_date`, `update_date`, `deleted_date`, `version`) VALUES
-(1, 'Gran trabajo! El mejor kinesiologo!!', 1, 2, '2016-05-08 19:41:40', NULL, NULL, 0),
-(3, 'Genial!', 2, 1, '2016-05-08 20:00:34', NULL, NULL, 0),
-(4, 'Me gusto su trabajo', 1, 2, '2016-05-08 20:00:34', NULL, NULL, 0);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `district`
 --
 
@@ -110,22 +84,24 @@ INSERT INTO `district` (`id_district`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `feedback`
+-- Estructura de tabla para la tabla `rating`
 --
 
-CREATE TABLE `feedback` (
-  `id_feedback` bigint(11) NOT NULL,
-  `positive` int(11) NOT NULL,
-  `neutral` int(11) NOT NULL,
-  `negative` int(11) NOT NULL
+CREATE TABLE `rating` (
+  `id_rating` bigint(20) NOT NULL,
+  `reliability` int(11) NOT NULL,
+  `performance` int(11) NOT NULL,
+  `consideration` int(11) NOT NULL,
+  `recommendation` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `feedback`
+-- Volcado de datos para la tabla `rating`
 --
 
-INSERT INTO `feedback` (`id_feedback`, `positive`, `neutral`, `negative`) VALUES
-(1, 12, 4, 1);
+INSERT INTO `rating` (`id_rating`, `reliability`, `performance`, `consideration`, `recommendation`) VALUES
+(1, 12, 2, 33, 12),
+(2, 22, 23, 33, 22);
 
 -- --------------------------------------------------------
 
@@ -136,6 +112,7 @@ INSERT INTO `feedback` (`id_feedback`, `positive`, `neutral`, `negative`) VALUES
 CREATE TABLE `transaction` (
   `id_transaction` varchar(36) NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `comment` varchar(140) DEFAULT NULL,
   `to_user` bigint(20) NOT NULL,
   `from_user` bigint(20) NOT NULL,
   `id_state` bigint(20) NOT NULL
@@ -145,9 +122,9 @@ CREATE TABLE `transaction` (
 -- Volcado de datos para la tabla `transaction`
 --
 
-INSERT INTO `transaction` (`id_transaction`, `creation_date`, `to_user`, `from_user`, `id_state`) VALUES
-('70fb32af-6ab8-4f63-bb67-b3de79706e8a', '2016-05-12 22:11:57', 1, 2, 1),
-('fbe058c5-18aa-11e6-9a78-001bb1516a26', '2016-05-12 22:35:33', 2, 1, 2);
+INSERT INTO `transaction` (`id_transaction`, `creation_date`, `comment`, `to_user`, `from_user`, `id_state`) VALUES
+('70fb32af-6ab8-4f63-bb67-b3de79706e8a', '2016-05-12 22:11:57', NULL, 1, 2, 1),
+('fbe058c5-18aa-11e6-9a78-001bb1516a26', '2016-05-12 22:35:33', NULL, 2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -162,6 +139,7 @@ CREATE TABLE `user` (
   `dni` bigint(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` varchar(35) NOT NULL,
+  `id_rating` bigint(20) NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_date` datetime DEFAULT NULL,
   `deleted_date` datetime DEFAULT NULL,
@@ -172,9 +150,9 @@ CREATE TABLE `user` (
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id_user`, `name`, `surname`, `dni`, `email`, `phone`, `creation_date`, `update_date`, `deleted_date`, `version`) VALUES
-(1, 'Jose', 'Perez', 33333333, 'jose.perez@gmail.com', '1511112222', '2016-05-08 15:09:32', NULL, NULL, 0),
-(2, 'Prueba', 'Prueba', 12345678, 'prueba@prueba.com.ar', '1143214321', '2016-05-08 19:58:31', NULL, NULL, 0);
+INSERT INTO `user` (`id_user`, `name`, `surname`, `dni`, `email`, `phone`, `id_rating`, `creation_date`, `update_date`, `deleted_date`, `version`) VALUES
+(1, 'Jose', 'Perez', 33333333, 'jose.perez@gmail.com', '1511112222', 1, '2016-05-08 15:09:32', NULL, NULL, 0),
+(2, 'Prueba', 'Prueba', 12345678, 'prueba@prueba.com.ar', '1143214321', 2, '2016-05-08 19:58:31', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -219,13 +197,6 @@ ALTER TABLE `category`
   ADD KEY `id_category_2` (`id_category`);
 
 --
--- Indices de la tabla `comment`
---
-ALTER TABLE `comment`
-  ADD PRIMARY KEY (`id_comment`),
-  ADD UNIQUE KEY `id_comment` (`id_comment`);
-
---
 -- Indices de la tabla `district`
 --
 ALTER TABLE `district`
@@ -233,11 +204,11 @@ ALTER TABLE `district`
   ADD UNIQUE KEY `id_district` (`id_district`);
 
 --
--- Indices de la tabla `feedback`
+-- Indices de la tabla `rating`
 --
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id_feedback`),
-  ADD UNIQUE KEY `id_feedback` (`id_feedback`);
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`id_rating`),
+  ADD UNIQUE KEY `id_rating` (`id_rating`);
 
 --
 -- Indices de la tabla `transaction`
@@ -280,20 +251,15 @@ ALTER TABLE `address`
 ALTER TABLE `category`
   MODIFY `id_category` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `comment`
---
-ALTER TABLE `comment`
-  MODIFY `id_comment` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
 -- AUTO_INCREMENT de la tabla `district`
 --
 ALTER TABLE `district`
   MODIFY `id_district` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `feedback`
+-- AUTO_INCREMENT de la tabla `rating`
 --
-ALTER TABLE `feedback`
-  MODIFY `id_feedback` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `rating`
+  MODIFY `id_rating` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `user`
 --

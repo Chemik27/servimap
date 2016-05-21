@@ -22,4 +22,8 @@ public class WorkService {
     public List<Work> findByName(String name){
         return workRepository.findByName(name);
     }
+
+    public Work findByIdUser(Long idUser){
+        return workRepository.findByIdUser(idUser);
+    }
 }

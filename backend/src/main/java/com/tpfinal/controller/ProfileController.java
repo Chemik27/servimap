@@ -1,8 +1,8 @@
 package com.tpfinal.controller;
 
-import com.tpfinal.service.CommentService;
 import com.tpfinal.service.TransactionService;
 import com.tpfinal.service.UserService;
+import com.tpfinal.service.WorkService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +22,10 @@ public class ProfileController {
     UserService userService;
 
     @Autowired
-    CommentService commentService;
+    TransactionService transactionService;
 
     @Autowired
-    TransactionService transactionService;
+    WorkService workService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/{idUser}")
     @ResponseStatus(HttpStatus.OK)
@@ -33,8 +33,8 @@ public class ProfileController {
         logger.info("GET");
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("userinfo", userService.findByIdUser(idUser));
-        result.put("comments", commentService.findByToUser(idUser));
         result.put("last10Works", transactionService.findByToUser(idUser));
+        result.put("job", workService.findByIdUser(idUser));
         return result;
     }
 }

@@ -380,3 +380,43 @@ form{
   }
 
 }
+
+/*Experiencias*/
+.widget-header {
+  min-height: 125px;
+  position: relative;
+  overflow: hidden;
+}
+.bg-primary{
+  background-color: #2F689A;
+
+}
+.panel {
+  box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.075);
+  border-radius: 0;
+  border: 0;
+  margin-bottom: 24px;
+}
+.panel .panel-heading, .panel>:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.widget-body {
+  padding: 50px 15px 15px;
+  position: relative;
+}
+.img-border {
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.1);
+  border: 1px solid white;
+}
+.widget-img {
+  position: absolute;
+  width: 41%;
+  height: 75%;
+  left: 42%;
+  margin-left: -32px;
+  top: -55px;
+}
+.img-circle{
+  border:5px solid white;
+}

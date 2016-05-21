@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the tpfinal
  */
-angular.module('tpfinal')
+angular.module('dutymap')
   .controller('MainCtrl', ['$scope', '$http' ,function ($scope, $http) {
 
     var url = "/api/services/";
@@ -49,15 +49,5 @@ angular.module('tpfinal')
       });
     });
 
-
-  }]);
-
-
-angular.module('tpfinal')
-  .controller('ServiceCtrl', ['$scope', '$http' ,function ($scope, $http) {
-
-
-     
-    
 
   }]);

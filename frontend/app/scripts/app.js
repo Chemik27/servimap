@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name tpfinal
+ * @name dutymap
  * @description
  * # tpfinal
  *
  * Main module of the application.
  */
 angular
-  .module('tpfinal', [
+  .module('dutymap', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -21,21 +21,20 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
-        controller: 'MainCtrl',
+        controller: 'MainCtrl'
 
       })
-      .when('/service', {
+      .when('/servicio', {
         templateUrl: 'views/service.html',
-        controller: 'ServiceCtrl',
-
+        controller: 'ServiceCtrl'
       })
 
-      .when('/provider-profile', {
-        templateUrl: 'views/provider-profile.html',
-        controller: 'profileCtrl',
-
+      .when('/perfil/:id', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl',
+        resolve: {profileSelected: ['$route','ProfileResources', function($route, ProfileResources) {
+            return ProfileResources.get($route.current.pathParams).$promise;}]}
       })
-
       .otherwise({
         redirectTo: '/'
       });

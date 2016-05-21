@@ -32,9 +32,9 @@ public class ProfileController {
     public Map<String, Object> getProfile(@PathVariable Long idUser){
         logger.info("GET");
         Map<String, Object> result = new HashMap<String, Object>();
-        result.put("userinfo", userService.findByIdUser(idUser));
-        result.put("last10Works", transactionService.findByToUser(idUser));
-        result.put("job", workService.findByIdUser(idUser));
+        result.put("user", userService.findByIdUser(idUser));
+        result.put("lastTransactions", transactionService.findByToUser(idUser));
+        result.put("work", workService.findByIdUser(idUser));
         return result;
     }
 }

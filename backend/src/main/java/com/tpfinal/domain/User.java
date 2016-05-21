@@ -14,6 +14,9 @@ public class User extends BaseEntity {
     private String phone;
     private Rating rating;
 
+    //Transient values
+    private String fullName;
+
     public User(String name, String surname, Long dni, String email, String phone, Rating rating) {
         this.name = name;
         this.surname = surname;
@@ -91,4 +94,11 @@ public class User extends BaseEntity {
     public void setRating(Rating rating) {
         this.rating = rating;
     }
+
+    //Transient Values
+    @Transient
+    public String getFullName() {
+        return this.name + " " + this.surname;
+    }
+
 }

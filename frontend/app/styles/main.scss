@@ -6,10 +6,11 @@ html, body {
   padding: 0;
 }
 
+/*Home.html*/
+
 .logo-color-bg{
   background-color: #336699;
   color: white;
-
 }
 
 .logo-color{
@@ -19,7 +20,6 @@ html, body {
   width: 200px;
   height: 100px;
 }
-
 
 .background{
 
@@ -31,7 +31,6 @@ html, body {
   background-size: cover;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-
 }
 
 .img-size{
@@ -39,10 +38,8 @@ html, body {
 }
 
 .paragraph{
-
   font-size: 30px;
   font-family:  Georgia, Serif;
-
 }
 
 .subparagraph{
@@ -75,8 +72,6 @@ html, body {
 .circular {
   width: 100px;
   height: 100px;
-
-
 }
 
 .question-title{
@@ -87,7 +82,7 @@ html, body {
   font-size: 20px;
   color: black;
 }
-
+/*Provider cards*/
 
 .flip-container {
   perspective: 1000;
@@ -138,7 +133,6 @@ html, body {
 
 .circular {
   border-radius: 50%;
-
 }
 
 .img-circle{
@@ -146,11 +140,12 @@ html, body {
   height: 120px;
 
 }
+
+/*Service.html*/
 .marker{
   width: 30px;
   height: 30px;
 }
-
 
 .profile{
   width:70%;
@@ -164,7 +159,6 @@ html, body {
   border: 1px solid grey;
 }
 
-
 .fixed {   width: 10% ;background:orange; }
 .scrollit { height:400px;  background:lightgray; }
 
@@ -173,7 +167,6 @@ html, body {
   padding-bottom: 10px;
   float: right;
   border-bottom: 1px solid grey;
-
 }
 
 .border{
@@ -185,14 +178,13 @@ html, body {
 }
 
 .header-secondary{
-
   display: table;
   position: relative;
   width: 100%;
   -webkit-background-size: cover;
 }
 
-.completed-work{
+.finished-work{
   color: black;
 }
 
@@ -223,6 +215,7 @@ html, body {
   cursor:default;
 }
 
+/*Profile.html*/
 .provider-name{
   color:#336699;
 }
@@ -241,9 +234,6 @@ html, body {
   font-size:17px;
 }
 
-.centered-form, textarea{
-
-}
 
 form{
   width: 300px;
@@ -262,9 +252,7 @@ form{
 
 .full-height {
   height:100%;
-
 }
-
 
 .button-header{
   margin-top: 70px;
@@ -284,7 +272,6 @@ form{
   font-size: 30px;
   font-weight: bold;
   margin:0;
-
 }
 
 .about-title{
@@ -311,45 +298,8 @@ form{
   width:25px;
   margin-left: auto;
   margin-right: auto;
-
 }
 
-@media only screen and (min-width: 990px){
-  .question-center{
-    margin-top: 100px;
-  }
-}
-
-@media only screen and (min-width: 761px){
-
-  .normal-screen >hr{
-    border: 1px solid white
-
-  }
-  .minimal-screen{
-    border: none;
-  }
-}
-
-@media only screen and (max-width:760px){
-
-  .normal-screen{
-    border: none;
-  }
-
-  .minimal-screen{
-    border: 1px solid white;
-
-  }
-}
-
-
-@media only screen and (max-width:420px){
-  .hidden-works{
-    display: none;
-  }
-
-}
 
 /*Experiencias*/
 .widget-header {
@@ -389,4 +339,43 @@ form{
 }
 .img-circle{
   border:5px solid white;
+}
+
+
+
+@media only screen and (min-width: 990px){
+  .question-center{
+    margin-top: 100px;
+  }
+}
+
+@media only screen and (min-width: 761px){
+
+  .normal-screen >hr{
+    border: 1px solid white
+
+  }
+  .minimal-screen{
+    border: none;
+  }
+}
+
+@media only screen and (max-width:760px){
+
+  .normal-screen{
+    border: none;
+  }
+
+  .minimal-screen{
+    border: 1px solid white;
+
+  }
+}
+
+
+@media only screen and (max-width:420px){
+  .hidden-works{
+    display: none;
+  }
+
 }

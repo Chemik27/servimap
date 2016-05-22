@@ -1,12 +1,15 @@
+
+
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
-/* Home.html */
+
 .logo-color-bg{
   background-color: #336699;
   color: white;
+
 }
 
 .logo-color{
@@ -16,6 +19,7 @@ html, body {
   width: 200px;
   height: 100px;
 }
+
 
 .background{
 
@@ -27,6 +31,7 @@ html, body {
   background-size: cover;
   background-size: 100% 100%;
   background-repeat: no-repeat;
+
 }
 
 .img-size{
@@ -37,6 +42,7 @@ html, body {
 
   font-size: 30px;
   font-family:  Georgia, Serif;
+
 }
 
 .subparagraph{
@@ -53,6 +59,7 @@ html, body {
 .searchbox{
   width: 30%;
   height: 12%;
+
   border: 3px solid #ccc;
   font-size: 22px;
   vertical-align: middle;
@@ -68,6 +75,8 @@ html, body {
 .circular {
   width: 100px;
   height: 100px;
+
+
 }
 
 .question-title{
@@ -79,7 +88,6 @@ html, body {
   color: black;
 }
 
-/*Card providers*/
 
 .flip-container {
   perspective: 1000;
@@ -93,12 +101,14 @@ html, body {
 .flip-container, .front, .back {
   width: 100%;
   height: 350px;
+
 }
 
 /* flip speed goes here */
 .flipper {
   transition: 0.6s;
   transform-style: preserve-3d;
+
   position: relative;
 }
 .p{
@@ -125,8 +135,10 @@ html, body {
 
 }
 
+
 .circular {
   border-radius: 50%;
+
 }
 
 .img-circle{
@@ -152,6 +164,7 @@ html, body {
   border: 1px solid grey;
 }
 
+
 .fixed {   width: 10% ;background:orange; }
 .scrollit { height:400px;  background:lightgray; }
 
@@ -160,6 +173,7 @@ html, body {
   padding-bottom: 10px;
   float: right;
   border-bottom: 1px solid grey;
+
 }
 
 .border{
@@ -171,15 +185,14 @@ html, body {
 }
 
 .header-secondary{
+
   display: table;
   position: relative;
   width: 100%;
   -webkit-background-size: cover;
 }
 
-/*Service.html */
-
-.finished-work{
+.completed-work{
   color: black;
 }
 
@@ -228,6 +241,10 @@ html, body {
   font-size:17px;
 }
 
+.centered-form, textarea{
+
+}
+
 form{
   width: 300px;
   margin-left: auto;
@@ -245,7 +262,9 @@ form{
 
 .full-height {
   height:100%;
+
 }
+
 
 .button-header{
   margin-top: 70px;
@@ -253,20 +272,6 @@ form{
 
 #map{
   height:700px;
-}
-
-/*Profile.html*/
-
-
-.container-profile{
-  background-color: #E0E0E0;
-  margin-top: 5px;
-}
-
-.user-profile{
-  background-color: white;
-  border-top: 1px solid #336699;
-  color:#333;
 }
 
 .presentation-card{
@@ -279,6 +284,7 @@ form{
   font-size: 30px;
   font-weight: bold;
   margin:0;
+
 }
 
 .about-title{
@@ -289,26 +295,10 @@ form{
   margin-top: 30px;
 }
 
-.job-name{
-  font-weight: 500;
-  font-family: 'Open Sans','arial';
-  font-size:30px;
-}
-
-.job-profile{
-  font-size: 18px;
-  font-weight: normal;
-}
-
-.job-description{
-  font-size: 14px;
-}
-
 .rating>p>img{
   width: 20px;
   height: 20px;
 }
-
 
 .rating>img{
   float: left;
@@ -321,20 +311,44 @@ form{
   width:25px;
   margin-left: auto;
   margin-right: auto;
+
 }
 
-/*Rating*/
-
-.positive{
-  color:green;
+@media only screen and (min-width: 990px){
+  .question-center{
+    margin-top: 100px;
+  }
 }
 
-.neutral{
-  color:grey;
+@media only screen and (min-width: 761px){
+
+  .normal-screen >hr{
+    border: 1px solid white
+
+  }
+  .minimal-screen{
+    border: none;
+  }
 }
 
-.negative{
-  color:red;
+@media only screen and (max-width:760px){
+
+  .normal-screen{
+    border: none;
+  }
+
+  .minimal-screen{
+    border: 1px solid white;
+
+  }
+}
+
+
+@media only screen and (max-width:420px){
+  .hidden-works{
+    display: none;
+  }
+
 }
 
 /*Experiencias*/
@@ -375,42 +389,4 @@ form{
 }
 .img-circle{
   border:5px solid white;
-}
-
-
-@media only screen and (min-width: 990px){
-  .question-center{
-    margin-top: 100px;
-  }
-}
-
-@media only screen and (min-width: 761px){
-
-  .normal-screen >hr{
-    border: 1px solid white
-
-  }
-  .minimal-screen{
-    border: none;
-  }
-}
-
-@media only screen and (max-width:760px){
-
-  .normal-screen{
-    border: none;
-  }
-
-  .minimal-screen{
-    border: 1px solid white;
-
-  }
-}
-
-
-@media only screen and (max-width:420px){
-  .hidden-works{
-    display: none;
-  }
-
 }

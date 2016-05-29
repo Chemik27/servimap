@@ -1,4 +1,5 @@
-
+@import "variables";
+@import "profile";
 
 html, body {
   height: 100%;
@@ -132,12 +133,6 @@ html, body {
 
 .circular {
   border-radius: 50%;
-}
-
-.img-circle{
-  width:120px;
-  height: 120px;
-
 }
 
 /*Service.html*/
@@ -346,9 +341,6 @@ form{
   left: 42%;
   margin-left: -32px;
   top: -55px;
-}
-.img-circle{
-  border:5px solid white;
 }
 
 /* Register.html */

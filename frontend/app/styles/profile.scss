@@ -1,0 +1,46 @@
+.resume{
+  font-family: $font-stack;
+  color: $font-color;
+  background-color: $background-grey;
+  padding: 0;
+  height:100%;
+
+  .module-main{
+    background-color: $background-blue;
+    color: lightgrey;
+    height: 100%;
+  }
+
+  .module{
+    border:5px solid $border-grey;
+    background-color: white;
+    width: 96%;
+    margin:2%;
+
+    .fa{
+      margin-left: 0.5em;
+    }
+  }
+}
+
+#module-feedback{
+  .module{
+    width: 46%;
+    margin: 2%;
+    display: inline-block;
+  }
+}
+
+.img-circle{
+  width:120px;
+  height: 120px;
+}
+
+.box-info{
+  height: 6em;
+
+  .blue{
+    background-color: $background-blue;
+  }
+}
+

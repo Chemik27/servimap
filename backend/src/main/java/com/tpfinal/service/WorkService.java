@@ -23,7 +23,7 @@ public class WorkService {
         return workRepository.findByName(name);
     }
 
-    public Work findByIdUser(Long idUser){
+    public List<Work> findByIdUser(Long idUser){
         return workRepository.findByIdUser(idUser);
     }
 }

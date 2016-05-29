@@ -34,7 +34,7 @@ public class ProfileController {
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("user", userService.findByIdUser(idUser));
         result.put("lastTransactions", transactionService.findByToUser(idUser));
-        result.put("work", workService.findByIdUser(idUser));
+        result.put("works", workService.findByIdUser(idUser));
         return result;
     }
 }

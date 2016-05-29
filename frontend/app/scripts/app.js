@@ -29,6 +29,11 @@ angular
         controller: 'ServiceCtrl'
       })
 
+      .when('/registro', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl'
+      })
+
       .when('/perfil/:id', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',

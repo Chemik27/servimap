@@ -11,11 +11,11 @@
 
         <div class="profile-rating">
             <p class="text-center">
-                <img  class="" src="images/rate-star.png" alt="">
-                <img  class="" src="images/rate-star.png" alt="">
-                <img  class="" src="images/rate-star.png" alt="">
-                <img  class="" src="images/rate-star.png" alt="">
-                <img  class="" src="images/rate-star.png" alt="">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
             </p>
         </div>
 
@@ -35,19 +35,27 @@
     <div class="container-fluid col-md-9">
 
         <div id="module-work" class="col-md-12">
-            <div class="module col-sm-12" ng-repeat="aWork in works">
+            <div class="module-work col-sm-6" ng-repeat="aWork in works">
                 <h3><i class="fa fa-briefcase" aria-hidden="true"></i> {{aWork.name}}</h3>
-                <div class="work-info">
+                <div>
                     <p>{{aWork.description}}</p>
                     <p>{{aWork.category.name}}</p>
                     <p>{{aWork.address.district.name}}</p>
+                </div>
+            </div>
 
+            <div ng-class="{'info-block-module': works.length > 1, 'module-size': works.length == 1}">
+                <div class="col-sm-6 reset-padding">
+                    TODO Agregar info
+                </div>
+                <div class="col-sm-6 reset-padding">
+                    TODO Agregar info
                 </div>
             </div>
         </div>
 
         <div id="module-feedback" class="col-md-12">
-            <div class="module col-sm-6 col-sm-12">
+            <div class="module col-sm-6 col-xs-12">
                <h3><i class="fa fa-users" aria-hidden="true"></i> Feedback</h3>
                 <div id="feedback-info">
                     <p>reliability {{user.rating.reliability}}</p>
@@ -57,7 +65,7 @@
                 </div>
             </div>
 
-            <div class="module col-sm-6 col-sm-12">
+            <div class="module col-sm-6 col-xs-12">
                 <h3><i class="fa fa-comments-o" aria-hidden="true"></i> Comentarios</h3>
                 <div class="comments" ng-repeat="tx in transactions">
                     <p>{{tx.comment}}</p>

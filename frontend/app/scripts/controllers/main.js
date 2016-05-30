@@ -9,6 +9,8 @@
  */
 angular.module('dutymap')
   .controller('MainCtrl', ['$scope', '$http' ,function ($scope, $http) {
+    
+    
 
     var url = "/api/services/";
     $http.post(url)

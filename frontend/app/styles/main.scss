@@ -45,6 +45,23 @@ a:hover{
   height:35px;
 }
 
+
+/*searchbox*/
+
+.stylish-input-group .input-group-addon{
+  background: white !important;
+}
+.stylish-input-group .form-control{
+  border-right:0;
+  box-shadow:0 0 0;
+  border-color:#ccc;
+}
+.stylish-input-group button{
+  border:0;
+  background:transparent;
+}
+
+/*
 .search-navbar{
   border: 3px solid #ccc;
   font: 30px;
@@ -59,6 +76,9 @@ a:hover{
   border:3px solid #336699;
 }
 
+
+*/
+
 .nopadding{
   padding: 0 !important;
 }
@@ -67,6 +87,7 @@ a:hover{
 .logo-color-bg{
   background-color: #336699;
   color: white;
+  transition: all 0.5s ease
 }
 .logo-color{
   color: #336699;
@@ -77,7 +98,6 @@ a:hover{
 }
 
 .background{
-
   background-color: black;
   background: url('../images/Pin-Map2.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -416,7 +436,12 @@ form{
   width:150px;
   margin-top: 10%;
   display: block;
+  transition: all 0.5s ease
 
+}
+
+.user-type{
+  padding-bottom: 7%;
 }
 @media only screen and (min-width: 990px){
   .question-center{

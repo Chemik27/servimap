@@ -1,6 +1,12 @@
 
 <section class="register">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
 
+      </div>
+    </div>
+  </div>
  <nav class="navbar">
 
    <div class="container">
@@ -10,7 +16,16 @@
        <a href="/#/"><img class="logo" src="images/Logo-DutyMap-original.png" alt="logo"></a>
      </div>
      <div class="col-sm-12 col-md-3 navbar-margin nopadding">
-       <input class="search-navbar" type="search" placeholder="Buscar servicios">
+       <div>
+         <div class="input-group stylish-input-group">
+           <input type="text" class="form-control"  placeholder="Buscar servicios" >
+                    <span class="input-group-addon">
+                        <button type="submit">
+                          <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+         </div>
+       </div>
 
      </div>
      <div class="col-sm-12 col-md-6 navbar-margin nopadding">
@@ -31,7 +46,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row user-type">
   <div class="col-md-12">
     <div class="col-md-6 divider">
       <h2 class="text-center">Quiero contratar servicios</h2>
@@ -48,7 +63,7 @@
     </div>
 
   </div>
-  
+
 </div>
 </section>
 <ng-include src="'/views/footer.html'"></ng-include>

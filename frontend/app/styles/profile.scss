@@ -12,23 +12,34 @@
     height: 100%;
   }
 
+  .module-size{
+    width: 45%;
+    margin:2%;
+    display: inline-block;
+  }
+
   .module{
     border:5px solid $border-grey;
     background-color: white;
-    width: 96%;
-    margin:2%;
+    @extend .module-size;
 
     .fa{
       margin-left: 0.5em;
     }
   }
-}
 
-#module-feedback{
-  .module{
-    width: 46%;
-    margin: 2%;
-    display: inline-block;
+  .module-work{
+    @extend .module;
+    &:hover{
+      background-color: $background-module-hover;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  .info-block-module{
+    width: 94%;
+    margin:2%;
   }
 }
 
@@ -39,9 +50,23 @@
 
 .box-info{
   height: 6em;
-
-  .blue{
-    background-color: $background-blue;
-  }
 }
 
+.info-block{
+  height: 11em;
+  display: inline-block;
+}
+
+.total-jobs{
+  @extend .info-block;
+  background-color: red;
+}
+
+.other{
+  @extend .info-block;
+  background-color: blue;
+}
+
+.reset-padding{
+  padding: 0;
+}

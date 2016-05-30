@@ -34,6 +34,11 @@ angular
         controller: 'RegisterCtrl'
       })
 
+      .when('/iniciarSesion', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+
       .when('/perfil/:id', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',

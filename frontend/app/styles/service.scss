@@ -1,0 +1,130 @@
+
+/*Service.html*/
+.marker{
+  width: 30px;
+  height: 30px;
+}
+
+.profile{
+  width:70%;
+}
+.hire{
+  width: 100%;
+  height: 40px;
+}
+
+.end-landing{
+  border: 1px solid grey;
+}
+
+.fixed {   width: 10% ;background:orange; }
+.scrollit { height:400px;  background:lightgray; }
+
+.block{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  float: right;
+  border-bottom: 1px solid grey;
+}
+
+.border{
+  border: 1px solid grey;
+}
+
+.padding{
+  padding: 10px;
+}
+
+.header-secondary{
+  display: table;
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+}
+
+.finished-work{
+  color: black;
+}
+
+.center{
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.premium{
+  color: green;
+  position: relative;
+  float: right;
+  border: 2px inset  green;
+  padding: 5px 5px 5px 5px;
+}
+
+.remark:hover ~ .block {
+  border: 2px solid red;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently not supported by any browser */
+  cursor:default;
+}
+
+/*Provider cards*/
+
+.flip-container {
+  perspective: 1000;
+  background-color: white;
+}
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  width: 100%;
+  height: 350px;
+
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+.p{
+  display: inline;
+}
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+
+}
+
+.circular {
+  border-radius: 50%;
+}
+
+#map{
+  height:700px;
+}

@@ -3,6 +3,7 @@
 @import "login";
 @import "register";
 @import "service";
+@import "footer";
 html, body {
   height: 100%;
   margin: 0;
@@ -155,12 +156,12 @@ a:hover{
 /*Home.html*/
 
 .logo-color-bg{
-  background-color: #336699;
+  background-color: $background-blue;
   color: white;
   transition: all 0.5s ease
 }
 .logo-color{
-  color: #336699;
+  color: $background-blue;
 }
 .logo{
   width: 200px;
@@ -170,6 +171,7 @@ a:hover{
 .background{
   background-color: black;
   background: url('../images/Pin-Map2.jpg') no-repeat center center fixed;
+  //background: url('../images/pin-map-tranchis.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -206,7 +208,7 @@ a:hover{
   vertical-align: middle;
 }
 .searchbox:hover{
-  border:3px solid #336699;
+  border:3px solid $background-blue;
 }
 
 .brand{
@@ -231,11 +233,11 @@ a:hover{
 
 /*Profile.html*/
 .provider-name{
-  color:#336699;
+  color:$background-blue;
 }
 
 .pagination>.active>a{
-  background-color:#336699;
+  background-color:$background-blue;
 }
 
 .experience-name{
@@ -275,17 +277,19 @@ form{
 
 
 .presentation-card{
-  margin-top: 1px solid #336699;
+  margin-top: 1px solid $background-blue;
 }
 
 .bar-user{
-  background-color: #336699;
+  background-color: $background-blue;
   color: white;
   font-size: 30px;
   font-weight: bold;
   margin:0;
 }
-
+.second-background{
+  background-color: $background-grey;
+}
 .about-title{
   font-weight: 700;
 }
@@ -331,7 +335,7 @@ form{
   overflow: hidden;
 }
 .bg-primary{
-  background-color: #2F689A;
+  background-color: $background-blue;
 
 }
 .panel {

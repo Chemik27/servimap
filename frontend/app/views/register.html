@@ -1,4 +1,9 @@
 
+
+<div>
+  <navbar-secondary></navbar-secondary>
+</div>
+
 <section class="register">
   <!--
  <nav class="navbar">
@@ -34,8 +39,6 @@
    </div>
  </nav>
 <!-->
-<navbar-secondary></navbar-secondary>
-
 <div class="row">
   <div class="col-md-12">
     <h1 class="text-center">¿Qué estás buscando?</h1>
@@ -47,19 +50,39 @@
     <div class="col-md-6 divider">
       <h2 class="text-center">Quiero contratar servicios</h2>
       <img class="images-register center" src="images/userr.png" alt="">
-      <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('user')">Contratar</button>
+      <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('user')" data-toggle="modal" data-target="#basicModal">Contratar</button>
     </div>
 
 
     <div class="col-md-6">
       <h2 class="text-center">Quiero ofrecer mis servicios</h2>
       <img  class="images-register center " src="images/worker.png" alt="">
-      <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('provider')">Trabajar</button>
+      <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('provider')" data-toggle="modal" data-target="#basicModal">Trabajar</button>
     </div>
 
   </div>
 
 </div>
-  <p>{{filter}}</p>
 </section>
+
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel" ng-show="filter == 'provider' ">Registro proveedor</h4>
+        <h4 class="modal-title" id="myModalLabel" ng-show="filter == 'user' ">Registro usuario</h4>
+      </div>
+      <div class="modal-body"  >
+        <h3>Modal Body</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Registrarme</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <ng-include src="'/views/footer.html'"></ng-include>
+

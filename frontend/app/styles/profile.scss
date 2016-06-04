@@ -28,6 +28,12 @@
     }
   }
 
+  .module-info{
+    border:5px solid #b3e5fc;
+    background-color: #b3e5fc;
+    @extend .module-size;
+  }
+
   .module-work{
     @extend .module;
     &:hover{
@@ -37,10 +43,6 @@
     }
   }
 
-  .info-block-module{
-    width: 94%;
-    margin:2%;
-  }
 }
 
 .img-circle{
@@ -69,4 +71,8 @@
 
 .reset-padding{
   padding: 0;
+}
+
+.gold{
+  color: gold;
 }

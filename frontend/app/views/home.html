@@ -1,5 +1,6 @@
 
 <!-- Navigation -->
+<!--
 <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
 
 <nav id="sidebar-wrapper">
@@ -30,24 +31,26 @@
     </li>
   </ul>
 </nav>
-
+<!-->
 <!-- Header -->
 
 
     <header id="top" class="header full-height background">
+      
+      <navbar-home></navbar-home>
 
-      <img class="logo" src="images/Logo-DutyMap-original.png" alt="logo">
       <div class="text-vertical-center">
 
         <h2 class="logo-color">¿Qué servicio necesitás?</h2>
         <h3 class="logo-color">Podrás encontrar variedad de servicios como contadores, abogados, jardineros y más!</h3>
 
+          <input class="searchbox" type="text" placeholder="Buscar servicios">
 
-        <input class="searchbox" type="text" placeholder="Buscar servicios">
-        <a href="#service">
-          <button type="" class="btn btn-info logo-color-bg">Buscar</button>
-        </a>
-        <a href="#services"><button class="btn btn-info logo-color-bg">Buscar por categorías</button></a>
+            <a href="#service">
+            <button type="" class="btn btn-info logo-color-bg">Buscar</button>
+             </a>
+
+             <a href="#services"><button class="btn btn-info logo-color-bg">Buscar por categorías</button></a>
         <p class="button-header">
           <a href="#about" class="btn btn-dark btn-lg">Cómo funciona</a>
           <a href="#/registro" class="btn btn-dark btn-lg">Registrarme</a>
@@ -56,11 +59,8 @@
       </div>
     </header>
 
-
-
-
 <!-- How it works -->
-<section id="about" class="about">
+<section id="about" class="second-background about">
 
   <div class="container">
     <div class="row">
@@ -157,7 +157,7 @@
 </section>
 
 <!-- Experience -->
-<section id="experience" class="portfolio">
+<section id="experience" class="second-background portfolio">
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-lg-offset-1">
@@ -288,6 +288,5 @@
     <!--</div>-->
   <!--</div>-->
 <!--</section>-->
-<hr/>
 <ng-include src="'views/footer.html'"></ng-include>
 

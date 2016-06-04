@@ -1,12 +1,11 @@
 
-<section class="register">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
 
-      </div>
-    </div>
-  </div>
+<div>
+  <navbar-secondary></navbar-secondary>
+</div>
+
+<section class="register">
+  <!--
  <nav class="navbar">
 
    <div class="container">
@@ -25,6 +24,7 @@
                         </button>
                     </span>
          </div>
+
        </div>
 
      </div>
@@ -38,8 +38,7 @@
      </div>
    </div>
  </nav>
-
-
+<!-->
 <div class="row">
   <div class="col-md-12">
     <h1 class="text-center">¿Qué estás buscando?</h1>
@@ -51,19 +50,153 @@
     <div class="col-md-6 divider">
       <h2 class="text-center">Quiero contratar servicios</h2>
       <img class="images-register center" src="images/userr.png" alt="">
-      <button class="btn btn-info logo-color-bg register-button center">Contratar</button>
+      <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('user')" data-toggle="modal" data-target="#basicModal">Contratar</button>
     </div>
 
 
     <div class="col-md-6">
       <h2 class="text-center">Quiero ofrecer mis servicios</h2>
       <img  class="images-register center " src="images/worker.png" alt="">
-      <button class="btn btn-info logo-color-bg register-button center">Trabajar</button>
-
+      <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('provider')" data-toggle="modal" data-target="#basicModal">Trabajar</button>
     </div>
 
   </div>
 
 </div>
 </section>
+
+
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title modal-label" ng-show="filter == 'provider' ">Registro proveedor</h4>
+        <h4 class="modal-title modal-label" ng-show="filter == 'user' ">Registro usuario</h4>
+
+
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <form role="form">
+              <h2>Registrate gratis! <small>Por favor, completa los siguientes campos.</small></h2>
+
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="Nombre" tabindex="1">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Apellido" tabindex="2">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Nombre de usuario" tabindex="3">
+              </div>
+
+              <div ng-show=" filter== 'provider' ">
+
+
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <select class="form-control" name="" value="Tipo documento" id="" tabindex="4">
+
+                      <option value="">DNI</option>
+                      <option value="">LCE</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="id_confirmation" id="id_confirmation" class="form-control input-lg" placeholder="Documento" tabindex="5">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="cellphone" id="cellphone" class="form-control input-lg" placeholder="Celular" tabindex="6">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="telephone_confirmation" id="telephone_confirmation" class="form-control input-lg" placeholder="Teléfono" tabindex="7">
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email" tabindex="8">
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña" tabindex="9">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirmar contraseña" tabindex="10">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-4 col-sm-3 col-md-3">
+					<span class="button-checkbox">
+                        <input type="checkbox" name="t_and_c" id="t_and_c" class="" value="Acepto">Acepto
+					</span>
+                </div>
+                <div class="col-xs-8 col-sm-9 col-md-9">
+                  Clickeando en <strong class="label label-primary">Registrarse</strong>,estás aceptando los <a href="" data-toggle="modal" data-target="#t_and_c_m">Términos y condiciones</a> de Dutymap.
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-xs-12 col-md-12"><input type="submit" value="Registrarse" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+    </div>
+
+  </div>
+<!-- Modal -->
+<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">Términos y condiciones</h4>
+      </div>
+      <div class="modal-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <ng-include src="'/views/footer.html'"></ng-include>
+

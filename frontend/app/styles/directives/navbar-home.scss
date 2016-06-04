@@ -60,6 +60,12 @@
 .navbar-search-border{
   border-left:1px solid grey !important;
 }
+
+.navbar-secondary {
+  background-color:$background-blue;
+}
+
+
 @media(max-width:768px){
   #login-dp{
     background-color: inherit;

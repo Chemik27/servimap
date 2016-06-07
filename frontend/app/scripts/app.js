@@ -51,6 +51,10 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
+      .when('/terminos', {
+        templateUrl: 'views/terms.html',
+        controller: 'TermsCtrl'
+      })
 
       .when('/perfil/:id', {
         templateUrl: 'views/profile.html',

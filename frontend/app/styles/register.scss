@@ -1,4 +1,4 @@
-
+@import "variables";
 .divider{
   border-right:1px solid #336699;
 }
@@ -20,4 +20,10 @@
 
 .user-type{
   padding-bottom: 7%;
+}
+
+.modal-label{
+  text-align: center;
+  color:$background-blue;
+  font-size: 30px;
 }

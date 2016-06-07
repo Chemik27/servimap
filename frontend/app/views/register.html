@@ -6,7 +6,7 @@
       <h1 class="text-center">¿Qué estás buscando?</h1>
     </div>
   </div>
-<!-- Tipo de usuario<-->
+<!-- Tipo de usuario- modal -->
   <div class="row user-type">
     <div class="col-md-12">
       <div class="col-md-6 divider">
@@ -21,29 +21,45 @@
       </div>
     </div>
   </div>
-    <!-- Formulario<-->
+
+<!-- Ventana Modal -->
   <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-          <h4 class="modal-title modal-label" ng-show="filter == 'provider' ">Registro proveedor</h4>
-          <h4 class="modal-title modal-label" ng-show="filter == 'user' ">Registro usuario</h4>
-        </div>
+        <div class="modal-dialog modal-lg modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title modal-label" ng-show="filter == 'provider' ">Registro proveedor</h4>
+            <h4 class="modal-title modal-label" ng-show="filter == 'user' ">Registro usuario</h4>
+          </div>
         <div class="modal-body">
           <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+
+              <!-- Formulario -->
               <form role="form" name="registerForm"  ng-submit="validateForm()">
-                <h2>Registrate gratis! <small>Por favor, completa los siguientes campos.</small></h2>
+                <h2>Registrate gratis! <div class="small">Por favor, completa los siguientes campos.</div></h2>
                 <div class="row">
-                  <div class="col-xs-12 col-sm-6 col-md-6 form-group" ng-class="{'has-error': registerForm.firstName.$invalid &&  !registerForm.firstName.$pristine}" >
-                      <input type="text" name="firstName" class="form-control input-lg" ng-model="user.firstName"  ng-pattern="onlyChar" placeholder="Nombre" tabindex="1" >
-                    <p ng-show="registerForm.firstName.$invalid && !registerForm.firstName.$pristine" class="help-block">¿Cuál es tu nombre?.</p>
+                  <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': registerForm.firstName.$touched && registerForm.firstName.$invalid, 'has-success' : registerForm.firstName.$valid}"  >
+                      <input type="text" name="firstName" id="user" class="form-control input-lg" ng-minlength="2" ng-model="user.firstName"  ng-pattern="onlyChar" placeholder="Nombre" tabindex="1" ng-required="true" >
+
+                    <div class="help-block" ng-messages="registerForm.firstName.$error" ng-if="registerForm.firstName.$touched">
+                      <p ng-message="minlength">El nombre es muy corto.</p>
+                      <p ng-message="required">¿Cuál es tu nombre?</p>
+                      <p ng-message="pattern">No se admiten números.</p>
+                    </div>
+
+                  <!--  <p ng-show="registerForm.firstName.$invalid && !registerForm.firstName.$pristine" class="help-block">¿Cuál es tu nombre?.</p><-->
 
                   </div>
-                  <div class="col-xs-12 col-sm-6 col-md-6 form-group" ng-class="{'has-error': registerForm.surName.$invalid &&  !registerForm.surName.$pristine}">
-                      <input type="text" name="surName" class="form-control input-lg" ng-model="user.surName" placeholder="Apellido" tabindex="2" ng-pattern="onlyChar">
-                    <p ng-show="registerForm.surName.$invalid && !registerForm.surName.$pristine" class="help-block">¿Cuál es tu apellido?.</p>
+                  <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': registerForm.surName.$touched && registerForm.surName.$invalid, 'has-success' : registerForm.surName.$valid}">
+                      <input type="text" name="surName" class="form-control input-lg" ng-model="user.surName" placeholder="Apellido" tabindex="2" ng-required="true" ng-pattern="onlyChar">
+
+                    <div class="help-block" ng-messages="registerForm.surName.$error" ng-if="registerForm.surName.$touched">
+                      <p ng-message="minlength">El apellido es muy corto.</p>
+                      <p ng-message="required">¿Cuál es tu apellido?</p>
+                      <p ng-message="pattern">No se admiten números.</p>
+                    </div>
                   </div>
+
                 </div>
                 <div class="form-group">
                   <input type="text" name="" class="form-control input-lg" placeholder="Nombre de usuario" tabindex="3">
@@ -51,23 +67,29 @@
 
                 <div ng-show=" filter== 'provider' ">
                   <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-6 form-group">
-                        <select class="form-control" name="" value="Tipo documento" id="" tabindex="4">
+                    <div class="col-xs-12 col-sm-6 form-group">
+                        <select class="form-control" name="" value="Tipo documento" tabindex="4">
                           <option value="">DNI</option>
                           <option value="">LCE</option>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 form-group">
-                        <input type="text" name="id_confirmation" id="id_confirmation" class="form-control input-lg" placeholder="Documento" tabindex="5">
+                    <div class="col-xs-12 col-sm-6 form-group">
+                        <input type="text" name="idDocument" class="form-control input-lg" placeholder="Documento" tabindex="5">
                     </div>
                   </div>
 
                   <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-6 form-group">
-                        <input type="text" name="cellphone" id="cellphone" class="form-control input-lg" placeholder="Celular" tabindex="6">
+                    <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': registerForm.cellphone.$touched && registerForm.cellphone.$invalid, 'has-success' : registerForm.cellphone.$valid}">
+                        <input type="text" name="cellphone" ng-model="user.cellphone" class="form-control input-lg"  placeholder="Celular" tabindex="6">
+                      <div class="help-block" ng-messages="registerForm.cellphone.$error" ng-if="registerForm.cellphone.$touched">
+
+                        <p ng-message="required">Celular requerido.</p>
+
+                      </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 form-group">
-                        <input type="text" name="telephone_confirmation" id="telephone_confirmation" class="form-control input-lg" placeholder="Teléfono" tabindex="7">
+
+                    <div class="col-xs-12 col-sm-6 form-group">
+                        <input type="text" name="telephone" class="form-control input-lg" placeholder="Teléfono" tabindex="7">
                     </div>
                   </div>
                 </div>
@@ -77,29 +99,27 @@
 
                 </div>
                 <div class="row">
-                  <div class="col-xs-12 col-sm-6 col-md-6">
-                    <div class="form-group">
-                      <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña" tabindex="9" >
+                    <div class="col-xs-12 col-sm-6 form-group">
+                      <input type="password" name="password" class="form-control input-lg" placeholder="Contraseña" tabindex="9" >
                     </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-6 col-md-6 form-group">
-                      <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirmar contraseña" tabindex="10" >
-                  </div>
+                    <div class="col-xs-12 col-sm-6 form-group">
+                        <input type="password" name="password_confirmation" class="form-control input-lg" placeholder="Confirmar contraseña" tabindex="10" >
+                    </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-4 col-sm-3 col-md-3">
+                  <div class="col-xs-4 col-sm-3">
                       <span class="button-checkbox">
                                     <input type="checkbox" class="" value="Acepto">Acepto
                       </span>
                   </div>
-                  <div class="col-xs-8 col-sm-9 col-md-9">
+                  <div class="col-xs-8 col-sm-9">
                     Clickeando en <strong class="label label-primary">Registrarse</strong>,estás aceptando los <a href="#/terminos">Términos y condiciones</a> de Dutymap.
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-12 col-md-12"><input type="submit" value="Registrarse" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                  <div class="col-xs-12"><input type="submit" value="Registrarse" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
                 </div>
-                <div class="row">
+                <div class="row" ng-show=" filter== 'user' ">
                   <div class="col-md-12">
                     <h3 class="text-center ">O registrate con <a class="btn btn-fb" href="">Facebook</a></h3>
                   </div>

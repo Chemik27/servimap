@@ -16,7 +16,17 @@ angular.module('dutymap')
     $scope.user={};
 
     $scope.validateForm=function(){
-      alert("sdfsdf");
+
+      if($scope.filter == 'user'){
+          if($scope.registerForm.firstName.$valid){
+            alert("usuario");
+          }
+      }
+      if($scope.filter == 'provider'){
+        if($scope.registerForm.cellphone.$valid){
+          alert("proveedor");
+        }
+      }
 
     }
 

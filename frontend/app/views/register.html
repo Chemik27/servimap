@@ -5,66 +5,30 @@
 </div>
 
 <section class="register">
-  <!--
- <nav class="navbar">
-
-   <div class="container">
-
-     <div class="col-md-3">
-
-       <a href="/#/"><img class="logo" src="images/Logo-DutyMap-original.png" alt="logo"></a>
-     </div>
-     <div class="col-sm-12 col-md-3 navbar-margin nopadding">
-       <div>
-         <div class="input-group stylish-input-group">
-           <input type="text" class="form-control"  placeholder="Buscar servicios" >
-                    <span class="input-group-addon">
-                        <button type="submit">
-                          <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-         </div>
-
-       </div>
-
-     </div>
-     <div class="col-sm-12 col-md-6 navbar-margin nopadding">
-       <ul>
-         <a class="item-navbar" href="">Iniciar sesión</a>
-         <a class="item-navbar" href="">Ofrecer servicios</a>
-         <a class="item-navbar" href="">FAQ</a>
-         <a class="item-navbar register-menu" href="">Registrate</a>
-       </ul>
-     </div>
-   </div>
- </nav>
-<!-->
-<div class="row">
-  <div class="col-md-12">
-    <h1 class="text-center">¿Qué estás buscando?</h1>
-  </div>
-</div>
-
-<div class="row user-type">
-  <div class="col-md-12">
-    <div class="col-md-6 divider">
-      <h2 class="text-center">Quiero contratar servicios</h2>
-      <img class="images-register center" src="images/userr.png" alt="">
-      <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('user')" data-toggle="modal" data-target="#basicModal">Contratar</button>
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">¿Qué estás buscando?</h1>
+      </div>
     </div>
 
+    <div class="row user-type">
+      <div class="col-md-12">
+        <div class="col-md-6 divider">
+          <h2 class="text-center">Quiero contratar servicios</h2>
+          <img class="images-register center" src="images/userr.png" alt="">
+          <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('user')" data-toggle="modal" data-target="#basicModal">Contratar</button>
+        </div>
 
-    <div class="col-md-6">
-      <h2 class="text-center">Quiero ofrecer mis servicios</h2>
-      <img  class="images-register center " src="images/worker.png" alt="">
-      <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('provider')" data-toggle="modal" data-target="#basicModal">Trabajar</button>
+
+        <div class="col-md-6">
+          <h2 class="text-center">Quiero ofrecer mis servicios</h2>
+          <img  class="images-register center " src="images/worker.png" alt="">
+          <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('provider')" data-toggle="modal" data-target="#basicModal">Trabajar</button>
+        </div>
+
+      </div>
     </div>
-
-  </div>
-
-</div>
 </section>
-
 
 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">

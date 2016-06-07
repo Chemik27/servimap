@@ -1,5 +1,7 @@
 package com.tpfinal.service;
 
+import com.tpfinal.domain.Address;
+import com.tpfinal.domain.Category;
 import com.tpfinal.domain.Work;
 import com.tpfinal.repository.IWorkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +27,17 @@ public class WorkService {
 
     public List<Work> findByIdUser(Long idUser){
         return workRepository.findByIdUser(idUser);
+    }
+
+    public List<Work> findByCategory(Category category){
+        return workRepository.findByCategory(category);
+    }
+
+    public List<Work> findByAddress(Address address){
+        return workRepository.findByAddress(address);
+    }
+
+    public List<Work> findByDescriptionContaining(String word){
+        return workRepository.findByDescriptionContaining(word);
     }
 }

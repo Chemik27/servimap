@@ -1,4 +1,4 @@
-
+@import "../variables";
 //nav 2
 
 #login-dp{
@@ -63,6 +63,17 @@
 
 .navbar-secondary {
   background-color:$background-blue;
+  border-color:transparent;
+}
+
+.navbar-secondary li a:hover{
+  font-style: italic;
+}
+.navbar-secondary-title{
+  color:white !important;
+}
+.navbar-secondary-title:focus{
+  background-color: black !important;
 }
 
 

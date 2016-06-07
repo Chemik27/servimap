@@ -3,9 +3,6 @@
 <header id="top" class="header-secondary">
   <h2 class="text-center paragraph noselect logo-color-bg">Profesores particulares en La Matanza</h2>
 </header>
-<div ng-controller="ServiceCtrl">
-  <div id="map"></div>
-</div>
 
 <br><br>
 
@@ -13,15 +10,16 @@
   <h2 class="text-center paragraph noselect">Los más destacados</h2>
   <div class="container-fluid">
 
-    <div class="col-sm-4 col-md-4 col-lg-4">
+    <! -- CONTACTOS PREMIUM -->
+
+    <div class="col-sm-4 col-md-4 col-lg-4" ng-repeat="el in lala">
       <div class="flip-container padding" ontouchstart="this.classList.toggle('hover');">
         <div class="flipper">
           <div class="row">
             <div class="front">
               <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
-              <h2> <p class="text-center">Franco Montán</p></h2>
+              <h2> <p class="text-center">{{el.name}}</p></h2>
               <hr>
-              <h3><p class="text-center">tipo de servicio</p> </h3>
               <h4><p class="text-center">frase</p></h4>
               <p class="text-right"> <img class="marker" src="images/map-marker.png" alt="localidad">Morón</p>
 
@@ -36,19 +34,19 @@
 
               <hr>
               <h3 class="text-center">Descripción del trabajo</h3>
+              <h3><p class="text-center">{{el.description}}</p> </h3>
+              <!--<br>-->
+              <!--<br>-->
+              <!--<br>-->
+              <!--<div>-->
+                <!--<h3><p class="text-center">Trabajos concretados</p> </h3>-->
+                <!--<h2 class="text-center">36</h2>-->
+                <!--<div class="text-center">-->
+                  <!--<button class="btn btn-info hire">Contactar</button>-->
 
-              <br>
-              <br>
-              <br>
-              <div>
-                <h3><p class="text-center">Trabajos concretados</p> </h3>
-                <h2 class="text-center">36</h2>
-                <div class="text-center">
-                  <button class="btn btn-info hire">Contactar</button>
-
-                </div>
-                <!-- back content -->
-              </div>
+                <!--</div>-->
+                <!--&lt;!&ndash; back content &ndash;&gt;-->
+              <!--</div>-->
             </div>
 
           </div>
@@ -58,104 +56,10 @@
 
 
     </div>
-
-    <div class="col-md-4">
-
-
-      <div class="flip-container padding" ontouchstart="this.classList.toggle('hover');">
-        <div class="flipper">
-
-          <div class="row">
-            <div class="front">
-              <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
-              <h2> <p class="text-center">Franco Montán</p></h2>
-              <hr>
-              <h3><p class="text-center">tipo de servicio</p> </h3>
-              <h4><p class="text-center">frase</p></h4>
-              <p class="text-right"> <img class="marker" src="images/map-marker.png" alt="localidad">Morón</p>
-
-              <!-- front content -->
-            </div>
-
-
-            <div class="back">
-              <div class="text-center">
-                <button class="btn btn-info profile">Ver perfil</button>
-              </div>
-
-              <hr>
-              <h3 class="text-center">Descripción del trabajo</h3>
-
-              <br>
-              <br>
-              <br>
-              <div>
-                <h3><p class="text-center">Trabajos concretados</p> </h3>
-                <h2 class="text-center">36</h2>
-                <div class="text-center">
-                  <button class="btn btn-info hire">Contactar</button>
-
-                </div>
-                <!-- back content -->
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-md-4">
-
-      <div class="flip-container padding" ontouchstart="this.classList.toggle('hover');">
-        <div class="flipper">
-
-          <div class="row">
-            <div class="front">
-              <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
-              <h2> <p class="text-center">Franco Montán</p></h2>
-              <hr>
-              <h3><p class="text-center">tipo de servicio</p> </h3>
-              <h4><p class="text-center">frase</p></h4>
-              <p class="text-right"> <img class="marker" src="images/map-marker.png" alt="localidad">Morón</p>
-
-              <!-- front content -->
-            </div>
-
-
-            <div class="back">
-              <div class="text-center">
-                <button class="btn btn-info profile">Ver perfil</button>
-              </div>
-
-              <hr>
-              <h3 class="text-center">Descripción del trabajo</h3>
-
-              <br>
-              <br>
-              <br>
-              <div>
-                <h3><p class="text-center">Trabajos concretados</p> </h3>
-                <h2 class="text-center">36</h2>
-                <div class="text-center">
-                  <button class="btn btn-info hire">Contactar</button>
-
-                </div>
-                <!-- back content -->
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-
   </div>
   <hr>
+
+  <! -- CONTACTOS COMUNES -->
 
   <div class="container-fluid">
 
@@ -163,23 +67,21 @@
       <p>nav filtros</p>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-10 block ">
+    <div class="col-xs-12 col-sm-12 col-md-10 block " ng-repeat="el in lala">
       <div class="col-xs-12 col-sm-2 col-md-2">
         <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
       </div>
       <div class="col-xs-12 col-sm-8 col-md-7">
 
-        <h3 class="provider-name">Franco Montán</h3>
         <h4 class="premium noselect">Premium</h4>
         <p class=""> <img class="marker" src="images/map-marker.png" alt="">La Matanza</p>
-        <h4>Profesor particular de matemática</h4>
-        <p>Me dedico a enseñar matemática de primaria y secundaria</p>
+        <h4>{{el.name}}</h4>
+        <p>{{el.category.name}}</p>
       </div>
 
       <div class="col-xs-12 col-sm-2 col-md-3">
-        <p>Valoración</p>
-        <p>Trabajos concretados: <span class="finished-work">32</span></p>
-        <p>$100 /hr</p>
+        <p>Valoración : </p>
+        <p>Costo : ${{el.price}}</p>
 
         <button class="btn btn-info remark logo-color-bg">Contactar</button>
         <button class="btn btn-info remark logo-color-bg">Ver perfil</button>
@@ -187,51 +89,6 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-10 block ">
-      <div class="col-xs-12 col-sm-2 col-md-2">
-        <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
-      </div>
-      <div class="col-xs-12 col-sm-8 col-md-7">
-
-        <h3 class="provider-name">Franco Montán</h3>
-        <p class=""> <img class="marker" src="images/map-marker.png" alt="">La Matanza</p>
-        <h4>Profesor particular de matemática</h4>
-        <p>Me dedico a enseñar matemática de primaria y secundaria</p>
-      </div>
-
-      <div class="col-xs-12 col-sm-2 col-md-3">
-        <p>Valoración</p>
-        <p>Trabajos concretados: <span class="finished-work">32</span></p>
-        <p>$100 /hr</p>
-
-        <button class="btn btn-info remark logo-color-bg">Contactar</button>
-        <button class="btn btn-info remark logo-color-bg">Ver perfil</button>
-
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-10 block ">
-      <div class="col-xs-12 col-sm-2 col-md-2">
-        <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
-      </div>
-      <div class="col-xs-12 col-sm-8 col-md-7">
-
-        <h3 class="provider-name">Franco Montán</h3>
-        <p class=""> <img class="marker" src="images/map-marker.png" alt="">La Matanza</p>
-        <h4>Profesor particular de matemática</h4>
-        <p>Me dedico a enseñar matemática de primaria y secundaria</p>
-      </div>
-
-      <div class="col-xs-12 col-sm-2 col-md-3">
-        <p>Valoración</p>
-        <p>Trabajos concretados: <span class="finished-work">32</span></p>
-        <p>$100 /hr</p>
-
-        <button class="btn btn-info remark logo-color-bg">Contactar</button>
-        <button class="btn btn-info remark logo-color-bg">Ver perfil</button>
-
-      </div>
-    </div>
   </div>
 </section>
 

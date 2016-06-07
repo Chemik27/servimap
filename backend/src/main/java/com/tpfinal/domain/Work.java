@@ -12,13 +12,15 @@ public class Work {
     private Category category;
     private Long idUser;
     private Address address;
+    private double price;
 
-    public Work(String name, String description, Category category, Long idUser, Address address) {
+    public Work(String name, String description, Category category, Long idUser, Address address, double price) {
         this.name = name;
         this.description = description;
         this.category = category;
         this.idUser = idUser;
         this.address = address;
+        this.price = price;
     }
 
     public Work() {
@@ -80,6 +82,15 @@ public class Work {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Column(name = "price")
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
 }

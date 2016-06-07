@@ -10,5 +10,15 @@ angular.module('dutymap')
 
     };
 
+    $scope.onlyNumbers= /^\d+$/;
+    $scope.onlyChar= /^[A-z]+$/;
+
+    $scope.user={};
+
+    $scope.validateForm=function(){
+      alert("sdfsdf");
+
+    }
+
     }]);
 

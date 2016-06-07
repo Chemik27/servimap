@@ -24,11 +24,24 @@ angular
         controller: 'MainCtrl'
 
       })
-      .when('/servicio', {
+      .when('/servicio/:idCategory', {
         templateUrl: 'views/service.html',
-        controller: 'ServiceCtrl'
+        controller: 'WorkCtrl',
+        resolve: {categorySelected: ['$route','WorkResources', function($route, WorkResources) {
+          return WorkResources.query($route.current.pathParams).$promise;}]}
       })
-
+      .when('/servicioAddress/:idAddress', {
+        templateUrl: 'views/service.html',
+        controller: 'AddressCtrl',
+        resolve: {addressSelected: ['$route','AddressResources', function($route, AddressResources) {
+          return AddressResources.query($route.current.pathParams).$promise;}]}
+      })
+      .when('/servicioWord/:wordOfSearchTyped', {
+        templateUrl: 'views/service.html',
+        controller: 'WordOfSearchCtrl',
+        resolve: {wordOfSearchTyped: ['$route','WordOfSearchResources', function($route, WordOfSearchResources) {
+          return WordOfSearchResources.query($route.current.pathParams).$promise;}]}
+      })
       .when('/registro', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'

@@ -98,14 +98,17 @@ a:hover{
   color: $background-blue;
 }
 .logo{
-  width: 200px;
-  height: 100px;
+  width: 40%;
+  height: 40%;
+}
+.background-busqueda{
+  background-color: $background-grey;
 }
 
 .background{
-  background-color: black;
-  background: url('../images/Pin-Map2.jpg') no-repeat center center fixed;
-  //background: url('../images/pin-map-tranchis.jpg') no-repeat center center fixed;
+  background-color:$background-grey;
+  //background: url('../images/Pin-Map2.jpg') no-repeat center center fixed;
+  background: url('../images/pin-map-tranchis.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

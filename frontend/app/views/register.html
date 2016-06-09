@@ -17,17 +17,16 @@
       <div class="col-md-6">
         <h2 class="text-center">Quiero ofrecer mis servicios</h2>
         <img  class="images-register center " src="images/worker.png" alt="">
-        <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('provider')" data-toggle="modal" data-target="#basicModal">Trabajar</button>
+        <button class="btn btn-info logo-color-bg register-button center" ng-click="userType('provider')" data-toggle="modal" data-target="#providerModal">Trabajar</button>
       </div>
     </div>
   </div>
 
-<!-- Ventana Modal -->
+<!-- Ventana Modal Usuario -->
   <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title modal-label" ng-show="filter == 'provider' ">Registro proveedor</h4>
             <h4 class="modal-title modal-label" ng-show="filter == 'user' ">Registro usuario</h4>
           </div>
         <div class="modal-body">
@@ -35,12 +34,11 @@
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 
               <!-- Formulario -->
-              <form role="form" name="registerForm"  ng-submit="validateForm()">
+              <form role="form" name="registerForm"  ng-submit="userForm(user)">
                 <h2>Registrate gratis! <div class="small">Por favor, completa los siguientes campos.</div></h2>
                 <div class="row">
                   <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': registerForm.firstName.$touched && registerForm.firstName.$invalid, 'has-success' : registerForm.firstName.$valid}"  >
                       <input type="text" name="firstName" id="user" class="form-control input-lg" ng-minlength="2" ng-model="user.firstName"  ng-pattern="onlyChar" placeholder="Nombre" tabindex="1" ng-required="true" >
-
                     <div class="help-block" ng-messages="registerForm.firstName.$error" ng-if="registerForm.firstName.$touched">
                       <p ng-message="minlength">El nombre es muy corto.</p>
                       <p ng-message="required">¿Cuál es tu nombre?</p>
@@ -59,6 +57,105 @@
                       <p ng-message="pattern">No se admiten números.</p>
                     </div>
                   </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': registerForm.userName.$touched && registerForm.userName.$invalid, 'has-success' : registerForm.userName.$valid} ">
+                  <input type="text" name="userName" class="form-control input-lg" ng-model="user.userName" placeholder="Nombre de usuario" ng-required="true" tabindex="3">
+
+
+                  <div class="help-block" ng-messages="registerForm.userName.$error" ng-if="registerForm.userName.$touched">
+
+                    <p ng-message="required">Escribe el nombre de usuario</p>
+
+                  </div>
+
+                </div>
+
+                <div class="form-group" ng-class="{'has-error': registerForm.email.$touched &&  registerForm.email.$invalid, 'has-success' : registerForm.email.$valid}">
+                  <input type="email" name="email" class="form-control input-lg" ng-model="user.email" placeholder="Email" tabindex="8" ng-required="true">
+                  <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block">El email es incorrecto.</p>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 form-group">
+                      <input type="password" name="password" class="form-control input-lg" ng-model="user.password" placeholder="Contraseña" tabindex="9" ng-required="true">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 form-group" ng-class="{'has-error': registerForm.passwordConfirmation.$invalid &&  !registerForm.passwordConfirmation.$pristine}">
+                        <input type="password" name="passwordConfirmation" class="form-control input-lg" ng-model="user.passwordConfirmation"  placeholder="Confirmar contraseña" tabindex="10" ng-required="true" >
+
+                      <div class="help-block" ng-messages="registerForm.passwordConfirmation.$error" ng-if="registerForm.passwordConfirmation.$touched">
+
+                        <p ng-message="required">Repite la contraseña</p>
+
+                      </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                  <div class="col-xs-4 col-sm-3">
+                      <span class="button-checkbox">
+                                    <input type="checkbox" class="" ng-model="user.accept" value="Acepto">Acepto
+                      </span>
+                  </div>
+                  <div class="col-xs-8 col-sm-9">
+                    Clickeando en <strong class="label label-primary">Registrarse</strong>,estás aceptando los <a href="#/terminos">Términos y condiciones</a> de Dutymap.
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12"><input type="submit" value="Registrarse" ng-disabled="registerForm.$invalid || !user.accept" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                </div>
+
+                  <div class="col-md-12">
+                    <h3 class="text-center ">O registrate con <a class="btn btn-fb" href="">Facebook</a></h3>
+                  </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!--
+    <div class="modal fade" id="providerModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title modal-label" ng-show="filter == 'provider' ">Registro proveedor</h4>
+          <h4 class="modal-title modal-label" ng-show="filter == 'user' ">Registro usuario</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+
+
+              <form role="form" name="registerForm"  ng-submit="validateForm()">
+                <h2>Registrate gratis! <div class="small">Por favor, completa los siguientes campos.</div></h2>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': registerForm.firstName.$touched && registerForm.firstName.$invalid, 'has-success' : registerForm.firstName.$valid}"  >
+                    <input type="text" name="firstName" id="user" class="form-control input-lg" ng-minlength="2" ng-model="user.firstName"  ng-pattern="onlyChar" placeholder="Nombre" tabindex="1" ng-required="true" >
+
+                    <div class="help-block" ng-messages="registerForm.firstName.$error" ng-if="registerForm.firstName.$touched">
+                      <p ng-message="minlength">El nombre es muy corto.</p>
+                      <p ng-message="required">¿Cuál es tu nombre?</p>
+                      <p ng-message="pattern">No se admiten números.</p>
+                    </div>
+
+
+                  </div>
+                  <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': registerForm.surName.$touched && registerForm.surName.$invalid, 'has-success' : registerForm.surName.$valid}">
+                    <input type="text" name="surName" class="form-control input-lg" ng-model="user.surName" placeholder="Apellido" tabindex="2" ng-required="true" ng-pattern="onlyChar">
+
+                    <div class="help-block" ng-messages="registerForm.surName.$error" ng-if="registerForm.surName.$touched">
+                      <p ng-message="minlength">El apellido es muy corto.</p>
+                      <p ng-message="required">¿Cuál es tu apellido?</p>
+                      <p ng-message="pattern">No se admiten números.</p>
+                    </div>
+                  </div>
 
                 </div>
                 <div class="form-group">
@@ -68,19 +165,19 @@
                 <div ng-show=" filter== 'provider' ">
                   <div class="row">
                     <div class="col-xs-12 col-sm-6 form-group">
-                        <select class="form-control" name="" value="Tipo documento" tabindex="4">
-                          <option value="">DNI</option>
-                          <option value="">LCE</option>
-                        </select>
+                      <select class="form-control" name="" value="Tipo documento" tabindex="4">
+                        <option value="">DNI</option>
+                        <option value="">LCE</option>
+                      </select>
                     </div>
                     <div class="col-xs-12 col-sm-6 form-group">
-                        <input type="text" name="idDocument" class="form-control input-lg" placeholder="Documento" tabindex="5">
+                      <input type="text" name="idDocument" class="form-control input-lg" placeholder="Documento" tabindex="5">
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': registerForm.cellphone.$touched && registerForm.cellphone.$invalid, 'has-success' : registerForm.cellphone.$valid}">
-                        <input type="text" name="cellphone" ng-model="user.cellphone" class="form-control input-lg"  placeholder="Celular" tabindex="6">
+                      <input type="text" name="cellphone" ng-model="user.cellphone" class="form-control input-lg"  placeholder="Celular" tabindex="6">
                       <div class="help-block" ng-messages="registerForm.cellphone.$error" ng-if="registerForm.cellphone.$touched">
 
                         <p ng-message="required">Celular requerido.</p>
@@ -89,7 +186,7 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-6 form-group">
-                        <input type="text" name="telephone" class="form-control input-lg" placeholder="Teléfono" tabindex="7">
+                      <input type="text" name="telephone" class="form-control input-lg" placeholder="Teléfono" tabindex="7">
                     </div>
                   </div>
                 </div>
@@ -99,12 +196,12 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6 form-group">
-                      <input type="password" name="password" class="form-control input-lg" placeholder="Contraseña" tabindex="9" >
-                    </div>
-                    <div class="col-xs-12 col-sm-6 form-group">
-                        <input type="password" name="password_confirmation" class="form-control input-lg" placeholder="Confirmar contraseña" tabindex="10" >
-                    </div>
+                  <div class="col-xs-12 col-sm-6 form-group">
+                    <input type="password" name="password" class="form-control input-lg" placeholder="Contraseña" tabindex="9" >
+                  </div>
+                  <div class="col-xs-12 col-sm-6 form-group">
+                    <input type="password" name="password_confirmation" class="form-control input-lg" placeholder="Confirmar contraseña" tabindex="10" >
+                  </div>
                 </div>
                 <div class="row">
                   <div class="col-xs-4 col-sm-3">
@@ -133,6 +230,7 @@
         </div>
       </div>
     </div>
+<-->
   </div>
 </section>
 

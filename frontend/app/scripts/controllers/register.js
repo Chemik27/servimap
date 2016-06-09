@@ -11,13 +11,31 @@ angular.module('dutymap')
     };
 
     $scope.onlyNumbers= /^\d+$/;
-    $scope.onlyChar= /^[A-z]+$/;
-
+    $scope.onlyChar=/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/
+    //^[A-Za-z']+( [A-Za-z']+)*$/;
     $scope.user={};
 
-    $scope.validateForm=function(){
 
-      if($scope.filter == 'user'){
+    $scope.userForm=function(user){
+     /* if($scope.registerForm.cellphone.$pristine) {
+        alert("usuario");
+      }
+
+      */
+      if(user.password == user.passwordConfirmation){
+        alert("bien");
+      }
+      else{
+        return;
+      }
+      console.log(user);
+
+
+   formData = $scope.registerForm;
+      console.log(formData);
+
+
+     /*if($scope.filter == 'user'){
           if($scope.registerForm.firstName.$valid){
             alert("usuario");
           }
@@ -28,6 +46,11 @@ angular.module('dutymap')
         }
       }
 
+*/
+    }
+
+    $scope.providerRegister =function(){
+      alert("proveedor")
     }
 
     }]);

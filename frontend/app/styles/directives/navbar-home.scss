@@ -64,6 +64,8 @@
 .navbar-secondary {
   background-color:$background-blue;
   border-color:transparent;
+  border-radius:0px;
+  margin-bottom:0px;
 }
 
 .navbar-secondary li a:hover{
@@ -75,6 +77,7 @@
 .navbar-secondary-title:focus{
   background-color: black !important;
 }
+
 
 
 @media(max-width:768px){

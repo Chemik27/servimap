@@ -71,20 +71,35 @@
                 </div>
 
                 <div class="form-group" ng-class="{'has-error': registerForm.email.$touched &&  registerForm.email.$invalid, 'has-success' : registerForm.email.$valid}">
-                  <input type="email" name="email" class="form-control input-lg" ng-model="user.email" placeholder="Email" tabindex="8" ng-required="true">
+                  <input type="email" name="email" class="form-control input-lg immediate-help" ng-model="user.email" placeholder="Email" tabindex="8" ng-required="true">
                   <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block">El email es incorrecto.</p>
 
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6 form-group">
+                    <div class="col-xs-12 col-sm-6 form-group " ng-class="{'has-error': registerForm.password.$touched &&  registerForm.password.$invalid, 'has-success': registerForm.password.$valid}">
                       <input type="password" name="password" class="form-control input-lg" ng-model="user.password" placeholder="Contraseña" tabindex="9" ng-required="true">
-                    </div>
-                    <div class="col-xs-12 col-sm-6 form-group" ng-class="{'has-error': registerForm.passwordConfirmation.$invalid &&  !registerForm.passwordConfirmation.$pristine}">
-                        <input type="password" name="passwordConfirmation" class="form-control input-lg" ng-model="user.passwordConfirmation"  placeholder="Confirmar contraseña" tabindex="10" ng-required="true" >
 
-                      <div class="help-block" ng-messages="registerForm.passwordConfirmation.$error" ng-if="registerForm.passwordConfirmation.$touched">
+
+                      <div class="help-block"  ng-messages="registerForm.password.$error" ng-if="registerForm.password.$touched">
 
                         <p ng-message="required">Repite la contraseña</p>
+
+
+
+                      </div>
+
+
+
+                    </div>
+                    <div class="col-xs-12 col-sm-6 form-group" ng-class="{'has-error': registerForm.passwordConfirmation.$touched &&  registerForm.passwordConfirmation.$invalid, 'has-success': registerForm.passwordConfirmation.$valid}">
+                        <input type="password" name="passwordConfirmation" password-validation class="form-control input-lg" ng-model="user.passwordConfirmation"  placeholder="Confirmar contraseña" ng-required="true" tabindex="10" >
+
+                      <div class="help-block"  ng-messages="registerForm.passwordConfirmation.$error" ng-if="registerForm.passwordConfirmation.$touched">
+
+                        <p ng-message="required">Repite la contraseña</p>
+
+                        <p ng-message="noMatch">Las contraseñas no coinciden</p>
+
 
                       </div>
                     </div>

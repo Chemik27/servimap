@@ -38,14 +38,12 @@
                 <h2>Registrate gratis! <div class="small">Por favor, completa los siguientes campos.</div></h2>
                 <div class="row">
                   <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': registerForm.firstName.$touched && registerForm.firstName.$invalid, 'has-success' : registerForm.firstName.$valid}"  >
-                      <input type="text" name="firstName" id="user" class="form-control input-lg" ng-minlength="2" ng-model="user.firstName"  ng-pattern="onlyChar" placeholder="Nombre" tabindex="1" ng-required="true" >
+                      <input type="text" name="firstName"  class="form-control input-lg" ng-minlength="2" ng-model="user.firstName"  ng-pattern="onlyChar" placeholder="Nombre" tabindex="1" ng-required="true" >
                     <div class="help-block" ng-messages="registerForm.firstName.$error" ng-if="registerForm.firstName.$touched">
                       <p ng-message="minlength">El nombre es muy corto.</p>
                       <p ng-message="required">¿Cuál es tu nombre?</p>
                       <p ng-message="pattern">No se admiten números.</p>
                     </div>
-
-                  <!--  <p ng-show="registerForm.firstName.$invalid && !registerForm.firstName.$pristine" class="help-block">¿Cuál es tu nombre?.</p><-->
 
                   </div>
                   <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': registerForm.surName.$touched && registerForm.surName.$invalid, 'has-success' : registerForm.surName.$valid}">
@@ -77,22 +75,23 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 form-group " ng-class="{'has-error': registerForm.password.$touched &&  registerForm.password.$invalid, 'has-success': registerForm.password.$valid}">
-                      <input type="password" name="password" class="form-control input-lg" ng-model="user.password" placeholder="Contraseña" tabindex="9" ng-required="true">
+                      <input type="password" name="password"  password-validation="user.passwordConfirmation" class="form-control input-lg immediate-help" ng-model="user.password" placeholder="Contraseña" ng-pattern="passwordRegex"ng-required="true" tabindex="9"  >
 
+                      <div class="input-help">
+                        <h4>La contraseña debe tener:</h4>
+                        <ul>
+                          <li ng-class="pwdValidLength">Al menos <strong>8 caracteres</strong></li>
+                          <li ng-class="pwdHasLetter">Al menos <strong>una letra</strong></li>
+                          <li ng-class="pwdHasNumber">Al menos <strong>un número</strong></li>
 
-                      <div class="help-block"  ng-messages="registerForm.password.$error" ng-if="registerForm.password.$touched">
-
-                        <p ng-message="required">Repite la contraseña</p>
-
-
-
+                        </ul>
                       </div>
 
 
 
                     </div>
                     <div class="col-xs-12 col-sm-6 form-group" ng-class="{'has-error': registerForm.passwordConfirmation.$touched &&  registerForm.passwordConfirmation.$invalid, 'has-success': registerForm.passwordConfirmation.$valid}">
-                        <input type="password" name="passwordConfirmation" password-validation class="form-control input-lg" ng-model="user.passwordConfirmation"  placeholder="Confirmar contraseña" ng-required="true" tabindex="10" >
+                        <input type="password" name="passwordConfirmation" id="pw1" class="form-control input-lg"   ng-model="user.passwordConfirmation"  placeholder="Confirmar contraseña" ng-required="true" tabindex="10" >
 
                       <div class="help-block"  ng-messages="registerForm.passwordConfirmation.$error" ng-if="registerForm.passwordConfirmation.$touched">
 
@@ -109,7 +108,7 @@
                 <div class="row">
                   <div class="col-xs-4 col-sm-3">
                       <span class="button-checkbox">
-                                    <input type="checkbox" class="" ng-model="user.accept" value="Acepto">Acepto
+                                    <input type="checkbox" ng-model="user.accept" value="Acepto">Acepto
                       </span>
                   </div>
                   <div class="col-xs-8 col-sm-9">

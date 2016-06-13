@@ -124,3 +124,8 @@ input.ng-pristine + .input-help {
   color:#3a7d34;
   background-position: 2px 6px;
 }
+
+.password-error{
+  color: red;
+  border-color:red;
+}

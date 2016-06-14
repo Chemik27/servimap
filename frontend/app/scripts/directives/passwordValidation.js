@@ -20,9 +20,7 @@ angular.module('dutymap')
             //!noMatch para que sea false y muestre el mensaje
             scope.$watch(attrs.passwordValidation, function (passwordConfirmation) {
               var noMatch = ctrl.$viewValue  != passwordConfirmation;
-              console.log("noMatch: " + noMatch);
-              console.log(viewValue);
-              scope.registerForm.passwordConfirmation.$setValidity('noMatch', !noMatch);
+              scope.userForm.passwordConfirmation.$setValidity('noMatch', !noMatch);
             });
             return viewValue;
         })

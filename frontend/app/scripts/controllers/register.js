@@ -9,6 +9,14 @@ angular.module('dutymap')
       $scope.filter = type;
     };
 
+    $('#pass, #cpass').on('keyup', function () {
+      if ($('#pass').val() == $('#cpass').val()) {
+        $scope.providerForm.passwordConfirmation.$setValidity('noMatchea', true);
+       }
+      else
+        $scope.providerForm.passwordConfirmation.$setValidity('noMatchea', false);
+    });
+
     $scope.onlyNumbers= /^\d+$/;
     $scope.document=/^(\d{8})$/;
     $scope.onlyChar=/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/
@@ -24,6 +32,8 @@ angular.module('dutymap')
     $scope.provider={};
 
     $scope.compare=function(){
+
+/*
       if($scope.provider.password != $scope.provider.passwordConfirmation) {
         $scope.noMatchea = true;
         $scope.providerForm.passwordConfirmation.$setValidity('noMatchea', false);
@@ -32,8 +42,9 @@ angular.module('dutymap')
       else{
         $scope.noMatchea = false;
         $scope.providerForm.passwordConfirmation.$setValidity('noMatchea', true);
-      }
+      } */
     };
+
 
     $scope.registerUser=function(user){
       console.log(user);

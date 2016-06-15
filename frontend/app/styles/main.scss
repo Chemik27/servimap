@@ -5,6 +5,7 @@
 @import "service";
 @import "footer";
 @import "directives/navbar-home";
+@import "directives/navbar-secondary";
 html, body {
   height: 100%;
   margin: 0;
@@ -98,14 +99,14 @@ a:hover{
   color: $background-blue;
 }
 .logo{
-  width: 200px;
-  height: 100px;
+  width: 40%;
+  height: 40%;
 }
 
 .background{
-  background-color: black;
-  background: url('../images/Pin-Map2.jpg') no-repeat center center fixed;
-  //background: url('../images/pin-map-tranchis.jpg') no-repeat center center fixed;
+  background-color:$background-grey;
+  //background: url('../images/Pin-Map2.jpg') no-repeat center center fixed;
+  background: url('../images/pin-map-tranchi.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -194,7 +195,9 @@ a:hover{
   .full-height {
     height:100%;
   }
-
+.background-busqueda{
+  color:white;
+}
   .button-header{
     margin-top: 70px;
   }

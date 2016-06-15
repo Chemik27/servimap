@@ -59,11 +59,11 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <!-- enild:js({.tmp,app}) scripts/scripts.js -->
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/map.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/profile.js"></script>
         <script src="scripts/controllers/register.js"></script>
@@ -84,5 +84,7 @@
         <!-- directives -->
         <script src="scripts/directives/navbarHome.js"></script>
         <script src="scripts/directives/navbarSecondary.js"></script>
+        <script src="scripts/directives/passwordValidation.js"></script>
+
 </body>
 </html>

@@ -6,6 +6,16 @@ angular.module('dutymap')
     function ($scope, $http, RegisterResources, addresses) {
 
     $scope.addreses = addresses;
+    $scope.zonas = [];
+    //$scope.zonas = {id:[],descripcion:[]};
+    var descripcion2 = [];
+
+     //$scope.zonas = $scope.addreses.district;
+
+      angular.forEach($scope.addreses, function(value, key){
+        $scope.zonas.push(value.district);
+      });
+
 
     $scope.userType = function(type) {
 
@@ -22,7 +32,7 @@ angular.module('dutymap')
 
     $scope.onlyNumbers= /^\d+$/;
     $scope.document=/^(\d{8})$/;
-    $scope.onlyChar=/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/
+    $scope.onlyChar=/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/;
     //^[A-Za-z']+( [A-Za-z']+)*$/;
 
     // al menos una letra, un número y 8 caracteres

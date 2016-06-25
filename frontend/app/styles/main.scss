@@ -5,6 +5,7 @@
 @import "service";
 @import "footer";
 @import "directives/navbar-home";
+@import "directives/navbar-secondary";
 html, body {
   height: 100%;
   margin: 0;
@@ -193,7 +194,6 @@ a:hover{
 
   .full-height {
     height:100%;
-    background-color: $background-blue;
   }
 .background-busqueda{
   color:white;

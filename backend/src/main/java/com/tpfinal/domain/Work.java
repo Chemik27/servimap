@@ -12,9 +12,9 @@ public class Work {
     private Category category;
     private Long idUser;
     private Address address;
-    private double price;
+    private Double price;
 
-    public Work(String name, String description, Category category, Long idUser, Address address, double price) {
+    public Work(String name, String description, Category category, Long idUser, Address address, Double price) {
         this.name = name;
         this.description = description;
         this.category = category;
@@ -85,11 +85,11 @@ public class Work {
     }
 
     @Column(name = "price")
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

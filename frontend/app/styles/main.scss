@@ -11,45 +11,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
-/*nav 1
-a:hover{
-  text-decoration: none;
-}
 
-.item-navbar{
-  display:inline;
-  margin:0 7px;
-  text-align: center;
-  color: white;
-  font-size: 17px;
-  text-decoration: none;
-  transition: all 0.5s ease
-}
-
-.register-menu{
-  background-color: white;
-  border-radius:30px;
-  padding: 2px 10px;
-  color: #336699;
-  transition: all 0.5s ease
-}
-
-.register-menu:hover{
-  background-color: #336699;
-  color: white;
-}
-.navbar{
-  background-color:#222;
-}
-
-.navbar-margin{
-  margin-top:30px;
-}
-.navbar-margin>input {
-  width:100%;
-  height:35px;
-}
-*/
   /*searchbox*/
 
   .stylish-input-group .input-group-addon{
@@ -65,25 +27,6 @@ a:hover{
     border:0;
     background:transparent;
   }
-
-  /*
-  .search-navbar{
-    border: 3px solid #ccc;
-    font: 30px;
-
-  }
-
-  .search-navbar, .search-navbar:hover{
-    border-radius: 20px;
-  }
-
-  .search-navbar:hover{
-    border:3px solid #336699;
-  }
-
-
-  */
-
   .nopadding{
     padding: 0 !important;
   }

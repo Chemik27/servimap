@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/**
- * Created by tino on 08/06/2016.
- */
 @RestController
 @RequestMapping("/register")
 public class RegisterController {

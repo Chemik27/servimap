@@ -50,9 +50,9 @@ angular
           return RegisterResources.query($route.current.pathParams).$promise;}]}
       })
 
-      .when('/iniciarSesion', {
+      .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'NavigationCtrl'
       })
       .when('/terminos', {
         templateUrl: 'views/terms.html',
@@ -68,6 +68,11 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(function($httpProvider) {
+
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+
   });
 
 

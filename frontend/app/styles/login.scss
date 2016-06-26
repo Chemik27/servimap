@@ -44,7 +44,7 @@ form.login input[type="text"], form.login input[type="password"]
   font-weight: 400;
   letter-spacing: 1px;
   margin-bottom: 5px;
-  color: blck;
+  color: black;
   outline: 0;
 }
 
@@ -170,12 +170,11 @@ form.login a:hover
 .loginbackground{
 
   background-color: black;
-  background: url('../images/pin-map-tranchis.jpg') no-repeat center center fixed;
+  background: url('../images/pin-map-tranchi.jpg') no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-size: 100% 100%;
   background-repeat: no-repeat;
   height:100%;
 }

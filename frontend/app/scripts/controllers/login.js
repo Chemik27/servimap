@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('dutymap')
-    .controller('NavigationCtrl', ['$scope', '$rootScope', '$http', '$location' ,
-    function ($scope, $rootScope, $http, $location) {
+    .controller('NavigationCtrl', ['$scope', '$rootScope', '$http', '$location' ,'NotificationService',
+    function ($scope, $rootScope, $http, $location, NotificationService) {
 
         $scope.authenticate = function(credentials, callback) {
 
@@ -33,6 +33,7 @@ angular.module('dutymap')
                   $location.path("/");
                   $scope.error = false;
                 } else {
+                  NotificationService.error('Datos incorrectos. Intenta nuevamente');
                   $location.path("/login");
                   $scope.error = true;
                 }

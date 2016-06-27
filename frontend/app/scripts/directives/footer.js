@@ -7,6 +7,6 @@ angular.module('dutymap')
 
       templateUrl:'views/directives/footer.html',
       restrict: 'E',
-      replace:true,
+      replace:true
     };
   });

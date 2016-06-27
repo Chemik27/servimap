@@ -1,4 +1,33 @@
 <navbar-secondary></navbar-secondary>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script>
+
+  var SITE_KEY = '6Lf7sCMTAAAAANRsJASdUfGu5';
+
+  var app = angular
+    .module('dutymap', ['noCAPTCHA'])
+    .config(['noCAPTCHAProvider',
+      function (noCaptchaProvider){
+        noCaptchaProvider.setSiteKey(SITE_KEY);
+        noCaptchaProvider.setTheme('dark');
+      }
+    ])
+    .controller('exampleController', [
+      '$scope',
+      function exampleController($scope){
+        $scope.gRecaptchaResponse = '';
+
+        $scope.$watch('gRecaptchaResponse', function (){
+          $scope.expired = false;
+        });
+
+        $scope.expiredCallback = function expiredCallback(){
+          $scope.expired = true;
+        };
+      }]);
+
+</script>
+
 <section class="register">
   <div class="container-fluid">
     <div ng-hide="userRegister || userProveedor">
@@ -103,6 +132,11 @@
                       </div>
                     </div>
                 </div>
+                <no-captcha
+                  expired-callback="expiredCallback"
+                  g-recaptcha-response="gRecaptchaResponse"
+                  theme='light'></no-captcha>
+
                 <div class="row">
                   <!-- Checkbox terminos y condiciones <-->
                   <div class="col-xs-12 col-sm-8 col-md-12">
@@ -111,6 +145,7 @@
                       </span>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-xs-12"><input type="submit" value="Registrarse" ng-disabled="userForm.$invalid || !user.accept" class="btn btn-primary btn-block btn-lg"></div>
                 </div>

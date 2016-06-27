@@ -58,8 +58,22 @@ angular.module('dutymap')
       } */
     };
 
+      $scope.userRegister=false;
 
-    $scope.registerUser=function(user){
+      $scope.tipoUsuario=function(){
+        $scope.userRegister=true;
+        $scope.userProveedor=false;
+      };
+
+      $scope.userProveedor=false;
+
+      $scope.tipoProveedor=function(){
+        $scope.userRegister=false;
+        $scope.userProveedor=true;
+      };
+
+
+      $scope.registerUser=function(user){
       console.log(user);
     };
 

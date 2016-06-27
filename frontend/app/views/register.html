@@ -1,33 +1,39 @@
 <navbar-secondary></navbar-secondary>
 <section class="register">
   <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="text-center">¿Qué estás buscando?</h1>
-    </div>
-  </div>
-<!-- Tipo de usuario- modal -->
-  <div class="row user-type">
-    <div class="col-md-12">
-      <div class="col-md-6 divider">
-        <h2 class="text-center">Quiero contratar servicios</h2>
-        <img class="images-register center" src="images/userr.png" alt="">
-        <button class="btn logo-color-bg register-button center" data-toggle="modal" data-target="#userModal">Contratar</button>
+    <div ng-hide="userRegister || userProveedor">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center">¿Qué estás buscando?</h1>
+        </div>
       </div>
-      <div class="col-md-6">
-        <h2 class="text-center">Quiero ofrecer mis servicios</h2>
-        <img  class="images-register center " src="images/worker.png" alt="">
-        <button class="btn logo-color-bg register-button center" data-toggle="modal" data-target="#providerModal">Trabajar</button>
+    <!-- Tipo de usuario- modal -->
+      <div class="row user-type">
+        <div class="col-md-12">
+          <div class="col-md-6 divider">
+            <h2 class="text-center">Quiero contratar servicios</h2>
+            <img class="images-register center" src="images/userr.png" alt="">
+            <button class="btn logo-color-bg register-button center"  ng-click="tipoUsuario()">Contratar</button>
+          </div>
+          <div class="col-md-6">
+            <h2 class="text-center">Quiero ofrecer mis servicios</h2>
+            <img  class="images-register center " src="images/worker.png" alt="">
+            <button class="btn logo-color-bg register-button center" ng-click="tipoProveedor()" >Trabajar</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
-<!-- Ventana Modal Usuario -->
-  <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-content">
+  <div ng-show="userRegister">
+ <!--Ventana Modal Usuario -->
+    <div class=""  aria-labelledby="userModal" aria-hidden="true">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title modal-label">Registro usuario</h4>
+            <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
+            <div class="col-md-12 modal-title modal-label col-md-12">
+            <button class="btn btn-primary btn-md col-md-1" ng-click="userRegister = false">Volver</button>
+              <div class="col-md-8 col-md-offset-1">
+              <h4 class="modal-title modal-label"> Registro usuario</h4>
+              </div>
+           </div>
           </div>
         <div class="modal-body">
           <div class="row">
@@ -59,7 +65,6 @@
                     </div>
                   </div>
                 </div>
-
                 <!-- Campo nombre de usuario <-->
                 <div class="form-group" ng-class="{'has-error': userForm.userName.$touched && userForm.userName.$invalid, 'has-success' : userForm.userName.$valid} ">
                   <span>Usuario</span>
@@ -68,7 +73,6 @@
                     <p ng-message="required">Escribe el nombre de usuario</p>
                   </div>
                 </div>
-
                 <!-- Campo email <-->
                 <div class="form-group" ng-class="{'has-error': userForm.email.$touched &&  userForm.email.$invalid, 'has-success' : userForm.email.$valid}">
                   <span>Email</span>
@@ -89,7 +93,6 @@
                         </ul>
                       </div>
                     </div>
-
                   <!-- Campo confirmar contraseña <-->
                     <div class="col-xs-12 col-sm-6 form-group" ng-class="{'has-error': userForm.passwordConfirmation.$touched &&  userForm.passwordConfirmation.$invalid, 'has-success': userForm.passwordConfirmation.$valid}">
                       <span>Confirmar contrase&ntilde;a</span>
@@ -101,7 +104,6 @@
                     </div>
                 </div>
                 <div class="row">
-
                   <!-- Checkbox terminos y condiciones <-->
                   <div class="col-xs-12 col-sm-8 col-md-12">
                       <span class="button-checkbox">
@@ -112,7 +114,6 @@
                 <div class="row">
                   <div class="col-xs-12"><input type="submit" value="Registrarse" ng-disabled="userForm.$invalid || !user.accept" class="btn btn-primary btn-block btn-lg"></div>
                 </div>
-
                   <div class="col-md-12">
                     <h3 class="text-center ">O registrate con <a class="btn btn-fb" href="">Facebook</a></h3>
                   </div>
@@ -121,19 +122,19 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    </div>
+  </div>
+    <!-- Ventana Modal Proveedor -->
+    <div class="" id="providerModal" ria-labelledby="userModal" ng-show="userProveedor" aria-hidden="true">
+      <div class="modal-header">
+        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
+        <div class="col-md-12 modal-title modal-label col-md-12">
+          <button class="btn btn-primary btn-md col-md-1" ng-click="userProveedor = false">Volver</button>
+          <div class="col-md-8 col-md-offset-1">
+            <h4 class="modal-title modal-label"> Registro usuario</h4>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- Ventana Modal Proveedor -->
-    <div class="modal fade" id="providerModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-          <h4 class="modal-title modal-label">Registro proveedor</h4>
-        </div>
         <div class="modal-body">
           <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
@@ -291,12 +292,8 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        </div>
       </div>
     </div>
-  </div>
 </section>
 
 <footer-duty-map></footer-duty-map>

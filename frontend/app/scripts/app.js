@@ -25,7 +25,6 @@ angular
       .when('/', {
         templateUrl: 'views/home.html',
         controller: 'MainCtrl'
-
       })
       .when('/servicio/:idCategory', {
         templateUrl: 'views/service.html',
@@ -51,7 +50,6 @@ angular
         resolve: {addresses: ['$route','RegisterResources', function($route, RegisterResources) {
           return RegisterResources.query($route.current.pathParams).$promise;}]}
       })
-
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'NavigationCtrl'
@@ -61,10 +59,12 @@ angular
         controller: 'TermsCtrl'
       })
 
+
       .when('/faq', {
         templateUrl: 'views/faq.html',
         controller: 'FaqCtrl'
       })
+
 
       .when('/perfil/:id', {
         templateUrl: 'views/profile.html',

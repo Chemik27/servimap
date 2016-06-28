@@ -8,9 +8,7 @@
  * Controller of the tpfinal
  */
 angular.module('dutymap')
-  .controller('MainCtrl', ['$scope', '$http' ,function ($scope, $http) {
-    
-    
+  .controller('MainCtrl', ['$scope', '$http', '$location', '$anchorScroll','$document' ,function ($scope, $http, $location, $anchorScroll, $document) {
 
     var url = "/api/services/";
     $http.post(url)
@@ -21,19 +19,7 @@ angular.module('dutymap')
         console.log("lpm")
       });
 
-    //*MENU*
-    // Closes the sidebar menu
-    $("#menu-close").click(function(e) {
-      e.preventDefault();
-      $("#sidebar-wrapper").toggleClass("active");
-    });
-
-    // Opens the sidebar menu
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#sidebar-wrapper").toggleClass("active");
-    });
-
+    /*
     // Scrolls to the selected menu item on the page
     $(function() {
       $('a[href*=\\#]:not([href=\\#])').click(function() {
@@ -50,6 +36,5 @@ angular.module('dutymap')
         }
       });
     });
-
-
+*/
   }]);

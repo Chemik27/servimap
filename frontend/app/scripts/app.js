@@ -16,7 +16,9 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMessages'
+    'ngMessages',
+    'duScroll'
+
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -57,6 +59,11 @@ angular
       .when('/terminos', {
         templateUrl: 'views/terms.html',
         controller: 'TermsCtrl'
+      })
+
+      .when('/faq', {
+        templateUrl: 'views/faq.html',
+        controller: 'FaqCtrl'
       })
 
       .when('/perfil/:id', {

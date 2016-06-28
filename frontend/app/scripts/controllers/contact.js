@@ -1,6 +1,6 @@
-
+'use strict';
 angular.module('dutymap')
-  .controller('ContactoCtrl', ['$scope', '$http' ,
+  .controller('ContactCtrl', ['$scope', '$http' ,
     function ($scope, $http) {
 
     }]);

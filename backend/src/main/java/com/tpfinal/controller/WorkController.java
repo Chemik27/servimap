@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by tino on 09/05/2016.
- */
 @RestController
 @RequestMapping("/work")
 public class WorkController {
@@ -60,17 +57,5 @@ public class WorkController {
 
         return works;
     }
-//    @RequestMapping(method = RequestMethod.GET, value = "/worksByDistrict/{districtSelected}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<Work> getWorksByDistrict(@PathVariable String districtSelected){
-//        Long idCategory = Long.valueOf(districtSelected);
-//        District district = new District();
-//        district.setIdDistrict(idCategory);
-//        List<Work> works = workService.findByDistrict(district);
-//        return works;
-//    }
-    //@RestController
-    //@RequestMapping(value="/works")
-    //public List<>
 
 }

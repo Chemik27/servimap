@@ -1,0 +1,28 @@
+.faq-section{
+  height:auto;
+}
+.faq-box{
+height:20%;
+background-color:red;
+  background: url('../images/faq.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+}
+
+.faq-title{
+  font-size:50px;
+}
+
+.question{
+  font-size: 17px;
+  color:$background-blue;
+}
+
+.question-answer{
+  font-size: 15px;
+}

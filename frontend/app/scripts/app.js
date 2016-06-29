@@ -58,10 +58,17 @@ angular
         controller: 'TermsCtrl'
       })
 
-
       .when('/faq', {
         templateUrl: 'views/faq.html',
         controller: 'FaqCtrl'
+      })
+
+      .when('/acerca-de-dutymap', {
+        templateUrl: 'views/about.html',
+      })
+
+      .when('/politicas', {
+        templateUrl: 'views/policies.html',
       })
 
 

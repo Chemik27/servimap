@@ -16,8 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMessages',
-    'duScroll'
+    'ngMessages'
 
   ])
   .config(function ($routeProvider) {

@@ -33,23 +33,23 @@
 
       <div class="col-md-5">
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="navbar-secondary-title">Registrarse</a></li>
-          <li><a class="navbar-secondary-title">Ofrecer servicios</a></li>
+          <li><a href="#/registro" class="navbar-secondary-title">Registrarse</a></li>
+          <li><a  href="#/registro" class="navbar-secondary-title">Ofrecer servicios</a></li>
           <li class="dropdown">
-            <a class="navbar-secondary-title" href="" class="dropdown-toggle" data-toggle="dropdown">Mas<span class="caret"></span></a>
+            <a class="navbar-secondary-title dropdown-toggle" data-toggle="dropdown">Más<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Preguntas frecuentes</a></li>
-              <li><a href="#">Contactanos</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
+              <li><a href="#/faq">Preguntas frecuentes</a></li>
+              <li><a href="#/contact">Contactanos</a></li>
+              <li><a href="#">Acerca de Dutymap</a></li>
+              <!--<li class="divider"></li>-->
+              <li><a href="#">Quiénes somos</a></li>
+              <!--<li class="divider"></li>-->
+              <li><a href="#/terminos">Términos y condiciones</a></li>
             </ul>
           </li>
-          <li class="navbar-secondary-title" ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
+          <li ng-show="authenticated"><a class="navbar-secondary-title" ng-click="logout()">Cerrar sesión</a></li>
           <li ng-hide="authenticated" class="dropdown">
-            <a  class="navbar-secondary-title" href="" class="dropdown-toggle" data-toggle="dropdown"><b>Iniciar Sesión</b> <span class="caret"></span></a>
+            <a  class="navbar-secondary-title dropdown-toggle" href="#/login" data-toggle="dropdown"><b>Iniciar Sesión</b> <span class="caret"></span></a>
             <ul id="login-dp" class="dropdown-menu">
               <li>
                 <div class="row">

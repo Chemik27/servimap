@@ -9,9 +9,8 @@
  */
 angular.module('dutymap')
 
-  .controller('MainCtrl', ['$scope', '$http', '$location', '$anchorScroll','$document' ,function ($scope, $http, $location, $anchorScroll, $document) {
-    
-    /*
+  .controller('MainCtrl', ['$scope', '$http',function ($scope, $http) {
+
     // Scrolls to the selected menu item on the page
     $(function() {
       $('a[href*=\\#]:not([href=\\#])').click(function() {
@@ -28,5 +27,4 @@ angular.module('dutymap')
         }
       });
     });
-*/
   }]);

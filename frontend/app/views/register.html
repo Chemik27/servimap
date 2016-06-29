@@ -1,32 +1,4 @@
 <navbar-secondary></navbar-secondary>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<script>
-
-  var SITE_KEY = '6Lf7sCMTAAAAANRsJASdUfGu5';
-
-  var app = angular
-    .module('dutymap', ['noCAPTCHA'])
-    .config(['noCAPTCHAProvider',
-      function (noCaptchaProvider){
-        noCaptchaProvider.setSiteKey(SITE_KEY);
-        noCaptchaProvider.setTheme('dark');
-      }
-    ])
-    .controller('exampleController', [
-      '$scope',
-      function exampleController($scope){
-        $scope.gRecaptchaResponse = '';
-
-        $scope.$watch('gRecaptchaResponse', function (){
-          $scope.expired = false;
-        });
-
-        $scope.expiredCallback = function expiredCallback(){
-          $scope.expired = true;
-        };
-      }]);
-
-</script>
 
 <section class="register">
   <div class="container-fluid">
@@ -133,9 +105,11 @@
                     </div>
                 </div>
                 <no-captcha
-                  expired-callback="expiredCallback"
                   g-recaptcha-response="gRecaptchaResponse"
-                  theme='light'></no-captcha>
+                  theme='light'
+                  control="noCaptchaControl"
+                  site-key="6LcUzCMTAAAAALdaAjllJvkspok9AxGPL2_THzTC">
+                </no-captcha>
 
                 <div class="row">
                   <!-- Checkbox terminos y condiciones <-->

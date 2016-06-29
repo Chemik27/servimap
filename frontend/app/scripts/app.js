@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMessages',
-    'duScroll'
+    'duScroll',
+    'noCAPTCHA'
 
   ])
   .config(function ($routeProvider) {

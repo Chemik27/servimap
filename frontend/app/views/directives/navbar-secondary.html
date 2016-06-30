@@ -33,59 +33,10 @@
 
       <div class="col-md-5">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#/registro" class="navbar-secondary-title">Registrarse</a></li>
-          <li><a  href="#/registro" class="navbar-secondary-title">Ofrecer servicios</a></li>
-          <li class="dropdown">
-            <a class="navbar-secondary-title dropdown-toggle" data-toggle="dropdown">Más<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#/faq">Preguntas frecuentes</a></li>
-              <li><a href="#/contact">Contactanos</a></li>
-              <li><a href="#">Acerca de Dutymap</a></li>
-              <!--<li class="divider"></li>-->
-              <li><a href="#">Quiénes somos</a></li>
-              <!--<li class="divider"></li>-->
-              <li><a href="#/terminos">Términos y condiciones</a></li>
-            </ul>
-          </li>
+          <li ng-hide="authenticated"><a href="/#/registro" class="navbar-secondary-title">Registrarse</a></li>
+          <li ng-show="authenticated"><a href="/#/perfil/1" class="navbar-secondary-title">Mi Perfil</a></li>
           <li ng-show="authenticated"><a class="navbar-secondary-title" ng-click="logout()">Cerrar sesión</a></li>
-          <li ng-hide="authenticated" class="dropdown">
-            <a  class="navbar-secondary-title dropdown-toggle" href="#/login" data-toggle="dropdown"><b>Iniciar Sesión</b> <span class="caret"></span></a>
-            <ul id="login-dp" class="dropdown-menu">
-              <li>
-                <div class="row">
-                  <div class="col-md-12">
-                    Iniciar sesión con
-                    <div class="social-buttons text-center">
-                      <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                    </div>
-                    o
-                    <form class="form" role="form" id="login-nav">
-                      <div class="form-group">
-                        <label class="sr-only">Email</label>
-                        <input type="email" class="form-control" placeholder="Email" required>
-                      </div>
-                      <div class="form-group">
-                        <label class="sr-only">Password</label>
-                        <input type="password" class="form-control" placeholder="Contraseña" required>
-                        <div class="help-block text-right"><a href="">¿Olvidaste la contraseña?</a></div>
-                      </div>
-                      <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> Mantenerme conectado
-                        </label>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="bottom text-center">
-                    Nuevo en Dutymap? <a href="#/registro"><b>Unite!</b></a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
+          <li ng-hide="authenticated"><a  class="navbar-secondary-title" ng-href="/#/login"><b>Iniciar Sesión</b></a></li>
         </ul>
       </div>
     </div><!-- /.navbar-collapse -->

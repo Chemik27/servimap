@@ -8,6 +8,7 @@
 @import "directives/navbar-secondary";
 @import "faq";
 @import "about";
+@import "hire";
 html, body {
   height: 100%;
   margin: 0;
@@ -241,13 +242,7 @@ html, body {
   font-size: 15px;
 }
 
-.footer-logo{
-  margin-top:2%;
-  margin-bottom:2%;
-  width:250px;
 
-
-}
 
   @media only screen and (min-width: 990px){
     .question-center{

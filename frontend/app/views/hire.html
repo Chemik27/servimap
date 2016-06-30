@@ -1,0 +1,58 @@
+<navbar-secondary></navbar-secondary>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <!--Datos del usuario y acuerdos de fecha-->
+    <div class="col-md-12">
+      <p class="text-center header-title">Contratar a proveedor</p>
+      <p class="">Tipo de servicio</p>
+    </div>
+    <div class="col-sm-9 col-md-9">
+
+
+      <p class="hire-description">Qué incluye el servicio</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores assumenda autem blanditiis, consectetur corporis doloremque in ipsum magni modi molestiae nemo nisi officia placeat quam sed sint soluta. In.</p>
+
+      <p class="hire-description">Qué no incluye el servicio</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, culpa dignissimos eius explicabo fuga harum minima nemo nesciunt nihil nisi perspiciatis quia quibusdam reiciendis sed unde vel voluptatum. Officiis, praesentium!</p>
+
+      <p class="hire-description">Elegi qué día querés concretar el servicio</p>
+      <md-datepicker ng-model="confirm.date" md-placeholder="Fecha" md-min-date="today"></md-datepicker>
+      <div>
+        <p>ACLARACIÓN</p>
+        <p>Luego de confirmar la contratación podés modificar la fecha y horario con el proveedor. </p>
+      </div>
+    </div>
+     <!--Confirmar servicio-->
+    <div class="col-sm-3 confirm-section">
+      <p class="hire-data">Confirmada la contratación podrás obtener los datos.</p>
+
+      <div class="row hire-prices">
+        <div class="col-xs-6 col-md-8 hire-amount ">
+          <p class="">Precio normal</p>
+        </div>
+        <div class="col-xs-6 col-md-4 ">
+          <p>124</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-md-8 hire-amount ">
+          <p class="">Cantidad</p>
+        </div>
+        <div class="col-xs-6 col-md-4 ">
+          <p>1</p>
+        </div>
+      </div>
+
+      <div class="row total">
+        <div class="col-xs-6 col-md-8 hire-amount">
+          <p>Total</p>
+        </div>
+        <div class="col-xs-6 col-md-4">
+          <p>124</p>
+        </div>
+      </div>
+         <button type="submit" ng-click="confirmService(confirmation)" class="btn logo-color-bg confirm-button">Confirmar</button>
+    </div>
+  </div>
+</div>
+<footer-dutymap></footer-dutymap>

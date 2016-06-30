@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMessages'
+    'ngMessages',
+    'ngMaterial'
 
   ])
   .config(function ($routeProvider) {
@@ -53,6 +54,12 @@ angular
         templateUrl: 'views/login.html',
         controller: 'NavigationCtrl'
       })
+
+      .when('/contratar', {
+        templateUrl: 'views/hire.html',
+        controller: 'HireCtrl'
+      })
+
       .when('/terminos', {
         templateUrl: 'views/terms.html',
         controller: 'TermsCtrl'

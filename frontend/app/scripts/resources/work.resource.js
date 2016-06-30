@@ -5,6 +5,6 @@
 
 angular.module('dutymap')
   .factory('WorkResources', ['$resource',function WorkResources($resource) {
-    return $resource('api/work/worksByCategory/:idCategory', {idCategory:'@idCategory'},{
+    return $resource('api/work/named/:serviceRequest', {wordOfSearchTyped:'@serviceRequest'},{
     });
   }]);

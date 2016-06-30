@@ -12,13 +12,13 @@
 
     <! -- CONTACTOS PREMIUM -->
 
-    <div class="col-sm-4 col-md-4 col-lg-4" ng-repeat="el in lala">
+    <div class="col-sm-4 col-md-4 col-lg-4" ng-repeat="aWork in worksFound">
       <div class="flip-container padding" ontouchstart="this.classList.toggle('hover');">
         <div class="flipper">
           <div class="row">
             <div class="front">
               <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
-              <h2> <p class="text-center">{{el.name}}</p></h2>
+              <h2> <p class="text-center">{{aWork.name}}</p></h2>
               <hr>
               <h4><p class="text-center">frase</p></h4>
               <p class="text-right"> <img class="marker" src="images/map-marker.png" alt="localidad">Morón</p>
@@ -34,7 +34,7 @@
 
               <hr>
               <h3 class="text-center">Descripción del trabajo</h3>
-              <h3><p class="text-center">{{el.description}}</p> </h3>
+              <h3><p class="text-center">{{aWork.description}}</p> </h3>
               <!--<br>-->
               <!--<br>-->
               <!--<br>-->
@@ -67,7 +67,7 @@
       <p>nav filtros</p>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-10 block " ng-repeat="el in lala">
+    <div class="col-xs-12 col-sm-12 col-md-10 block " ng-repeat="aWork in worksFound">
       <div class="col-xs-12 col-sm-2 col-md-2">
         <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
       </div>
@@ -75,13 +75,13 @@
 
         <h4 class="premium noselect">Premium</h4>
         <p class=""> <img class="marker" src="images/map-marker.png" alt="">La Matanza</p>
-        <h4>{{el.name}}</h4>
-        <p>{{el.category.name}}</p>
+        <h4>{{aWork.name}}</h4>
+        <p>{{aWork.category.name}}</p>
       </div>
 
       <div class="col-xs-12 col-sm-2 col-md-3">
         <p>Valoración : </p>
-        <p>Costo : ${{el.price}}</p>
+        <p>Costo : ${{aWork.price}}</p>
 
         <button class="btn btn-info remark logo-color-bg">Contactar</button>
         <button class="btn btn-info remark logo-color-bg">Ver perfil</button>

@@ -25,23 +25,25 @@ angular
         templateUrl: 'views/home.html',
         controller: 'MainCtrl'
       })
-      .when('/servicio/:idCategory', {
-        templateUrl: 'views/service.html',
+      // TODO Agregarlo como filtro de busqueda por categoria
+      //.when('/servicio/:idCategory', {
+      //  templateUrl: 'views/service.html',
+      //  controller: 'WorkCtrl',
+      //  resolve: {categorySelected: ['$route','WorkResources', function($route, WorkResources) {
+      //    return WorkResources.query($route.current.pathParams).$promise;}]}
+      //})
+      //  TODO Agregarlo como filtro de busqueda por zona
+      //.when('/servicioAddress/:idAddress', {
+      //  templateUrl: 'views/service.html',
+      //  controller: 'AddressCtrl',
+      //  resolve: {addressSelected: ['$route','AddressResources', function($route, AddressResources) {
+      //    return AddressResources.query($route.current.pathParams).$promise;}]}
+      //})
+      .when('/servicio/:serviceRequest', {
+        templateUrl: 'views/works.html',
         controller: 'WorkCtrl',
-        resolve: {categorySelected: ['$route','WorkResources', function($route, WorkResources) {
+        resolve: {works: ['$route','WorkResources', function($route, WorkResources) {
           return WorkResources.query($route.current.pathParams).$promise;}]}
-      })
-      .when('/servicioAddress/:idAddress', {
-        templateUrl: 'views/service.html',
-        controller: 'AddressCtrl',
-        resolve: {addressSelected: ['$route','AddressResources', function($route, AddressResources) {
-          return AddressResources.query($route.current.pathParams).$promise;}]}
-      })
-      .when('/servicioWord/:wordOfSearchTyped', {
-        templateUrl: 'views/service.html',
-        controller: 'WordOfSearchCtrl',
-        resolve: {wordOfSearchTyped: ['$route','WordOfSearchResources', function($route, WordOfSearchResources) {
-          return WordOfSearchResources.query($route.current.pathParams).$promise;}]}
       })
       .when('/registro', {
         templateUrl: 'views/register.html',
@@ -54,21 +56,19 @@ angular
         controller: 'NavigationCtrl'
       })
       .when('/terminos', {
-        templateUrl: 'views/terms.html',
-        controller: 'TermsCtrl'
+        templateUrl: 'views/terms.html'
       })
 
       .when('/faq', {
-        templateUrl: 'views/faq.html',
-        controller: 'FaqCtrl'
+        templateUrl: 'views/faq.html'
       })
 
       .when('/acerca-de-dutymap', {
-        templateUrl: 'views/about.html',
+        templateUrl: 'views/about.html'
       })
 
       .when('/politicas', {
-        templateUrl: 'views/policies.html',
+        templateUrl: 'views/policies.html'
       })
 
 

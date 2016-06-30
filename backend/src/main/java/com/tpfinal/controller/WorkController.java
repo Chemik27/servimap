@@ -50,10 +50,10 @@ public class WorkController {
         return works;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = {"/worksByWordOfSearch/{wordOfSearchTyped}"})
+    @RequestMapping(method = RequestMethod.GET, value = {"/named/{workTyped}"})
     @ResponseStatus(HttpStatus.OK)
-    public List<Work> getWorksByWordOfSearch(@PathVariable String wordOfSearchTyped){
-        List<Work> works = workService.findByDescriptionContaining(wordOfSearchTyped);
+    public List<Work> getWorksByWordOfSearch(@PathVariable String workTyped){
+        List<Work> works = workService.findByDescriptionContaining(workTyped);
 
         return works;
     }

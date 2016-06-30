@@ -13,8 +13,8 @@
         <div>
           <h2><b>¿Qué servicio necesitás?</b></h2>
           <h3 >Podrás encontrar variedad de servicios como contadores, abogados, jardineros y más!</h3>
-            <input class="searchbox logo-color-bg" type="text" placeholder="Buscar servicios">
-            <a href="#service">
+            <input class="searchbox logo-color-bg" type="text" placeholder="Buscar servicios" ng-model="toFind">
+            <a ng-href="/#/servicio/{{toFind}}">
               <button type="" class="btn btn-info logo-color-bg">Buscar</button>
             </a>
              <!--<a href="#services"><button class="btn btn-info logo-color-bg ">Buscar por categorías</button></a>-->

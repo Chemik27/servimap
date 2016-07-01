@@ -58,20 +58,15 @@ angular
       .when('/terminos', {
         templateUrl: 'views/terms.html'
       })
-
       .when('/faq', {
         templateUrl: 'views/faq.html'
       })
-
       .when('/acerca-de-dutymap', {
         templateUrl: 'views/about.html'
       })
-
       .when('/politicas', {
         templateUrl: 'views/policies.html'
       })
-
-
       .when('/perfil/:id', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',

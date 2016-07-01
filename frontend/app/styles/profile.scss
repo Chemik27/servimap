@@ -4,12 +4,12 @@
   color: $font-color;
   background-color: $background-grey;
   padding: 0;
-  height:100%;
+  display: flex; display: -webkit-flex; display: flex;
 
   .module-main{
-    background-color: $background-blue;
+    background-color: $background-blue-side;
     color: lightgrey;
-    height: 100%;
+    flex:1;
   }
 
   .module-size{
@@ -29,12 +29,14 @@
   }
 
   .module-info{
+    height: 12em;
     border:5px solid #b3e5fc;
     background-color: #b3e5fc;
     @extend .module-size;
   }
 
   .module-work{
+    height: 15em;
     @extend .module;
     &:hover{
       background-color: $background-module-hover;

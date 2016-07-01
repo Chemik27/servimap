@@ -16,29 +16,27 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
 
     <div class="collapse navbar-collapse navbar2-margin" id="dropdownMenu">
-      <div class="col-md-4">
-        <form class="navbar-form navbar-left navbar-width " role="search">
-          <div class="form-group navbar-width " style="padding-top: 2%">
-            <div class="input-group stylish-input-group navbar-width ">
-              <input type="text" class="form-control navbar-search navbar-width "  placeholder="Buscar servicios" >
-                    <span class="input-group-addon navbar-search-border">
-                        <button type="submit">
-                          <span class="glyphicon glyphicon-search "></span>
-                        </button>
-                    </span>
-            </div>
-          </div>
-        </form>
-      </div>
+        <div class="col-md-4">
+            <form class="navbar-form navbar-left navbar-width " role="search">
+                <div class="form-group navbar-width " style="padding-top: 2%">
+                    <div class="input-group stylish-input-group navbar-width ">
+                        <input type="text" class="form-control navbar-search navbar-width" placeholder="Buscar servicios" ng-model="toFind">
+                        <a class="input-group-addon navbar-search-border" ng-href="/#/servicio/{{toFind}}">
+                            <span class="glyphicon glyphicon-search "></span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-      <div class="col-md-5">
-        <ul class="nav navbar-nav navbar-right" style="padding-top: 1%">
-          <li ng-hide="authenticated"><a href="/#/registro" class="navbar-secondary-title">Registrarse</a></li>
-          <li ng-show="authenticated"><a href="/#/perfil/1" class="navbar-secondary-title">Mi Perfil</a></li>
-          <li ng-show="authenticated"><a class="navbar-secondary-title" ng-click="logout()">Cerrar sesión</a></li>
-          <li ng-hide="authenticated"><a  class="navbar-secondary-title" ng-href="/#/login"><b>Iniciar Sesión</b></a></li>
-        </ul>
-      </div>
+        <div class="col-md-5">
+            <ul class="nav navbar-nav navbar-right" style="padding-top: 1%">
+                <li ng-hide="authenticated"><a href="/#/registro" class="navbar-secondary-title">Registrarse</a></li>
+                <li ng-show="authenticated"><a href="/#/perfil/1" class="navbar-secondary-title">Mi Perfil</a></li>
+                <li ng-show="authenticated"><a class="navbar-secondary-title" ng-click="logout()">Cerrar sesión</a></li>
+                <li ng-hide="authenticated"><a  class="navbar-secondary-title" ng-href="/#/login"><b>Iniciar Sesión</b></a></li>
+            </ul>
+        </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

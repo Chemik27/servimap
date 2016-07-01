@@ -55,9 +55,11 @@ angular
         controller: 'NavigationCtrl'
       })
 
-      .when('/contratar', {
+      .when('/contratar/:id', {
         templateUrl: 'views/hire.html',
-        controller: 'HireCtrl'
+        controller: 'HireCtrl',
+        resolve: {profileSelected: ['$route','HireResources', function($route, HireResources) {
+          return HireResources.get($route.current.pathParams).$promise;}]}
       })
 
       .when('/terminos', {

@@ -27,16 +27,16 @@ angular
       })
       .when('/servicio/:idCategory', {
         templateUrl: 'views/service.html',
-        controller: 'WorkCtrl',
-        resolve: {categorySelected: ['$route','WorkResources', function($route, WorkResources) {
-          return WorkResources.query($route.current.pathParams).$promise;}]}
+        controller: 'WorkCtrl'
+        // resolve: {categorySelected: ['$route','WorkResources', function($route, WorkResources) {
+        //   return WorkResources.query($route.current.pathParams).$promise;}]}
       })
       .when('/servicioAddress/:idAddress', {
-        templateUrl: 'views/service.html',
-        controller: 'AddressCtrl',
-        resolve: {addressSelected: ['$route','AddressResources', function($route, AddressResources) {
-          return AddressResources.query($route.current.pathParams).$promise;}]}
-      })
+      templateUrl: 'views/service.html',
+      controller: 'AddressCtrl',
+      resolve: {addressSelected: ['$route','AddressResources', function($route, AddressResources) {
+        return AddressResources.query($route.current.pathParams).$promise;}]}
+    })
       .when('/servicioWord/:wordOfSearchTyped', {
         templateUrl: 'views/service.html',
         controller: 'WordOfSearchCtrl',
@@ -45,11 +45,10 @@ angular
       })
       .when('/registro', {
         templateUrl: 'views/register.html',
-        controller: 'RegisterCtrl',
-        resolve: {addresses: ['$route','RegisterResources', function($route, RegisterResources) {
-          return RegisterResources.query($route.current.pathParams).$promise;}]}
+        controller: 'RegisterCtrl'
+        // resolve: {addresses: ['$route','RegisterResources', function($route, RegisterResources) {
+        //   return RegisterResources.query($route.current.pathParams).$promise;}]}
       })
-
       .when('/iniciarSesion', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'

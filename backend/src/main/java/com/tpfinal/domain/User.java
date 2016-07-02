@@ -12,12 +12,12 @@ public class User extends BaseEntity {
     private Long dni;
     private String email;
     private String phone;
-    private Rating rating;
+    private String rating;
 
     //Transient values
     private String fullName;
 
-    public User(String name, String surname, Long dni, String email, String phone, Rating rating) {
+    public User(String name, String surname, Long dni, String email, String phone, String rating) {
         this.name = name;
         this.surname = surname;
         this.dni = dni;
@@ -25,6 +25,16 @@ public class User extends BaseEntity {
         this.phone = phone;
         this.rating = rating;
     }
+
+//    public User(String name, String surname, Long dni, String email, String phone, String version, String idRating) {
+//        this.name = name;
+//        this.surname = surname;
+//        this.dni = dni;
+//        this.email = email;
+//        this.phone = phone;
+//        this.version = version;
+//        this.idRating = idRating;
+//    }
 
     public User() {
     }
@@ -85,15 +95,23 @@ public class User extends BaseEntity {
         this.phone = phone;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_rating", nullable = false)
-    public Rating getRating() {
-        return rating;
+    @Column(name = "id_rating")
+    public String getRating() {
+        return phone;
     }
 
-    public void setRating(Rating rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id_rating", nullable = false)
+//    public Rating getRating() {
+//        return rating;
+//    }
+//
+//    public void setRating(Rating rating) {
+//        this.rating = rating;
+//    }
 
     //Transient Values
     @Transient

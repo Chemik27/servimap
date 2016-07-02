@@ -8,10 +8,11 @@
  * Controller of the dutymap
  */
 angular.module('dutymap')
-  .controller('WorkCtrl', ['$scope', '$http', 'WorkResources','categorySelected',
-    function ($scope, $http, WorkResources, categorySelected) {
+  .controller('WorkCtrl', ['$scope', '$http', '$resource', 'WorkResources',
+    function ($scope, $http, $resource, WorkResources) {
 
-      $scope.lala = categorySelected;
-      console.log($scope.lala);
+      var lala = WorkResources.lala();
+      $scope.lala = lala.query();
+
 
     }]);

@@ -1,7 +1,9 @@
 /**
  * Created by nico on 27/05/16.
  */
+
 'use strict';
+
 
 angular.module('dutymap')
   .controller('RegisterCtrl', ['$scope', '$http' , 'RegisterResources', '$resource',
@@ -11,7 +13,7 @@ angular.module('dutymap')
       var lala = RegisterResources.lala();
       $scope.lala2 = lala.query();
       console.log($scope.lala2);
-
+      
       /**
        * GUARDA EL USUARIO
        */

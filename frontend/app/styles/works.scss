@@ -1,0 +1,11 @@
+@import "variables";
+@import "profile";
+
+.works-modules{
+    background-color: $background-grey;
+}
+
+.sidebar-filter{
+    @extend .module-main;
+    background-color: #2b81af;
+}

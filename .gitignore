@@ -49,7 +49,6 @@ crashlytics.properties
 crashlytics-build.properties
 
 .gradle
-build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -91,3 +90,6 @@ gradle-app.setting
 # "temporary" build files
 /target
 .DS_Store
+
+backend/backend.iml
+backend/build

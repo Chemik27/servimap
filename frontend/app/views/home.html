@@ -1,37 +1,3 @@
-
-<!-- Navigation -->
-<!--
-<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
-
-<nav id="sidebar-wrapper">
-
-  <ul class="sidebar-nav">
-    <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-    <li class="sidebar-brand">
-      <a href="#top"  onclick = $("#menu-close").click(); >Dutymap</a>
-    </li>
-    <li>
-      <a href="#top" onclick = $("#menu-close").click(); >Inicio</a>
-    </li>
-    <li>
-      <a href="#about" onclick = $("#menu-close").click(); >Cómo funciona</a>
-    </li>
-    <li>
-      <a href="#services" onclick = $("#menu-close").click(); >Servicios</a>
-    </li>
-    <li>
-      <a href="#experience" onclick = $("#menu-close").click(); >Experiencias</a>
-    </li>
-
-    <li>
-      <a href="#question" onclick = $("#menu-close").click(); >Preguntas frecuentes</a>
-    </li>
-    <li>
-      <a href="#contact" onclick = $("#menu-close").click(); >Contacto</a>
-    </li>
-  </ul>
-</nav>
-<!-->
 <!-- Header -->
 
     <header id="top" class="header background full-height">
@@ -47,21 +13,21 @@
         <div>
           <h2><b>¿Qué servicio necesitás?</b></h2>
           <h3 >Podrás encontrar variedad de servicios como contadores, abogados, jardineros y más!</h3>
-            <input class="searchbox logo-color-bg" type="text" placeholder="Buscar servicios">
-            <a href="#service">
+            <input class="searchbox logo-color-bg" type="text" placeholder="Buscar servicios" ng-model="toFind">
+            <a ng-href="/#/servicio/{{toFind}}">
               <button type="" class="btn btn-info logo-color-bg">Buscar</button>
             </a>
-             <a href="#services"><button class="btn btn-info logo-color-bg ">Buscar por categorías</button></a>
+             <!--<a href="#services"><button class="btn btn-info logo-color-bg ">Buscar por categorías</button></a>-->
           <p class="button-header">
-            <a href="#about" class="btn btn-dark btn-lg">Cómo funciona</a>
-            <a href="#/registro" class="btn btn-dark btn-lg">Registrarme</a>
+            <a href="#howItWorks" ng-click="scrollTo(section)" offset="0" du-smooth-scroll  class="btn btn-dark btn-lg">Cómo funciona</a>
+            <!--<a href="#/registro" class="btn btn-dark btn-lg">Registrarme</a>-->
           </p>
         </div>
       </div>
     </header>
 
 <!-- How it works -->
-<section id="about" class="second-background about">
+<section id="howItWorks" class="second-background about">
 
   <div class="container">
     <div class="row">
@@ -170,45 +136,54 @@
               <div class="panel widget"><div class="widget-header bg-primary"></div>
                 <div class="widget-body text-center">
                   <h4 class="mar-no">Laura Rodríguez</h4>
-                  <img alt="Profile Picture" class="widget-img img-circle img-border-light" src="../images/profile.png">
+                  <img alt="Profile Picture" class="widget-img img-circle img-border-light" src="../images/profile1.png">
                   <p class="text-muted mar-btm">Ciudad Evita, Buenos Aires</p>
                 </div>
                 <p class="experience-title text-center card-header"><b>CONFIABLE</b></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum sequi, vitae, facere accusantium reiciendis laudantium itaque id eligendi quasi. Nulla eum, aspernatur provident perspiciatis. Atque ipsa architecto nam, nisi laborum.</p>
-
+                <p class="margin-1">
+                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                <em>Estoy conforme con el servicio brindado. Contraté empleada doméstica por hora y realizó la tarea con eficacia. La contraté para otro trabajo.</em>
+                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                </p>
               </div>
             </div>
             <div class="col-xs-12 col-sm-4">
               <div class="panel widget"><div class="widget-header bg-primary"></div>
                 <div class="widget-body text-center">
-                  <img alt="Profile Picture" class="widget-img img-circle img-border-light" src="../images/profile.png">
-                  <h4 class="mar-no">Paula Bertolo</h4>
+                  <img alt="Profile Picture" class="widget-img img-circle img-border-light" src="../images/profile2.png">
+                  <h4 class="mar-no">Paula Bertcd ./olo</h4>
                   <p class="text-muted mar-btm">San justo, Buenos Aires</p>
                 </div>
                 <p class="experience-title text-center"><b>AMPLIÓ MI CLIENTELA</b></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum sequi, vitae, facere accusantium reiciendis laudantium itaque id eligendi quasi. Nulla eum, aspernatur provident perspiciatis. Atque ipsa architecto nam, nisi laborum.</p>
-
+                <p class="margin-1">
+                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                <em>Excelente trabajo. Muy profesional y serio. Totalmente confiable. Quedé muy conforme, cobró barato y fué limpio y ordenado.Yo lo recomiendo.</em>
+                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                </p>
               </div>
             </div>
             <div class="col-xs-12 col-sm-4 ">
               <div class="panel widget"><div class="widget-header bg-primary"></div>
                 <div class="widget-body text-center">
-                  <img alt="Profile Picture" class="widget-img img-circle img-border-light" src="../images/profile.png">
+                  <img alt="Profile Picture" class="widget-img img-circle img-border-light" src="../images/profile3.png">
                   <h4 class="mar-no">Jimena Lodeiro</h4>
                   <p class="text-muted mar-btm">Ramos Mejia, Buenos Aires</p>
                 </div>
                 <p class="experience-title text-center"><b>MUY BUENA</b></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum sequi, vitae, facere accusantium reiciendis laudantium itaque id eligendi quasi. Nulla eum, aspernatur provident perspiciatis. Atque ipsa architecto nam, nisi laborum.</p>
-
+                <p class="margin-1">
+                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                <em> Arreglo mi computadora en pocos minutos,fue muy amable y cumplidor. Gracias por todo! Utilizaré los servicios nuevamente.</em>
+                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                </p>
               </div>
 
             </div>
           </div>
 
           <!-- /.row (nested) -->
-          <p class="text-center">
-            <a href="#" class="btn btn-dark">Ver más experiencias</a>
-          </p>
+          <!--<p class="text-center">-->
+            <!--<a href="#" class="btn btn-dark">Ver más experiencias</a>-->
+          <!--</p>-->
         </div>
         <!-- /.col-lg-10 -->
       </div>
@@ -217,77 +192,5 @@
     <!-- /.container -->
     </div>
 </section>
-
-<!-- Questions -->
-<!--<section class="logo-color-bg" id="question">-->
-  <!--<div class="container">-->
-    <!--<div class="row">-->
-      <!--<div class="col-lg-10 col-lg-offset-1 text-left">-->
-        <!--<div class="row">-->
-          <!--<h2><p class="text-center">Preguntas frecuentes</p> </h2>-->
-        <!--</div>-->
-        <!--<div class="col-sm-6 col-md-6">-->
-          <!--<h3><p class="text-center">¿Qué servicios ofrecemos?</p></h3>-->
-          <!--<br>-->
-          <!--<p>Los servicios que ofrecemos son...</p>-->
-        <!--</div>-->
-        <!--<div class="col-sm-6  col-md-6">-->
-          <!--<h3><p class="text-center">¿Cómo contacto y contrato un servicio?</p></h3>-->
-          <!--<br>-->
-          <!--<p>Para contactar y contratar un servicio tenes que...</p>-->
-
-        <!--</div>-->
-
-      <!--</div>-->
-      <!--<div class="col-lg-10 col-lg-offset-1 text-left">-->
-        <!--<div class="row">-->
-          <!--<div class="col-sm-6 col-md-6">-->
-            <!--<h3><p class="text-center">Pregunta</p></h3>-->
-            <!--<br>-->
-            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt labore, beatae assumenda quae rem corporis, laudantium in odit blanditiis quasi laborum consectetur obcaecati, dolore harum minus quidem saepe culpa. Quis!</p>-->
-
-          <!--</div>-->
-          <!--<div class="col-sm-6 col-md-6">-->
-            <!--<h3><p class="text-center">Pregunta</p></h3>-->
-            <!--<br>-->
-            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam excepturi sit natus pariatur consequuntur labore magnam aperiam non iusto itaque cumque iste ipsum, sed molestias! Placeat quia velit dolor doloremque?</p>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</section>-->
-
-<!--Contact -->
-
-<!--<section id="contact">-->
-  <!--<div class="container">-->
-    <!--<div class="row ">-->
-      <!--<h2 class="text-center">Contacto</h2>-->
-      <!--<div class="col-md-4 col-md-offset-4 ">-->
-<!---->
-        <!--<form role="form" class=" col-md-12  col-xs-12">-->
-          <!--<div class="form-group ">-->
-            <!--<label >Nombre</label>-->
-            <!--<input type="text" class="form-control" id="name">-->
-          <!--</div>-->
-<!---->
-          <!--<div class="form-group ">-->
-            <!--<label >Email</label>-->
-            <!--<input type="email" class="form-control" id="email">-->
-          <!--</div>-->
-          <!--<div class="form-group" >-->
-            <!--<label>Mensaje:</label>-->
-            <!--<br>-->
-            <!--<textarea name="" id="" cols="51" rows="2" ></textarea>-->
-          <!--</div>-->
-          <!--<p class="text-center"><button type="submit" class="btn logo-color-bg">Enviar</button></p>-->
-        <!--</form>-->
-<!---->
-<!---->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</section>-->
-<ng-include src="'views/footer.html'"></ng-include>
+<footer-dutymap></footer-dutymap>
 

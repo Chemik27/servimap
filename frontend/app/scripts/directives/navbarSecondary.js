@@ -8,5 +8,6 @@ angular.module('dutymap')
       templateUrl:'views/directives/navbar-secondary.html',
       restrict: 'E',
       replace:true,
+      controller: 'NavigationCtrl'
     };
   });

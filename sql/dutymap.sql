@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-05-2016 a las 18:15:42
--- Versión del servidor: 10.1.10-MariaDB
--- Versión de PHP: 5.6.19
+-- Tiempo de generación: 26-06-2016 a las 04:03:50
+-- Versión del servidor: 10.1.9-MariaDB
+-- Versión de PHP: 7.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -136,9 +136,11 @@ CREATE TABLE `user` (
   `id_user` bigint(20) NOT NULL,
   `name` varchar(35) NOT NULL,
   `surname` varchar(35) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `dni` bigint(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` varchar(35) NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `id_rating` bigint(20) NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_date` datetime DEFAULT NULL,
@@ -150,9 +152,29 @@ CREATE TABLE `user` (
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id_user`, `name`, `surname`, `dni`, `email`, `phone`, `id_rating`, `creation_date`, `update_date`, `deleted_date`, `version`) VALUES
-(1, 'Jose', 'Perez', 33333333, 'jose.perez@gmail.com', '1511112222', 1, '2016-05-08 15:09:32', NULL, NULL, 0),
-(2, 'Prueba', 'Prueba', 12345678, 'prueba@prueba.com.ar', '1143214321', 2, '2016-05-08 19:58:31', NULL, NULL, 0);
+INSERT INTO `user` (`id_user`, `name`, `surname`, `password`, `dni`, `email`, `phone`, `enabled`, `id_rating`, `creation_date`, `update_date`, `deleted_date`, `version`) VALUES
+(1, 'Jose', 'Perez', '$2a$06$a68MhcwRoKXCQ7idkXxF8usm7MLrTB8/Z4Ih6c5bzNfC0L0nLQz5i', 33333333, 'admin@dutymap.com', '1511112222', 1, 1, '2016-05-08 15:09:32', NULL, NULL, 0),
+(2, 'Prueba', 'Prueba', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 12345678, 'prueba@prueba.com', '1143214321', 1, 2, '2016-05-08 19:58:31', NULL, NULL, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `user_role`
+--
+
+CREATE TABLE `user_role` (
+  `id_user_role` bigint(20) NOT NULL,
+  `id_user` bigint(20) NOT NULL,
+  `role` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `user_role`
+--
+
+INSERT INTO `user_role` (`id_user_role`, `id_user`, `role`) VALUES
+(1, 1, 'ROLE_WORKER'),
+(2, 2, 'ROLE_WORKER');
 
 -- --------------------------------------------------------
 
@@ -164,6 +186,7 @@ CREATE TABLE `work` (
   `id_work` bigint(20) NOT NULL,
   `name` varchar(35) NOT NULL,
   `description` varchar(200) NOT NULL,
+  `price` double NOT NULL,
   `id_category` bigint(20) NOT NULL,
   `id_user` bigint(20) NOT NULL,
   `id_address` bigint(20) NOT NULL,
@@ -174,8 +197,10 @@ CREATE TABLE `work` (
 -- Volcado de datos para la tabla `work`
 --
 
-INSERT INTO `work` (`id_work`, `name`, `description`, `id_category`, `id_user`, `id_address`, `id_feedback`) VALUES
-(1, 'Pintor', 'Pintar casas', 1, 1, 1, 1);
+INSERT INTO `work` (`id_work`, `name`, `description`, `price`, `id_category`, `id_user`, `id_address`, `id_feedback`) VALUES
+(1, 'Pintor', 'Pintar casas', 0, 1, 1, 1, 1),
+(2, 'Kinesiologo', 'Stuff de kinesiologos', 0, 1, 2, 1, 1),
+(3, 'Masajista', 'Stuff de masajistas', 0, 1, 2, 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -228,6 +253,13 @@ ALTER TABLE `user`
   ADD KEY `id_user_2` (`id_user`);
 
 --
+-- Indices de la tabla `user_role`
+--
+ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`id_user_role`),
+  ADD UNIQUE KEY `id_user_role` (`id_user_role`);
+
+--
 -- Indices de la tabla `work`
 --
 ALTER TABLE `work`
@@ -266,10 +298,15 @@ ALTER TABLE `rating`
 ALTER TABLE `user`
   MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT de la tabla `user_role`
+--
+ALTER TABLE `user_role`
+  MODIFY `id_user_role` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `work`
 --
 ALTER TABLE `work`
-  MODIFY `id_work` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_work` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

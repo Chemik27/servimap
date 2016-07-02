@@ -8,11 +8,11 @@
  * Controller of the dutymap
  */
 angular.module('dutymap')
-  .controller('WorkCtrl', ['$scope', '$http', '$resource', 'WorkResources',
-    function ($scope, $http, $resource, WorkResources) {
-
-      var lala = WorkResources.lala();
-      $scope.lala = lala.query();
+    .controller('WorkCtrl', ['$scope', '$routeParams', 'WorkResources','works',
+        function ($scope, $routeParams, WorkResources, works) {
+            $scope.worksFound = works;
+            if($routeParams.serviceRequest != null)
+                $scope.toFind = $routeParams.serviceRequest;
 
 
     }]);

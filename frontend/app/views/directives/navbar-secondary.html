@@ -1,92 +1,42 @@
 <nav class="navbar navbar-default  navbar-fixed navbar-secondary" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="col-md-3">
+    <div class="col-sm-3">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="dropdownMenu">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdownMenu">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/#/"><img class="logo" src="images/Logo-DutyMap-original.png" alt="logo"></a>
+          <a href="/#/"><img class="navbar-logo" src="images/Logo-DutyMap-original.png" alt="logo"></a>
       </div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
 
-    <div class="collapse navbar-collapse navbar2-margin" id="dropdownMenu">
-      <div class="col-md-4">
-        <form class="navbar-form navbar-left navbar-width " role="search">
-          <div class="form-group navbar-width ">
-            <div class="input-group stylish-input-group navbar-width ">
-              <input type="text" class="form-control navbar-search navbar-width "  placeholder="Buscar servicios" >
-                    <span class="input-group-addon navbar-search-border">
-                        <button type="submit">
-                          <span class="glyphicon glyphicon-search "></span>
-                        </button>
-                    </span>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <div class="col-md-5">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a class="navbar-secondary-title" href="#">Registrarse</a></li>
-          <li><a class="navbar-secondary-title" href="#/registro">Ofrecer servicios</a></li>
-          <li class="dropdown">
-            <a class="navbar-secondary-title" href="" class="dropdown-toggle" data-toggle="dropdown">Mas<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Preguntas frecuentes</a></li>
-              <li><a href="#">Contactanos</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a  class="navbar-secondary-title" href="" class="dropdown-toggle" data-toggle="dropdown"><b>Iniciar Sesión</b> <span class="caret"></span></a>
-            <ul id="login-dp" class="dropdown-menu">
-              <li>
-                <div class="row">
-                  <div class="col-md-12">
-                    Iniciar sesión con
-                    <div class="social-buttons text-center">
-                      <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+    <div class="collapse navbar-collapse navbar-margin" id="dropdownMenu">
+        <div class="col-sm-4">
+            <form class="navbar-form navbar-left navbar-width " role="search">
+                <div class="form-group navbar-width " style="padding-top: 2%">
+                    <div class="input-group stylish-input-group navbar-width ">
+                        <input type="text" class="form-control navbar-search navbar-width" placeholder="Buscar servicios" ng-model="toFind">
+                        <a class="input-group-addon navbar-search-border" ng-href="/#/servicio/{{toFind}}">
+                            <span class="glyphicon glyphicon-search "></span>
+                        </a>
                     </div>
-                    o
-                    <form class="form" role="form" id="login-nav">
-                      <div class="form-group">
-                        <label class="sr-only">Email</label>
-                        <input type="email" class="form-control" placeholder="Email" required>
-                      </div>
-                      <div class="form-group">
-                        <label class="sr-only">Password</label>
-                        <input type="password" class="form-control" placeholder="Contraseña" required>
-                        <div class="help-block text-right"><a href="">¿Olvidaste la contraseña?</a></div>
-                      </div>
-                      <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> Mantenerme conectado
-                        </label>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="bottom text-center">
-                    Nuevo en Dutymap? <a href="#/registro"><b>Unite!</b></a>
-                  </div>
                 </div>
-              </li>
+            </form>
+        </div>
+
+        <div class="col-md-5">
+            <ul class="nav navbar-nav navbar-right" style="padding-top: 1%">
+                <li ng-hide="authenticated"><a href="/#/registro" class="navbar-secondary-title">Registrarse</a></li>
+                <li ng-show="authenticated"><a href="/#/perfil/1" class="navbar-secondary-title">Mi Perfil</a></li>
+                <li ng-show="authenticated"><a class="navbar-secondary-title" ng-click="logout()">Cerrar sesión</a></li>
+                <li ng-hide="authenticated"><a  class="navbar-secondary-title" ng-href="/#/login"><b>Iniciar Sesión</b></a></li>
             </ul>
-          </li>
-        </ul>
-      </div>
+        </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

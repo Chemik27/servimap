@@ -10,12 +10,28 @@
   margin-bottom:0px;
 }
 
-.navbar-secondary li a:hover{
-  font-style: italic;
+.navbar-secondary-title:hover{
+  cursor:pointer;
+  background-color: black !important;
 }
 .navbar-secondary-title{
   color:white !important;
 }
-.navbar-secondary-title:focus{
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
   background-color: black !important;
 }
+
+.navbar-margin{
+  margin-top:15px;
+}
+
+.collapsed{
+  margin-top:20px;
+}
+.navbar-logo{
+   width: 160px;
+}
+
+
+

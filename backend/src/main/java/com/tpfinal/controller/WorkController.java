@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by tino on 09/05/2016.
- */
 @RestController
 @RequestMapping("/work")
 public class WorkController {
@@ -53,24 +50,12 @@ public class WorkController {
         return works;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = {"/worksByWordOfSearch/{wordOfSearchTyped}"})
+    @RequestMapping(method = RequestMethod.GET, value = {"/named/{workTyped}"})
     @ResponseStatus(HttpStatus.OK)
-    public List<Work> getWorksByWordOfSearch(@PathVariable String wordOfSearchTyped){
-        List<Work> works = workService.findByDescriptionContaining(wordOfSearchTyped);
+    public List<Work> getWorksByWordOfSearch(@PathVariable String workTyped){
+        List<Work> works = workService.findByDescriptionContaining(workTyped);
 
         return works;
     }
-//    @RequestMapping(method = RequestMethod.GET, value = "/worksByDistrict/{districtSelected}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<Work> getWorksByDistrict(@PathVariable String districtSelected){
-//        Long idCategory = Long.valueOf(districtSelected);
-//        District district = new District();
-//        district.setIdDistrict(idCategory);
-//        List<Work> works = workService.findByDistrict(district);
-//        return works;
-//    }
-    //@RestController
-    //@RequestMapping(value="/works")
-    //public List<>
 
 }

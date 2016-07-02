@@ -1,25 +1,14 @@
-
+<navbar-secondary></navbar-secondary>
 <div class="container-fluid loginbackground">
 <div class="row">
   <div class="col-md-12">
-    <div class="pr-wrap">
-      <div class="pass-reset">
-        <a href="" id="closeWindow">Cerrar</a>
-        </label>
-        <label>
-          Ingresa el email con el que te registraste
-        </label>
-        <input type="email" placeholder="Email" />
-        <input type="submit" value="Enviar" class="pass-reset-submit btn logo-color-bg btn-sm" />
-      </div>
-    </div>
     <div class="wrap">
       <p class="form-title">
         Iniciar sesión</p>
-      <form class="login">
-        <input type="text" placeholder="Nombre de usuario" />
-        <input type="password" placeholder="Contraseña" />
-        <input type="submit" value="Iniciar sesión" class="btn logo-color-bg btn-sm" />
+      <form class="login" ng-submit="login()">
+        <input type="text" placeholder="Nombre de usuario" ng-model="credentials.username" />
+        <input type="password" placeholder="Contraseña" ng-model="credentials.password" />
+        <input type="submit" value="Iniciar sesión" class="btn logo-color-bg register-button" />
         <div class="remember-forgot">
           <div class="row">
             <div class="col-md-6">
@@ -39,3 +28,5 @@
     </div>
   </div>
 </div>
+</div>
+<footer-dutymap></footer-dutymap>

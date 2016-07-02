@@ -14,4 +14,8 @@ public class UserService {
     public User findByIdUser(Long idUser) {
         return userRepository.findByIdUser(idUser);
     }
+
+    public void createUser(User user){
+        User asd = userRepository.save(user);
+    }
 }

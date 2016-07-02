@@ -1,0 +1,66 @@
+<navbar-secondary></navbar-secondary>
+<div>
+  <!--Ventana Modal Usuario -->
+  <div class=""  aria-labelledby="userModal" aria-hidden="true">
+    <div class="modal-header">
+      <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
+      <div class="col-md-12 modal-title modal-label col-md-12">
+        <div class="text-center">
+          <h4 class="modal-title modal-label"> Contacto</h4>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+
+          <!-- Formulario -->
+          <form role="form" name="userForm"  ng-submit="registerUser(user)" ng-model-options="{ updateOn: 'blur' }">
+            <h3><b></b> <div class="small"><h4>Por favor, completa los siguientes campos.</h4></div></h3>
+            <div class="row">
+              <!-- Campo nombre <-->
+              <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': userForm.firstName.$touched && userForm.firstName.$invalid, 'has-success' : userForm.firstName.$valid}"  >
+                <span>Nombre</span>
+                <input type="text" name="firstName"  class="form-control input-lg" ng-minlength="2" ng-model="user.firstName"  ng-pattern="onlyChar" placeholder="" ng-required="true" >
+                <div class="help-block" ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched">
+                  <p ng-message="minlength">El nombre es muy corto.</p>
+                  <p ng-message="required">Ingrese un nombre</p>
+                  <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
+                </div>
+              </div>
+
+              <!-- Campo apellido <-->
+              <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': userForm.surName.$touched && userForm.surName.$invalid, 'has-success' : userForm.surName.$valid}">
+                <span>Apellido</span>
+                <input type="text" name="surName" class="form-control input-lg" ng-model="user.surName" placeholder="" ng-required="true" ng-pattern="onlyChar">
+                <div class="help-block" ng-messages="userForm.surName.$error" ng-if="userForm.surName.$touched">
+                  <p ng-message="minlength">El apellido es muy corto.</p>
+                  <p ng-message="required">Ingrese un apellido</p>
+                  <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Campo email <-->
+            <div class="form-group" ng-class="{'has-error': userForm.email.$touched &&  userForm.email.$invalid, 'has-success' : userForm.email.$valid}">
+              <span>Email</span>
+              <input type="email" name="email" class="form-control input-lg immediate-help" ng-model="user.email" placeholder="" ng-required="true">
+              <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">El email es incorrecto.</p>
+            </div>
+            <div class="form-group">
+              <span>Sugerencias</span>
+             <textarea class="form-control"></textarea>
+            </div>
+            <div class="row">
+              <div class="col-xs-12"><input type="submit" value="Enviar" ng-disabled="userForm.$invalid || !user.accept" class="btn btn-primary btn-block btn-lg"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="register">
+  <div class="container-fluid">
+    </div>
+  </section>
+<footer-duty-map></footer-duty-map>

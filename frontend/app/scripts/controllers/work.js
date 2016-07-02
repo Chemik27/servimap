@@ -8,11 +8,19 @@
  * Controller of the dutymap
  */
 angular.module('dutymap')
-    .controller('WorkCtrl', ['$scope', '$routeParams', 'WorkResources','works',
-        function ($scope, $routeParams, WorkResources, works) {
+    .controller('WorkCtrl', ['$scope', '$routeParams', 'WorkResources','works', '$location',
+        function ($scope, $routeParams, WorkResources, works, $location) {
+
             $scope.worksFound = works;
+            $scope.filter = {};
+
             if($routeParams.serviceRequest != null)
                 $scope.toFind = $routeParams.serviceRequest;
+
+            $scope.search = function(){
+              $scope.filter.page = 1;
+              $location.search($scope.filter);
+            }
 
 
     }]);

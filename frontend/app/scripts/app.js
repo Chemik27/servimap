@@ -76,12 +76,17 @@ angular
       .when('/politicas', {
         templateUrl: 'views/policies.html'
       })
+      .when('/calificar', {
+        templateUrl: 'views/qualify.html',
+        controller: 'QualifyUserCtrl'
+      })
       .when('/perfil/:id', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',
         resolve: {profileSelected: ['$route','ProfileResources', function($route, ProfileResources) {
             return ProfileResources.get($route.current.pathParams).$promise;}]}
       })
+
       .otherwise({
         redirectTo: '/'
       });

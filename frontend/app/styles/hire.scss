@@ -1,0 +1,45 @@
+@import "variables";
+.confirm-button{
+  width:100%;
+  margin-bottom:5px;
+  transition: all 0.5s ease
+}
+
+.confirm-button:hover{
+  color: white;
+  background-color: #3A598D;
+}
+
+.hire-data{
+  font-size:25px;
+  color: $background-blue;
+}
+
+.hire-amount{
+  padding-right:40px;
+  float: left;
+  text-align: right;
+}
+
+.hire-prices{
+  font-size:17px;
+}
+
+.hire-total{
+  font-size:20px;
+
+}
+
+.hire-description{
+  font-size:20px;
+}
+
+.total{
+  font-size:25px;
+}
+
+.confirm-section{
+  background:#f2f2f2;
+}
+
+

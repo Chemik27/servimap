@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMessages'
+    'ngMessages',
+    'ngMaterial'
 
   ])
   .config(function ($routeProvider) {
@@ -55,6 +56,14 @@ angular
         templateUrl: 'views/login.html',
         controller: 'NavigationCtrl'
       })
+
+      .when('/contratar/:id', {
+        templateUrl: 'views/hire.html',
+        controller: 'HireCtrl',
+        resolve: {profileSelected: ['$route','HireResources', function($route, HireResources) {
+          return HireResources.get($route.current.pathParams).$promise;}]}
+      })
+
       .when('/terminos', {
         templateUrl: 'views/terms.html'
       })

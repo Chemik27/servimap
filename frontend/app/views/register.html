@@ -263,12 +263,9 @@
                     </div>
                   </div>
                 </div>
-
-
                 <!-- Campo area de cobertura -->
                 <div class="row">
                   <div class="col-xs-12 form-group" ng-class="{ 'has-error': providerForm.area.$touched && providerForm.area.$invalid, 'has-success' : providerForm.area.$valid}">
-
                     <!--<select class="form-control selectmenu" name="district" ng-model="provider.area" ng-required="true">-->
                       <!--<option selected disabled class="hideoption">Localidad</option>-->
                       <!--<option>La Matanza</option>-->
@@ -281,12 +278,9 @@
                       <h4>Agrega aquellas zonas en las que puedas desempeñar tus servicios.</h4>
                     </div>
                     <div class="help-block" ng-messages="providerForm.area.$error" ng-if="providerForm.area.$touched">
-
                       <p ng-message="required">Area de cobertura requerida.</p>
                     </div>
-
                   </div>
-
                 </div>
 
                 <!-- Campo contraseña -->
@@ -320,7 +314,7 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-5 col-md-12">
                       <span class="button-checkbox">
-                                    <input type="checkbox" ng-model="provider.accept" value="Acepto">Acepto<a href="#/terminos" target="_blank">Términos y condiciones</a>
+                        <input type="checkbox" ng-model="provider.accept" value="Acepto">Acepto<a href="#/terminos" target="_blank">Términos y condiciones</a>
                       </span>
                   </div>
                 </div>

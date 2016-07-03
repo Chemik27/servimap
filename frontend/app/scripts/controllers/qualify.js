@@ -1,12 +1,43 @@
 /**
  * Created by redbee on 01/07/16.
  */
-'use strict';
-
-
 angular.module('dutymap')
-  .controller('QualifyUserCtrl', ['$scope',
-    function ($scope ) {
+  .controller('QualifyUserCtrl', ['$scope','$http','QualifyResources','profileSelected',
+    function ($scope,$http,QualifyResources,profileSelected) {
+
+      $scope.profile = profileSelected;
+      $scope.toUser = profileSelected.toUser;
+      $scope.works = profileSelected.works;
+      $scope.mainWork = $scope.works[0];
+      console.log(profileSelected);
+      console.log($scope.profile);
+
+      self.fetchAllUsers = function(){
+        HireResources.fetchAllUsers()
+          .then(
+            function(d) {
+              self.users = d;
+            },
+            function(errResponse){
+              console.error('Error while fetching Currencies');
+            }
+          );
+      };
+
+      self.createUser = function(user){
+        HireResources.createUser(user)
+          .then(
+            self.fetchAllUsers,
+            function(errResponse){
+              console.error('Error while creating User.');
+            }
+          );
+      };
+
+      $scope.confirmTransaction =function(transaction){
+
+        console.log(transaction);
+      };
 
       //Calificaciones 4
       $scope.rating1 = 1;

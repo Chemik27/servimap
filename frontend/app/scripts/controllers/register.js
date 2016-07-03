@@ -15,8 +15,6 @@ angular.module('dutymap')
       angular.forEach($scope.addreses, function(value, key){
         $scope.zonas.push(value.district);
       });
-
-
     $scope.userType = function(type) {
 
       $scope.filter = type;

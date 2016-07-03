@@ -1,9 +1,23 @@
 <navbar-secondary></navbar-secondary>
 
-<div>
+<div class="resume">
 
-    <div class="text-center sidebar-filter col-md-3">
-      <p>asd</p>
+    <div class="sidebar-filter col-md-3">
+        <h3 class="text-center">Filtra tus busquedas</h3>
+        <hr>
+        <ul>
+            <li><h4>Categoría</h4>
+                <ul>
+                  <li ng-repeat="category in categories"><a ng-click="searchByCategory(category.id)">{{category.name}}</a></li>
+                </ul>
+            </li>
+            <br>
+            <li><h4>Ubicación</h4>
+                <ul>
+                  <li ng-repeat="city in districts"><a ng-click="searchByDistrict(city.id)">{{city.name}}</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
 
     <div class="container-fluid col-md-9 works-modules">
@@ -12,7 +26,7 @@
 
         <div class="container-fluid">
         <! -- CONTACTOS PREMIUM -->
-            <div class="col-sm-4 col-md-4 col-lg-4" ng-repeat="aPremium in worksFound">
+            <div ng-class="{'col-md-4 col-md-push-4': worksFound.length == 1, 'col-sm-4 col-md-4 col-lg-4 col-md-push-2': worksFound.length > 1 }" ng-repeat="aPremium in worksFound">
                 <div class="flip-container padding" ontouchstart="this.classList.toggle('hover');">
                     <div class="flipper">
                         <div class="row">
@@ -46,23 +60,22 @@
 
         <div class="container-fluid">
         <! -- CONTACTOS COMUNES -->
-            <div class="col-xs-12 col-sm-12 col-md-10 block " ng-repeat="aWork in worksFound">
+            <div class="col-xs-12 col-sm-12 col-md-12 block " ng-repeat="aWork in worksFound">
                 <div class="col-xs-12 col-sm-2 col-md-2">
                     <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
                 </div>
 
                 <div class="col-xs-12 col-sm-8 col-md-7">
-                    <h4 class="premium noselect">Premium</h4>
-                    <p class=""> <img class="marker" src="images/map-marker.png" alt="">{{aWork.address.district.name}}</p>
                     <h4>{{aWork.name}}</h4>
                     <p>{{aWork.category.name}}</p>
+                    <p> <img class="marker" src="images/map-marker.png" alt="">{{aWork.address.district.name}}</p>
                 </div>
 
                 <div class="col-xs-12 col-sm-2 col-md-3">
-                    <p>Valoración : </p>
-                    <p>Costo : ${{aWork.price}}</p>
+                    <!--<p>Valoración : </p>-->
+                    <!--<p>Costo : ${{aWork.price}}</p>-->
 
-                    <button class="btn btn-info remark logo-color-bg">Contactar</button>
+                    <button class="btn btn-info remark logo-color-bg">Contratar</button>
                     <button class="btn btn-info remark logo-color-bg">Ver perfil</button>
                 </div>
             </div>

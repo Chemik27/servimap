@@ -15,7 +15,11 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: $font-stack;
 }
+
+*, input, a, button{font-family: $font-stack;}
+
 
   /*searchbox*/
 
@@ -68,12 +72,12 @@ html, body {
 
   .paragraph{
     font-size: 30px;
-    font-family:  Georgia, Serif;
+    font-family: $font-stack;
   }
 
   .subparagraph{
     font-size: 18px;
-    font-family:  Georgia, Serif;
+    font-family: $font-stack;
   }
 
   .title-menu-landing{

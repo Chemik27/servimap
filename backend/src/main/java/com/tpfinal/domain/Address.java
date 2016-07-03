@@ -11,15 +11,13 @@ public class Address {
     private Long idAddress;
     private String street;
     private Long number;
-    private Long postalCode;
     private Double latitude;
     private Double length;
     private District district;
 
-    public Address(String street, Long number, Long postalCode, Double latitude, Double length, District district) {
+    public Address(String street, Long number, Double latitude, Double length, District district) {
         this.street = street;
         this.number = number;
-        this.postalCode = postalCode;
         this.latitude = latitude;
         this.length = length;
         this.district = district;
@@ -55,15 +53,6 @@ public class Address {
 
     public void setNumber(Long number) {
         this.number = number;
-    }
-
-    @Column(name = "postal_code")
-    public Long getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(Long postalCode) {
-        this.postalCode = postalCode;
     }
 
     @Column(name = "latitude")

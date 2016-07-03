@@ -1,12 +1,45 @@
-<navbar-secondary></navbar-secondary>
+<navbar-secondary xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+                  xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"></navbar-secondary>
+<section class="qualify">
+c  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-12 col-xs-12 text-center">
+          <h1>Califica el servicio!</h1>
+          <small>Clasifica tus duty(puntos), segun el servicio realizado: </small></br>
+          <ul>
+          <li>1 duty : Malo</li>
+          <li>2 duty : Discoforme</li>
+          <li>3 duty : Regular </li>
+          <li>4 duty : Bueno </li>
+          <li>5 duty : Excelente</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
 
-<div class="row">}
-  <div class="container">
-    <h1>Encuesta</h1>
-    <div ng-init="rating = star.rating + 1"></div>
-
-    <div class="star-rating" star-rating rating-value="rating" data-max="10" on-rating-selected="rateFunction(rating)"></div>
-</div>
-
-</div>
+        </div>
+        <div ng-init="rating = star.rating + 1" class="col-md-8 col-xs-12 ">
+          <form class="form-group ">
+            <div class="col-md-6 letter-1"><b>Confiabilidad</b></div>
+            <div class="star-rating" star-rating rating-value="rating1" data-max="5" on-rating-selected="rateFunction(rating1)"></div>
+            <div class="col-md-6 letter-1"><b>Desempe&ntilde;o</b></div>
+            <div class="star-rating" star-rating rating-value="rating2" data-max="5" on-rating-selected="rateFunction(rating2)"></div>
+            <div class="col-md-6 letter-1"><b>Consideraci&oacute;n</b></div>
+            <div class="star-rating" star-rating rating-value="rating3" data-max="5" on-rating-selected="rateFunction(rating3)"></div>
+            <div class="col-md-6 letter-1"><b>Recomendaci&oacute;n</b></div>
+            <div class="star-rating" star-rating rating-value="rating4" data-max="5" on-rating-selected="rateFunction(rating4)"></div>
+            <div class="col-md-12 col-xs-12 letter-1"><b>Opinion<i>(Opcional)</i></b></div>
+            <div class="col-md-12 col-xs-12"><textarea cols="70" rows="10"></textarea></div>
+            <div class="col-md-12">
+              {{resultRating}}
+              <div class="col-xs-12 col-md-6 text-center">
+                <input type="submit" value="Enviar" ng-click="calcularRating()" class="btn btn-primary btn-block btn-lg">
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+  </div>
+</section>
 <footer-dutymap></footer-dutymap>

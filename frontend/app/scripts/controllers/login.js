@@ -13,6 +13,7 @@ angular.module('dutymap')
             $http.get('/api/user', {headers : $scope.headers}).then(function(response) {
                 if (response.data.name) {
                     $rootScope.authenticated = true;
+                    $rootScope.idUser = response.data.name;
                 } else {
                     $rootScope.authenticated = false;
                 }

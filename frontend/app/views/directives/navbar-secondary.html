@@ -32,7 +32,7 @@
         <div class="col-md-5">
             <ul class="nav navbar-nav navbar-right" style="padding-top: 0.1em">
                 <li ng-hide="authenticated"><a href="/#/registro" class="navbar-secondary-title">Registrarse</a></li>
-                <li ng-show="authenticated"><a href="/#/perfil/1" class="navbar-secondary-title">Mi Perfil</a></li>
+                <li ng-show="authenticated"><a href="/#/perfil/{{$root.idUser}}" class="navbar-secondary-title">Mi Perfil</a></li>
                 <li ng-show="authenticated"><a class="navbar-secondary-title" ng-click="logout()">Cerrar sesión</a></li>
                 <li ng-hide="authenticated"><a  class="navbar-secondary-title" ng-href="/#/login"><b>Iniciar Sesión</b></a></li>
             </ul>

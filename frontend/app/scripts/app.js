@@ -26,20 +26,6 @@ angular
         templateUrl: 'views/home.html',
         controller: 'MainCtrl'
       })
-      // TODO Agregarlo como filtro de busqueda por categoria
-      //.when('/servicio/:idCategory', {
-      //  templateUrl: 'views/service.html',
-      //  controller: 'WorkCtrl',
-      //  resolve: {categorySelected: ['$route','WorkResources', function($route, WorkResources) {
-      //    return WorkResources.query($route.current.pathParams).$promise;}]}
-      //})
-      //  TODO Agregarlo como filtro de busqueda por zona
-      //.when('/servicioAddress/:idAddress', {
-      //  templateUrl: 'views/service.html',
-      //  controller: 'AddressCtrl',
-      //  resolve: {addressSelected: ['$route','AddressResources', function($route, AddressResources) {
-      //    return AddressResources.query($route.current.pathParams).$promise;}]}
-      //})
       .when('/servicio/:serviceRequest', {
         templateUrl: 'views/works.html',
         controller: 'WorkCtrl',
@@ -63,7 +49,6 @@ angular
         resolve: {profileSelected: ['$route','HireResources', function($route, HireResources) {
           return HireResources.get($route.current.pathParams).$promise;}]}
       })
-
       .when('/terminos', {
         templateUrl: 'views/terms.html'
       })

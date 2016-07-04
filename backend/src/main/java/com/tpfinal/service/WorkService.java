@@ -22,8 +22,8 @@ public class WorkService {
 //        return workRepository.findAll(pageRequest);
 //    }
 
-    public List<Work> findByNameContaining(String name){
-        return workRepository.findByNameContaining(name);
+    public Page<Work> findByNameContaining(String name){
+        return workRepository.findByNameContaining(name, new PageRequest(0,10));
     }
 
     public List<Work> findByIdUser(Long idUser){

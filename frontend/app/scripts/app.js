@@ -30,7 +30,7 @@ angular
         templateUrl: 'views/works.html',
         controller: 'WorkCtrl',
         resolve: {works: ['$route','WorkResources', function($route, WorkResources) {
-          return WorkResources.query($route.current.pathParams).$promise;}]}
+          return WorkResources.get($route.current.pathParams).$promise;}]}
       })
       .when('/registro', {
         templateUrl: 'views/register.html',

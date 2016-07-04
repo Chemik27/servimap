@@ -4,6 +4,7 @@ import com.tpfinal.domain.Work;
 import com.tpfinal.service.UserService;
 import com.tpfinal.service.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class WorkController {
     //Busqueda principal por nombre
     @RequestMapping(method = RequestMethod.GET, value = "/named/{workTyped}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Work> getWorks(@PathVariable String workTyped){
+    public Page<Work> getWorks(@PathVariable String workTyped){
         return workService.findByNameContaining(workTyped);
     }
 

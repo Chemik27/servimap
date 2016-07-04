@@ -11,7 +11,7 @@ angular.module('dutymap')
     .controller('WorkCtrl', ['$scope', '$routeParams', 'WorkResources','works',
         function ($scope, $routeParams, WorkResources, works) {
 
-            $scope.worksFound = works;
+            $scope.worksFound = works.content;
             $scope.districts = [
               {id:1 ,name: '20 de Junio'},
               {id:2 ,name: 'Aldo Bonzi'},

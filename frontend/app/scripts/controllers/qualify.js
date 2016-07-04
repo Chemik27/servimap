@@ -5,12 +5,20 @@ angular.module('dutymap')
   .controller('QualifyUserCtrl', ['$scope','$http','QualifyResources','profileSelected',
     function ($scope,$http,QualifyResources,profileSelected) {
 
+      //Calificaciones 4
+      $scope.rating1 = 1;
+      $scope.rating2 = 1;
+      $scope.rating3 = 1;
+      $scope.rating4 = 1;
+      $scope.resultRating = 0;
+
       $scope.profile = profileSelected;
       $scope.toUser = profileSelected.toUser;
       $scope.works = profileSelected.works;
       $scope.mainWork = $scope.works[0];
-      console.log(profileSelected);
+
       console.log($scope.profile);
+      console.log($scope.toUser);
 
       self.fetchAllUsers = function(){
         HireResources.fetchAllUsers()
@@ -39,12 +47,6 @@ angular.module('dutymap')
         console.log(transaction);
       };
 
-      //Calificaciones 4
-      $scope.rating1 = 1;
-      $scope.rating2 = 1;
-      $scope.rating3 = 1;
-      $scope.rating4 = 1;
-      $scope.resultRating = 0;
       $scope.rateFunction = function(rating) {
         //alert('Rating selected - ' + rating);
       };

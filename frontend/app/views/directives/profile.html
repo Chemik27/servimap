@@ -1,0 +1,28 @@
+<div class="text-center module-main col-md-3">
+  <p class="text-center image-profile">
+    <img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt="">
+  </p>
+
+  <h2 ng-bind="user.fullName"></h2>
+  <h3 ng-bind="mainWork.name"></h3>
+  <h5 ng-bind="mainWork.description"></h5>
+
+  <div class="profile-rating">
+    <p class="text-center">
+      <span ng-repeat="star in stars"><i class="fa fa-star gold" aria-hidden="true"></i> </span>
+      <span ng-repeat="star in emptyStars"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
+    </p>
+  </div>
+
+  <div class="box-info">
+    <div class="col-md-6 blue">
+      7 trabajos concretados
+    </div>
+
+    <div class="col-md-6">
+      Hora $20
+    </div>
+  </div>
+
+  <button class="btn btn-info remark logo-color-bg">Contactar</button>
+</div >

@@ -15,9 +15,9 @@ public interface IWorkRepository extends JpaRepository<Work, Long> {
 
     public List<Work> findByIdUser(Long idUser);
 
-    public List<Work> findByCategoryIdCategory(Long idCategory);
+    public Page<Work> findByCategoryIdCategory(Long idCategory, Pageable pageable);
 
-    public List<Work> findByAddressDistrictIdDistrict(Long idDistrict);
+    public Page<Work> findByAddressDistrictIdDistrict(Long idDistrict, Pageable pageable);
 
 //    public List<Work> findByDescriptionContaining(String word);
 }

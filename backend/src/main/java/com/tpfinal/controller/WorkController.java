@@ -29,14 +29,14 @@ public class WorkController {
     //Busqueda por categoria
     @RequestMapping(method = RequestMethod.GET, value = {"/category/{idCategory}"})
     @ResponseStatus(HttpStatus.OK)
-    public List<Work> getWorksByCategory(@PathVariable Long idCategory){
+    public Page<Work> getWorksByCategory(@PathVariable Long idCategory){
         return workService.findByCategory(idCategory);
     }
 
     //Busqueda por ciudades
     @RequestMapping(method = RequestMethod.GET, value = {"/district/{idDistrict}"})
     @ResponseStatus(HttpStatus.OK)
-    public List<Work> getWorksByAddress(@PathVariable Long idDistrict){
+    public Page<Work> getWorksByAddress(@PathVariable Long idDistrict){
         return workService.findByDistrict(idDistrict);
     }
 

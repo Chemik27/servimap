@@ -36,7 +36,7 @@ angular.module('dutymap')
 
       var localidades = RegisterResources.localidades();
       $scope.localidades = localidades.query();
-
+      
 
       $scope.zonas = [];
       //$scope.zonas = {id:[],descripcion:[]};

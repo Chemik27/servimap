@@ -6,6 +6,11 @@
 }
 
 .sidebar-filter{
-    @extend .module-main;
-    background-color: #2b81af;
+    background-color: $background-blue-side;
+    color: lightgrey;
+    flex:1;
+}
+
+.mouse-pointer{
+  cursor: pointer;
 }

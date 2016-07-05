@@ -26,25 +26,11 @@ angular
         templateUrl: 'views/home.html',
         controller: 'MainCtrl'
       })
-      // TODO Agregarlo como filtro de busqueda por categoria
-      //.when('/servicio/:idCategory', {
-      //  templateUrl: 'views/service.html',
-      //  controller: 'WorkCtrl',
-      //  resolve: {categorySelected: ['$route','WorkResources', function($route, WorkResources) {
-      //    return WorkResources.query($route.current.pathParams).$promise;}]}
-      //})
-      //  TODO Agregarlo como filtro de busqueda por zona
-      //.when('/servicioAddress/:idAddress', {
-      //  templateUrl: 'views/service.html',
-      //  controller: 'AddressCtrl',
-      //  resolve: {addressSelected: ['$route','AddressResources', function($route, AddressResources) {
-      //    return AddressResources.query($route.current.pathParams).$promise;}]}
-      //})
       .when('/servicio/:serviceRequest', {
         templateUrl: 'views/works.html',
         controller: 'WorkCtrl',
         resolve: {works: ['$route','WorkResources', function($route, WorkResources) {
-          return WorkResources.query($route.current.pathParams).$promise;}]}
+          return WorkResources.get($route.current.pathParams).$promise;}]}
       })
       .when('/registro', {
         templateUrl: 'views/register.html',
@@ -74,12 +60,17 @@ angular
       .when('/politicas', {
         templateUrl: 'views/policies.html'
       })
+      .when('/calificar', {
+        templateUrl: 'views/qualify.html',
+        controller: 'QualifyUserCtrl'
+      })
       .when('/perfil/:id', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',
         resolve: {profileSelected: ['$route','ProfileResources', function($route, ProfileResources) {
             return ProfileResources.get($route.current.pathParams).$promise;}]}
       })
+
       .otherwise({
         redirectTo: '/'
       });

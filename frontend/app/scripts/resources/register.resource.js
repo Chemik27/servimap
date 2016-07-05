@@ -6,22 +6,13 @@
 angular.module('dutymap')
   .factory('RegisterResources', ['$resource',
     function RegisterResources($resource) {
-      var method1Logic = function() {
+      var obtenerLocalidades = function() {
         return $resource('api/register/dates', {});
       };
 
 
       return {
-        lala: method1Logic
+        localidades: obtenerLocalidades
       };
   }]);
 
-// angular.module('dutymap')
-//   .factory('RegisterResources', ['$resource',
-//     function RegisterResources($resource) {
-//       return $resource('api/register/dates', {},{
-//         // method: 'GET',
-//         // url: 'api/work/worksByCa xtegory/:id',
-//         // isArray : true
-//       });
-//     }]);

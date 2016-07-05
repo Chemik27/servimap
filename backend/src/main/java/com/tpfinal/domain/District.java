@@ -35,4 +35,5 @@ public class District {
     public void setName(String name) {
         this.name = name;
     }
+
 }

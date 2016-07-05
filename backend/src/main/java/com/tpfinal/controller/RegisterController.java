@@ -29,9 +29,7 @@ public class RegisterController {
 
     @RequestMapping(value="/create", method= RequestMethod.POST)
     public @ResponseBody String saveUserRestful(@RequestBody User user ){
-        String response = "{\"message\":\"Post With ngResource: The user firstname: " + user.getName() + ",email: "+ user.getEmail()+ ", lastname: " + user.getSurname()+"\"}";
-        user.setCreationDate(new Date());
-        user.setRating("0");
+        String response = "Usuario: " + user.getName() + " creado satisfactoriamente";
         userService.createUser(user);
         return response;
     }

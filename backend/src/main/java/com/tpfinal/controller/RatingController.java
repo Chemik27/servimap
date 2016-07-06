@@ -1,5 +1,7 @@
 package com.tpfinal.controller;
 
+import com.tpfinal.domain.Rating;
+import com.tpfinal.service.RatingService;
 import com.tpfinal.service.TransactionService;
 import com.tpfinal.service.UserService;
 import com.tpfinal.service.WorkService;
@@ -22,23 +24,13 @@ public class RatingController {
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(RatingController.class);
 
     @Autowired
-    UserService userService;
+    RatingService ratingService;
 
-    @Autowired
-    TransactionService transactionService;
-
-    @Autowired
-    WorkService workService;
-
-    @RequestMapping(method = RequestMethod.GET, value = "/{idUser}")
-    @ResponseStatus(HttpStatus.OK)
-    public Map<String, Object> getProfile(@PathVariable Long idUser){
-        logger.info("GET");
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("toUser", userService.findByIdUser(idUser));
-        result.put("lastTransactions", transactionService.findByToUser(idUser));
-        result.put("works", workService.findByIdUser(idUser));
-        return result;
+    @RequestMapping(value="/{idUser}", method= RequestMethod.POST)
+    public @ResponseBody String saveRating(@RequestBody Rating rating ){
+        logger.info("Guardando rating");
+        ratingService.save(rating);
+        return "Calificado";
     }
 }
 

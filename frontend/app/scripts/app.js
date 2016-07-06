@@ -62,9 +62,9 @@ angular
       })
       .when('/calificar/:id', {
         templateUrl: 'views/qualify.html',
-        controller: 'QualifyUserCtrl',
-        resolve: {profileSelected: ['$route','QualifyResources', function($route, QualifyResources) {
-          return QualifyResources.get($route.current.pathParams).$promise;}]}
+        controller: 'QualifyUserCtrl'
+        //resolve: {qualify: ['$route','QualifyResources', function($route, QualifyResources) {
+        //  return QualifyResources.get($route.current.pathParams).$promise;}]}
       })
       .when('/perfil/:id', {
         templateUrl: 'views/profile.html',

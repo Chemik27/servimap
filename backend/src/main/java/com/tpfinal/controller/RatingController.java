@@ -26,7 +26,7 @@ public class RatingController {
     @Autowired
     RatingService ratingService;
 
-    @RequestMapping(value="/{idUser}", method= RequestMethod.POST)
+    @RequestMapping(value="/create", method= RequestMethod.POST)
     public @ResponseBody String saveRating(@RequestBody Rating rating ){
         logger.info("Guardando rating");
         ratingService.save(rating);

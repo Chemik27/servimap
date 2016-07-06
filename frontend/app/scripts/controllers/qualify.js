@@ -2,8 +2,8 @@
  * Created by redbee on 01/07/16.
  */
 angular.module('dutymap')
-  .controller('QualifyUserCtrl', ['$scope','$http','QualifyResources','profileSelected',
-    function ($scope,$http,QualifyResources,profileSelected) {
+  .controller('QualifyUserCtrl', ['$scope','$http','$resource','QualifyResources',
+    function ($scope,$http,$resource,QualifyResources) {
 
       //Calificaciones 4
       $scope.rating1 = 1;
@@ -12,39 +12,26 @@ angular.module('dutymap')
       $scope.rating4 = 1;
       $scope.resultRating = 0;
 
-      $scope.profile = profileSelected;
-      $scope.toUser = profileSelected.toUser;
-      $scope.works = profileSelected.works;
-      $scope.mainWork = $scope.works[0];
+      $scope.calificar=[];
 
       console.log($scope.profile);
       console.log($scope.toUser);
 
-      self.fetchAllUsers = function(){
-        HireResources.fetchAllUsers()
-          .then(
-            function(d) {
-              self.users = d;
-            },
-            function(errResponse){
-              console.error('Error while fetching Currencies');
-            }
-          );
-      };
+    $scope.addQualify =function(){
 
-      self.createUser = function(user){
-        HireResources.createUser(user)
-          .then(
-            self.fetchAllUsers,
-            function(errResponse){
-              console.error('Error while creating User.');
-            }
-          );
-      };
+      $scope.calificar.push({ 'reliability':$scope.rating1,'performance': $scope.rating2, 'consideration': $scope.rating3, 'recommendation' : $scope.rating4 });
 
-      $scope.confirmTransaction =function(transaction){
+      var Qualify = $resource('api/qualify/create');
 
-        console.log(transaction);
+      Qualify.save({
+        'reliability':$scope.rating1,
+        'performance': $scope.rating2,
+        'consideration': $scope.rating3,
+        'recommendation' : $scope.rating4
+      }, function(response){
+        console.log(response.message);
+        $scope.message = response.message;
+      });
       };
 
       $scope.rateFunction = function(rating) {

@@ -11,14 +11,12 @@ public class Rating {
     private Long performance; //desempeño
     private Long consideration; //consideracion
     private Long recommendation; //recomendacion
-    private Integer id_providerUser; //id del proveedor
 
-    public Rating(Long reliability, Long performance, Long consideration, Long recommendation,Integer id_providerUser) {
+    public Rating(Long reliability, Long performance, Long consideration, Long recommendation) {
         this.reliability = reliability;
         this.performance = performance;
         this.consideration = consideration;
         this.recommendation = recommendation;
-        this.id_providerUser = id_providerUser;
     }
 
     public Rating() {
@@ -70,12 +68,5 @@ public class Rating {
         this.recommendation = recommendation;
     }
 
-    @Column(name = "id_providerUser")
-    public Integer getId_providerUser() {
-        return id_providerUser;
-    }
-    public void setId_providerUser(Integer id_providerUser) {
-        this.id_providerUser = id_providerUser;
-    }
 
 }

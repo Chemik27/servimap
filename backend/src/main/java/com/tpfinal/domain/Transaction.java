@@ -13,7 +13,7 @@ public class Transaction {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "id_transaction", unique = true)
-    private String idTransaction;
+    private Long idTransaction;
     private Date creationDate;
     private String comment;
     private Long toUser;
@@ -31,12 +31,14 @@ public class Transaction {
     public Transaction() {
     }
 
-
-    public String getIdTransaction() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_transaction", nullable = false, updatable = false)
+    public Long getIdTransaction() {
         return idTransaction;
     }
 
-    public void setIdTransaction(String idTransaction) {
+    public void setIdTransaction(Long idTransaction) {
         this.idTransaction = idTransaction;
     }
 

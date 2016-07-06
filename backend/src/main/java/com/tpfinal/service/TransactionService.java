@@ -19,7 +19,6 @@ public class TransactionService {
     ITransactionRepository transactionRepository;
 
     public void save(Transaction transaction){
-
         transactionRepository.save(transaction);
     }
 

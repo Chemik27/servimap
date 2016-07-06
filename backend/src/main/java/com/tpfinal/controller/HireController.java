@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,15 +43,16 @@ public class HireController {
         return result;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/{idUser}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public @ResponseBody String createTransaction(@RequestBody Transaction transaction) {
+        String response = "Respuesta desde RegisterController";
+        transaction.setCreationDate(new Date());
+        transaction.setIdState(1);
+        transaction.setFromUser(1);
+        transaction.setToUser(1);
 
-    public @ResponseBody void createTransaction(@PathVariable Long idUser, @RequestBody Transaction transaction) {
-        logger.info("POST");
-
-       transactionService.save(transaction);
-
-
+        transactionService.save(transaction);
+        return response;
     }
 
 //      UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

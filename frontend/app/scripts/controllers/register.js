@@ -31,12 +31,13 @@ angular.module('dutymap')
                     'version': "0"}, function(response){
                       console.log(response.message);
                       $scope.message = response.message;
-        });
+                    }
+                  );
       }
 
       var localidades = RegisterResources.localidades();
       $scope.localidades = localidades.query();
-      
+
 
       $scope.zonas = [];
       //$scope.zonas = {id:[],descripcion:[]};

@@ -19,7 +19,7 @@ public class TransactionService {
     ITransactionRepository transactionRepository;
 
     public void save(Transaction transaction){
-        logger.debug(JsonParser.parse(transaction));
+
         transactionRepository.save(transaction);
     }
 

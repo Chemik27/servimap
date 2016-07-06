@@ -60,6 +60,10 @@ angular
       .when('/politicas', {
         templateUrl: 'views/policies.html'
       })
+      .when('/confirm', {
+        templateUrl: 'views/confirm.html',
+        controller: 'ConfirmCtrl'
+      })
       .when('/calificar', {
         templateUrl: 'views/qualify.html',
         controller: 'QualifyUserCtrl'

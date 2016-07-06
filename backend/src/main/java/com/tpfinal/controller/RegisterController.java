@@ -1,14 +1,14 @@
 package com.tpfinal.controller;
 
 import com.tpfinal.domain.Address;
+import com.tpfinal.domain.User;
 import com.tpfinal.service.AddressService;
+import com.tpfinal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -17,11 +17,20 @@ public class RegisterController {
 
     @Autowired
     AddressService addresService;
+    @Autowired
+    UserService userService;
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value="/dates")
     public List<Address> getDatesRegister(){
         List<Address> listAddress = addresService.findAll();
         return listAddress;
+    }
+
+    @RequestMapping(value="/create", method= RequestMethod.POST)
+    public @ResponseBody String saveUserRestful(@RequestBody User user ){
+        String response = "Usuario: " + user.getName() + " creado satisfactoriamente";
+        userService.createUser(user);
+        return response;
     }
 }

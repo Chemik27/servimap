@@ -30,19 +30,18 @@ angular
         templateUrl: 'views/works.html',
         controller: 'WorkCtrl',
         resolve: {works: ['$route','WorkResources', function($route, WorkResources) {
-          return WorkResources.query($route.current.pathParams).$promise;}]}
+          return WorkResources.get($route.current.pathParams).$promise;}]}
       })
       .when('/registro', {
         templateUrl: 'views/register.html',
-        controller: 'RegisterCtrl',
-        resolve: {addresses: ['$route','RegisterResources', function($route, RegisterResources) {
-          return RegisterResources.query($route.current.pathParams).$promise;}]}
+        controller: 'RegisterCtrl'
+        // resolve: {addresses: ['$route','RegisterResources', function($route, RegisterResources) {
+        //   return RegisterResources.query($route.current.pathParams).$promise;}]}
       })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'NavigationCtrl'
       })
-
       .when('/contratar/:id', {
         templateUrl: 'views/hire.html',
         controller: 'HireCtrl',

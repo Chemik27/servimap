@@ -4,10 +4,15 @@
 'use strict';
 
 angular.module('dutymap')
-  .factory('RegisterResources', ['$resource',function RegisterResources($resource) {
-    return $resource('api/register/dates', {},{
-      // method: 'GET',
-      // url: 'api/work/worksByCategory/:id',
-      // isArray : true
-    });
+  .factory('RegisterResources', ['$resource',
+    function RegisterResources($resource) {
+      var obtenerLocalidades = function() {
+        return $resource('api/register/dates', {});
+      };
+
+
+      return {
+        localidades: obtenerLocalidades
+      };
   }]);
+

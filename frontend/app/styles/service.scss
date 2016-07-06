@@ -20,10 +20,11 @@
 .fixed {   width: 10% ;background:orange; }
 .scrollit { height:400px;  background:lightgray; }
 
-.block{
+.border-service{
   padding-top: 10px;
-  padding-bottom: 10px;
-  float: right;
+}
+
+.block{
   border-bottom: 1px solid grey;
 }
 
@@ -127,4 +128,38 @@
 
 #map{
   height:700px;
+}
+
+.top-space{
+  top: 20px;
+}
+
+.text-dutymap{
+  color: $dutymap-blue;
+}
+
+.ribbon {
+  position: absolute;
+  right: -10px; top: -10px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#79A70A 0%, green 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; right: -21px;
 }

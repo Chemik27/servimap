@@ -16,11 +16,11 @@ public class Transaction {
     private String idTransaction;
     private Date creationDate;
     private String comment;
-    private Integer toUser;
-    private Integer fromUser;
-    private Integer idState;
+    private Long toUser;
+    private Long fromUser;
+    private Long idState;
 
-    public Transaction(Date creationDate, String comment, Integer toUser, Integer fromUser, Integer idState) {
+    public Transaction(Date creationDate, String comment, Long toUser, Long fromUser, Long idState) {
         this.creationDate = creationDate;
         this.comment = comment;
         this.toUser = toUser;
@@ -59,29 +59,29 @@ public class Transaction {
     }
 
     @Column(name = "to_user")
-    public Integer getToUser() {
+    public Long getToUser() {
         return toUser;
     }
 
-    public void setToUser(Integer toUser) {
+    public void setToUser(Long toUser) {
         this.toUser = toUser;
     }
 
     @Column(name = "from_user")
-    public Integer getFromUser() {
+    public Long getFromUser() {
         return fromUser;
     }
 
-    public void setFromUser(Integer fromUser) {
+    public void setFromUser(Long fromUser) {
         this.fromUser = fromUser;
     }
 
     @Column(name = "id_state")
-    public Integer getIdState() {
+    public Long getIdState() {
         return idState;
     }
 
-    public void setIdState(Integer idState) {
+    public void setIdState(Long idState) {
         this.idState = idState;
     }
 }

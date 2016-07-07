@@ -173,7 +173,6 @@ INSERT INTO `rating` (`id_rating`, `reliability`, `performance`, `consideration`
 CREATE TABLE `transaction` (
   `id_transaction` bigint(20) NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `comment` varchar(140) NULL,
   `to_user` bigint(20) NOT NULL,
   `from_user` bigint(20) NOT NULL,
   `agreed_date` datetime NOT NULL,

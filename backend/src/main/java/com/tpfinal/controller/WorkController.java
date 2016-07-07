@@ -3,6 +3,8 @@ package com.tpfinal.controller;
 import com.tpfinal.domain.Work;
 import com.tpfinal.service.UserService;
 import com.tpfinal.service.WorkService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -19,10 +21,13 @@ public class WorkController {
     @Autowired
     UserService userService;
 
+    private static final Logger logger = LoggerFactory.getLogger(WorkController.class);
+
     //Busqueda principal por nombre
     @RequestMapping(method = RequestMethod.GET, value = "/named/{workTyped}")
     @ResponseStatus(HttpStatus.OK)
     public Page<Work> getWorks(@PathVariable String workTyped){
+        logger.info("Busqueda principal");
         return workService.findByNameContaining(workTyped);
     }
 

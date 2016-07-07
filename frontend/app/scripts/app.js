@@ -35,8 +35,6 @@ angular
       .when('/registro', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
-        // resolve: {addresses: ['$route','RegisterResources', function($route, RegisterResources) {
-        //   return RegisterResources.query($route.current.pathParams).$promise;}]}
       })
       .when('/login', {
         templateUrl: 'views/login.html',

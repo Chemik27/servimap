@@ -1,16 +1,34 @@
 package com.tpfinal.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.tpfinal.domain.User;
+import com.tpfinal.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
-    @RequestMapping("/user")
+    @Autowired
+    UserService userService;
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
+    @RequestMapping(method = RequestMethod.GET)
     public Principal user(Principal user) {
         return user;
+    }
+
+    @RequestMapping(method= RequestMethod.POST, value = "/create")
+    @ResponseStatus(HttpStatus.OK)
+    public void save(@RequestBody User user ){
+        logger.info("Creando usuario: " + user.getEmail());
+        userService.createUser(user);
     }
 
 

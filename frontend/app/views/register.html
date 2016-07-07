@@ -1,333 +1,301 @@
 <navbar-secondary></navbar-secondary>
-<script>
+    <section class="register">
+        <div class="container-fluid">
+            <div ng-hide="userRegister || userProveedor">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1 class="text-center">¿Qué estás buscando?</h1>
+                  </div>
+                </div>
+            <!-- Tipo de usuario- modal -->
+                <div class="row user-type">
+                    <div class="col-md-12">
+                        <div class="col-md-6 divider">
+                            <h2 class="text-center">Quiero contratar servicios</h2>
+                            <img class="images-register center" src="images/userr.png" alt="">
+                            <button class="btn logo-color-bg register-button center"  ng-click="tipoUsuario()">Contratar</button>
+                        </div>
+                        <div class="col-md-6">
+                            <h2 class="text-center">Quiero ofrecer mis servicios</h2>
+                            <img  class="images-register center " src="images/worker.png" alt="">
+                            <button class="btn logo-color-bg register-button center" ng-click="tipoProveedor()" >Trabajar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  var SITE_KEY = '6Lf7sCMTAAAAANRsJASdUfGu5';
+            <!--Ventana Modal Usuario -->
+            <div ng-show="userRegister">
+                <div>
+                    <div class="modal-header">
+                        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
+                        <div class="col-md-12 modal-title modal-label col-md-12">
+                        <button class="btn btn-primary btn-md col-md-1" ng-click="userRegister = false"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
+                            <div class="col-md-8 col-md-offset-1">
+                            <h4 class="modal-title modal-label"> Registro usuario</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 
-  var app = angular
-    .module('dutymap', ['noCAPTCHA'])
-    .config(['noCAPTCHAProvider',
-      function (noCaptchaProvider){
-        noCaptchaProvider.setSiteKey(SITE_KEY);
-        noCaptchaProvider.setTheme('dark');
-      }
-    ])
-    .controller('exampleController', [
-      '$scope',
-      function exampleController($scope){
-        $scope.gRecaptchaResponse = '';
+                          <!-- Formulario -->
+                          <form role="form" name="userForm"  ng-submit="saveUser()" ng-model-options="{ updateOn: 'blur' }">
+                            <h3><b>Registrate gratis!</b> <div class="small"><h4>Por favor, completa los siguientes campos.</h4></div></h3>
+                            <div class="row">
+                              <!-- Campo nombre <-->
+                              <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': userForm.firstName.$touched && userForm.firstName.$invalid, 'has-success' : userForm.firstName.$valid}"  >
+                                <span>Nombre</span>
+                                  <input type="text" name="firstName"  class="form-control input-lg" ng-minlength="2" ng-model="provider.name"  ng-pattern="onlyChar" ng-required="true" >
+                                <div class="help-block" ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched">
+                                  <p ng-message="minlength">El nombre es muy corto.</p>
+                                  <p ng-message="required">Ingrese un nombre</p>
+                                  <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
+                                </div>
+                              </div>
 
-        $scope.$watch('gRecaptchaResponse', function (){
-          $scope.expired = false;
-        });
+                              <!-- Campo apellido <-->
+                              <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': userForm.surName.$touched && userForm.surName.$invalid, 'has-success' : userForm.surName.$valid}">
+                                <span>Apellido</span>
+                                  <input type="text" name="surName" class="form-control input-lg" ng-model="provider.surname" ng-required="true" ng-pattern="onlyChar">
+                                <div class="help-block" ng-messages="userForm.surName.$error" ng-if="userForm.surName.$touched">
+                                  <p ng-message="minlength">El apellido es muy corto.</p>
+                                  <p ng-message="required">Ingrese un apellido</p>
+                                  <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Campo nombre de usuario <-->
+                            <div class="form-group" ng-class="{'has-error': userForm.userName.$touched && userForm.userName.$invalid, 'has-success' : userForm.userName.$valid} ">
+                              <span>Usuario</span>
+                              <input type="text" name="userName" class="form-control input-lg" ng-model="provider.username" ng-required="true">
+                              <div class="help-block" ng-messages="userForm.userName.$error" ng-if="userForm.userName.$touched">
+                                <p ng-message="required">Escribe el nombre de usuario</p>
+                              </div>
+                            </div>
+                            <!-- Campo email <-->
+                            <div class="form-group" ng-class="{'has-error': userForm.email.$touched &&  userForm.email.$invalid, 'has-success' : userForm.email.$valid}">
+                              <span>Email</span>
+                              <input type="email" name="email" class="form-control input-lg immediate-help" ng-model="provider.email" ng-required="true">
+                              <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">El email es incorrecto.</p>
+                            </div>
+                            <div class="row">
+                              <!-- Campo contraseña <-->
+                                <div class="col-xs-12 col-sm-6 form-group " ng-class="{'has-error': userForm.password.$touched &&  userForm.password.$invalid, 'has-success': userForm.password.$valid}">
+                                  <span>Contrase&ntilde;a</span>
+                                  <input type="password" name="password" ng-model-options="{ updateOn: 'keyup' }"  password-validation="provider.passwordConfirmation" class="form-control input-lg immediate-help" ng-model="provider.password" ng-pattern="passwordRegex"ng-required="true">
+                                  <div class="input-help">
+                                    <h4>La contraseña debe tener:</h4>
+                                    <ul>
+                                      <li ng-class="pwdValidLength">Al menos <strong>8 caracteres</strong></li>
+                                      <li ng-class="pwdHasLetter">Al menos <strong>una letra</strong></li>
+                                      <li ng-class="pwdHasNumber">Al menos <strong>un número</strong></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              <!-- Campo confirmar contraseña <-->
+                                <div class="col-xs-12 col-sm-6 form-group" ng-class="{'has-error': userForm.passwordConfirmation.$touched &&  userForm.passwordConfirmation.$invalid, 'has-success': userForm.passwordConfirmation.$valid}">
+                                  <span>Confirmar contrase&ntilde;a</span>
+                                    <input type="password" name="passwordConfirmation" id="pw1" class="form-control input-lg"   ng-model="provider.passwordConfirmation" ng-required="true">
+                                  <div class="help-block"  ng-messages="userForm.passwordConfirmation.$error" ng-if="userForm.passwordConfirmation.$touched">
+                                    <p ng-message="required">Repite la contraseña</p>
+                                    <p ng-message="noMatch">Las contraseñas no coinciden</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <!-- Checkbox terminos y condiciones <-->
+                              <div class="col-xs-12 col-sm-8 col-md-12">
+                                  <span class="button-checkbox">
+                                                <input type="checkbox" ng-model="user.accept" value="Acepto">Acepto <a href="#/terminos" target="_blank"> Términos y condiciones</a>
+                                  </span>
+                              </div>
+                            </div>
 
-        $scope.expiredCallback = function expiredCallback(){
-          $scope.expired = true;
-        };
-      }]);
+                            <div class="row">
+                              <div class="col-xs-12"><input type="submit" value="Registrarse" ng-disabled="userForm.$invalid || !user.accept" class="btn btn-primary btn-block btn-lg"></div>
+                            </div>
+                              <!--<div class="col-md-12">-->
+                                <!--<h3 class="text-center ">O registrate con <a class="btn btn-fb" href="">Facebook</a></h3>-->
+                              <!--</div>-->
 
-</script>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
 
-<section class="register">
-  <div class="container-fluid">
-    <div ng-hide="userRegister || userProveedor">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="text-center">¿Qué estás buscando?</h1>
-        </div>
-      </div>
-    <!-- Tipo de usuario- modal -->
-      <div class="row user-type">
-        <div class="col-md-12">
-          <div class="col-md-6 divider">
-            <h2 class="text-center">Quiero contratar servicios</h2>
-            <img class="images-register center" src="images/userr.png" alt="">
-            <button class="btn logo-color-bg register-button center"  ng-click="tipoUsuario()">Contratar</button>
-          </div>
-          <div class="col-md-6">
-            <h2 class="text-center">Quiero ofrecer mis servicios</h2>
-            <img  class="images-register center " src="images/worker.png" alt="">
-            <button class="btn logo-color-bg register-button center" ng-click="tipoProveedor()" >Trabajar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  <div ng-show="userRegister">
- <!--Ventana Modal Usuario -->
-    <div class=""  aria-labelledby="userModal" aria-hidden="true">
+            <!-- Ventana Modal Proveedor -->
+            <div ng-show="userProveedor">
           <div class="modal-header">
             <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
             <div class="col-md-12 modal-title modal-label col-md-12">
-            <button class="btn btn-primary btn-md col-md-1" ng-click="userRegister = false"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
+              <button class="btn btn-primary btn-md col-md-1" ng-click="userProveedor = false"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
               <div class="col-md-8 col-md-offset-1">
-              <h4 class="modal-title modal-label"> Registro usuario</h4>
+
+                <h4 class="modal-title modal-label"> Registro proveedor</h4>
               </div>
-           </div>
+            </div>
           </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 
-              <!-- Formulario -->
-              <form role="form" name="userForm"  ng-submit="registerUser(user)" ng-model-options="{ updateOn: 'blur' }">
-                <h3><b>Registrate gratis!</b> <div class="small"><h4>Por favor, completa los siguientes campos.</h4></div></h3>
-                <div class="row">
-                  <!-- Campo nombre <-->
-                  <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': userForm.firstName.$touched && userForm.firstName.$invalid, 'has-success' : userForm.firstName.$valid}"  >
-                    <span>Nombre</span>
-                      <input type="text" name="firstName"  class="form-control input-lg" ng-minlength="2" ng-model="user.firstName"  ng-pattern="onlyChar" ng-required="true" >
-                    <div class="help-block" ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched">
-                      <p ng-message="minlength">El nombre es muy corto.</p>
-                      <p ng-message="required">Ingrese un nombre</p>
-                      <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
-                    </div>
-                  </div>
+                  <!-- Formulario -->
+                  <form role="form" name="providerForm" ng-model-options="{ updateOn: 'blur' }">
+                    <h3><b>Registrate gratis!</b> <div class="small"><h4>Por favor, completa los siguientes campos.</h4></div></h3>
+                    <div class="row">
 
-                  <!-- Campo apellido <-->
-                  <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': userForm.surName.$touched && userForm.surName.$invalid, 'has-success' : userForm.surName.$valid}">
-                    <span>Apellido</span>
-                      <input type="text" name="surName" class="form-control input-lg" ng-model="user.surName" ng-required="true" ng-pattern="onlyChar">
-                    <div class="help-block" ng-messages="userForm.surName.$error" ng-if="userForm.surName.$touched">
-                      <p ng-message="minlength">El apellido es muy corto.</p>
-                      <p ng-message="required">Ingrese un apellido</p>
-                      <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Campo nombre de usuario <-->
-                <div class="form-group" ng-class="{'has-error': userForm.userName.$touched && userForm.userName.$invalid, 'has-success' : userForm.userName.$valid} ">
-                  <span>Usuario</span>
-                  <input type="text" name="userName" class="form-control input-lg" ng-model="user.userName" ng-required="true">
-                  <div class="help-block" ng-messages="userForm.userName.$error" ng-if="userForm.userName.$touched">
-                    <p ng-message="required">Escribe el nombre de usuario</p>
-                  </div>
-                </div>
-                <!-- Campo email <-->
-                <div class="form-group" ng-class="{'has-error': userForm.email.$touched &&  userForm.email.$invalid, 'has-success' : userForm.email.$valid}">
-                  <span>Email</span>
-                  <input type="email" name="email" class="form-control input-lg immediate-help" ng-model="user.email" ng-required="true">
-                  <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">El email es incorrecto.</p>
-                </div>
-                <div class="row">
-                  <!-- Campo contraseña <-->
-                    <div class="col-xs-12 col-sm-6 form-group " ng-class="{'has-error': userForm.password.$touched &&  userForm.password.$invalid, 'has-success': userForm.password.$valid}">
-                      <span>Contrase&ntilde;a</span>
-                      <input type="password" name="password" ng-model-options="{ updateOn: 'keyup' }"  password-validation="user.passwordConfirmation" class="form-control input-lg immediate-help" ng-model="user.password" ng-pattern="passwordRegex"ng-required="true">
-                      <div class="input-help">
-                        <h4>La contraseña debe tener:</h4>
-                        <ul>
-                          <li ng-class="pwdValidLength">Al menos <strong>8 caracteres</strong></li>
-                          <li ng-class="pwdHasLetter">Al menos <strong>una letra</strong></li>
-                          <li ng-class="pwdHasNumber">Al menos <strong>un número</strong></li>
-                        </ul>
+                      <!-- Campo nombre <-->
+                      <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': providerForm.firstName.$touched && providerForm.firstName.$invalid, 'has-success' : providerForm.firstName.$valid}"  >
+                        <span>Nombre</span>
+                        <input type="text" name="firstName"  class="form-control input-lg" ng-minlength="2" ng-model="provider.firstName" ng-pattern="onlyChar" ng-required="true" >
+                        <div class="help-block" ng-messages="providerForm.firstName.$error" ng-if="providerForm.firstName.$touched">
+                          <p ng-message="minlength">El nombre es muy corto.</p>
+                          <p ng-message="required">Ingrese un nombre</p>
+                          <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
+                        </div>
+                      </div>
+
+                      <!-- Campo apellido <-->
+                      <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': providerForm.surName.$touched && providerForm.surName.$invalid, 'has-success' : providerForm.surName.$valid}">
+                        <span>Apellido</span>
+                        <input type="text" name="surName" class="form-control input-lg"  ng-minlength="2" ng-model="provider.surName" tabindex="2" ng-required="true" ng-pattern="onlyChar">
+                        <div class="help-block" ng-messages="providerForm.surName.$error" ng-if="providerForm.surName.$touched">
+                          <p ng-message="minlength">El apellido es muy corto.</p>
+                          <p ng-message="required">Ingrese un apellido</p>
+                          <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
+                        </div>
                       </div>
                     </div>
-                  <!-- Campo confirmar contraseña <-->
-                    <div class="col-xs-12 col-sm-6 form-group" ng-class="{'has-error': userForm.passwordConfirmation.$touched &&  userForm.passwordConfirmation.$invalid, 'has-success': userForm.passwordConfirmation.$valid}">
-                      <span>Confirmar contrase&ntilde;a</span>
-                        <input type="password" name="passwordConfirmation" id="pw1" class="form-control input-lg"   ng-model="user.passwordConfirmation" ng-required="true">
-                      <div class="help-block"  ng-messages="userForm.passwordConfirmation.$error" ng-if="userForm.passwordConfirmation.$touched">
-                        <p ng-message="required">Repite la contraseña</p>
-                        <p ng-message="noMatch">Las contraseñas no coinciden</p>
+                    <div class="form-group" ng-class="{'has-error': providerForm.userName.$touched && providerForm.userName.$invalid, 'has-success' : providerForm.userName.$valid}">
+                      <span>Usuario:</span>
+                      <input type="text" name="userName" class="form-control input-lg" ng-model="provider.userName" ng-pattern="charAndNumbers" ng-required="true">
+                      <div class="help-block" ng-messages="providerForm.userName.$error" ng-if="providerForm.userName.$touched">
+                        <p ng-message="required">Escribe el nombre de usuario</p>
+                        <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
                       </div>
                     </div>
-                </div>
-                <no-captcha
-                  expired-callback="expiredCallback"
-                  g-recaptcha-response="gRecaptchaResponse"
-                  theme='light'></no-captcha>
 
-                <div class="row">
-                  <!-- Checkbox terminos y condiciones <-->
-                  <div class="col-xs-12 col-sm-8 col-md-12">
-                      <span class="button-checkbox">
-                                    <input type="checkbox" ng-model="user.accept" value="Acepto">Acepto <a href="#/terminos" target="_blank"> Términos y condiciones</a>
-                      </span>
-                  </div>
-                </div>
+                    <!-- Campo email <-->
+                    <div class="form-group" ng-class="{'has-error': providerForm.email.$touched &&  providerForm.email.$invalid, 'has-success' : providerForm.email.$valid}">
 
-                <div class="row">
-                  <div class="col-xs-12"><input type="submit" value="Registrarse" ng-disabled="userForm.$invalid || !user.accept" class="btn btn-primary btn-block btn-lg"></div>
-                </div>
-                  <div class="col-md-12">
-                    <h3 class="text-center ">O registrate con <a class="btn btn-fb" href="">Facebook</a></h3>
-                  </div>
+                      <input type="email" name="email" class="form-control input-lg immediate-help" ng-model="provider.email" placeholder="Email" ng-required="true">
 
-              </form>
+                      <p ng-show="providerForm.email.$invalid && !providerForm.email.$pristine" class="help-block">El email es incorrecto.</p>
+                      <div class="help-block" ng-messages="providerForm.email.$error" ng-if="providerForm.email.$touched">
+                        <p ng-message="required">Escribe el email</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <!-- Campo telefono <-->
+                      <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': providerForm.telephone.$touched && providerForm.telephone.$invalid, 'has-success' : providerForm.telephone.$valid}">
+                        <span>Telefono</span>
+                        <input type="text" name="telephone" ng-model="provider.telephone" class="form-control input-lg" ng-pattern="onlyNumbers" ng-required="true">
+                        <div class="help-block" ng-messages="providerForm.telephone.$error" ng-if="providerForm.telephone.$touched">
+                          <p ng-message="required">Teléfono requerido.</p>
+                        </div>
+
+                        <!-- Campo celular <-->
+                      </div>
+                      <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': providerForm.cellphone.$touched && providerForm.cellphone.$invalid, 'has-success' : providerForm.cellphone.$valid}">
+                        <span>Celular</span>
+                        <input type="text" name="cellphone" ng-model="provider.cellphone" class="form-control input-lg" ng-pattern="onlyNumbers" ng-required="true">
+                        <div class="help-block" ng-messages="providerForm.cellphone.$error" ng-if="providerForm.cellphone.$touched">
+                          <p ng-message="required">Celular requerido.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                     <div class="row">
+                       <!-- Campo dni -->
+                      <div class="col-xs-12 col-sm-6 form-group bg-dangerr"  ng-class="{ 'has-error': providerForm.document.$touched , 'has-success' : providerForm.document.$valid}">
+                        <span>DNI</span>
+                        <input type="text" name="document" ng-model="provider.document" class="form-control input-lg" ng-pattern="document" ng-required="true">
+                        <div class="help-block" ng-messages="providerForm.document.$error" ng-if="providerForm.document.$touched">
+                          <p ng-message="required">Documento requerido.</p>
+                          <p ng-message="pattern">Documento incorrecto.</p>
+                        </div>
+                      </div>
+
+                       <!-- Campo localidad -->
+
+                      <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': providerForm.area.$touched && providerForm.district.$invalid, 'has-success' : providerForm.district.$valid}">
+                        <span>Localidad:</span>
+                        <select class="form-control selectmenu" name="district" ng-model="provider.district" ng-required="true" ng-options="zona.name for zona in zonas track by zona.idDistrict">
+                        </select>
+                        <div class="help-block" ng-messages="providerForm.district.$error" ng-if="providerForm.district.$touched">
+                          <p ng-message="required">Localidad requerida</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Campo area de cobertura -->
+                    <div class="row">
+                      <div class="col-xs-12 form-group" ng-class="{ 'has-error': providerForm.area.$touched && providerForm.area.$invalid, 'has-success' : providerForm.area.$valid}">
+                        <!--<select class="form-control selectmenu" name="district" ng-model="provider.area" ng-required="true">-->
+                          <!--<option selected disabled class="hideoption">Localidad</option>-->
+                          <!--<option>La Matanza</option>-->
+                        <!--</select>-->
+                        <span>Elija la/las zona de cobertura:</span>
+                        <select  name="district" id="district" ng-model="provider.area" ng-required="true" class="col-md-12" multiple="true" ng-options="zona.name for zona in zonas track by zona.idDistrict">
+                        </select>
+                        <br>
+                        <div class="input-help">
+                          <h4>Agrega aquellas zonas en las que puedas desempeñar tus servicios.</h4>
+                        </div>
+                        <div class="help-block" ng-messages="providerForm.area.$error" ng-if="providerForm.area.$touched">
+                          <p ng-message="required">Area de cobertura requerida.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Campo contraseña -->
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-6 form-group " ng-class="{'has-error': providerForm.password.$touched &&  providerForm.password.$invalid, 'has-success': providerForm.password.$valid}">
+                        <span>Contrase&ntilde;a</span>
+                        <input type="password" name="password" id="pass"password-validation="provider.passwordConfirmation" class="form-control input-lg immediate-help" ng-model="provider.password"  ng-pattern="passwordRegex" ng-required="true">
+                        <div class="input-help">
+                          <h4>La contraseña debe tener:</h4>
+                          <ul>
+                            <li ng-class="pwdValidLength">Al menos <strong>8 caracteres</strong></li>
+                            <li ng-class="pwdHasLetter">Al menos <strong>una letra</strong></li>
+                            <li ng-class="pwdHasNumber">Al menos <strong>un número</strong></li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- Campo confirmar contraseña -->
+                      <div class="col-xs-12 col-sm-6 form-group" ng-class="{'has-error': providerForm.passwordConfirmation.$touched &&  providerForm.passwordConfirmation.$invalid, 'has-success': providerForm.passwordConfirmation.$valid}">
+                        <span>Confirmar Contrase&ntilde;a</span>
+                        <input type="password" name="passwordConfirmation" id="cpass" class="form-control input-lg"   ng-model="provider.passwordConfirmation"  ng-required="true">
+
+                        <div class="help-block"  ng-messages="providerForm.passwordConfirmation.$error" ng-if="providerForm.passwordConfirmation.$touched">
+                          <p ng-message="required">Repite la contraseña</p>
+                          <p ng-message="noMatch">Las contraseñas no coinciden</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Checkbox terminos y condiciones<-->
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-5 col-md-12">
+                          <span class="button-checkbox">
+                            <input type="checkbox" ng-model="provider.accept" value="Acepto">Acepto<a href="#/terminos" target="_blank">Términos y condiciones</a>
+                          </span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12"><input type="submit" value="Registrarse" ng-click="saveUser()" class="btn btn-primary btn-block btn-lg"></div>
+                      <!--<div class="col-xs-12"><input type="submit" value="Registrarse" ng-disabled="providerForm.$invalid || !provider.accept" class="btn btn-primary btn-block btn-lg"></div>-->
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-    </div>
-  </div>
-    <!-- Ventana Modal Proveedor -->
-    <div class="" id="providerModal" ria-labelledby="userModal" ng-show="userProveedor" aria-hidden="true">
-      <div class="modal-header">
-        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
-        <div class="col-md-12 modal-title modal-label col-md-12">
-          <button class="btn btn-primary btn-md col-md-1" ng-click="userProveedor = false"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
-          <div class="col-md-8 col-md-offset-1">
-
-            <h4 class="modal-title modal-label"> Registro proveedor</h4>
-          </div>
-        </div>
-      </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-
-              <!-- Formulario -->
-              <form role="form" name="providerForm"  ng-controller="RegisterCtrl" ng-model-options="{ updateOn: 'blur' }">
-                <h3><b>Registrate gratis!</b> <div class="small"><h4>Por favor, completa los siguientes campos.</h4></div></h3>
-                <div class="row">
-
-                  <!-- Campo nombre <-->
-                  <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': providerForm.firstName.$touched && providerForm.firstName.$invalid, 'has-success' : providerForm.firstName.$valid}"  >
-                    <span>Nombre</span>
-                    <input type="text" name="firstName"  class="form-control input-lg" ng-minlength="2" ng-model="provider.firstName" ng-pattern="onlyChar" ng-required="true" >
-                    <div class="help-block" ng-messages="providerForm.firstName.$error" ng-if="providerForm.firstName.$touched">
-                      <p ng-message="minlength">El nombre es muy corto.</p>
-                      <p ng-message="required">Ingrese un nombre</p>
-                      <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
-                    </div>
-                  </div>
-
-                  <!-- Campo apellido <-->
-                  <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': providerForm.surName.$touched && providerForm.surName.$invalid, 'has-success' : providerForm.surName.$valid}">
-                    <span>Apellido</span>
-                    <input type="text" name="surName" class="form-control input-lg"  ng-minlength="2" ng-model="provider.surName" tabindex="2" ng-required="true" ng-pattern="onlyChar">
-                    <div class="help-block" ng-messages="providerForm.surName.$error" ng-if="providerForm.surName.$touched">
-                      <p ng-message="minlength">El apellido es muy corto.</p>
-                      <p ng-message="required">Ingrese un apellido</p>
-                      <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group" ng-class="{'has-error': providerForm.userName.$touched && providerForm.userName.$invalid, 'has-success' : providerForm.userName.$valid}">
-                  <span>Usuario:</span>
-                  <input type="text" name="userName" class="form-control input-lg" ng-model="provider.userName" ng-pattern="charAndNumbers" ng-required="true">
-                  <div class="help-block" ng-messages="providerForm.userName.$error" ng-if="providerForm.userName.$touched">
-                    <p ng-message="required">Escribe el nombre de usuario</p>
-                    <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
-                  </div>
-                </div>
-
-                <!-- Campo email <-->
-                <div class="form-group" ng-class="{'has-error': providerForm.email.$touched &&  providerForm.email.$invalid, 'has-success' : providerForm.email.$valid}">
-
-                  <input type="email" name="email" class="form-control input-lg immediate-help" ng-model="provider.email" placeholder="Email" ng-required="true">
-
-                  <p ng-show="providerForm.email.$invalid && !providerForm.email.$pristine" class="help-block">El email es incorrecto.</p>
-                  <div class="help-block" ng-messages="providerForm.email.$error" ng-if="providerForm.email.$touched">
-                    <p ng-message="required">Escribe el email</p>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <!-- Campo telefono <-->
-                  <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': providerForm.telephone.$touched && providerForm.telephone.$invalid, 'has-success' : providerForm.telephone.$valid}">
-                    <span>Telefono</span>
-                    <input type="text" name="telephone" ng-model="provider.telephone" class="form-control input-lg" ng-pattern="onlyNumbers" ng-required="true">
-                    <div class="help-block" ng-messages="providerForm.telephone.$error" ng-if="providerForm.telephone.$touched">
-                      <p ng-message="required">Teléfono requerido.</p>
-                    </div>
-
-                    <!-- Campo celular <-->
-                  </div>
-                  <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': providerForm.cellphone.$touched && providerForm.cellphone.$invalid, 'has-success' : providerForm.cellphone.$valid}">
-                    <span>Celular</span>
-                    <input type="text" name="cellphone" ng-model="provider.cellphone" class="form-control input-lg" ng-pattern="onlyNumbers" ng-required="true">
-                    <div class="help-block" ng-messages="providerForm.cellphone.$error" ng-if="providerForm.cellphone.$touched">
-                      <p ng-message="required">Celular requerido.</p>
-                    </div>
-                  </div>
-                </div>
-
-                 <div class="row">
-                   <!-- Campo dni -->
-                  <div class="col-xs-12 col-sm-6 form-group bg-dangerr"  ng-class="{ 'has-error': providerForm.document.$touched , 'has-success' : providerForm.document.$valid}">
-                    <span>DNI</span>
-                    <input type="text" name="document" ng-model="provider.document" class="form-control input-lg" ng-pattern="document" ng-required="true">
-                    <div class="help-block" ng-messages="providerForm.document.$error" ng-if="providerForm.document.$touched">
-                      <p ng-message="required">Documento requerido.</p>
-                      <p ng-message="pattern">Documento incorrecto.</p>
-                    </div>
-                  </div>
-
-                   <!-- Campo localidad -->
-
-                  <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': providerForm.area.$touched && providerForm.district.$invalid, 'has-success' : providerForm.district.$valid}">
-                    <span>Localidad:</span>
-                    <select class="form-control selectmenu" name="district" ng-model="provider.district" ng-required="true" ng-options="zona.name for zona in zonas track by zona.idDistrict">
-                    </select>
-                    <div class="help-block" ng-messages="providerForm.district.$error" ng-if="providerForm.district.$touched">
-                      <p ng-message="required">Localidad requerida</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Campo area de cobertura -->
-                <div class="row">
-                  <div class="col-xs-12 form-group" ng-class="{ 'has-error': providerForm.area.$touched && providerForm.area.$invalid, 'has-success' : providerForm.area.$valid}">
-                    <!--<select class="form-control selectmenu" name="district" ng-model="provider.area" ng-required="true">-->
-                      <!--<option selected disabled class="hideoption">Localidad</option>-->
-                      <!--<option>La Matanza</option>-->
-                    <!--</select>-->
-                    <span>Elija la/las zona de cobertura:</span>
-                    <select  name="district" id="district" ng-model="provider.area" ng-required="true" class="col-md-12" multiple="true" ng-options="zona.name for zona in zonas track by zona.idDistrict">
-                    </select>
-                    <br>
-                    <div class="input-help">
-                      <h4>Agrega aquellas zonas en las que puedas desempeñar tus servicios.</h4>
-                    </div>
-                    <div class="help-block" ng-messages="providerForm.area.$error" ng-if="providerForm.area.$touched">
-                      <p ng-message="required">Area de cobertura requerida.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Campo contraseña -->
-                <div class="row">
-                  <div class="col-xs-12 col-sm-6 form-group " ng-class="{'has-error': providerForm.password.$touched &&  providerForm.password.$invalid, 'has-success': providerForm.password.$valid}">
-                    <span>Contrase&ntilde;a</span>
-                    <input type="password" name="password" id="pass"password-validation="provider.passwordConfirmation" class="form-control input-lg immediate-help" ng-model="provider.password"  ng-pattern="passwordRegex" ng-required="true">
-                    <div class="input-help">
-                      <h4>La contraseña debe tener:</h4>
-                      <ul>
-                        <li ng-class="pwdValidLength">Al menos <strong>8 caracteres</strong></li>
-                        <li ng-class="pwdHasLetter">Al menos <strong>una letra</strong></li>
-                        <li ng-class="pwdHasNumber">Al menos <strong>un número</strong></li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <!-- Campo confirmar contraseña -->
-                  <div class="col-xs-12 col-sm-6 form-group" ng-class="{'has-error': providerForm.passwordConfirmation.$touched &&  providerForm.passwordConfirmation.$invalid, 'has-success': providerForm.passwordConfirmation.$valid}">
-                    <span>Confirmar Contrase&ntilde;a</span>
-                    <input type="password" name="passwordConfirmation" id="cpass" class="form-control input-lg"   ng-model="provider.passwordConfirmation"  ng-required="true">
-
-                    <div class="help-block"  ng-messages="providerForm.passwordConfirmation.$error" ng-if="providerForm.passwordConfirmation.$touched">
-                      <p ng-message="required">Repite la contraseña</p>
-                      <p ng-message="noMatch">Las contraseñas no coinciden</p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Checkbox terminos y condiciones<-->
-                <div class="row">
-                  <div class="col-xs-12 col-sm-5 col-md-12">
-                      <span class="button-checkbox">
-                        <input type="checkbox" ng-model="provider.accept" value="Acepto">Acepto<a href="#/terminos" target="_blank">Términos y condiciones</a>
-                      </span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12"><input type="submit" value="Registrarse" ng-click="saveUser()" class="btn btn-primary btn-block btn-lg"></div>
-                  <!--<div class="col-xs-12"><input type="submit" value="Registrarse" ng-disabled="providerForm.$invalid || !provider.accept" class="btn btn-primary btn-block btn-lg"></div>-->
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-</section>
-
+    </section>
 <footer-dutymap></footer-dutymap>

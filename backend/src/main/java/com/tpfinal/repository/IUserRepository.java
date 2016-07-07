@@ -8,8 +8,6 @@ public interface IUserRepository extends CrudRepository<User, Long> {
 
     public User findByIdUser(Long idUser);
 
-    public User save(User user);
-
     public User findByEmail(String email);
 
 }

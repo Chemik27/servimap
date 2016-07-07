@@ -44,15 +44,17 @@ public class HireController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public @ResponseBody String createTransaction(@RequestBody Transaction transaction) {
-        String response = "Respuesta desde RegisterController";
+    public void createTransaction(@RequestBody Transaction transaction) {
+
         transaction.setCreationDate(new Date());
-        transaction.setIdState(1);
-        transaction.setFromUser(1);
-        transaction.setToUser(1);
+        transaction.setToUser(transaction.getToUser());
+        transaction.setFromUser(transaction.getFromUser());
+        transaction.setAgreedDate(transaction.getAgreedDate());
+        transaction.setDone(transaction.getDone());
+        transaction.setComment(transaction.getComment());
 
         transactionService.save(transaction);
-        return response;
+
     }
 
 //      UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

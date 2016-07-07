@@ -2,15 +2,19 @@
  * Created by nico on 30/06/16.
  */
 angular.module('dutymap')
-  .controller('HireCtrl', ['$scope', '$http' ,'$resource',
-    function ($scope, $http, $resource) {
+  .controller('HireCtrl', ['$scope', '$http' ,'$resource','profileSelected','$rootScope','NotificationService','HireResources',
+    function ($scope, $http, $resource, profileSelected,$rootScope,NotificationService,HireResources) {
 
-      // $scope.today = new Date();
-      // $scope.profile = profileSelected;
-      // $scope.toUser = profileSelected.toUser;
-      // $scope.works = profileSelected.works;
-      // $scope.mainWork = $scope.works[0];
+       $scope.profile = profileSelected;
+       $scope.toUser = profileSelected.toUser;
+       $scope.transactions = profileSelected.lastTransactions;
+       $scope.works = profileSelected.works;
+       $scope.mainWork = $scope.works[0];
 
+      $scope.today=new Date();
+      // create a new time variable with the current date
+      $scope.time = $scope.transactions.agreedDate;
+      $scope.confirm=false;
 
       $scope.transaction=[
 
@@ -18,24 +22,16 @@ angular.module('dutymap')
 
       $scope.confirmTransaction =function(){
 
-        var Transaction = $resource('api/hire/create');
-
-
-        Transaction.save({
-          'comment': "asd"
+        HireResources.save({
+          'comment': '',
+          'toUser':$scope.toUser.idUser,
+          'fromUser': $rootScope.idUser,
+          'agreedDate': $scope.transaction.agreedDate,
+          'done':false
         }, function(response){
-          console.log(response.message);
-          $scope.message = response.message;
+          $scope.confirm=true;
+        },function(error){
+          NotificationService.error("Se ha producido un error en la transacción, intentá de nuevo o contactanos")
         });
       };
-
-      // HireResources.save(transaction, function(response){
-      //    NotificationService.success("salio ok")
-      //   }, function(error){
-      //    NotificationService.error(error)
-      //
-      // });
-
-
-
     }]);

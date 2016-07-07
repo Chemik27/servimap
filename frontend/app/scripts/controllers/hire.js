@@ -12,7 +12,6 @@ angular.module('dutymap')
        $scope.mainWork = $scope.works[0];
 
       $scope.today=new Date();
-      // create a new time variable with the current date
       $scope.time = $scope.transactions.agreedDate;
       $scope.confirm=false;
 
@@ -23,7 +22,6 @@ angular.module('dutymap')
       $scope.confirmTransaction =function(){
 
         HireResources.save({
-          'comment': '',
           'toUser':$scope.toUser.idUser,
           'fromUser': $rootScope.idUser,
           'agreedDate': $scope.transaction.agreedDate,

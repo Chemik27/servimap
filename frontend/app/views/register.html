@@ -1,5 +1,4 @@
 <navbar-secondary></navbar-secondary>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 <script>
 
   var SITE_KEY = '6Lf7sCMTAAAAANRsJASdUfGu5';
@@ -176,7 +175,7 @@
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 
               <!-- Formulario -->
-              <form role="form" name="providerForm"  ng-submit="registerProvider(provider) " ng-model-options="{ updateOn: 'blur' }">
+              <form role="form" name="providerForm"  ng-controller="RegisterCtrl" ng-model-options="{ updateOn: 'blur' }">
                 <h3><b>Registrate gratis!</b> <div class="small"><h4>Por favor, completa los siguientes campos.</h4></div></h3>
                 <div class="row">
 
@@ -213,8 +212,9 @@
 
                 <!-- Campo email <-->
                 <div class="form-group" ng-class="{'has-error': providerForm.email.$touched &&  providerForm.email.$invalid, 'has-success' : providerForm.email.$valid}">
-                  <span>Email</span>
-                  <input type="email" name="email" class="form-control input-lg immediate-help" ng-model="user.email" ng-required="true">
+
+                  <input type="email" name="email" class="form-control input-lg immediate-help" ng-model="provider.email" placeholder="Email" ng-required="true">
+
                   <p ng-show="providerForm.email.$invalid && !providerForm.email.$pristine" class="help-block">El email es incorrecto.</p>
                   <div class="help-block" ng-messages="providerForm.email.$error" ng-if="providerForm.email.$touched">
                     <p ng-message="required">Escribe el email</p>
@@ -287,7 +287,7 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-6 form-group " ng-class="{'has-error': providerForm.password.$touched &&  providerForm.password.$invalid, 'has-success': providerForm.password.$valid}">
                     <span>Contrase&ntilde;a</span>
-                    <input type="password" name="password" id="pass"  ng-model-options="{ updateOn: 'keyup' }"  password-validation="provider.passwordConfirmation" class="form-control input-lg immediate-help" ng-model="provider.password"  ng-pattern="passwordRegex" ng-required="true">
+                    <input type="password" name="password" id="pass"password-validation="provider.passwordConfirmation" class="form-control input-lg immediate-help" ng-model="provider.password"  ng-pattern="passwordRegex" ng-required="true">
                     <div class="input-help">
                       <h4>La contraseña debe tener:</h4>
                       <ul>
@@ -319,7 +319,8 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-12"><input type="submit" value="Registrarse" ng-disabled="providerForm.$invalid || !provider.accept" class="btn btn-primary btn-block btn-lg"></div>
+                  <div class="col-xs-12"><input type="submit" value="Registrarse" ng-click="saveUser()" class="btn btn-primary btn-block btn-lg"></div>
+                  <!--<div class="col-xs-12"><input type="submit" value="Registrarse" ng-disabled="providerForm.$invalid || !provider.accept" class="btn btn-primary btn-block btn-lg"></div>-->
                 </div>
               </form>
             </div>

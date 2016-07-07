@@ -1,10 +1,11 @@
 package com.tpfinal.controller;
 
+import org.springframework.web.bind.annotation.RestController;
 
-import com.sun.xml.internal.ws.api.message.Packet;
+
+
 import com.tpfinal.domain.Rating;
-import com.tpfinal.repository.IQualifyRepository;
-import com.tpfinal.service.QualifyService;
+import com.tpfinal.service.RatingService;
 import com.tpfinal.service.UserService;
 import com.tpfinal.service.WorkService;
 import org.slf4j.LoggerFactory;
@@ -27,18 +28,13 @@ public class RatingController {
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(RatingController.class);
 
     @Autowired
-    QualifyService qualifyService;
+    RatingService ratingService;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody
-    void addQualify(@RequestBody Rating rating){
-        try {
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
+    @RequestMapping(value="/create", method= RequestMethod.POST)
+    public @ResponseBody String saveRating(@RequestBody Rating rating ){
+        logger.info("Guardando rating");
+        ratingService.save(rating);
+        return "Calificado";
     }
 }
 

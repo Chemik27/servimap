@@ -46,7 +46,6 @@ public class Rating {
     public Long getPerformance() {
         return performance;
     }
-
     public void setPerformance(Long performance) {
         this.performance = performance;
     }
@@ -68,4 +67,6 @@ public class Rating {
     public void setRecommendation(Long recommendation) {
         this.recommendation = recommendation;
     }
+
+
 }

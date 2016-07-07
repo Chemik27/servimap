@@ -13,13 +13,13 @@ public class User extends BaseEntity {
     private Long dni;
     private String email;
     private String phone;
-    private Rating rating;
+    private String rating;;
     private Long enabled;
 
     //Transient values
     private String fullName;
 
-    public User(Long idUser, String name, String surname, String password, Long dni, String email, String phone, Rating rating, Long enabled) {
+    public User(Long idUser, String name, String surname, String password, Long dni, String email, String phone, String rating, Long enabled) {
         this.idUser = idUser;
         this.name = name;
         this.surname = surname;
@@ -99,15 +99,23 @@ public class User extends BaseEntity {
         this.phone = phone;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_rating", nullable = false)
-    public Rating getRating() {
-        return rating;
+    @Column(name = "id_rating")
+    public String getRating() {
+        return phone;
     }
 
-    public void setRating(Rating rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id_rating", nullable = false)
+//    public Rating getRating() {
+//        return rating;
+//    }
+//
+//    public void setRating(Rating rating) {
+//        this.rating = rating;
+//    }
 
     @Column(name = "enabled")
     public Long getEnabled() {

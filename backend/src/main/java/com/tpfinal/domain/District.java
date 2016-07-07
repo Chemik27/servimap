@@ -8,11 +8,9 @@ public class District {
 
     private Long idDistrict;
     private String name;
-    private Long postalCode;
 
-    public District(String name, Long postalCode) {
+    public District(String name) {
         this.name = name;
-        this.postalCode = postalCode;
     }
 
     public District() {
@@ -38,12 +36,4 @@ public class District {
         this.name = name;
     }
 
-    @Column(name="postal_code")
-    public Long getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(Long postalCode) {
-        this.postalCode = postalCode;
-    }
 }

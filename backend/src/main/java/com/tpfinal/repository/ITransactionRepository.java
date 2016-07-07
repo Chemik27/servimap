@@ -8,4 +8,5 @@ import java.util.List;
 public interface ITransactionRepository extends JpaRepository<Transaction, Long> {
 
     public List<Transaction> findTop10ByToUserOrderByCreationDateDesc(Long idUser);
+    public Transaction save(Transaction transaction);
 }

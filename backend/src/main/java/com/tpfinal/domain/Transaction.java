@@ -1,7 +1,5 @@
 package com.tpfinal.domain;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,33 +8,37 @@ import java.util.Date;
 public class Transaction {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id_transaction", unique = true)
-    private String idTransaction;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_transaction", nullable = false, updatable = false)
+
+    private Integer idTransaction;
     private Date creationDate;
     private String comment;
     private Long toUser;
     private Long fromUser;
-    private Long idState;
+    private Date agreedDate;
+    private Boolean done;
 
-    public Transaction(Date creationDate, String comment, Long toUser, Long fromUser, Long idState) {
+    public Transaction(Date creationDate, String comment, Long toUser, Long fromUser,Date agreedDate) {
         this.creationDate = creationDate;
         this.comment = comment;
         this.toUser = toUser;
         this.fromUser = fromUser;
-        this.idState = idState;
+        this.agreedDate= agreedDate;
+        this.done= done;
     }
 
     public Transaction() {
     }
 
-
-    public String getIdTransaction() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_transaction", nullable = false, updatable = false)
+    public Integer getIdTransaction() {
         return idTransaction;
     }
 
-    public void setIdTransaction(String idTransaction) {
+    public void setIdTransaction(Integer idTransaction) {
         this.idTransaction = idTransaction;
     }
 
@@ -76,12 +78,21 @@ public class Transaction {
         this.fromUser = fromUser;
     }
 
-    @Column(name = "id_state")
-    public Long getIdState() {
-        return idState;
+    @Column(name="agreed_date")
+    public Date getAgreedDate() {
+        return agreedDate;
     }
 
-    public void setIdState(Long idState) {
-        this.idState = idState;
+    public void setAgreedDate(Date agreedDate) {
+        this.agreedDate = agreedDate;
+    }
+
+    @Column(name="done")
+    public Boolean getDone() {
+        return done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
     }
 }

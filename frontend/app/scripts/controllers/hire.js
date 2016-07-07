@@ -2,46 +2,36 @@
  * Created by nico on 30/06/16.
  */
 angular.module('dutymap')
-  .controller('HireCtrl', ['$scope', '$http' ,'HireResources','profileSelected',
-    function ($scope, $http, HireResources, profileSelected) {
+  .controller('HireCtrl', ['$scope', '$http' ,'$resource','profileSelected','$rootScope','NotificationService','HireResources',
+    function ($scope, $http, $resource, profileSelected,$rootScope,NotificationService,HireResources) {
 
-      $scope.today = new Date();
-      var self = this;
-      self.transaction={id:null,toUser:'',fromUser:'',agreedDate:''};
-      self.transactions=[];
+       $scope.profile = profileSelected;
+       $scope.toUser = profileSelected.toUser;
+       $scope.transactions = profileSelected.lastTransactions;
+       $scope.works = profileSelected.works;
+       $scope.mainWork = $scope.works[0];
 
-      $scope.profile = profileSelected;
-      $scope.toUser = profileSelected.toUser;
-      $scope.works = profileSelected.works;
-      $scope.mainWork = $scope.works[0];
+      $scope.today=new Date();
+      // create a new time variable with the current date
+      $scope.time = $scope.transactions.agreedDate;
+      $scope.confirm=false;
 
-      console.log($scope.profile);
+      $scope.transaction=[
 
-      self.fetchAllUsers = function(){
-        HireResources.fetchAllUsers()
-          .then(
-            function(d) {
-              self.users = d;
-            },
-            function(errResponse){
-              console.error('Error while fetching Currencies');
-            }
-          );
+      ];
+
+      $scope.confirmTransaction =function(){
+
+        HireResources.save({
+          'comment': '',
+          'toUser':$scope.toUser.idUser,
+          'fromUser': $rootScope.idUser,
+          'agreedDate': $scope.transaction.agreedDate,
+          'done':false
+        }, function(response){
+          $scope.confirm=true;
+        },function(error){
+          NotificationService.error("Se ha producido un error en la transacción, intentá de nuevo o contactanos")
+        });
       };
-
-      self.createUser = function(user){
-        HireResources.createUser(user)
-          .then(
-            self.fetchAllUsers,
-            function(errResponse){
-              console.error('Error while creating User.');
-            }
-          );
-      };
-
-      $scope.confirmTransaction =function(transaction){
-
-        console.log(transaction);
-      };
-
     }]);

@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMessages',
-    'ngMaterial'
+    'ngMaterial',
+    'angularMoment'
 
   ])
   .config(function ($routeProvider) {

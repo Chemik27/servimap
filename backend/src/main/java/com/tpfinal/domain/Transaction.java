@@ -13,15 +13,13 @@ public class Transaction {
 
     private Integer idTransaction;
     private Date creationDate;
-    private String comment;
     private Long toUser;
     private Long fromUser;
     private Date agreedDate;
     private Boolean done;
 
-    public Transaction(Date creationDate, String comment, Long toUser, Long fromUser,Date agreedDate) {
+    public Transaction(Date creationDate, Long toUser, Long fromUser,Date agreedDate) {
         this.creationDate = creationDate;
-        this.comment = comment;
         this.toUser = toUser;
         this.fromUser = fromUser;
         this.agreedDate= agreedDate;
@@ -49,15 +47,6 @@ public class Transaction {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
-    }
-
-    @Column(name = "comment")
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     @Column(name = "to_user")

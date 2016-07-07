@@ -51,12 +51,9 @@ public class HireController {
         transaction.setFromUser(transaction.getFromUser());
         transaction.setAgreedDate(transaction.getAgreedDate());
         transaction.setDone(transaction.getDone());
-        transaction.setComment(transaction.getComment());
 
         transactionService.save(transaction);
 
     }
 
-//      UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        String name= user.getUsername();
 }

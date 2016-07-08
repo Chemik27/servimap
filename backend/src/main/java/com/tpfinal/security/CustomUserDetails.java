@@ -19,7 +19,7 @@ public class CustomUserDetails extends User implements UserDetails {
                 user.getName(),
                 user.getSurname(),
                 user.getPassword(),
-                user.getDni(),
+                user.getType(),
                 user.getEmail(),
                 user.getPhone(),
                 user.getRating(),

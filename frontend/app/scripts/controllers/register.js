@@ -18,11 +18,13 @@ angular.module('dutymap')
         $scope.saveUser = function(){
             var user = {'name':$scope.provider.name,
                         'surname': $scope.provider.surname,
-                        //'username': $scope.provider.username,
+                        'username': $scope.provider.username,
                         'email': $scope.provider.email,
                         'phone': $scope.provider.telephone,
-                        'dni': $scope.provider.document,
-                        'password': $scope.provider.password};
+                        'street': $scope.provider.street,
+                        'number': $scope.provider.number,
+                        'password': $scope.provider.password,
+                        'type': $scope.userRegister ? 'comprador' : 'proveedor'};
 
             UserResources.save(user, function(){
                 NotificationService.success('Se ha registrado correctamente. Inicie sesión.');
@@ -32,7 +34,21 @@ angular.module('dutymap')
             });
         };
 
-        $scope.zonas = [{idDistrict: 1, name: "asd"}];
+        $scope.zonas = [{id:1 ,name: '20 de Junio'},
+          {id:2 ,name: 'Aldo Bonzi'},
+          {id:3 ,name: 'Ciudad Evita'},
+          {id:4 ,name: 'González Catán'},
+          {id:5 ,name: 'Gregorio de Laferrere'},
+          {id:6 ,name: 'Isidro Casanova'},
+          {id:7 ,name: 'La Tablada'},
+          {id:8 ,name: 'Lomas del Mirador'},
+          {id:9 ,name: 'Rafael Castillo'},
+          {id:10 ,name: 'Ramos Mejía'},
+          {id:11 ,name: 'San Justo'},
+          {id:12 ,name: 'Tapiales'},
+          {id:13 ,name: 'Villa Luzuriaga'},
+          {id:14 ,name: 'Villa Madero'},
+          {id:15 ,name: 'Virrey del Pino'}];
 
         $scope.userType = function(type) {
             $scope.filter = type;
@@ -55,6 +71,11 @@ angular.module('dutymap')
             $scope.userRegister=false;
             $scope.userProveedor=true;
         };
+
+        $scope.back = function(){
+          $scope.userRegister=false;
+          $scope.userProveedor=false;
+        }
     }]);
 
 

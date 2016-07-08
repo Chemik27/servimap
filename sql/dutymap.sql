@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-06-2016 a las 04:03:50
+-- Tiempo de generación: 08-07-2016 a las 01:59:04
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 7.0.1
 
@@ -42,28 +42,27 @@ CREATE TABLE `address` (
 -- Volcado de datos para la tabla `address`
 --
 
-INSERT INTO `address` (`id_address`, `street`, `number`, `latitude`, `length`, `id_district`) VALUES
-(1, 'Arieta', 123, NULL, NULL, 1),
-(2, 'Rivadavia', 2014, NULL, NULL, 2),
-(3, 'French', 3254, NULL, NULL, 3),
-(4, 'Moreno', 1205, NULL, NULL, 4),
-(5, 'Colombia', 758, NULL, NULL,5),
-(6, 'Sarmiento', 546, NULL, NULL, 6),
-(7, '9 de julio', 200, NULL, NULL, 7),
-(8, 'Machado', 1354, NULL, NULL, 8),
-(9, 'Larrea', 354, NULL, NULL, 9),
-(10, 'Balbin', 789, NULL, NULL, 10),
-(11, 'Barcelona', 468, NULL, NULL, 11),
-(12, 'Castelli', 648, NULL, NULL, 12),
-(13, 'Cisneros', 1002, NULL, NULL, 13),
-(14, 'Rojas', 1548, NULL, NULL, 14),
-(15, 'Italia', 1987, NULL, NULL, 15),
-(16, 'Rosas', 2145, NULL, NULL, 16),
-(17, 'Salcedo', 1254, NULL, NULL, 1),
-(18, 'Uruguay', 2546, NULL, NULL, 2),
-(19, 'Peron', 3245, NULL, NULL, 3),
-(20, 'Illia', 123, NULL, NULL, 4);
-
+INSERT INTO `address` (`id_address`, `street`, `number`, `postal_code`, `latitude`, `length`, `id_district`) VALUES
+(1, 'Arieta', 123, 0, NULL, NULL, 1),
+(2, 'Rivadavia', 2014, 0, NULL, NULL, 2),
+(3, 'French', 3254, 0, NULL, NULL, 3),
+(4, 'Moreno', 1205, 0, NULL, NULL, 4),
+(5, 'Colombia', 758, 0, NULL, NULL, 5),
+(6, 'Sarmiento', 546, 0, NULL, NULL, 6),
+(7, '9 de julio', 200, 0, NULL, NULL, 7),
+(8, 'Machado', 1354, 0, NULL, NULL, 8),
+(9, 'Larrea', 354, 0, NULL, NULL, 9),
+(10, 'Balbin', 789, 0, NULL, NULL, 10),
+(11, 'Barcelona', 468, 0, NULL, NULL, 11),
+(12, 'Castelli', 648, 0, NULL, NULL, 12),
+(13, 'Cisneros', 1002, 0, NULL, NULL, 13),
+(14, 'Rojas', 1548, 0, NULL, NULL, 14),
+(15, 'Italia', 1987, 0, NULL, NULL, 15),
+(16, 'Rosas', 2145, 0, NULL, NULL, 16),
+(17, 'Salcedo', 1254, 0, NULL, NULL, 1),
+(18, 'Uruguay', 2546, 0, NULL, NULL, 2),
+(19, 'Peron', 3245, 0, NULL, NULL, 3),
+(20, 'Illia', 123, 0, NULL, NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -162,23 +161,24 @@ INSERT INTO `rating` (`id_rating`, `reliability`, `performance`, `consideration`
 (17, 2, 1, 2, 3),
 (18, 4, 4, 3, 5),
 (19, 3, 2, 4, 3),
-(20, 4, 5, 5, 5);
-
-
+(20, 4, 5, 5, 5),
+(21, 0, 0, 0, 0),
+(22, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Volcado de datos para la tabla `transaction`
+-- Estructura de tabla para la tabla `transaction`
+--
+
 CREATE TABLE `transaction` (
   `id_transaction` bigint(20) NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `to_user` bigint(20) NOT NULL,
   `from_user` bigint(20) NOT NULL,
   `agreed_date` datetime NOT NULL,
-  `done` BIT NOT NULL
+  `done` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
---
 
 -- --------------------------------------------------------
 
@@ -191,10 +191,10 @@ CREATE TABLE `user` (
   `name` varchar(35) NOT NULL,
   `surname` varchar(35) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `dni` bigint(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` varchar(35) NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `type` varchar(35) NOT NULL,
   `id_rating` bigint(20) NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_date` datetime DEFAULT NULL,
@@ -206,46 +206,29 @@ CREATE TABLE `user` (
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id_user`, `name`, `surname`, `password`, `dni`, `email`, `phone`, `enabled`, `id_rating`, `creation_date`, `update_date`, `deleted_date`, `version`) VALUES
-(1, 'Jose', 'Perez', '$2a$06$a68MhcwRoKXCQ7idkXxF8usm7MLrTB8/Z4Ih6c5bzNfC0L0nLQz5i', 33333333, 'admin@dutymap.com', '1511112222', 1, 1, '2016-05-08 15:09:32', NULL, NULL, 0),
-
-(2, 'Matías', 'Lopez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 12345678, 'prueba@prueba.com', '1143214321', 1, 2, '2016-05-08 19:58:31', NULL, NULL, 0),
-
-(3, 'Karina', 'Rodriguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 38215487, 'prueba2@gmail.com', '1143214321', 1, 3, '2016-05-04 20:58:31', NULL, NULL, 0),
-
-(4, 'Jonathan', 'Armuren', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 38798785, 'prueba3@gmail.com', '1143214321', 1, 4, '2016-02-08 21:58:31', NULL, NULL, 0),
-
-(5, 'Maxi', 'Citrinsky', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 36487965, 'prueba4@gmail.com', '1143214321', 1, 5, '2016-04-10 22:58:31', NULL, NULL, 0),
-
-(6, 'Nicolás', 'Lopez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 37897548, 'prueba5@gmail.com', '1143214321', 1, 6, '2016-06-03 18:30:31', NULL, NULL, 0),
-
-(7, 'Laura', 'Sanchez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 38795236, 'prueba6@gmail.com', '1143214321', 1, 7, '2015-02-08 20:15:31', NULL, NULL, 0),
-
-(8, 'Romina', 'Raso', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 15478965, 'prueba7@gmail.com', '1143214321', 1, 8, '2015-09-01 15:58:31', NULL, NULL, 0),
-
-(9, 'Paula', 'Cinti', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 20354879, 'prueba8@gmail.com', '1143214321', 1, 9, '2016-09-05 18:52:31', NULL, NULL, 0),
-
-(10, 'Facundo', 'Fernandez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 17987564, 'prueba9@gmail.com', '1143214321', 1, 10, '2015-09-01 14:18:12', NULL, NULL, 0),
-
-(11, 'Franco', 'Campos', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 30215654, 'prueba10@gmail.com', '1143214321', 1, 11, '2016-03-06 19:58:31', NULL, NULL, 0),
-
-(12, 'Julieta', 'Medici', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 35487123, 'prueba11@gmail.com', '1143214321', 1, 12, '2016-04-02 16:58:31', NULL, NULL, 0),
-
-(13, 'Ivana', 'Salinas', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 35458654, 'prueba12@gmail.com', '1143214321', 1, 13, '2016-09-09 21:58:31', NULL, NULL, 0),
-
-(14, 'Lucio', 'Barraza', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 35487456, 'prueba13@gmail.com', '1143214321', 1, 14, '2016-02-01 17:58:31', NULL, NULL, 0),
-
-(15, 'Catalina', 'Dominguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 36487528, 'prueba14@gmail.com', '1143214321', 1, 15, '2016-02-04 19:58:31', NULL, NULL, 0),
-
-(16, 'Santiago', 'Rodriguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 36987456, 'prueba15@gmail.com', '1143214321', 1, 16, '2016-05-06 19:58:31', NULL, NULL, 0),
-
-(17, 'Romina', 'Laureano', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 34879548, 'prueba16@gmail.com', '1143214321', 1, 17, '2016-05-06 19:58:31', NULL, NULL, 0),
-
-(18, 'Laura', 'Gamberini', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 37987546, 'prueba17@gmail.com', '1143214321', 1, 18, '2016-05-06 19:58:31', NULL, NULL, 0),
-
-(19, 'Matias', 'Dominguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 38987546, 'prueba18@gmail.com', '1143214321', 1, 19, '2016-05-06 19:58:31', NULL, NULL, 0),
-
-(20, 'Lucio', 'Santillan', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 34879523, 'prueba19@gmail.com', '1143214321', 1, 20, '2016-05-06 19:58:31', NULL, NULL, 0);
+INSERT INTO `user` (`id_user`, `name`, `surname`, `password`, `email`, `phone`, `enabled`, `type`, `id_rating`, `creation_date`, `update_date`, `deleted_date`, `version`) VALUES
+(1, 'Jose', 'Perez', '$2a$06$a68MhcwRoKXCQ7idkXxF8usm7MLrTB8/Z4Ih6c5bzNfC0L0nLQz5i', 'admin@dutymap.com', '1511112222', 1, 'proveedor', 1, '2016-05-08 15:09:32', NULL, NULL, 0),
+(2, 'Matías', 'Lopez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba@prueba.com', '1143214321', 1, 'proveedor', 2, '2016-05-08 19:58:31', NULL, NULL, 0),
+(3, 'Karina', 'Rodriguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba2@gmail.com', '1143214321', 1, 'proveedor', 3, '2016-05-04 20:58:31', NULL, NULL, 0),
+(4, 'Jonathan', 'Armuren', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba3@gmail.com', '1143214321', 1, 'proveedor', 4, '2016-02-08 21:58:31', NULL, NULL, 0),
+(5, 'Maxi', 'Citrinsky', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba4@gmail.com', '1143214321', 1, 'proveedor', 5, '2016-04-10 22:58:31', NULL, NULL, 0),
+(6, 'Nicolás', 'Lopez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba5@gmail.com', '1143214321', 1, 'proveedor', 6, '2016-06-03 18:30:31', NULL, NULL, 0),
+(7, 'Laura', 'Sanchez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba6@gmail.com', '1143214321', 1, 'proveedor', 7, '2015-02-08 20:15:31', NULL, NULL, 0),
+(8, 'Romina', 'Raso', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba7@gmail.com', '1143214321', 1, 'proveedor', 8, '2015-09-01 15:58:31', NULL, NULL, 0),
+(9, 'Paula', 'Cinti', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba8@gmail.com', '1143214321', 1, 'proveedor', 9, '2016-09-05 18:52:31', NULL, NULL, 0),
+(10, 'Facundo', 'Fernandez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba9@gmail.com', '1143214321', 1, 'proveedor', 10, '2015-09-01 14:18:12', NULL, NULL, 0),
+(11, 'Franco', 'Campos', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba10@gmail.com', '1143214321', 1, 'proveedor', 11, '2016-03-06 19:58:31', NULL, NULL, 0),
+(12, 'Julieta', 'Medici', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba11@gmail.com', '1143214321', 1, 'proveedor', 12, '2016-04-02 16:58:31', NULL, NULL, 0),
+(13, 'Ivana', 'Salinas', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba12@gmail.com', '1143214321', 1, 'proveedor', 13, '2016-09-09 21:58:31', NULL, NULL, 0),
+(14, 'Lucio', 'Barraza', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba13@gmail.com', '1143214321', 1, 'proveedor', 14, '2016-02-01 17:58:31', NULL, NULL, 0),
+(15, 'Catalina', 'Dominguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba14@gmail.com', '1143214321', 1, 'proveedor', 15, '2016-02-04 19:58:31', NULL, NULL, 0),
+(16, 'Santiago', 'Rodriguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba15@gmail.com', '1143214321', 1, 'proveedor', 16, '2016-05-06 19:58:31', NULL, NULL, 0),
+(17, 'Romina', 'Laureano', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba16@gmail.com', '1143214321', 1, 'proveedor', 17, '2016-05-06 19:58:31', NULL, NULL, 0),
+(18, 'Laura', 'Gamberini', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba17@gmail.com', '1143214321', 1, 'comprador', 18, '2016-05-06 19:58:31', NULL, NULL, 0),
+(19, 'Matias', 'Dominguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba18@gmail.com', '1143214321', 1, 'comprador', 19, '2016-05-06 19:58:31', NULL, NULL, 0),
+(20, 'Lucio', 'Santillan', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba19@gmail.com', '1143214321', 1, 'comprador', 20, '2016-05-06 19:58:31', NULL, NULL, 0),
+(21, 'normal', 'normal', '$2a$10$WPTLrRM3KDqmOpHi.oeneeNM0XHIDrzYQyPrEQeI14iumbkle1xIm', 'normal@normal.com', '1144444444', 1, 'comprador', 21, '2016-07-07 20:56:41', NULL, NULL, 0),
+(22, 'proveedor', 'proveedor', '$2a$10$/iUg8Ko/i6RAWNzyUwAL2ebtTqz/jF8mmP8NsoHNCJ1Ra.M2I01cG', 'proveedor@proveedor.com', '1144444444', 1, 'proveedor', 22, '2016-07-07 20:57:52', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -273,17 +256,17 @@ INSERT INTO `user_role` (`id_user_role`, `id_user`, `role`) VALUES
 (7, 7, 'ROLE_WORKER'),
 (8, 8, 'ROLE_WORKER'),
 (9, 9, 'ROLE_WORKER'),
-(10, 10,'ROLE_WORKER'),
-(11, 11,'ROLE_WORKER'),
-(12, 12,'ROLE_WORKER'),
-(13, 13,'ROLE_WORKER'),
-(14, 14,'ROLE_WORKER'),
-(15, 15,'ROLE_WORKER'),
-(16, 16,'ROLE_WORKER'),
-(17, 16,'ROLE_WORKER'),
-(18, 16,'ROLE_USER'),
-(19, 16,'ROLE_USER'),
-(20, 16,'ROLE_USER');
+(10, 10, 'ROLE_WORKER'),
+(11, 11, 'ROLE_WORKER'),
+(12, 12, 'ROLE_WORKER'),
+(13, 13, 'ROLE_WORKER'),
+(14, 14, 'ROLE_WORKER'),
+(15, 15, 'ROLE_WORKER'),
+(16, 16, 'ROLE_WORKER'),
+(17, 16, 'ROLE_WORKER'),
+(18, 16, 'ROLE_USER'),
+(19, 16, 'ROLE_USER'),
+(20, 16, 'ROLE_USER');
 
 -- --------------------------------------------------------
 
@@ -325,7 +308,6 @@ INSERT INTO `work` (`id_work`, `name`, `description`, `price`, `id_category`, `i
 (16, 'Tasador', '10 años de experiencia. UBA', 0, 6, 16, 1, 16),
 (17, 'Técnico en informatica', '6 años de experiencia.Reparación, formateos, backups.', 350, 7, 17, 1, 17);
 
-
 --
 -- Índices para tablas volcadas
 --
@@ -364,7 +346,7 @@ ALTER TABLE `rating`
 --
 ALTER TABLE `transaction`
   ADD PRIMARY KEY (`id_transaction`);
- 
+
 --
 -- Indices de la tabla `user`
 --
@@ -398,42 +380,42 @@ ALTER TABLE `work`
 -- AUTO_INCREMENT de la tabla `address`
 --
 ALTER TABLE `address`
-  MODIFY `id_address` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
--- AUTO_INCREMENT de la tabla `transaction`
+  MODIFY `id_address` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
-ALTER TABLE `transaction`
-  MODIFY `id_transaction` bigint(20) NOT NULL AUTO_INCREMENT;
-
 -- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_category` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `district`
 --
 ALTER TABLE `district`
-  MODIFY `id_district` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_district` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `id_rating` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_rating` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT de la tabla `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `id_transaction` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id_user_role` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user_role` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `work`
 --
 ALTER TABLE `work`
-  MODIFY `id_work` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_work` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

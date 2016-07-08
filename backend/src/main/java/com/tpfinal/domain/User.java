@@ -10,21 +10,21 @@ public class User extends BaseEntity {
     private String name;
     private String surname;
     private String password;
-    private Long dni;
+    private String type;
     private String email;
     private String phone;
-    private String rating;;
+    private Long rating;;
     private Long enabled;
 
     //Transient values
     private String fullName;
 
-    public User(Long idUser, String name, String surname, String password, Long dni, String email, String phone, String rating, Long enabled) {
+    public User(Long idUser, String name, String surname, String password, String type, String email, String phone, Long rating, Long enabled) {
         this.idUser = idUser;
         this.name = name;
         this.surname = surname;
         this.password = password;
-        this.dni = dni;
+        this.type = type;
         this.email = email;
         this.phone = phone;
         this.rating = rating;
@@ -72,13 +72,13 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    @Column(name = "dni")
-    public Long getDni() {
-        return dni;
+    @Column(name = "type")
+    public String getType() {
+        return type;
     }
 
-    public void setDni(Long dni) {
-        this.dni = dni;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Column(name = "email")
@@ -100,11 +100,11 @@ public class User extends BaseEntity {
     }
 
     @Column(name = "id_rating")
-    public String getRating() {
-        return phone;
+    public Long getRating() {
+        return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(Long rating) {
         this.rating = rating;
     }
 //    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

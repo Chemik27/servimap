@@ -1,6 +1,7 @@
 package com.tpfinal.controller;
 
 import com.tpfinal.domain.User;
+import com.tpfinal.dto.UserDTO;
 import com.tpfinal.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +27,9 @@ public class UserController {
 
     @RequestMapping(method= RequestMethod.POST, value = "/create")
     @ResponseStatus(HttpStatus.OK)
-    public void save(@RequestBody User user ){
-        logger.info("Creando usuario: " + user.getEmail());
-        userService.createUser(user);
+    public void save(@RequestBody UserDTO userDTO ){
+        logger.info("Creando usuario: " + userDTO.getEmail());
+        userService.createUser(userDTO);
     }
 
 

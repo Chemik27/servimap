@@ -6,6 +6,9 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User extends BaseEntity {
 
+    private final static String TYPE_WORKER = "proveedor";
+    private final static String TYPE_HIRER = "contratista";
+
     private Long idUser;
     private String name;
     private String surname;

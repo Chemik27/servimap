@@ -15,17 +15,11 @@ import java.util.Date;
 @Service
 public class UserService {
 
-    private final static String PROVEEDOR = "proveedor";
-    private final static String COMPRADOR = "comprador";
-
     @Autowired
     IUserRepository userRepository;
 
     @Autowired
     AddressService addressService;
-
-    @Autowired
-    RatingService ratingService;
 
     @Autowired
     WorkService workService;
@@ -35,14 +29,11 @@ public class UserService {
     }
 
     public void createUser(UserDTO userDTO){
-
         User user = createUserFromDTO(userDTO);
         userRepository.save(user);
     }
 
     public User createUserFromDTO(UserDTO userDTO){
-        Rating rating = ratingService.createNew();
-
         User user = new User();
         user.setName(userDTO.getName());
         user.setSurname(userDTO.getSurname());
@@ -53,13 +44,8 @@ public class UserService {
         user.setPassword(codePassword(userDTO.getPassword()));
         user.setEnabled(1L);
 
-        Address address = addressService.createFromUser(userDTO);
+        Address address = addressService.createAddressFromDTO(userDTO);
         user.setIdAddress(address.getIdAddress());
-//        }else{
-//            TODO CREAR WORK
-//            Work work = workService.createFromWorker(userDTO);
-//        }
-
         return user;
     }
     public String codePassword(String password){

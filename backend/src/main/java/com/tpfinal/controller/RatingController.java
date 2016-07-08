@@ -48,7 +48,7 @@ public class RatingController {
         logger.info("GET");
         Map<String, Object> result = new HashMap<String, Object>();
 
-        result.put("lastTransactions", transactionService.findByIdTransaction(idUser));
+//        result.put("lastTransactions", transactionService.findByIdTransaction(idUser));
         return result;
     }
 

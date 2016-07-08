@@ -15,10 +15,6 @@ angular.module('dutymap')
       $scope.time = $scope.transactions.agreedDate;
       $scope.confirm=false;
 
-      $scope.transaction=[
-
-      ];
-
       $scope.confirmTransaction =function(){
 
         HireResources.save({

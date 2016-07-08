@@ -4,6 +4,7 @@
 package com.tpfinal.controller;
 
 import com.tpfinal.domain.Transaction;
+import com.tpfinal.dto.TransactionDTO;
 import com.tpfinal.service.TransactionService;
 import com.tpfinal.service.UserService;
 import com.tpfinal.service.WorkService;
@@ -44,15 +45,8 @@ public class HireController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public void createTransaction(@RequestBody Transaction transaction) {
-
-        transaction.setCreationDate(new Date());
-        transaction.setToUser(transaction.getToUser());
-        transaction.setFromUser(transaction.getFromUser());
-        transaction.setAgreedDate(transaction.getAgreedDate());
-        transaction.setDone(transaction.getDone());
-
-        transactionService.save(transaction);
+    public void createTransaction(@RequestBody TransactionDTO transactionDTO) {
+        transactionService.save(transactionDTO);
 
     }
 

@@ -30,33 +30,17 @@
 
       <div class="row hire-prices">
         <div class="col-xs-6 col-md-8 hire-amount ">
-          <p class="">Precio normal</p>
+          <p class="">Precio por hora</p>
         </div>
         <div class="col-xs-6 col-md-4 ">
-          <p>124</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-6 col-md-8 hire-amount ">
-          <p class="">Cantidad</p>
-        </div>
-        <div class="col-xs-6 col-md-4 ">
-          <p>1</p>
+          <p><span ng-bind="mainWork.price"></span></p>
         </div>
       </div>
 
-      <div class="row total">
-        <div class="col-xs-6 col-md-8 hire-amount">
-          <p>Total</p>
-        </div>
-        <div class="col-xs-6 col-md-4">
-          <p>124</p>
-        </div>
-      </div>
 
          <button type="submit" ng-click="confirmTransaction(transaction)" class="btn logo-color-bg confirm-button">Confirmar</button>
     </div>
-    <!--<time>{{ time | date : "dd/MM/y" }}</time>-->
+
 
   </div>
 
@@ -70,7 +54,7 @@
             <p>Proveedor: <span ng-bind="toUser.fullName"></span></p>
             <p>Email: <span ng-bind="toUser.email"></span></p>
             <p>Documento: <span ng-bind="toUser.dni"> </span></p>
-            <!--<p>Fecha acordada: <span ng-bind="transaction.agreedDate"></span></p>-->
+            <p>Fecha acordada: <time>{{ transaction.agreedDate | date : "dd/MM/y" }}</time></p>
             <p>Teléfono: <span ng-bind="toUser.phone"> </span></p>
           </div>
           <p>Podrás consultar los datos del proveedor en cualquier momento en tu <a href="">historial de transacciones</a></p>

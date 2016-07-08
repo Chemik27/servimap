@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMessages',
-    'ngMaterial'
+    'ngMaterial',
+    'angularMoment'
 
   ])
   .config(function ($routeProvider) {
@@ -58,11 +59,9 @@ angular
       .when('/politicas', {
         templateUrl: 'views/policies.html'
       })
-      .when('/calificar/:idtransaction', {
+      .when('/calificar', {
         templateUrl: 'views/qualify.html',
-        controller: 'QualifyUserCtrl',
-        resolve: {profileSelected: ['$route','HireResources', function($route, HireResources) {
-          return HireResources.get($route.current.pathParams).$promise;}]}
+        controller: 'QualifyUserCtrl'
       })
       .when('/perfil/:id', {
         templateUrl: 'views/profile.html',

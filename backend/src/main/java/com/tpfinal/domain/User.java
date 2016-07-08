@@ -13,13 +13,13 @@ public class User extends BaseEntity {
     private String type;
     private String email;
     private String phone;
-    private Long rating;;
     private Long enabled;
+    private Long idAddress;
 
     //Transient values
     private String fullName;
 
-    public User(Long idUser, String name, String surname, String password, String type, String email, String phone, Long rating, Long enabled) {
+    public User(Long idUser, String name, String surname, String password, String type, String email, String phone, Long enabled, Long idAddress) {
         this.idUser = idUser;
         this.name = name;
         this.surname = surname;
@@ -27,8 +27,8 @@ public class User extends BaseEntity {
         this.type = type;
         this.email = email;
         this.phone = phone;
-        this.rating = rating;
         this.enabled = enabled;
+        this.idAddress = idAddress;
     }
 
     public User() {
@@ -99,24 +99,6 @@ public class User extends BaseEntity {
         this.phone = phone;
     }
 
-    @Column(name = "id_rating")
-    public Long getRating() {
-        return rating;
-    }
-
-    public void setRating(Long rating) {
-        this.rating = rating;
-    }
-//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "id_rating", nullable = false)
-//    public Rating getRating() {
-//        return rating;
-//    }
-//
-//    public void setRating(Rating rating) {
-//        this.rating = rating;
-//    }
-
     @Column(name = "enabled")
     public Long getEnabled() {
         return enabled;
@@ -124,6 +106,15 @@ public class User extends BaseEntity {
 
     public void setEnabled(Long enabled) {
         this.enabled = enabled;
+    }
+
+    @Column(name = "id_address")
+    public Long getIdAddress() {
+        return idAddress;
+    }
+
+    public void setIdAddress(Long idAddress) {
+        this.idAddress = idAddress;
     }
 
     //Transient Values

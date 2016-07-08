@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-07-2016 a las 01:59:04
+-- Tiempo de generación: 08-07-2016 a las 21:44:22
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 7.0.1
 
@@ -195,7 +195,7 @@ CREATE TABLE `user` (
   `phone` varchar(35) NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `type` varchar(35) NOT NULL,
-  `id_rating` bigint(20) NOT NULL,
+  `id_address` bigint(20) DEFAULT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_date` datetime DEFAULT NULL,
   `deleted_date` datetime DEFAULT NULL,
@@ -206,29 +206,29 @@ CREATE TABLE `user` (
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id_user`, `name`, `surname`, `password`, `email`, `phone`, `enabled`, `type`, `id_rating`, `creation_date`, `update_date`, `deleted_date`, `version`) VALUES
-(1, 'Jose', 'Perez', '$2a$06$a68MhcwRoKXCQ7idkXxF8usm7MLrTB8/Z4Ih6c5bzNfC0L0nLQz5i', 'admin@dutymap.com', '1511112222', 1, 'proveedor', 1, '2016-05-08 15:09:32', NULL, NULL, 0),
-(2, 'Matías', 'Lopez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba@prueba.com', '1143214321', 1, 'proveedor', 2, '2016-05-08 19:58:31', NULL, NULL, 0),
-(3, 'Karina', 'Rodriguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba2@gmail.com', '1143214321', 1, 'proveedor', 3, '2016-05-04 20:58:31', NULL, NULL, 0),
-(4, 'Jonathan', 'Armuren', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba3@gmail.com', '1143214321', 1, 'proveedor', 4, '2016-02-08 21:58:31', NULL, NULL, 0),
-(5, 'Maxi', 'Citrinsky', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba4@gmail.com', '1143214321', 1, 'proveedor', 5, '2016-04-10 22:58:31', NULL, NULL, 0),
-(6, 'Nicolás', 'Lopez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba5@gmail.com', '1143214321', 1, 'proveedor', 6, '2016-06-03 18:30:31', NULL, NULL, 0),
-(7, 'Laura', 'Sanchez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba6@gmail.com', '1143214321', 1, 'proveedor', 7, '2015-02-08 20:15:31', NULL, NULL, 0),
-(8, 'Romina', 'Raso', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba7@gmail.com', '1143214321', 1, 'proveedor', 8, '2015-09-01 15:58:31', NULL, NULL, 0),
-(9, 'Paula', 'Cinti', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba8@gmail.com', '1143214321', 1, 'proveedor', 9, '2016-09-05 18:52:31', NULL, NULL, 0),
-(10, 'Facundo', 'Fernandez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba9@gmail.com', '1143214321', 1, 'proveedor', 10, '2015-09-01 14:18:12', NULL, NULL, 0),
-(11, 'Franco', 'Campos', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba10@gmail.com', '1143214321', 1, 'proveedor', 11, '2016-03-06 19:58:31', NULL, NULL, 0),
-(12, 'Julieta', 'Medici', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba11@gmail.com', '1143214321', 1, 'proveedor', 12, '2016-04-02 16:58:31', NULL, NULL, 0),
-(13, 'Ivana', 'Salinas', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba12@gmail.com', '1143214321', 1, 'proveedor', 13, '2016-09-09 21:58:31', NULL, NULL, 0),
-(14, 'Lucio', 'Barraza', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba13@gmail.com', '1143214321', 1, 'proveedor', 14, '2016-02-01 17:58:31', NULL, NULL, 0),
-(15, 'Catalina', 'Dominguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba14@gmail.com', '1143214321', 1, 'proveedor', 15, '2016-02-04 19:58:31', NULL, NULL, 0),
-(16, 'Santiago', 'Rodriguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba15@gmail.com', '1143214321', 1, 'proveedor', 16, '2016-05-06 19:58:31', NULL, NULL, 0),
-(17, 'Romina', 'Laureano', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba16@gmail.com', '1143214321', 1, 'proveedor', 17, '2016-05-06 19:58:31', NULL, NULL, 0),
-(18, 'Laura', 'Gamberini', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba17@gmail.com', '1143214321', 1, 'comprador', 18, '2016-05-06 19:58:31', NULL, NULL, 0),
-(19, 'Matias', 'Dominguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba18@gmail.com', '1143214321', 1, 'comprador', 19, '2016-05-06 19:58:31', NULL, NULL, 0),
-(20, 'Lucio', 'Santillan', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba19@gmail.com', '1143214321', 1, 'comprador', 20, '2016-05-06 19:58:31', NULL, NULL, 0),
-(21, 'normal', 'normal', '$2a$10$WPTLrRM3KDqmOpHi.oeneeNM0XHIDrzYQyPrEQeI14iumbkle1xIm', 'normal@normal.com', '1144444444', 1, 'comprador', 21, '2016-07-07 20:56:41', NULL, NULL, 0),
-(22, 'proveedor', 'proveedor', '$2a$10$/iUg8Ko/i6RAWNzyUwAL2ebtTqz/jF8mmP8NsoHNCJ1Ra.M2I01cG', 'proveedor@proveedor.com', '1144444444', 1, 'proveedor', 22, '2016-07-07 20:57:52', NULL, NULL, 0);
+INSERT INTO `user` (`id_user`, `name`, `surname`, `password`, `email`, `phone`, `enabled`, `type`, `id_address`, `creation_date`, `update_date`, `deleted_date`, `version`) VALUES
+(1, 'Jose', 'Perez', '$2a$06$a68MhcwRoKXCQ7idkXxF8usm7MLrTB8/Z4Ih6c5bzNfC0L0nLQz5i', 'admin@dutymap.com', '1511112222', 1, 'proveedor', NULL, '2016-05-08 15:09:32', NULL, NULL, 0),
+(2, 'Matías', 'Lopez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba@prueba.com', '1143214321', 1, 'proveedor', NULL, '2016-05-08 19:58:31', NULL, NULL, 0),
+(3, 'Karina', 'Rodriguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba2@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-05-04 20:58:31', NULL, NULL, 0),
+(4, 'Jonathan', 'Armuren', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba3@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-02-08 21:58:31', NULL, NULL, 0),
+(5, 'Maxi', 'Citrinsky', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba4@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-04-10 22:58:31', NULL, NULL, 0),
+(6, 'Nicolás', 'Lopez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba5@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-06-03 18:30:31', NULL, NULL, 0),
+(7, 'Laura', 'Sanchez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba6@gmail.com', '1143214321', 1, 'proveedor', NULL, '2015-02-08 20:15:31', NULL, NULL, 0),
+(8, 'Romina', 'Raso', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba7@gmail.com', '1143214321', 1, 'proveedor', NULL, '2015-09-01 15:58:31', NULL, NULL, 0),
+(9, 'Paula', 'Cinti', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba8@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-09-05 18:52:31', NULL, NULL, 0),
+(10, 'Facundo', 'Fernandez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba9@gmail.com', '1143214321', 1, 'proveedor', NULL, '2015-09-01 14:18:12', NULL, NULL, 0),
+(11, 'Franco', 'Campos', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba10@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-03-06 19:58:31', NULL, NULL, 0),
+(12, 'Julieta', 'Medici', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba11@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-04-02 16:58:31', NULL, NULL, 0),
+(13, 'Ivana', 'Salinas', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba12@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-09-09 21:58:31', NULL, NULL, 0),
+(14, 'Lucio', 'Barraza', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba13@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-02-01 17:58:31', NULL, NULL, 0),
+(15, 'Catalina', 'Dominguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba14@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-02-04 19:58:31', NULL, NULL, 0),
+(16, 'Santiago', 'Rodriguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba15@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-05-06 19:58:31', NULL, NULL, 0),
+(17, 'Romina', 'Laureano', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba16@gmail.com', '1143214321', 1, 'proveedor', NULL, '2016-05-06 19:58:31', NULL, NULL, 0),
+(18, 'Laura', 'Gamberini', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba17@gmail.com', '1143214321', 1, 'comprador', NULL, '2016-05-06 19:58:31', NULL, NULL, 0),
+(19, 'Matias', 'Dominguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba18@gmail.com', '1143214321', 1, 'comprador', NULL, '2016-05-06 19:58:31', NULL, NULL, 0),
+(20, 'Lucio', 'Santillan', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba19@gmail.com', '1143214321', 1, 'comprador', NULL, '2016-05-06 19:58:31', NULL, NULL, 0),
+(21, 'normal', 'normal', '$2a$10$WPTLrRM3KDqmOpHi.oeneeNM0XHIDrzYQyPrEQeI14iumbkle1xIm', 'normal@normal.com', '1144444444', 1, 'comprador', NULL, '2016-07-07 20:56:41', NULL, NULL, 0),
+(22, 'proveedor', 'proveedor', '$2a$10$/iUg8Ko/i6RAWNzyUwAL2ebtTqz/jF8mmP8NsoHNCJ1Ra.M2I01cG', 'proveedor@proveedor.com', '1144444444', 1, 'proveedor', NULL, '2016-07-07 20:57:52', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 

@@ -10,7 +10,8 @@ public class UserDTO {
     private String email;
     private String phone;
     private String street;
-    private String number;
+    private Long number;
+    private Long idDistrict;
 
     public String getName() {
         return name;
@@ -76,11 +77,19 @@ public class UserDTO {
         this.street = street;
     }
 
-    public String getNumber() {
+    public Long getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(Long number) {
         this.number = number;
+    }
+
+    public Long getIdDistrict() {
+        return idDistrict;
+    }
+
+    public void setIdDistrict(Long idDistrict) {
+        this.idDistrict = idDistrict;
     }
 }

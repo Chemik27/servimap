@@ -22,8 +22,8 @@ public class CustomUserDetails extends User implements UserDetails {
                 user.getType(),
                 user.getEmail(),
                 user.getPhone(),
-                user.getRating(),
-                user.getEnabled());
+                user.getEnabled(),
+                user.getIdAddress());
 
         this.userRoles = userRoles;
     }

@@ -7,16 +7,20 @@ import javax.persistence.*;
 public class Rating {
 
     private Long idRating;
-    private Long reliability; //confiabilidad
-    private Long performance; //desempeño
-    private Long consideration; //consideracion
-    private Long recommendation; //recomendacion
+    private Integer reliability; //confiabilidad
+    private Integer performance; //desempeño
+    private Integer consideration; //consideracion
+    private Integer recommendation; //recomendacion
+    private Integer id_provider; //recomendacion
+    private String review_text; //recomendacion
 
-    public Rating(Long reliability, Long performance, Long consideration, Long recommendation) {
+    public Rating(Integer reliability, Integer performance, Integer consideration, Integer recommendation,Integer id_provider,String review_text) {
         this.reliability = reliability;
         this.performance = performance;
         this.consideration = consideration;
         this.recommendation = recommendation;
+        this.id_provider = id_provider;
+        this.review_text = review_text;
     }
 
     public Rating() {
@@ -34,38 +38,55 @@ public class Rating {
     }
 
     @Column(name = "reliability")
-    public Long getReliability() {
+    public Integer getReliability() {
         return reliability;
     }
 
-    public void setReliability(Long reliability) {
+    public void setReliability(Integer reliability) {
         this.reliability = reliability;
     }
 
     @Column(name = "performance")
-    public Long getPerformance() {
+    public Integer getPerformance() {
         return performance;
     }
 
-    public void setPerformance(Long performance) {
+    public void setPerformance(Integer performance) {
         this.performance = performance;
     }
 
     @Column(name = "consideration")
-    public Long getConsideration() {
+    public Integer getConsideration() {
         return consideration;
     }
 
-    public void setConsideration(Long consideration) {
+    public void setConsideration(Integer consideration) {
         this.consideration = consideration;
     }
 
     @Column(name = "recommendation")
-    public Long getRecommendation() {
+    public Integer getRecommendation() {
         return recommendation;
     }
 
-    public void setRecommendation(Long recommendation) {
+    public void setRecommendation(Integer recommendation) {
         this.recommendation = recommendation;
+    }
+
+    @Column(name="id_provider")
+    public Integer getId_provider() {
+        return id_provider;
+    }
+
+    public void setId_provider(Integer id_provider) {
+        this.id_provider = id_provider;
+    }
+    @Column(name="review_text")
+    public String getReview_text() {
+        return review_text;
+    }
+
+    public void setReview_text(String review_text) {
+        this.review_text = review_text;
     }
 }

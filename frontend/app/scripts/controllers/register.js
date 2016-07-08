@@ -23,7 +23,7 @@ angular.module('dutymap')
                         'phone': $scope.provider.telephone,
                         'street': $scope.provider.street,
                         'number': $scope.provider.number,
-                        'district': $scope.provider.district,
+                        'idDistrict': $scope.provider.district.id,
                         'password': $scope.provider.password,
                         'type': $scope.userRegister ? 'comprador' : 'proveedor'};
 

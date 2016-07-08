@@ -11,12 +11,7 @@ public class RatingService {
     @Autowired
     IRatingRepository ratingRepository;
 
-    public Rating createNew(){
-        Rating rating = new Rating();
-        rating.setConsideration(0L);
-        rating.setPerformance(0L);
-        rating.setRecommendation(0L);
-        rating.setReliability(0L);
+    public Rating createNew(Rating rating){
         return ratingRepository.save(rating);
     }
 }

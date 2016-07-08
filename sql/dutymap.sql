@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-07-2016 a las 21:44:22
+-- Tiempo de generación: 08-07-2016 a las 22:48:17
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 7.0.1
 
@@ -32,7 +32,6 @@ CREATE TABLE `address` (
   `id_address` bigint(20) NOT NULL,
   `street` varchar(35) NOT NULL,
   `number` int(11) NOT NULL,
-  `postal_code` int(11) NOT NULL,
   `latitude` double DEFAULT NULL,
   `length` double DEFAULT NULL,
   `id_district` bigint(20) NOT NULL
@@ -42,27 +41,28 @@ CREATE TABLE `address` (
 -- Volcado de datos para la tabla `address`
 --
 
-INSERT INTO `address` (`id_address`, `street`, `number`, `postal_code`, `latitude`, `length`, `id_district`) VALUES
-(1, 'Arieta', 123, 0, NULL, NULL, 1),
-(2, 'Rivadavia', 2014, 0, NULL, NULL, 2),
-(3, 'French', 3254, 0, NULL, NULL, 3),
-(4, 'Moreno', 1205, 0, NULL, NULL, 4),
-(5, 'Colombia', 758, 0, NULL, NULL, 5),
-(6, 'Sarmiento', 546, 0, NULL, NULL, 6),
-(7, '9 de julio', 200, 0, NULL, NULL, 7),
-(8, 'Machado', 1354, 0, NULL, NULL, 8),
-(9, 'Larrea', 354, 0, NULL, NULL, 9),
-(10, 'Balbin', 789, 0, NULL, NULL, 10),
-(11, 'Barcelona', 468, 0, NULL, NULL, 11),
-(12, 'Castelli', 648, 0, NULL, NULL, 12),
-(13, 'Cisneros', 1002, 0, NULL, NULL, 13),
-(14, 'Rojas', 1548, 0, NULL, NULL, 14),
-(15, 'Italia', 1987, 0, NULL, NULL, 15),
-(16, 'Rosas', 2145, 0, NULL, NULL, 16),
-(17, 'Salcedo', 1254, 0, NULL, NULL, 1),
-(18, 'Uruguay', 2546, 0, NULL, NULL, 2),
-(19, 'Peron', 3245, 0, NULL, NULL, 3),
-(20, 'Illia', 123, 0, NULL, NULL, 4);
+INSERT INTO `address` (`id_address`, `street`, `number`, `latitude`, `length`, `id_district`) VALUES
+(1, 'Arieta', 123, NULL, NULL, 1),
+(2, 'Rivadavia', 2014, NULL, NULL, 2),
+(3, 'French', 3254, NULL, NULL, 3),
+(4, 'Moreno', 1205, NULL, NULL, 4),
+(5, 'Colombia', 758, NULL, NULL, 5),
+(6, 'Sarmiento', 546, NULL, NULL, 6),
+(7, '9 de julio', 200, NULL, NULL, 7),
+(8, 'Machado', 1354, NULL, NULL, 8),
+(9, 'Larrea', 354, NULL, NULL, 9),
+(10, 'Balbin', 789, NULL, NULL, 10),
+(11, 'Barcelona', 468, NULL, NULL, 11),
+(12, 'Castelli', 648, NULL, NULL, 12),
+(13, 'Cisneros', 1002, NULL, NULL, 13),
+(14, 'Rojas', 1548, NULL, NULL, 14),
+(15, 'Italia', 1987, NULL, NULL, 15),
+(16, 'Rosas', 2145, NULL, NULL, 16),
+(17, 'Salcedo', 1254, NULL, NULL, 1),
+(18, 'Uruguay', 2546, NULL, NULL, 2),
+(19, 'Peron', 3245, NULL, NULL, 3),
+(20, 'Illia', 123, NULL, NULL, 4),
+(21, 'refactor', 1234, NULL, NULL, 10);
 
 -- --------------------------------------------------------
 
@@ -134,36 +134,36 @@ CREATE TABLE `rating` (
   `reliability` int(11) NOT NULL,
   `performance` int(11) NOT NULL,
   `consideration` int(11) NOT NULL,
-  `recommendation` int(11) NOT NULL
+  `recommendation` int(11) NOT NULL,
+  `id_provider` int(11) NOT NULL,
+  `review_text` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `rating`
 --
 
-INSERT INTO `rating` (`id_rating`, `reliability`, `performance`, `consideration`, `recommendation`) VALUES
-(1, 3, 2, 5, 2),
-(2, 4, 3, 2, 5),
-(3, 2, 3, 2, 3),
-(4, 1, 1, 1, 1),
-(5, 5, 5, 5, 5),
-(6, 3, 3, 3, 3),
-(7, 4, 3, 4, 3),
-(8, 3, 5, 4, 5),
-(9, 2, 2, 3, 4),
-(10, 5, 3, 3, 3),
-(11, 3, 4, 2, 2),
-(12, 4, 3, 4, 2),
-(13, 4, 4, 3, 2),
-(14, 2, 3, 2, 1),
-(15, 3, 4, 2, 1),
-(16, 4, 3, 2, 4),
-(17, 2, 1, 2, 3),
-(18, 4, 4, 3, 5),
-(19, 3, 2, 4, 3),
-(20, 4, 5, 5, 5),
-(21, 0, 0, 0, 0),
-(22, 0, 0, 0, 0);
+INSERT INTO `rating` (`id_rating`, `reliability`, `performance`, `consideration`, `recommendation`, `id_provider`, `review_text`) VALUES
+(1, 3, 2, 5, 2, 0, NULL),
+(2, 4, 3, 2, 5, 0, NULL),
+(3, 2, 3, 2, 3, 0, NULL),
+(4, 1, 1, 1, 1, 0, NULL),
+(5, 5, 5, 5, 5, 0, NULL),
+(6, 3, 3, 3, 3, 0, NULL),
+(7, 4, 3, 4, 3, 0, NULL),
+(8, 3, 5, 4, 5, 0, NULL),
+(9, 2, 2, 3, 4, 0, NULL),
+(10, 5, 3, 3, 3, 0, NULL),
+(11, 3, 4, 2, 2, 0, NULL),
+(12, 4, 3, 4, 2, 0, NULL),
+(13, 4, 4, 3, 2, 0, NULL),
+(14, 2, 3, 2, 1, 0, NULL),
+(15, 3, 4, 2, 1, 0, NULL),
+(16, 4, 3, 2, 4, 0, NULL),
+(17, 2, 1, 2, 3, 0, NULL),
+(18, 4, 4, 3, 5, 0, NULL),
+(19, 3, 2, 4, 3, 0, NULL),
+(20, 4, 5, 5, 5, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -228,7 +228,8 @@ INSERT INTO `user` (`id_user`, `name`, `surname`, `password`, `email`, `phone`, 
 (19, 'Matias', 'Dominguez', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba18@gmail.com', '1143214321', 1, 'comprador', NULL, '2016-05-06 19:58:31', NULL, NULL, 0),
 (20, 'Lucio', 'Santillan', '$2a$06$M/8n8KxO5vlGSGuMZKyZHOVZCLymDpDJfMbxuRC07tSL30.LR78dS', 'prueba19@gmail.com', '1143214321', 1, 'comprador', NULL, '2016-05-06 19:58:31', NULL, NULL, 0),
 (21, 'normal', 'normal', '$2a$10$WPTLrRM3KDqmOpHi.oeneeNM0XHIDrzYQyPrEQeI14iumbkle1xIm', 'normal@normal.com', '1144444444', 1, 'comprador', NULL, '2016-07-07 20:56:41', NULL, NULL, 0),
-(22, 'proveedor', 'proveedor', '$2a$10$/iUg8Ko/i6RAWNzyUwAL2ebtTqz/jF8mmP8NsoHNCJ1Ra.M2I01cG', 'proveedor@proveedor.com', '1144444444', 1, 'proveedor', NULL, '2016-07-07 20:57:52', NULL, NULL, 0);
+(22, 'proveedor', 'proveedor', '$2a$10$/iUg8Ko/i6RAWNzyUwAL2ebtTqz/jF8mmP8NsoHNCJ1Ra.M2I01cG', 'proveedor@proveedor.com', '1144444444', 1, 'proveedor', NULL, '2016-07-07 20:57:52', NULL, NULL, 0),
+(23, 'Refactor', 'registro', '$2a$10$qQKhA4k1Vp.Gqo7MD/PjduUKiMKSNw7pXvvbngOq904aQtY1RFCzu', 'refactor@refactor.com', '1144444444', 1, 'comprador', 21, '2016-07-08 17:45:53', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -380,7 +381,7 @@ ALTER TABLE `work`
 -- AUTO_INCREMENT de la tabla `address`
 --
 ALTER TABLE `address`
-  MODIFY `id_address` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_address` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `category`
 --
@@ -395,7 +396,7 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT de la tabla `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `id_rating` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_rating` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `transaction`
 --
@@ -405,7 +406,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `user_role`
 --

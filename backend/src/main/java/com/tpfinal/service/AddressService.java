@@ -25,7 +25,7 @@ public class AddressService {
         return addressRepository.findAll();
     }
 
-    public Address createFromUser(UserDTO userDTO){
+    public Address createAddressFromDTO(UserDTO userDTO){
         Address address = new Address();
         address.setStreet(userDTO.getStreet());
         address.setNumber(userDTO.getNumber());

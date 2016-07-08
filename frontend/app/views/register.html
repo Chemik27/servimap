@@ -126,21 +126,21 @@
                                         </div>
                                     </div>
 
-                                    <div class="row" ng-hide="userRegister">
-                                    <!-- Campo area de cobertura -->
-                                        <div class="col-xs-12 form-group" ng-class="{ 'has-error': userForm.area.$pristine && userForm.area.$invalid, 'has-success' : userForm.area.$valid}">
-                                            <span>Elija la/las zona de cobertura:</span>
-                                            <select  name="area" id="area" ng-model="provider.area" ng-required="userProveedor" class=" form-control col-md-12" multiple="true" ng-options="zona.name for zona in zonas track by zona.idDistrict">
-                                            </select>
-                                            <br>
-                                            <div class="input-help">
-                                              <h4>Agrega aquellas zonas en las que puedas desempeñar tus servicios.</h4>
-                                            </div>
-                                            <div class="help-block" ng-messages="userForm.area.$error" ng-if="userForm.area.$touched">
-                                              <p ng-message="required">Area de cobertura requerida.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!--<div class="row" ng-hide="userRegister">-->
+                                    <!--&lt;!&ndash; Campo area de cobertura &ndash;&gt;-->
+                                        <!--<div class="col-xs-12 form-group" ng-class="{ 'has-error': userForm.area.$pristine && userForm.area.$invalid, 'has-success' : userForm.area.$valid}">-->
+                                            <!--<span>Elija la/las zona de cobertura:</span>-->
+                                            <!--<select  name="area" id="area" ng-model="provider.area" ng-required="userProveedor" class=" form-control col-md-12" multiple="true" ng-options="zona.name for zona in zonas track by zona.idDistrict">-->
+                                            <!--</select>-->
+                                            <!--<br>-->
+                                            <!--<div class="input-help">-->
+                                              <!--<h4>Agrega aquellas zonas en las que puedas desempeñar tus servicios.</h4>-->
+                                            <!--</div>-->
+                                            <!--<div class="help-block" ng-messages="userForm.area.$error" ng-if="userForm.area.$touched">-->
+                                              <!--<p ng-message="required">Area de cobertura requerida.</p>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
 
                                     <div class="row">
                                         <!-- Campo contraseña <-->

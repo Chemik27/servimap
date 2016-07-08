@@ -11,16 +11,20 @@ public class Rating {
     private Integer performance; //desempeño
     private Integer consideration; //consideracion
     private Integer recommendation; //recomendacion
-    private Integer id_provider; //recomendacion
-    private String review_text; //recomendacion
+    private Long id_provider; //id proveedor
+    private String review_text; //texto de opinion
+    private Integer general_average; // promedio general
+    private Long id_user; //recomendacion
 
-    public Rating(Integer reliability, Integer performance, Integer consideration, Integer recommendation,Integer id_provider,String review_text) {
+    public Rating(Integer reliability, Integer performance, Integer consideration, Integer recommendation,Long id_provider,String review_text,Integer general_average,  Long id_user ) {
         this.reliability = reliability;
         this.performance = performance;
         this.consideration = consideration;
         this.recommendation = recommendation;
         this.id_provider = id_provider;
         this.review_text = review_text;
+        this.general_average = general_average;
+        this.id_user = id_user;
     }
 
     public Rating() {
@@ -74,11 +78,11 @@ public class Rating {
     }
 
     @Column(name="id_provider")
-    public Integer getId_provider() {
+    public Long getId_provider() {
         return id_provider;
     }
 
-    public void setId_provider(Integer id_provider) {
+    public void setId_provider(Long id_provider) {
         this.id_provider = id_provider;
     }
     @Column(name="review_text")
@@ -88,5 +92,23 @@ public class Rating {
 
     public void setReview_text(String review_text) {
         this.review_text = review_text;
+    }
+
+    @Column(name="general_average")
+    public Integer getGeneral_average() {
+        return general_average;
+    }
+
+    public void setGeneral_average(Integer general_average) {
+        this.general_average = general_average;
+    }
+
+    @Column(name="id_user")
+    public Long getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(Long id_user) {
+        this.id_user = id_user;
     }
 }

@@ -5,9 +5,11 @@
 
 
 angular.module('dutymap')
-  .controller('QualifyUserCtrl', ['$scope','QualifyResources','NotificationService','$location',
-    function ($scope , QualifyResources,NotificationService,$location) {
+  .controller('QualifyUserCtrl', ['$scope','QualifyResources','NotificationService','$location','ProfileResources',
+    function ($scope , QualifyResources,NotificationService,$location,ProfileResources) {
 
+      //tomo los datos
+      $scope.profile = ProfileResources;
       //Calificaciones 4
       $scope.rating1 = 1;
       $scope.rating2 = 1;
@@ -24,12 +26,15 @@ angular.module('dutymap')
 
       $scope.addQualify = function(){
 
+        $scope.resultRating = Math.round(($scope.rating1 + $scope.rating2 + $scope.rating3 + $scope.rating4)/4);
+
         var calificar = {'reliability': $scope.rating1,
           'performance': $scope.rating2,
           'consideration': $scope.rating3,
           'recommendation': $scope.rating4,
           'id_provider': 1,
-          'review_text': $scope.review_text
+          'general_average':  $scope.resultRating,
+          'id_user': 1
         };
 
           QualifyResources.save(calificar, function(){
@@ -40,8 +45,8 @@ angular.module('dutymap')
         });
 
       };
-      $scope.calcularRating= function(){
-        $scope.resultRating = Math.round(($scope.rating1 + $scope.rating2 + $scope.rating3 + $scope.rating4)/4);
-      };
+
+
+
 
     }]);

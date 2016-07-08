@@ -2,11 +2,15 @@ package com.tpfinal.controller;
 
 import com.tpfinal.domain.Rating;
 import com.tpfinal.service.RatingService;
+import com.tpfinal.service.TransactionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by redbee on 08/07/16.
@@ -17,6 +21,10 @@ public class RatingController {
 
     @Autowired
     RatingService ratingService;
+
+
+    @Autowired
+    TransactionService transactionService;
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -33,4 +41,15 @@ public class RatingController {
         rating.setReview_text(rating.getReview_text());
         ratingService.createNew(rating);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{idtransaction}")
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String, Object> getProfile(@PathVariable Long idUser) {
+        logger.info("GET");
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        result.put("lastTransactions", transactionService.findByIdTransaction(idUser));
+        return result;
+    }
+
 }

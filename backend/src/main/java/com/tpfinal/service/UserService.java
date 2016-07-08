@@ -41,7 +41,6 @@ public class UserService {
     }
 
     public User createUserFromDTO(UserDTO userDTO){
-        Rating rating = ratingService.createNew();
 
         User user = new User();
         user.setName(userDTO.getName());

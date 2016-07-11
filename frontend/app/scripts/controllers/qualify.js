@@ -5,11 +5,18 @@
 
 
 angular.module('dutymap')
-  .controller('QualifyUserCtrl', ['$scope','QualifyResources','NotificationService','$location','ProfileResources',
-    function ($scope , QualifyResources,NotificationService,$location,ProfileResources) {
+  .controller('QualifyUserCtrl', ['$scope','QualifyResources','NotificationService','$location','profileSelected',
+    function ($scope , QualifyResources,NotificationService,$location,profileSelected) {
 
       //tomo los datos
-      $scope.profile = ProfileResources;
+      $scope.tran = profileSelected.transaction;
+
+      $scope.profile = profileSelected;
+      $scope.toUser = profileSelected.toUser;
+      $scope.fullname= profileSelected.toUser.fullName;
+      $scope.transactions = profileSelected.lastTransactions;
+      $scope.works = profileSelected.works;
+      $scope.jobname = profileSelected.works.description;
       //Calificaciones 4
       $scope.rating1 = 1;
       $scope.rating2 = 1;
@@ -32,7 +39,7 @@ angular.module('dutymap')
           'performance': $scope.rating2,
           'consideration': $scope.rating3,
           'recommendation': $scope.rating4,
-          'id_provider': 1,
+          'id_provider':  $scope.toUser.idUser ,
           'general_average':  $scope.resultRating,
           'id_user': 1
         };

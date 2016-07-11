@@ -3,6 +3,7 @@ package com.tpfinal.controller;
 import com.tpfinal.domain.Rating;
 import com.tpfinal.service.RatingService;
 import com.tpfinal.service.TransactionService;
+import com.tpfinal.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,8 @@ public class RatingController {
     @Autowired
     RatingService ratingService;
 
-
+    @Autowired
+    UserService userService;
     @Autowired
     TransactionService transactionService;
 
@@ -42,13 +44,13 @@ public class RatingController {
         ratingService.createNew(rating);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{idtransaction}")
+    @RequestMapping(method = RequestMethod.GET, value = "/{idTransaction}")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Object> getProfile(@PathVariable Long idUser) {
         logger.info("GET");
         Map<String, Object> result = new HashMap<String, Object>();
-
-//        result.put("lastTransactions", transactionService.findByIdTransaction(idUser));
+        result.put("toUser", userService.findByIdUser(idUser));
+//        result.put("transaction", transactionService.findByToUserAll(idUser));
         return result;
     }
 

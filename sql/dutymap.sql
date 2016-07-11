@@ -111,22 +111,21 @@ CREATE TABLE IF NOT EXISTS `district` (
 --
 
 INSERT INTO `district` (`id_district`, `name`) VALUES
-(1, 'La Matanza'),
-(2, '20 de Junio'),
-(3, 'Aldo Bonzi'),
-(4, 'Ciudad Evita'),
-(5, 'GonzÃ¡lez CatÃ¡n'),
-(6, 'Gregorio de Laferrere'),
-(7, 'Isidro Casanova'),
-(8, 'La Tablada'),
-(9, 'Lomas del Mirador'),
-(10, 'Rafael Castillo'),
-(11, 'Ramos MejÃ­a'),
-(12, 'San Justo'),
-(13, 'Tapiales'),
-(14, 'Villa Luzuriaga'),
-(15, 'Villa Madero'),
-(16, 'Virrey del Pino');
+(1, '20 de Junio'),
+(2, 'Aldo Bonzi'),
+(3, 'Ciudad Evita'),
+(4, 'GonzÃ¡lez CatÃ¡n'),
+(5, 'Gregorio de Laferrere'),
+(6, 'Isidro Casanova'),
+(7, 'La Tablada'),
+(8, 'Lomas del Mirador'),
+(9, 'Rafael Castillo'),
+(10, 'Ramos MejÃ­a'),
+(11, 'San Justo'),
+(12, 'Tapiales'),
+(13, 'Villa Luzuriaga'),
+(14, 'Villa Madero'),
+(15, 'Virrey del Pino');
 
 -- --------------------------------------------------------
 
@@ -197,7 +196,16 @@ CREATE TABLE IF NOT EXISTS `transaction` (
 --
 
 INSERT INTO `transaction` (`id_transaction`, `creation_date`, `to_user`, `from_user`, `agreed_date`, `done`) VALUES
-(1, '2016-07-08 19:02:07', 2, 3, '2016-07-15 00:00:00', b'0');
+(1, '2016-06-08 19:02:07', 2, 3, '2016-07-01 00:00:00', b'0'),
+(2, '2016-05-08 19:02:07', 2, 3, '2016-09-02 00:00:00', b'0'),
+(3, '2016-04-08 19:02:07', 2, 3, '2016-06-03 00:00:00', b'0'),
+(4, '2016-03-08 19:02:07', 2, 3, '2016-02-04 00:00:00', b'0'),
+(5, '2016-02-08 19:02:07', 2, 3, '2016-15-05 00:00:00', b'0'),
+(6, '2016-02-07 19:02:07', 2, 3, '2016-15-06 00:00:00', b'0'),
+(7, '2016-02-06 19:02:07', 2, 3, '2016-15-07 00:00:00', b'0'),
+(8, '2016-02-06 19:02:07', 2, 3, '2016-15-07 00:00:00', b'1'),
+(9, '2016-02-05 19:02:07', 2, 3, '2016-15-08 00:00:00', b'0');
+
 
 -- --------------------------------------------------------
 

@@ -15,6 +15,10 @@ public class Address {
     private Double length;
     private District district;
 
+    public final static Long NO_WORK_ADDRESS = 1L;
+    public final static Long SAME_RECIDENTIAL_ADDRESS = 2L;
+    public final static Long NEW_ADDRESS = 3L;
+
     public Address(String street, Long number, Double latitude, Double length, District district) {
         this.street = street;
         this.number = number;

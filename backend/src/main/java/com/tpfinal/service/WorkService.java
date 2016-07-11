@@ -57,7 +57,7 @@ public class WorkService {
         Category category = categoryService.findByIdCategory(workDTO.getIdCategory());
         work.setCategory(category);
 
-        Address address = addressService.createAddressFromDTO(workDTO.getStreet(), workDTO.getNumber(), workDTO.getIdDistrict());
+        Address address = addressService.createAddressFromDTO(workDTO.getStreet(), workDTO.getNumber(), workDTO.getIdDistrict(), workDTO.getIdUser(), workDTO.getTypeAddress());
         work.setAddress(address);
 
         return workRepository.save(work);

@@ -10,6 +10,15 @@ public class WorkDTO {
     private Long number;
     private Long idDistrict;
     private Long idUser;
+    private Long typeAddress;
+
+    public Long getTypeAddress() {
+        return typeAddress;
+    }
+
+    public void setTypeAddress(Long typeAddress) {
+        this.typeAddress = typeAddress;
+    }
 
     public Long getIdUser() {
         return idUser;

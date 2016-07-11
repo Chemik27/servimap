@@ -45,7 +45,7 @@ public class UserService {
         user.setPassword(codePassword(userDTO.getPassword()));
         user.setEnabled(1L);
 
-        Address address = addressService.createAddressFromDTO(userDTO.getStreet(), userDTO.getNumber(), userDTO.getIdDistrict());
+        Address address = addressService.createAddressFromDTO(userDTO.getStreet(), userDTO.getNumber(), userDTO.getIdDistrict(), null, Address.NEW_ADDRESS);
         user.setIdAddress(address.getIdAddress());
         return user;
     }

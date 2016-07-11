@@ -28,9 +28,9 @@ public class UserService {
         return userRepository.findByIdUser(idUser);
     }
 
-    public void createUser(UserDTO userDTO){
+    public User createUser(UserDTO userDTO){
         User user = createUserFromDTO(userDTO);
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     public User createUserFromDTO(UserDTO userDTO){
@@ -45,7 +45,7 @@ public class UserService {
         user.setPassword(codePassword(userDTO.getPassword()));
         user.setEnabled(1L);
 
-        Address address = addressService.createAddressFromDTO(userDTO);
+        Address address = addressService.createAddressFromDTO(userDTO.getStreet(), userDTO.getNumber(), userDTO.getIdDistrict());
         user.setIdAddress(address.getIdAddress());
         return user;
     }

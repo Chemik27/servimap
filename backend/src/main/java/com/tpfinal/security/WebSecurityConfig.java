@@ -56,6 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/work/named/*").permitAll()
                     .antMatchers("/work/district/*").permitAll()
                     .antMatchers("/work/category/*").permitAll()
+                    .antMatchers("/work/**").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf()
                     .csrfTokenRepository(csrfTokenRepository()).and()

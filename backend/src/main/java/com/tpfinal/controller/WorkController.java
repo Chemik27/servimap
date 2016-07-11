@@ -1,6 +1,7 @@
 package com.tpfinal.controller;
 
 import com.tpfinal.domain.Work;
+import com.tpfinal.dto.WorkDTO;
 import com.tpfinal.service.UserService;
 import com.tpfinal.service.WorkService;
 import org.slf4j.Logger;
@@ -45,14 +46,10 @@ public class WorkController {
         return workService.findByDistrict(idDistrict);
     }
 
-
-//    Este busca por descripcion q contiene por ahora no sirve para nada
-//    @RequestMapping(method = RequestMethod.GET, value = {"/works/{workTyped}"})
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<Work> getWorksByWordOfSearch(@PathVariable String workTyped){
-//        List<Work> works = workService.findByDescriptionContaining(workTyped);
-//
-//        return works;
-//    }
-
+    @RequestMapping(method= RequestMethod.POST, value = "/create")
+    @ResponseStatus(HttpStatus.OK)
+    public void save(@RequestBody WorkDTO workDTO ){
+        logger.info("Creando trabajo: " + workDTO.getName());
+        workService.createFromDTO(workDTO);
+    }
 }

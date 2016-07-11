@@ -2,11 +2,8 @@ package com.tpfinal.service;
 
 import com.tpfinal.domain.Address;
 import com.tpfinal.domain.District;
-import com.tpfinal.domain.User;
-import com.tpfinal.dto.UserDTO;
 import com.tpfinal.repository.IAddressRepository;
 import com.tpfinal.repository.IDistrictRepository;
-import com.tpfinal.repository.IWorkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +22,12 @@ public class AddressService {
         return addressRepository.findAll();
     }
 
-    public Address createAddressFromDTO(UserDTO userDTO){
+    public Address createAddressFromDTO(String street, Long number, Long idDistrict){
         Address address = new Address();
-        address.setStreet(userDTO.getStreet());
-        address.setNumber(userDTO.getNumber());
+        address.setStreet(street);
+        address.setNumber(number);
 
-        District district = districtRepository.findByIdDistrict(userDTO.getIdDistrict());
+        District district = districtRepository.findByIdDistrict(idDistrict);
         address.setDistrict(district);
         return addressRepository.save(address);
     }

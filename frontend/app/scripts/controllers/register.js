@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('dutymap')
-    .controller('RegisterCtrl', ['$scope', '$http', 'UserResources', 'NotificationService', '$location',
-    function ($scope, $http, UserResources, NotificationService, $location) {
+    .controller('RegisterCtrl', ['$scope', '$http', 'UserResources', 'NotificationService', '$location', 'WorkResources',
+    function ($scope, $http, UserResources, NotificationService, $location, WorkResources) {
 
         $scope.onlyNumbers= /^\d+$/;
         $scope.document=/^(\d{8})$/;
@@ -11,9 +11,11 @@ angular.module('dutymap')
         $scope.passwordRegex=/^(?=.*[a-z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
         $scope.provider={};
+       $scope.work = {};
 
         $scope.userRegister=false;
         $scope.userProveedor=false;
+        $scope.createWork = false;
 
         $scope.saveUser = function(){
             var user = {'name':$scope.provider.name,
@@ -27,9 +29,15 @@ angular.module('dutymap')
                         'password': $scope.provider.password,
                         'type': $scope.userRegister ? 'comprador' : 'proveedor'};
 
-            UserResources.save(user, function(){
+            UserResources.save(user, function(response){
+                if(user.type == 'proveedor') {
+                  NotificationService.success('Se ha registrado correctamente. Ingrese los datos de su servicio.');
+                  $scope.work.idUser = response.idUser;
+                  $scope.createWork = true;
+                }else{
                 NotificationService.success('Se ha registrado correctamente. Inicie sesión.');
-                $location.url('/login')
+                  $location.url('/login')
+                }
             }, function(error){
                 NotificationService.error(error);
             });
@@ -50,6 +58,19 @@ angular.module('dutymap')
           {id:13 ,name: 'Villa Luzuriaga'},
           {id:14 ,name: 'Villa Madero'},
           {id:15 ,name: 'Virrey del Pino'}];
+
+
+        $scope.categories = [
+          {id: 1, name: 'Hogar'},
+          {id: 2, name: 'Educación'},
+          {id: 3, name: 'Salud'},
+          {id: 4, name: 'Estética'},
+          {id: 5, name: 'Entretenimiento'},
+          {id: 6, name: 'Profesional'},
+          {id: 7, name: 'Técnico'},
+          {id: 8, name: 'Automotriz'},
+          {id: 9, name: 'Otros'}
+        ];
 
         $scope.userType = function(type) {
             $scope.filter = type;
@@ -76,6 +97,25 @@ angular.module('dutymap')
         $scope.back = function(){
           $scope.userRegister=false;
           $scope.userProveedor=false;
+        }
+
+        $scope.saveWork = function(){
+            var newWork = {
+              'name':$scope.work.name,
+              'idUser': $scope.work.idUser,
+              'description': $scope.work.description,
+              'idCategory': $scope.work.category.id,
+              'price': $scope.work.price,
+              'street': $scope.work.street,
+              'number': $scope.work.number,
+              'idDistrict': $scope.work.district.id};
+
+            WorkResources.save(newWork, function(){
+              NotificationService.success('Ha creado un servicio correctamente.');
+              $location.url('/login')
+            }, function(error){
+              NotificationService.error(error);
+            });
         }
     }]);
 

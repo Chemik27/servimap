@@ -27,9 +27,9 @@ public class UserController {
 
     @RequestMapping(method= RequestMethod.POST, value = "/create")
     @ResponseStatus(HttpStatus.OK)
-    public void save(@RequestBody UserDTO userDTO ){
+    public User save(@RequestBody UserDTO userDTO ){
         logger.info("Creando usuario: " + userDTO.getEmail());
-        userService.createUser(userDTO);
+        return userService.createUser(userDTO);
     }
 
 

@@ -76,12 +76,15 @@ form.login .forgot-pass-content
   min-height: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+
 }
-form.login label, form.login a
+
+
+form.login label, form.login a, form.login .checkbox label
 {
   font-size: 15px;
   font-weight: 400;
-  color: black;
+  color: white;
 }
 
 form.login a
@@ -91,7 +94,7 @@ form.login a
 
 form.login a:hover
 {
-  color: #336699;
+  color: yellow;
 }
 
 .pr-wrap

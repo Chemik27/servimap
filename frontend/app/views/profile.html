@@ -21,8 +21,8 @@
 
           <h3>Mi perfil</h3>
 
-          <div id="module-work" class="col-sm-12">
-            <div class="module-work col-sm-6" ng-repeat="aWork in works">
+          <div id="module-work" class=" col-md-12 col-sm-12">
+            <div class="module-work col-md-5 col-xs-12" ng-repeat="aWork in works">
               <h3><i class="fa fa-briefcase" aria-hidden="true"></i> {{aWork.name}}</h3>
               <div>
                 <p>{{aWork.description}}</p>
@@ -31,13 +31,13 @@
               </div>
             </div>
 
-            <div ng-class="{'module-info col-sm-6': works.length > 1, 'module-size': works.length == 1}">
+            <div ng-class="{'module-info col-md-5 col-sm-6': works.length > 1, 'module-size': works.length == 1}">
               <div>
                 <p>asd</p>
               </div>
             </div>
 
-            <div ng-class="{'module-info col-sm-6': works.length > 1, 'module-size': works.length == 1}">
+            <div ng-class="{'module-info col-md-5 col-sm-6': works.length > 1, 'module-size': works.length == 1}">
               <div>
                 <p>qwe</p>
               </div>
@@ -45,7 +45,7 @@
           </div>
 
           <div id="module-feedback" class="col-md-12">
-            <div class="module col-sm-6 col-xs-12">
+            <div class="module col-sm-6 col-md-5 col-xs-12">
               <h3><i class="fa fa-users" aria-hidden="true"></i> Feedback</h3>
               <div id="feedback-info">
                 <p>reliability {{user.rating.reliability}}</p>
@@ -55,7 +55,7 @@
               </div>
             </div>
 
-            <div class="module col-sm-6 col-xs-12">
+            <div class="module  col-md-5 col-sm-6 col-xs-12">
               <h3><i class="fa fa-comments-o" aria-hidden="true"></i> Comentarios</h3>
               <div class="comments" ng-repeat="tx in transactions">
                 <p>{{tx.comment}}</p>

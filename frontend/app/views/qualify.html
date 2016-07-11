@@ -17,7 +17,7 @@
     </div>
     <div ng-init="rating = star.rating + 1" class="col-md-11 col-xs-12 col-md-offset-1">
       <form class="form-group formqualify ">
-        <h3 class="text-center"> Proveedor : {name} Servicio: {service}</h3>
+        <h3 class="text-center"> Estas calificando a tu proveedor : <span ng-bind="fullname"></span> </h3>
         <div class="col-md-6 col-xs-5 col-md-offset-2 letter-1"><b>Confiabilidad</b></div>
         <div class="star-rating" star-rating rating-value="rating1" data-max="5" on-rating-selected="rateFunction(rating1)"></div>
         <div class="col-md-6 col-xs-5 col-md-offset-2 letter-1"><b>Desempe&ntilde;o</b></div>
@@ -31,7 +31,6 @@
         <div class="col-md-12 col-xs-12">
           <div class="col-xs-6 col-md-6 col-md-offset-3 text-center ">
             <button type="submit" ng-click="addQualify()" class="btn logo-color-bg register-button center click-rating">Calificar</button>
-            {{resultRating}}
           </div>
         </div>
       </form>

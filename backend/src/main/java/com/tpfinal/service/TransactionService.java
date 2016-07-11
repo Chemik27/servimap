@@ -41,4 +41,7 @@ public class TransactionService {
     public List<Transaction> findByToUser(Long idUser) {
         return transactionRepository.findTop10ByToUserOrderByCreationDateDesc(idUser);
     }
+//    public List<Transaction> findByToUserAll(Long idUser) {
+//        return transactionRepository.findByToUser(idUser);
+//    }
 }

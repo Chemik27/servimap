@@ -8,14 +8,16 @@
  * Controller of the dutymap
  */
 angular.module('dutymap')
-  .controller('ProfileCtrl', ['$scope', '$http', 'ProfileResources','profileSelected',
-      function ($scope, $http, ProfileResources, profileSelected) {
+  .controller('ProfileCtrl', ['$scope', '$http', 'ProfileResources','profileSelected','$rootScope',
+      function ($scope, $http, ProfileResources, profileSelected,$rootScope) {
 
           $scope.profile = profileSelected;
           $scope.user = profileSelected.user;
           $scope.transactions = profileSelected.lastTransactions;
           $scope.works = profileSelected.works;
           $scope.mainWork = $scope.works[0];
+
+         $scope.fromUser= $rootScope.idUser;
 
           $scope.starRating = 4; //TODO Hardcodeado agregar a rating y sacar de la variable
           $scope.stars = _.range($scope.starRating);

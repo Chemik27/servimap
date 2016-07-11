@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-07-2016 a las 00:19:55
--- Versión del servidor: 5.6.17
--- Versión de PHP: 5.5.12
+-- Tiempo de generación: 11-07-2016 a las 06:03:39
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `dutymap`
@@ -26,16 +26,14 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `address`
 --
 
-CREATE TABLE IF NOT EXISTS `address` (
-  `id_address` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `address` (
+  `id_address` bigint(20) NOT NULL,
   `street` varchar(35) NOT NULL,
   `number` int(11) NOT NULL,
   `latitude` double DEFAULT NULL,
   `length` double DEFAULT NULL,
-  `id_district` bigint(20) NOT NULL,
-  PRIMARY KEY (`id_address`),
-  UNIQUE KEY `id_address` (`id_address`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+  `id_district` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `address`
@@ -70,13 +68,10 @@ INSERT INTO `address` (`id_address`, `street`, `number`, `latitude`, `length`, `
 -- Estructura de tabla para la tabla `category`
 --
 
-CREATE TABLE IF NOT EXISTS `category` (
-  `id_category` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(35) NOT NULL,
-  PRIMARY KEY (`id_category`),
-  UNIQUE KEY `id_category` (`id_category`),
-  KEY `id_category_2` (`id_category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+CREATE TABLE `category` (
+  `id_category` bigint(20) NOT NULL,
+  `name` varchar(35) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `category`
@@ -99,12 +94,10 @@ INSERT INTO `category` (`id_category`, `name`) VALUES
 -- Estructura de tabla para la tabla `district`
 --
 
-CREATE TABLE IF NOT EXISTS `district` (
-  `id_district` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(35) NOT NULL,
-  PRIMARY KEY (`id_district`),
-  UNIQUE KEY `id_district` (`id_district`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+CREATE TABLE `district` (
+  `id_district` bigint(20) NOT NULL,
+  `name` varchar(35) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `district`
@@ -133,8 +126,8 @@ INSERT INTO `district` (`id_district`, `name`) VALUES
 -- Estructura de tabla para la tabla `rating`
 --
 
-CREATE TABLE IF NOT EXISTS `rating` (
-  `id_rating` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `rating` (
+  `id_rating` bigint(20) NOT NULL,
   `reliability` int(11) NOT NULL,
   `performance` int(11) NOT NULL,
   `consideration` int(11) NOT NULL,
@@ -142,10 +135,8 @@ CREATE TABLE IF NOT EXISTS `rating` (
   `id_provider` bigint(11) NOT NULL,
   `review_text` varchar(45) DEFAULT NULL,
   `general_average` varchar(45) NOT NULL,
-  `id_user` bigint(11) NOT NULL,
-  PRIMARY KEY (`id_rating`),
-  UNIQUE KEY `id_rating` (`id_rating`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+  `id_user` bigint(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `rating`
@@ -181,15 +172,14 @@ INSERT INTO `rating` (`id_rating`, `reliability`, `performance`, `consideration`
 -- Estructura de tabla para la tabla `transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `transaction` (
-  `id_transaction` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `transaction` (
+  `id_transaction` bigint(20) NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `to_user` bigint(20) NOT NULL,
   `from_user` bigint(20) NOT NULL,
   `agreed_date` datetime NOT NULL,
-  `done` bit(1) NOT NULL,
-  PRIMARY KEY (`id_transaction`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `done` bit(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `transaction`
@@ -200,12 +190,11 @@ INSERT INTO `transaction` (`id_transaction`, `creation_date`, `to_user`, `from_u
 (2, '2016-05-08 19:02:07', 2, 3, '2016-09-02 00:00:00', b'0'),
 (3, '2016-04-08 19:02:07', 2, 3, '2016-06-03 00:00:00', b'0'),
 (4, '2016-03-08 19:02:07', 2, 3, '2016-02-04 00:00:00', b'0'),
-(5, '2016-02-08 19:02:07', 2, 3, '2016-15-05 00:00:00', b'0'),
-(6, '2016-02-07 19:02:07', 2, 3, '2016-15-06 00:00:00', b'0'),
-(7, '2016-02-06 19:02:07', 2, 3, '2016-15-07 00:00:00', b'0'),
-(8, '2016-02-06 19:02:07', 2, 3, '2016-15-07 00:00:00', b'1'),
-(9, '2016-02-05 19:02:07', 2, 3, '2016-15-08 00:00:00', b'0');
-
+(5, '2016-02-08 19:02:07', 2, 3, '0000-00-00 00:00:00', b'0'),
+(6, '2016-02-07 19:02:07', 2, 3, '0000-00-00 00:00:00', b'0'),
+(7, '2016-02-06 19:02:07', 2, 3, '0000-00-00 00:00:00', b'0'),
+(8, '2016-02-06 19:02:07', 2, 3, '0000-00-00 00:00:00', b'1'),
+(9, '2016-02-05 19:02:07', 2, 3, '0000-00-00 00:00:00', b'0');
 
 -- --------------------------------------------------------
 
@@ -213,8 +202,8 @@ INSERT INTO `transaction` (`id_transaction`, `creation_date`, `to_user`, `from_u
 -- Estructura de tabla para la tabla `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `id_user` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id_user` bigint(20) NOT NULL,
   `name` varchar(35) NOT NULL,
   `surname` varchar(35) NOT NULL,
   `password` varchar(60) NOT NULL,
@@ -226,12 +215,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_date` datetime DEFAULT NULL,
   `deleted_date` datetime DEFAULT NULL,
-  `version` int(11) NOT NULL,
-  PRIMARY KEY (`id_user`),
-  UNIQUE KEY `id_user` (`id_user`),
-  UNIQUE KEY `email` (`email`),
-  KEY `id_user_2` (`id_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+  `version` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `user`
@@ -268,13 +253,11 @@ INSERT INTO `user` (`id_user`, `name`, `surname`, `password`, `email`, `phone`, 
 -- Estructura de tabla para la tabla `user_role`
 --
 
-CREATE TABLE IF NOT EXISTS `user_role` (
-  `id_user_role` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_role` (
+  `id_user_role` bigint(20) NOT NULL,
   `id_user` bigint(20) NOT NULL,
-  `role` varchar(30) NOT NULL,
-  PRIMARY KEY (`id_user_role`),
-  UNIQUE KEY `id_user_role` (`id_user_role`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+  `role` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `user_role`
@@ -308,44 +291,147 @@ INSERT INTO `user_role` (`id_user_role`, `id_user`, `role`) VALUES
 -- Estructura de tabla para la tabla `work`
 --
 
-CREATE TABLE IF NOT EXISTS `work` (
-  `id_work` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `work` (
+  `id_work` bigint(20) NOT NULL,
   `name` varchar(35) NOT NULL,
   `description` varchar(200) NOT NULL,
   `price` double NOT NULL,
   `id_category` bigint(20) NOT NULL,
   `id_user` bigint(20) NOT NULL,
-  `id_address` bigint(20) NOT NULL,
-  `id_feedback` bigint(20) NOT NULL,
-  PRIMARY KEY (`id_work`),
-  UNIQUE KEY `id_service` (`id_work`),
-  KEY `id_service_2` (`id_work`),
-  KEY `id_work` (`id_work`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+  `id_address` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `work`
 --
 
-INSERT INTO `work` (`id_work`, `name`, `description`, `price`, `id_category`, `id_user`, `id_address`, `id_feedback`) VALUES
-(1, 'Pintor', 'Pintar casas', 0, 1, 1, 1, 1),
-(2, 'Profesor particular', 'MatemÃ¡tica primaria y secundaria', 200, 2, 2, 2, 2),
-(3, 'Masajista', '5 aÃ±os de experiencia', 45, 1, 3, 3, 3),
-(4, 'CosmetÃ³logo', 'Limpiezas', 400, 4, 4, 4, 4),
-(5, 'Musicalizador', 'MÃºsica de todo tipo', 300, 5, 5, 5, 5),
-(6, 'Contador', 'Balances y cierres a Pymes', 500, 6, 6, 6, 6),
-(7, 'TÃ©cnico electrodomÃ©stico', 'ReparaciÃ³n de heladeras, estufas, microondas y mÃ¡s', 300, 7, 7, 7, 7),
-(8, 'MecÃ¡nico', '5 aÃ±os de experiencia en el rubro', 300, 8, 8, 8, 8),
-(9, 'Flete', 'Fletes a cualquier parte de La Matanza', 100, 9, 9, 9, 9),
-(10, 'Gasista', 'Gasista con 15 aÃ±os de experiencia', 205, 1, 10, 10, 10),
-(11, 'Profesor particular', 'BiologÃ­a y fÃ­sica.3 aÃ±os de experiencia', 150, 2, 11, 11, 11),
-(12, 'KinesiÃ³logo', 'Rehabilitaciones', 350, 3, 12, 12, 12),
-(13, 'Abogado', '10 aÃ±os de experiencia. UNLAM', 0, 6, 13, 13, 13),
-(14, 'Arquitecto', '10 aÃ±os de experiencia. UBA', 0, 6, 14, 14, 14),
-(15, 'Gestor automotor', '10 aÃ±os de experiencia', 0, 6, 15, 1, 15),
-(16, 'Tasador', '10 aÃ±os de experiencia. UBA', 0, 6, 16, 1, 16),
-(17, 'TÃ©cnico en informatica', '6 aÃ±os de experiencia.ReparaciÃ³n, formateos, backups.', 350, 7, 17, 1, 17);
+INSERT INTO `work` (`id_work`, `name`, `description`, `price`, `id_category`, `id_user`, `id_address`) VALUES
+(1, 'Pintor', 'Pintar casas', 0, 1, 1, 1),
+(2, 'Profesor particular', 'MatemÃ¡tica primaria y secundaria', 200, 2, 2, 2),
+(3, 'Masajista', '5 aÃ±os de experiencia', 45, 1, 3, 3),
+(4, 'CosmetÃ³logo', 'Limpiezas', 400, 4, 4, 4),
+(5, 'Musicalizador', 'MÃºsica de todo tipo', 300, 5, 5, 5),
+(6, 'Contador', 'Balances y cierres a Pymes', 500, 6, 6, 6),
+(7, 'TÃ©cnico electrodomÃ©stico', 'ReparaciÃ³n de heladeras, estufas, microondas y mÃ¡s', 300, 7, 7, 7),
+(8, 'MecÃ¡nico', '5 aÃ±os de experiencia en el rubro', 300, 8, 8, 8),
+(9, 'Flete', 'Fletes a cualquier parte de La Matanza', 100, 9, 9, 9),
+(10, 'Gasista', 'Gasista con 15 aÃ±os de experiencia', 205, 1, 10, 10),
+(11, 'Profesor particular', 'BiologÃ­a y fÃ­sica.3 aÃ±os de experiencia', 150, 2, 11, 11),
+(12, 'KinesiÃ³logo', 'Rehabilitaciones', 350, 3, 12, 12),
+(13, 'Abogado', '10 aÃ±os de experiencia. UNLAM', 0, 6, 13, 13),
+(14, 'Arquitecto', '10 aÃ±os de experiencia. UBA', 0, 6, 14, 14),
+(15, 'Gestor automotor', '10 aÃ±os de experiencia', 0, 6, 15, 1),
+(16, 'Tasador', '10 aÃ±os de experiencia. UBA', 0, 6, 16, 1),
+(17, 'TÃ©cnico en informatica', '6 aÃ±os de experiencia.ReparaciÃ³n, formateos, backups.', 350, 7, 17, 1);
 
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `address`
+--
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`id_address`),
+  ADD UNIQUE KEY `id_address` (`id_address`);
+
+--
+-- Indices de la tabla `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id_category`),
+  ADD UNIQUE KEY `id_category` (`id_category`),
+  ADD KEY `id_category_2` (`id_category`);
+
+--
+-- Indices de la tabla `district`
+--
+ALTER TABLE `district`
+  ADD PRIMARY KEY (`id_district`),
+  ADD UNIQUE KEY `id_district` (`id_district`);
+
+--
+-- Indices de la tabla `rating`
+--
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`id_rating`),
+  ADD UNIQUE KEY `id_rating` (`id_rating`);
+
+--
+-- Indices de la tabla `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`id_transaction`);
+
+--
+-- Indices de la tabla `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `id_user` (`id_user`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `id_user_2` (`id_user`);
+
+--
+-- Indices de la tabla `user_role`
+--
+ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`id_user_role`),
+  ADD UNIQUE KEY `id_user_role` (`id_user_role`);
+
+--
+-- Indices de la tabla `work`
+--
+ALTER TABLE `work`
+  ADD PRIMARY KEY (`id_work`),
+  ADD UNIQUE KEY `id_service` (`id_work`),
+  ADD KEY `id_service_2` (`id_work`),
+  ADD KEY `id_work` (`id_work`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `address`
+--
+ALTER TABLE `address`
+  MODIFY `id_address` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT de la tabla `category`
+--
+ALTER TABLE `category`
+  MODIFY `id_category` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT de la tabla `district`
+--
+ALTER TABLE `district`
+  MODIFY `id_district` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT de la tabla `rating`
+--
+ALTER TABLE `rating`
+  MODIFY `id_rating` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT de la tabla `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `id_transaction` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT de la tabla `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT de la tabla `user_role`
+--
+ALTER TABLE `user_role`
+  MODIFY `id_user_role` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT de la tabla `work`
+--
+ALTER TABLE `work`
+  MODIFY `id_work` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

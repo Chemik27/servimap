@@ -28,7 +28,7 @@ public class RatingController {
     @Autowired
     TransactionService transactionService;
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(RatingService.class);
 
 
     @RequestMapping(method= RequestMethod.POST, value = "/save")
@@ -40,6 +40,7 @@ public class RatingController {
         rating.setRecommendation(rating.getRecommendation());
         rating.setReliability(rating.getReliability());
         rating.setId_provider(rating.getId_provider());
+        rating.setId_user(rating.getId_user());
         rating.setReview_text(rating.getReview_text());
         ratingService.createNew(rating);
     }

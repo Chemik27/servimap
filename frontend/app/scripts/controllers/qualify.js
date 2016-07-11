@@ -5,8 +5,8 @@
 
 
 angular.module('dutymap')
-  .controller('QualifyUserCtrl', ['$scope','QualifyResources','NotificationService','$location','profileSelected',
-    function ($scope , QualifyResources,NotificationService,$location,profileSelected) {
+  .controller('QualifyUserCtrl', ['$scope','QualifyResources','NotificationService','$location','profileSelected','$rootScope',
+    function ($scope , QualifyResources,NotificationService,$location,profileSelected,$rootScope) {
 
       //tomo los datos
       $scope.tran = profileSelected.transaction;
@@ -41,7 +41,7 @@ angular.module('dutymap')
           'recommendation': $scope.rating4,
           'id_provider':  $scope.toUser.idUser ,
           'general_average':  $scope.resultRating,
-          'id_user': 1
+          'id_user': $rootScope.idUser
         };
 
           QualifyResources.save(calificar, function(){

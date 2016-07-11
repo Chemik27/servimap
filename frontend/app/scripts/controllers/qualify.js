@@ -46,7 +46,7 @@ angular.module('dutymap')
 
           QualifyResources.save(calificar, function(){
           NotificationService.success('Se ha calificado correctamente al proveedor.');
-          $location.url('/perfil/{{id}}')
+          $location.url('/perfil/'+ $rootScope.idUser)
         }, function(error){
           NotificationService.error(error);
         });

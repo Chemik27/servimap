@@ -23,9 +23,37 @@ html, body {
 
   /*searchbox*/
 
-  .stylish-input-group .input-group-addon{
-    background: white !important;
-  }
+.responsive-search{
+  margin:0px auto;
+  width:40%;
+}
+
+.searchbox{
+  height: 4%;
+  border: 3px solid #ccc;
+  color:black;
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+.searchbox:hover{
+  border:3px solid $background-blue;
+}
+
+.icons-box.input-group-addon  {
+  background-color:#2F3A4C !important ;
+  color: white !important;
+  transition: all 0.5s ease;
+
+}
+
+.icons-box.input-group-addon:hover  {
+  background-color: #3A598D !important;
+  transition: all 0.5s ease
+
+}
+
+
   .stylish-input-group .form-control{
     border-right:0;
     box-shadow:0 0 0;
@@ -86,15 +114,18 @@ html, body {
     text-align: center;
   }
 
-.searchbox{
-  width: 30%;
-  height: 12%;
-  border: 3px solid #ccc;
-  font-size: 22px;
-  vertical-align: middle;
+
+ .icons-box.input-group-addon  {
+  background-color:#2F3A4C !important ;
+  color: white !important;
+   transition: all 0.5s ease;
+
 }
-.searchbox:hover{
-  border:3px solid $background-blue;
+
+.icons-box.input-group-addon:hover  {
+  background-color: #3A598D !important;
+  transition: all 0.5s ease
+
 }
 
   .brand{
@@ -254,7 +285,6 @@ html, body {
 }
 
 
-
   @media only screen and (min-width: 990px){
     .question-center{
       margin-top: 100px;
@@ -298,4 +328,25 @@ html, body {
     }
 
   }
+
+
+@media only screen and (min-width:650px){
+  .minimal-icon {
+    display: none;
+    overflow:hidden;
+  }
+}
+@media only screen and (max-width:650px) {
+  .normal-icon {
+    display: none;
+  }
+  .responsive-search{
+    width:auto;
+  }
+}
+
+
+
+
+
 

@@ -2,21 +2,25 @@
 
     <header id="top" class="header background full-height">
 
-
-
       <div class="text-vertical-center background-busqueda">
-
         <div class="">
           <navbar-home></navbar-home>
-       <img class="logo" src="images/Logo-DutyMap-original.png" alt="logo">
+            <img class="logo" src="images/Logo-DutyMap-original.png" alt="logo">
         </div>
         <div>
           <h2><b>¿Qué servicio necesitás?</b></h2>
           <h3 >Podrás encontrar variedad de servicios como contadores, abogados, jardineros y más!</h3>
-            <input class="searchbox logo-color-bg" type="text" placeholder="Buscar servicios" ng-model="toFind">
-            <a ng-href="/#/servicio/{{toFind}}">
-              <button type="" class="btn btn-info logo-color-bg">Buscar</button>
-            </a>
+            <form>
+              <div class="input-group stylish-input-group responsive-search  ">
+                <input type="text" class="form-control searchbox" placeholder="Ejemplo: Pintor" ng-model="toFind">
+                <a class="icons-box input-group-addon" ng-href="/#/servicio/{{toFind}}">
+                  <button type="submit">
+                    <span class="minimal-icon glyphicon glyphicon-search "></span>
+                    <span class="normal-icon">Buscar</span>
+                  </button>
+                </a>
+              </div>
+          </form>
              <!--<a href="#services"><button class="btn btn-info logo-color-bg ">Buscar por categorías</button></a>-->
           <p class="button-header">
             <a href="#howItWorks" ng-click="scrollTo(section)" offset="0" du-smooth-scroll  class="btn btn-dark btn-lg">Cómo funciona</a>

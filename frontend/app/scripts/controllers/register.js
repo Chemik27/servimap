@@ -18,7 +18,11 @@ angular.module('dutymap')
         $scope.createWork = false;
 
         $scope.saveUser = function(){
-            var user = {'name':$scope.provider.name,
+
+          var formData = new FormData();
+
+
+          var user = {'name':$scope.provider.name,
                         'surname': $scope.provider.surname,
                         'username': $scope.provider.username,
                         'email': $scope.provider.email,
@@ -29,18 +33,29 @@ angular.module('dutymap')
                         'password': $scope.provider.password,
                         'type': $scope.userRegister ? 'comprador' : 'proveedor'};
 
-            UserResources.save(user, function(response){
-                if(user.type == 'proveedor') {
-                  NotificationService.success('Se ha registrado correctamente. Ingrese los datos de su servicio.');
-                  $scope.work.idUser = response.idUser;
-                  $scope.createWork = true;
-                }else{
-                NotificationService.success('Se ha registrado correctamente. Inicie sesión.');
-                  $location.url('/login')
-                }
-            }, function(error){
-                NotificationService.error(error);
-            });
+          formData.append('user', angular.toJson(user,true));
+          formData.append('file', file.files[0]);
+
+          $http({
+            method: 'POST',
+            url: '/api/user/create',
+            headers: {'Content-Type': undefined},
+            data: formData,
+            transformRequest:angular.identity
+
+          }).success(function(response) {
+            if(user.type == 'proveedor') {
+              NotificationService.success('Se ha registrado correctamente. Ingrese los datos de su servicio.');
+              $scope.work.idUser = response.idUser;
+              $scope.createWork = true;
+            }else{
+              NotificationService.success('Se ha registrado correctamente. Inicie sesión.');
+              $location.url('/login')
+            }
+          }).error(function(error) {
+              NotificationService.error(error);
+          });
+
         };
 
         $scope.zonas = [{id:1 ,name: '20 de Junio'},

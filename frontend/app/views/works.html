@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="front">
                               <div class="ribbon"><span>Garantizado</span></div>
-                                <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
+                                <p class="text-center"><img class="img-circle"  ng-src="data:image/png;base64,{{aPremium.user.photo}}" alt=""> </p>
                                 <h2> <p class="text-center">{{aPremium.name}}</p></h2>
                                 <h5> <p class="text-center text-success"><b><i class="fa fa-street-view fa-1x" aria-hidden="true"></i> Premium</b></p></h5>
                                 <hr>
@@ -65,7 +65,7 @@
         <! -- CONTACTOS COMUNES -->
             <div class="col-xs-10 col-sm-10 col-md-10 col-xs-push-1 border-service" ng-class="{'block': !$last}" ng-repeat="aWork in worksFound">
                 <div class="col-xs-12 col-sm-2 col-md-2">
-                    <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
+                    <p class="text-center"><img class="img-circle" ng-src="data:image/png;base64,{{aWork.user.photo}}" alt=""> </p>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-sm-push-1 col-md-7">

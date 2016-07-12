@@ -18,6 +18,7 @@ public class User extends BaseEntity {
     private String phone;
     private Long enabled;
     private Long idAddress;
+    private byte[] photo;
 
     //Transient values
     private String fullName;
@@ -39,7 +40,7 @@ public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user", nullable = false, updatable = false)
+    @Column(name = "id_user")
     public Long getIdUser() {
         return idUser;
     }
@@ -118,6 +119,16 @@ public class User extends BaseEntity {
 
     public void setIdAddress(Long idAddress) {
         this.idAddress = idAddress;
+    }
+
+    @Lob
+    @Column(name = "photo", nullable=false)
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     //Transient Values

@@ -1,15 +1,16 @@
 package com.tpfinal.service;
 
-import com.tpfinal.domain.Rating;
 import com.tpfinal.domain.Transaction;
+import com.tpfinal.domain.User;
 import com.tpfinal.dto.TransactionDTO;
 import com.tpfinal.repository.ITransactionRepository;
-import com.tpfinal.util.JsonParser;
+import com.tpfinal.repository.IUserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,10 +39,28 @@ public class TransactionService {
         return transaction;
     }
 
-    public List<Transaction> findByToUser(Long idUser) {
+    public List<Transaction> findByFromUser(Long idUser) {
         return transactionRepository.findTop10ByFromUserOrderByCreationDateDesc(idUser);
     }
-//    public List<Transaction> findByToUserAll(Long idUser) {
-//        return transactionRepository.findByToUser(idUser);
-//    }
+
+    @Autowired
+    IUserRepository userRepository;
+
+
+    public List<Iterable<User>> findByToUser(Long idUser) {
+
+        //busco las transaccion del usuario
+       List<Transaction> transaction = findByFromUser(idUser);
+
+        List<Long> id_user = new ArrayList();
+        List<Iterable<User>> listadeusuarios = new ArrayList<Iterable<User>>();
+
+        // Agarro cada transaccion y tomo el id del proveedor
+        for (Transaction i: transaction) {
+           id_user.add(i.getToUser());
+            //Busco por cada id encontrado todos los datos del proveedor
+           listadeusuarios.add(userRepository.findAll(id_user));
+        }
+        return  listadeusuarios;
+    }
 }

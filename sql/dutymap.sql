@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 12-07-2016 a las 04:24:36
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 7.0.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 12-07-2016 a las 16:44:54
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `dutymap`
 --
-CREATE DATABASE IF NOT EXISTS `dutymap` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `dutymap`;
 
 -- --------------------------------------------------------
 
@@ -148,37 +146,38 @@ CREATE TABLE `rating` (
   `recommendation` int(11) NOT NULL,
   `id_provider` bigint(11) NOT NULL,
   `review_text` varchar(45) DEFAULT NULL,
-  `general_average` varchar(45) NOT NULL,
-  `id_user` bigint(11) NOT NULL
+  `general_average` int(45) NOT NULL,
+  `id_user` bigint(11) NOT NULL,
+  `id_transaction` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `rating`
 --
 
-INSERT INTO `rating` (`id_rating`, `reliability`, `performance`, `consideration`, `recommendation`, `id_provider`, `review_text`, `general_average`, `id_user`) VALUES
-(1, 3, 2, 5, 2, 0, NULL, '', 0),
-(2, 4, 3, 2, 5, 0, NULL, '', 0),
-(3, 2, 3, 2, 3, 0, NULL, '', 0),
-(4, 1, 1, 1, 1, 0, NULL, '', 0),
-(5, 5, 5, 5, 5, 0, NULL, '', 0),
-(6, 3, 3, 3, 3, 0, NULL, '', 0),
-(7, 4, 3, 4, 3, 0, NULL, '', 0),
-(8, 3, 5, 4, 5, 0, NULL, '', 0),
-(9, 2, 2, 3, 4, 0, NULL, '', 0),
-(10, 5, 3, 3, 3, 0, NULL, '', 0),
-(11, 3, 4, 2, 2, 0, NULL, '', 0),
-(12, 4, 3, 4, 2, 0, NULL, '', 0),
-(13, 4, 4, 3, 2, 0, NULL, '', 0),
-(14, 2, 3, 2, 1, 0, NULL, '', 0),
-(15, 3, 4, 2, 1, 0, NULL, '', 0),
-(16, 4, 3, 2, 4, 0, NULL, '', 0),
-(17, 2, 1, 2, 3, 0, NULL, '', 0),
-(18, 4, 4, 3, 5, 0, NULL, '', 0),
-(19, 3, 2, 4, 3, 0, NULL, '', 0),
-(20, 4, 5, 5, 5, 0, NULL, '', 0),
-(21, 1, 1, 5, 5, 1, 'mensaje de prueba', '', 0),
-(22, 5, 5, 1, 1, 1, 'proueba 22', '', 0);
+INSERT INTO `rating` (`id_rating`, `reliability`, `performance`, `consideration`, `recommendation`, `id_provider`, `review_text`, `general_average`, `id_user`, `id_transaction`) VALUES
+(1, 3, 2, 5, 2, 0, NULL, 0, 0, 0),
+(2, 4, 3, 2, 5, 0, NULL, 0, 0, 0),
+(3, 2, 3, 2, 3, 0, NULL, 0, 0, 0),
+(4, 1, 1, 1, 1, 0, NULL, 0, 0, 0),
+(5, 5, 5, 5, 5, 0, NULL, 0, 0, 0),
+(6, 3, 3, 3, 3, 0, NULL, 0, 0, 0),
+(7, 4, 3, 4, 3, 0, NULL, 0, 0, 0),
+(8, 3, 5, 4, 5, 0, NULL, 0, 0, 0),
+(9, 2, 2, 3, 4, 0, NULL, 0, 0, 0),
+(10, 5, 3, 3, 3, 0, NULL, 0, 0, 0),
+(11, 3, 4, 2, 2, 0, NULL, 0, 0, 0),
+(12, 4, 3, 4, 2, 0, NULL, 0, 0, 0),
+(13, 4, 4, 3, 2, 0, NULL, 0, 0, 0),
+(14, 2, 3, 2, 1, 0, NULL, 0, 0, 0),
+(15, 3, 4, 2, 1, 0, NULL, 0, 0, 0),
+(16, 4, 3, 2, 4, 0, NULL, 0, 0, 0),
+(17, 2, 1, 2, 3, 0, NULL, 0, 0, 0),
+(18, 4, 4, 3, 5, 0, NULL, 0, 0, 0),
+(19, 3, 2, 4, 3, 0, NULL, 0, 0, 0),
+(20, 4, 5, 5, 5, 0, NULL, 0, 0, 0),
+(21, 1, 1, 5, 5, 1, 'mensaje de prueba', 0, 0, 0),
+(22, 5, 5, 1, 1, 1, 'proueba 22', 0, 0, 0);
 
 -- --------------------------------------------------------
 

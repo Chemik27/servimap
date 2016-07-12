@@ -18,7 +18,7 @@ angular.module('dutymap')
             $scope.profile = profileSelected;
             $scope.user = profileSelected.user;
             $scope.transactions = profileSelected.lastTransactions;
-            $scope.transactionsUSER = profileSelected.transactions;
+            $scope.proveedor = profileSelected.transactions;
             $scope.works = profileSelected.works;
             $scope.mainWork = $scope.works[0];
 

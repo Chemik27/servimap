@@ -22,6 +22,9 @@ public class TransactionService {
     @Autowired
     ITransactionRepository transactionRepository;
 
+    @Autowired
+    IUserRepository userRepository;
+
     public void save(TransactionDTO transactionDTO){
         Transaction transaction= createTransactionFromDTO(transactionDTO);
         transactionRepository.save(transaction);
@@ -43,22 +46,19 @@ public class TransactionService {
         return transactionRepository.findTop10ByFromUserOrderByCreationDateDesc(idUser);
     }
 
-    @Autowired
-    IUserRepository userRepository;
-
-
     public List<Iterable<User>> findByToUser(Long idUser) {
 
-        //busco las transaccion del usuario
-       List<Transaction> transaction = findByFromUser(idUser);
+       List<Long> id_user = new ArrayList();
+       List<Iterable<User>> listadeusuarios = new ArrayList<Iterable<User>>();
 
-        List<Long> id_user = new ArrayList();
-        List<Iterable<User>> listadeusuarios = new ArrayList<Iterable<User>>();
+        // Busco las transaccion del usuario logueado
+        List<Transaction> transaction = findByFromUser(idUser);
 
         // Agarro cada transaccion y tomo el id del proveedor
         for (Transaction i: transaction) {
+           //Lista con los id de los usuarios proveedores
            id_user.add(i.getToUser());
-            //Busco por cada id encontrado todos los datos del proveedor
+           // Busco por cada id encontrado todos los datos del proveedor
            listadeusuarios.add(userRepository.findAll(id_user));
         }
         return  listadeusuarios;

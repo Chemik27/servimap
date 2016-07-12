@@ -41,7 +41,8 @@ angular.module('dutymap')
           'recommendation': $scope.rating4,
           'id_provider':  $scope.toUser.idUser ,
           'general_average':  $scope.resultRating,
-          'id_user': $rootScope.idUser
+          'id_user': $rootScope.idUser,
+          'id_transaction': 1
         };
 
           QualifyResources.save(calificar, function(){

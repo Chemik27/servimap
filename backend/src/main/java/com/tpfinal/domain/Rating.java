@@ -15,8 +15,9 @@ public class Rating {
     private String review_text; //texto de opinion
     private Integer general_average; // promedio general
     private Long id_user; //recomendacion
+    private Long id_transaction; //recomendacion
 
-    public Rating(Integer reliability, Integer performance, Integer consideration, Integer recommendation,Long id_provider,String review_text,Integer general_average,  Long id_user ) {
+    public Rating(Integer reliability, Integer performance, Integer consideration, Integer recommendation,Long id_provider,String review_text,Integer general_average,  Long id_user, Long id_transaction ) {
         this.reliability = reliability;
         this.performance = performance;
         this.consideration = consideration;
@@ -25,6 +26,7 @@ public class Rating {
         this.review_text = review_text;
         this.general_average = general_average;
         this.id_user = id_user;
+        this.id_transaction = id_transaction;
     }
 
     public Rating() {
@@ -110,5 +112,14 @@ public class Rating {
 
     public void setId_user(Long id_user) {
         this.id_user = id_user;
+    }
+
+    @Column(name="id_transaction")
+    public Long getId_transaction() {
+        return id_transaction;
+    }
+
+    public void setId_transaction(Long id_transaction) {
+        this.id_transaction = id_transaction;
     }
 }

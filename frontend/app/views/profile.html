@@ -1,153 +1,51 @@
 <navbar-secondary></navbar-secondary>
-<div class="resume col-md-12 col-xs-12 container-fluid">
-  <div >
-    <div class="profile-container">
+<div class="resume container-fluid">
 
+  <profile-dutymap></profile-dutymap>
 
-    <profile-dutymap></profile-dutymap>
+  <div class="container-fluid col-md-9 col-xs-12">
 
-    <div class="col-md-9 profile-inner">
-
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" data-target="#profile">Mi perfil</a></li>
-        <!--<div class="nav nav-tabs" ng-show="fromUser == user.idUser"> ACTIVAR DESPUES-->
-        <div class="nav nav-tabs" >
-          <li><a data-toggle="tab" data-target="#settings">Editar perfil</a></li>
-          <li><a data-toggle="tab" data-target="#transaction-history">Historial de transacciones</a></li>
+    <div id="module-work" class="col-md-12">
+      <div class="module-work col-sm-12 col-xs-12" ng-repeat="aWork in works">
+        <h3><i class="fa fa-briefcase" aria-hidden="true"></i> {{aWork.name}}</h3>
+        <div>
+          <p>{{aWork.description}}</p>
+          <p>{{aWork.category.name}}</p>
+          <p>{{aWork.address.district.name}}</p>
         </div>
-      </ul>
+      </div>
 
-      <div class="tab-content">
-
-        <!--Seccion Mi perfil-->
-        <div id="profile" class="tab-pane fade in active">
-
-          <h3>Mi perfil</h3>
-
-          <div id="module-work" class=" col-md-12 col-sm-12">
-            <div class="module-work col-md-5 col-xs-12" ng-repeat="aWork in works">
-              <h3><i class="fa fa-briefcase" aria-hidden="true"></i> {{aWork.name}}</h3>
-              <div>
-                <p>{{aWork.description}}</p>
-                <p>{{aWork.category.name}}</p>
-                <p>{{aWork.address.district.name}}</p>
-              </div>
-            </div>
-
-            <div ng-class="{'module-info col-md-5 col-sm-6': works.length > 1, 'module-size': works.length == 1}">
-              <div>
-                <p>asd</p>
-              </div>
-            </div>
-
-            <div ng-class="{'module-info col-md-5 col-sm-6': works.length > 1, 'module-size': works.length == 1}">
-              <div>
-                <p>qwe</p>
-              </div>
-            </div>
-          </div>
-
-          <div id="module-feedback" class="col-md-12">
-            <div class="module col-sm-6 col-md-5 col-xs-12">
-              <h3><i class="fa fa-users" aria-hidden="true"></i> Feedback</h3>
-              <div id="feedback-info">
-                <p>reliability {{user.rating.reliability}}</p>
-                <p>performance {{user.rating.performance}}</p>
-                <p>consideration {{user.rating.consideration}}</p>
-                <p>recommendation {{user.rating.recommendation}}</p>
-              </div>
-            </div>
-
-            <div class="module  col-md-5 col-sm-6 col-xs-12">
-              <h3><i class="fa fa-comments-o" aria-hidden="true"></i> Comentarios</h3>
-              <div class="comments" ng-repeat="tx in transactions">
-                <p>{{tx.comment}}</p>
-              </div>
-            </div>
-          </div>
+      <div ng-class="{'module-info col-sm-6': works.length > 1, 'module-size': works.length == 1}">
+        <div>
+          <p>asd</p>
         </div>
-        <!--Seccion Editar perfil-->
-        <div id="settings" class="tab-pane fade">
-          <h3>Editar perfil</h3>
+      </div>
 
-              <div class="col-sm-6 settings-data">
-                <p>Nombre: </p>
-                <input type="text" class="form-control input-md" ng-value="user.name">
-
-              </div>
-              <div class="col-sm-6">
-                <p>Apellido: </p>
-                <input type="text" class="form-control input-md" ng-value="user.surname">
-              </div>
-
-              <div class="col-sm-6">
-                <p>Dirección: </p>
-                <input type="text" class="form-control input-md" ng-value="user.name">
-
-              </div>
-              <div class="col-sm-6">
-                <p>Email: </p>
-                <input type="text" class="form-control input-md" ng-value="user.email">
-              </div>
-
-              <div class="col-xs-12 col-sm-6">
-                <p>Teléfono: </p>
-                <input type="text" class="form-control input-md" ng-value="user.phone">
-
-              </div>
-              <div class="col-sm-6">
-                <p>Cambiar contraseña </p>
-                <input type="password" class="form-control input-md">
-              </div>
-
-              <div class="col-md-6 col-sm-6">
-                <p>Foto de perfil</p>
-                <input type="file" id="exampleInputFile" class="col-xs-12">
-              </div>
-
-          <div class="col-md-12">
-            <button class="btn logo-color-bg profile-btn center">Guardar cambios</button>
-          </div>
-
+      <div ng-class="{'module-info col-sm-6': works.length > 1, 'module-size': works.length == 1}">
+        <div>
+          <p>qwe</p>
         </div>
-
-        <!--Seccion Historial de transacciones-->
-        <div  id="transaction-history" class="tab-pane fade">
-
-          <div class="col-xs-12">
-          <h3>Mis transacciones</h3>
-
-            <div  class="col-xs-12 col-md-12"ng-repeat="transaction in transactions">
-              <div class="col-xs-12 col-sm-2 col-md-2">
-                <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
-              </div>
-
-              <div class="col-xs-12 col-sm-8 col-sm-push-1 col-md-7">
-                <div class="col-xs-12 col-sm-6">
-                  <h3>{{aWork.name}} Nombre</h3>
-                  <p>{{aWork.category.name}} Tipo de trabajo</p>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                  <h3><i class="fa fa-map-marker fa-1x text-dutymap" aria-hidden="true"></i> {{aWork.address.district.name}}Localidad</h3>
-                </div>
-              </div>
-
-              <div class="col-xs-12 col-sm-2 col-md-3">
-                <!--<p>Valoración : </p>-->
-                <!--<p>Costo : ${{aWork.price}}</p>-->
-
-                  <button class="btn qualify">Calificar</button>
-
-                  <button class="btn profile-btn logo-color-bg">Ver perfil</button>
-
-              </div>
-          </div>
-          </div>
-        </div>
-        </div>
+      </div>
     </div>
-</div>
-</div>
-</div>
+
+    <div id="module-feedback" class="col-md-12 col-xs-12">
+      <div class="module col-sm-6 col-xs-12">
+        <h3><i class="fa fa-users" aria-hidden="true"></i> Feedback</h3>
+        <div id="feedback-info">
+          <p>reliability {{user.rating.reliability}}</p>
+          <p>performance {{user.rating.performance}}</p>
+          <p>consideration {{user.rating.consideration}}</p>
+          <p>recommendation {{user.rating.recommendation}}</p>
+        </div>
+      </div>
+
+      <div class="module col-sm-6 col-xs-12">
+        <h3><i class="fa fa-comments-o" aria-hidden="true"></i> Comentarios</h3>
+        <div class="comments" ng-repeat="tx in transactions">
+          <p>{{tx.comment}}</p>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 <footer-dutymap></footer-dutymap>

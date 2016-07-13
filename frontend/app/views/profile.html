@@ -4,48 +4,68 @@
   <profile-dutymap></profile-dutymap>
 
   <div class="container-fluid col-md-9 col-xs-12">
+    <div class="col-md-9 profile-inner">
 
-    <div id="module-work" class="col-md-12">
-      <div class="module-work col-sm-12 col-xs-12" ng-repeat="aWork in works">
-        <h3><i class="fa fa-briefcase" aria-hidden="true"></i> {{aWork.name}}</h3>
-        <div>
-          <p>{{aWork.description}}</p>
-          <p>{{aWork.category.name}}</p>
-          <p>{{aWork.address.district.name}}</p>
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" data-target="#profile">Mi perfil</a></li>
+        <!--<div class="nav nav-tabs" ng-show="fromUser == user.idUser"> ACTIVAR DESPUES-->
+        <!--<div class="nav nav-tabs" >-->
+          <li><a data-toggle="tab" data-target="#settings">Editar perfil</a></li>
+          <li><a data-toggle="tab" data-target="#transaction-history">Historial de transacciones</a></li>
+        <!--</div>-->
+      </ul>
+
+      <div class="tab-content">
+
+        <!--Seccion Mi perfil-->
+        <div id="profile" class="tab-pane fade in active">
+
+          <h3>Mi perfil</h3>
+
+          <div id="module-work" class=" col-md-12 col-sm-12">
+            <div class="module-work col-md-5 col-xs-12" ng-repeat="aWork in works">
+              <h3><i class="fa fa-briefcase" aria-hidden="true"></i> {{aWork.name}}</h3>
+              <div>
+                <p>{{aWork.description}}</p>
+                <p>{{aWork.category.name}}</p>
+                <p>{{aWork.address.district.name}}</p>
+              </div>
+            </div>
+
+            <div ng-class="{'module-info col-md-5 col-sm-6': works.length > 1, 'module-size': works.length == 1}">
+              <div>
+                <p>asd</p>
+              </div>
+            </div>
+
+            <div ng-class="{'module-info col-md-5 col-sm-6': works.length > 1, 'module-size': works.length == 1}">
+              <div>
+                <p>qwe</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="module-feedback" class="col-md-12">
+            <div class="module col-sm-6 col-md-5 col-xs-12">
+              <h3><i class="fa fa-users" aria-hidden="true"></i> Feedback</h3>
+              <div id="feedback-info">
+                <p>reliability {{user.rating.reliability}}</p>
+                <p>performance {{user.rating.performance}}</p>
+                <p>consideration {{user.rating.consideration}}</p>
+                <p>recommendation {{user.rating.recommendation}}</p>
+              </div>
+            </div>
+      <div class="module col-sm-6 col-xs-12">
+           <h3><i class="fa fa-comments-o" aria-hidden="true"></i> Comentarios</h3>
+           <div class="comments" ng-repeat="tx in transactions">
+            <p>{{tx.comment}}</p>
+           </div>
         </div>
       </div>
-
-      <div ng-class="{'module-info col-sm-6': works.length > 1, 'module-size': works.length == 1}">
-        <div>
-          <p>asd</p>
-        </div>
       </div>
-
-      <div ng-class="{'module-info col-sm-6': works.length > 1, 'module-size': works.length == 1}">
-        <div>
-          <p>qwe</p>
-        </div>
+      </div>
       </div>
     </div>
 
-    <div id="module-feedback" class="col-md-12 col-xs-12">
-      <div class="module col-sm-6 col-xs-12">
-        <h3><i class="fa fa-users" aria-hidden="true"></i> Feedback</h3>
-        <div id="feedback-info">
-          <p>reliability {{user.rating.reliability}}</p>
-          <p>performance {{user.rating.performance}}</p>
-          <p>consideration {{user.rating.consideration}}</p>
-          <p>recommendation {{user.rating.recommendation}}</p>
-        </div>
-      </div>
-
-      <div class="module col-sm-6 col-xs-12">
-        <h3><i class="fa fa-comments-o" aria-hidden="true"></i> Comentarios</h3>
-        <div class="comments" ng-repeat="tx in transactions">
-          <p>{{tx.comment}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+   </div>
 <footer-dutymap></footer-dutymap>

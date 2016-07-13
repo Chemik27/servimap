@@ -97,6 +97,7 @@
                                         <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': userForm.district.$touched , 'has-success' : userForm.district.$valid}">
                                             <span>Localidad</span>
                                             <select class="form-control input-lg" name="district" ng-model="provider.district" required ng-options="zona.name for zona in zonas track by zona.id">
+                                              <option value="">Seleccione una</option>
                                             </select>
                                             <div class="help-block" ng-messages="userForm.district.$error" ng-if="userForm.district.$touched">
                                                 <p ng-message="required">Localidad requerida</p>
@@ -129,7 +130,14 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 form-group bg-dangerr">
                                             <span>Foto</span>
-                                          <input type="file" ng-model="file" name="file" id="file">
+                                            <div class="input-group">
+                                                <label class="input-group-btn">
+                                                    <span class="btn btn-default">
+                                                        Selecciona <input type="file" ng-model="file" name="file" id="file" style="display: none;" accept="image/png,image/jpg,image/jpeg">
+                                                    </span>
+                                                </label>
+                                                <input type="text" class="form-control" readonly>
+                                            </div>
                                         </div>
                                     </div>
 

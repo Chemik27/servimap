@@ -39,8 +39,8 @@ public class HireController {
         logger.info("GET");
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("toUser", userService.findByIdUser(idUser));
-        result.put("lastTransactions", transactionService.findByToUser(idUser));
-//        result.put("transaction", transactionService.findByToUserAll(idUser));
+        result.put("lastTransactions", transactionService.findByFromUser(idUser));
+        result.put("transaction", transactionService.findByToUser(idUser));
         result.put("works", workService.findByIdUser(idUser));
         return result;
     }
@@ -50,5 +50,6 @@ public class HireController {
         transactionService.save(transactionDTO);
 
     }
+
 
 }

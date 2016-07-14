@@ -2,8 +2,10 @@ package com.tpfinal.service;
 
 import com.tpfinal.domain.Rating;
 import com.tpfinal.domain.Transaction;
+import com.tpfinal.domain.User;
 import com.tpfinal.dto.TransactionDTO;
 import com.tpfinal.repository.ITransactionRepository;
+import com.tpfinal.repository.IUserRepository;
 import com.tpfinal.util.JsonParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +23,9 @@ public class TransactionService {
     @Autowired
     ITransactionRepository transactionRepository;
 
+    @Autowired
+    IUserRepository userRepository;
+
     public void save(TransactionDTO transactionDTO){
         Transaction transaction= createTransactionFromDTO(transactionDTO);
         transactionRepository.save(transaction);
@@ -30,7 +35,8 @@ public class TransactionService {
 
         Transaction transaction = new Transaction();
         transaction.setCreationDate(new Date());
-        transaction.setToUser(transactionDTO.getToUser());
+        User user = userRepository.findByIdUser(transactionDTO.getToUser());
+        transaction.setToUser(user);
         transaction.setFromUser(transactionDTO.getFromUser());
         transaction.setAgreedDate(transactionDTO.getAgreedDate());
         transaction.setDone(transactionDTO.getDone());
@@ -38,10 +44,11 @@ public class TransactionService {
         return transaction;
     }
 
-    public List<Transaction> findByToUser(Long idUser) {
+    public List<Transaction> findByFromUser(Long idUser) {
         return transactionRepository.findTop10ByFromUserOrderByCreationDateDesc(idUser);
     }
-//    public List<Transaction> findByToUserAll(Long idUser) {
-//        return transactionRepository.findByToUser(idUser);
-//    }
+
+    public List<Transaction> findByToUser(Long idUser){
+        return transactionRepository.findTop10ByToUserIdUserOrderByCreationDateDesc(idUser);
+    }
 }

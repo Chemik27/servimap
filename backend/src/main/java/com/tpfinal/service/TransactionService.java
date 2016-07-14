@@ -34,7 +34,8 @@ public class TransactionService {
 
         Transaction transaction = new Transaction();
         transaction.setCreationDate(new Date());
-        transaction.setToUser(transactionDTO.getToUser());
+        User user = userRepository.findByIdUser(transactionDTO.getToUser());
+        transaction.setToUser(user);
         transaction.setFromUser(transactionDTO.getFromUser());
         transaction.setAgreedDate(transactionDTO.getAgreedDate());
         transaction.setDone(transactionDTO.getDone());
@@ -46,21 +47,7 @@ public class TransactionService {
         return transactionRepository.findTop10ByFromUserOrderByCreationDateDesc(idUser);
     }
 
-    public List<Iterable<User>> findByToUser(Long idUser) {
-
-       List<Long> id_user = new ArrayList();
-       List<Iterable<User>> listadeusuarios = new ArrayList<Iterable<User>>();
-
-        // Busco las transaccion del usuario logueado
-        List<Transaction> transaction = findByFromUser(idUser);
-
-        // Agarro cada transaccion y tomo el id del proveedor
-        for (Transaction i: transaction) {
-           //Lista con los id de los usuarios proveedores
-           id_user.add(i.getToUser());
-           // Busco por cada id encontrado todos los datos del proveedor
-           listadeusuarios.add(userRepository.findAll(id_user));
-        }
-        return  listadeusuarios;
+    public List<Transaction> findByToUser(Long idUser){
+        return transactionRepository.findTop10ByToUserIdUserOrderByCreationDateDesc(idUser);
     }
 }

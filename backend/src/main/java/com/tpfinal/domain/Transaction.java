@@ -13,12 +13,12 @@ public class Transaction {
 
     private Integer idTransaction;
     private Date creationDate;
-    private Long toUser;
-    private Long fromUser;
+    private User toUser; // proveedor
+    private Long fromUser; //usuario
     private Date agreedDate;
     private Boolean done;
 
-    public Transaction(Date creationDate, Long toUser, Long fromUser,Date agreedDate) {
+    public Transaction(Date creationDate, User toUser, Long fromUser,Date agreedDate) {
         this.creationDate = creationDate;
         this.toUser = toUser;
         this.fromUser = fromUser;
@@ -49,12 +49,13 @@ public class Transaction {
         this.creationDate = creationDate;
     }
 
-    @Column(name = "to_user")
-    public Long getToUser() {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "to_user", nullable=false)
+    public User getToUser() {
         return toUser;
     }
 
-    public void setToUser(Long toUser) {
+    public void setToUser(User toUser) {
         this.toUser = toUser;
     }
 

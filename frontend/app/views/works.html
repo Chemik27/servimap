@@ -47,10 +47,10 @@
                                 <h5><p class="text-center">{{aPremium.description}}</p></h5>
                                 <h3><p class="text-center">$ {{aPremium.price}}</p></h3>
                                 <hr>
-                                <div class="text-center">
+                                <div class="text-center">$
                                     <div><a class="btn btn-success profile" href="">Contratar</a></div>
                                     <br>
-                                    <div><a class="btn btn-info profile" ng-href="/#/perfil/{{aPremium.idUser}}">Ver perfil</a></div>
+                                    <div ng-controller="ProfileCtrl"><a class="btn btn-info profile" href="" ng-click="saveIdProvider(aPremium.idUser)">Ver perfil</a></div>
                                 </div>
                             </div>
                         </div>

@@ -64,7 +64,7 @@ angular
         resolve: {profileSelected: ['$route','HireResources', function($route, HireResources) {
           return HireResources.get($route.current.pathParams).$promise;}]}
       })
-      .when('/perfil', {
+      .when('/perfil/', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
       })

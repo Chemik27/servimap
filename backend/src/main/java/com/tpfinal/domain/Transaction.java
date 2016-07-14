@@ -13,17 +13,18 @@ public class Transaction {
 
     private Integer idTransaction;
     private Date creationDate;
-    private User toUser; // proveedor
+    private Long toUser; // proveedor
     private Long fromUser; //usuario
     private Date agreedDate;
     private Boolean done;
+    private Work work;
 
-    public Transaction(Date creationDate, User toUser, Long fromUser,Date agreedDate) {
+    public Transaction(Date creationDate, Long toUser, Long fromUser,Date agreedDate, Work work) {
         this.creationDate = creationDate;
         this.toUser = toUser;
         this.fromUser = fromUser;
         this.agreedDate= agreedDate;
-        this.done= done;
+        this.work = work;
     }
 
     public Transaction() {
@@ -49,13 +50,12 @@ public class Transaction {
         this.creationDate = creationDate;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "to_user", nullable=false)
-    public User getToUser() {
+    @Column(name = "to_user")
+    public Long getToUser() {
         return toUser;
     }
 
-    public void setToUser(User toUser) {
+    public void setToUser(Long toUser) {
         this.toUser = toUser;
     }
 
@@ -84,5 +84,15 @@ public class Transaction {
 
     public void setDone(Boolean done) {
         this.done = done;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "work", nullable = false)
+    public Work getWork() {
+        return work;
+    }
+
+    public void setWork(Work work) {
+        this.work = work;
     }
 }

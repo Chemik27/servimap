@@ -8,6 +8,6 @@ import java.util.List;
 public interface ITransactionRepository extends JpaRepository<Transaction, Long> {
 
     public List<Transaction> findTop10ByFromUserOrderByCreationDateDesc(Long idUser);
-    public List<Transaction> findTop10ByToUserIdUserOrderByCreationDateDesc(Long idUser);
+    public List<Transaction> findTop10ByWorkUserIdUserOrderByCreationDateDesc(Long idUser);
     public Transaction save(Transaction transaction);
 }

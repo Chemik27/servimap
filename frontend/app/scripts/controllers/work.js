@@ -8,8 +8,8 @@
  * Controller of the dutymap
  */
 angular.module('dutymap')
-    .controller('WorkCtrl', ['$scope', '$routeParams', 'WorkResources','works', 'NotificationService',
-        function ($scope, $routeParams, WorkResources, works, NotificationService) {
+    .controller('WorkCtrl', ['$scope', '$routeParams', 'WorkResources','works', 'NotificationService','ProfileResources',
+        function ($scope, $routeParams, WorkResources, works, NotificationService, ProfileResources) {
 
             $scope.worksFound = works.content;
             $scope.districts = [
@@ -54,5 +54,9 @@ angular.module('dutymap')
                     NotificationService.error("No se pudo realizar la busqueda");
                 })
             };
+
+            $scope.goToProfile = function(id){
+                ProfileResources
+            }
 
     }]);

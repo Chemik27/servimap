@@ -1,7 +1,7 @@
 
 
+<navbar-secondary></navbar-secondary>
 <div class="resume">
-  <navbar-secondary></navbar-secondary>
 
     <div class="sidebar-filter col-md-3">
         <h3 class="text-center">Filtra tus busquedas</h3>
@@ -21,20 +21,20 @@
         </ul>
     </div>
 
-    <div class="container-fluid col-md-9 works-modules">
+    <div ng-show="worksFound.length != 0" class="container-fluid col-md-9 works-modules">
 
         <h2 class="text-center">H&eacute;mos encontrado a los mejores</h2>
 
         <div class="container-fluid">
         <! -- CONTACTOS PREMIUM -->
             <div ng-class="{'col-md-4 col-md-push-4': worksFound.length == 1, 'col-sm-4 col-md-4 col-lg-4 col-md-push-2': worksFound.length == 2,
-             'col-sm-4 col-md-4 col-lg-4': worksFound.length >2 }" ng-repeat="aPremium in worksFound">
+             'col-sm-4 col-md-4 col-lg-4': worksFound.length >2 }" ng-repeat="aPremium in worksFound" class="card-margin">
                 <div class="flip-container padding" ontouchstart="this.classList.toggle('hover');">
                     <div class="flipper">
                         <div class="row">
                             <div class="front">
                               <div class="ribbon"><span>Garantizado</span></div>
-                                <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
+                                <p class="text-center"><img class="img-circle"  ng-src="data:image/png;base64,{{aPremium.user.photo}}" alt=""> </p>
                                 <h2> <p class="text-center">{{aPremium.name}}</p></h2>
                                 <h5> <p class="text-center text-success"><b><i class="fa fa-street-view fa-1x" aria-hidden="true"></i> Premium</b></p></h5>
                                 <hr>
@@ -65,7 +65,7 @@
         <! -- CONTACTOS COMUNES -->
             <div class="col-xs-10 col-sm-10 col-md-10 col-xs-push-1 border-service" ng-class="{'block': !$last}" ng-repeat="aWork in worksFound">
                 <div class="col-xs-12 col-sm-2 col-md-2">
-                    <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
+                    <p class="text-center"><img class="img-circle" ng-src="data:image/png;base64,{{aWork.user.photo}}" alt=""> </p>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-sm-push-1 col-md-7">
@@ -87,6 +87,25 @@
                         <br>
                         <button class="btn btn-info">Ver perfil</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-hide="worksFound.length != 0" class="container-fluid col-md-9 works-modules">
+        <div>
+
+            <div class="col-sm-12 text-center">
+                <h2>No se han encontrado profesionales para tu necesidad</h2>
+            </div>
+
+            <div class="col-sm-6 col-sm-push-3 text-center not-found">
+                <div>
+                    <i class="fa fa-bullhorn fa-5x text-dutymap" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <h4 class="text-dutymap"><b>Psss! No queremos que ocurra esto devuelta..<br>Ayúdanos a que nos conozcan. <br>
+                      Futuros proveedores necesitarán de tu servicio. <br>Invita a tus amigos y colegas.</b></h4>
                 </div>
             </div>
         </div>

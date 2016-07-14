@@ -1,9 +1,6 @@
 package com.tpfinal.service;
 
-import com.tpfinal.domain.Address;
-import com.tpfinal.domain.Category;
-import com.tpfinal.domain.District;
-import com.tpfinal.domain.Work;
+import com.tpfinal.domain.*;
 import com.tpfinal.dto.WorkDTO;
 import com.tpfinal.repository.IWorkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +22,9 @@ public class WorkService {
     @Autowired
     AddressService addressService;
 
+    @Autowired
+    UserService userService;
+
     private static final int ITEMS_PER_PAGE = 10;
 
 //    public Page<Work> findAll(PageRequest pageRequest) {
@@ -36,7 +36,7 @@ public class WorkService {
     }
 
     public List<Work> findByIdUser(Long idUser){
-        return workRepository.findByIdUser(idUser);
+        return workRepository.findByUser(userService.findByIdUser(idUser));
     }
 
     public Page<Work> findByCategory(Long idCategory){
@@ -49,7 +49,8 @@ public class WorkService {
 
     public Work createFromDTO(WorkDTO workDTO) {
         Work work = new Work();
-        work.setIdUser(workDTO.getIdUser()); //TODO DESHARDCODEAR
+        User user = userService.findByIdUser(workDTO.getIdUser());
+        work.setUser(user);
         work.setDescription(workDTO.getDescription());
         work.setName(workDTO.getName());
         work.setPrice(workDTO.getPrice());
@@ -57,7 +58,7 @@ public class WorkService {
         Category category = categoryService.findByIdCategory(workDTO.getIdCategory());
         work.setCategory(category);
 
-        Address address = addressService.createAddressFromDTO(workDTO.getStreet(), workDTO.getNumber(), workDTO.getIdDistrict());
+        Address address = addressService.createAddressFromDTO(workDTO.getStreet(), workDTO.getNumber(), workDTO.getIdDistrict(), workDTO.getIdUser(), workDTO.getTypeAddress());
         work.setAddress(address);
 
         return workRepository.save(work);

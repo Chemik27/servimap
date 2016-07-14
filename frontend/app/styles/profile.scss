@@ -1,21 +1,19 @@
 @import "variables";
-
 .resume{
   font-family: $font-stack;
   color: $font-color;
   background-color: $background-grey;
   padding: 0;
-
+  display: flex; display: -webkit-flex; display: flex;
 
   .module-main{
     background-color: $background-blue-side;
     color: lightgrey;
     flex:1;
-    display: table-cell;
   }
 
   .module-size{
-    //width: 45%;
+    width: 45%;
     margin:2%;
     display: inline-block;
   }
@@ -80,48 +78,3 @@
 .gold{
   color: gold;
 }
-
-.nav-tabs> li{
-  cursor:pointer;
-}
-
-#settings{
-  font-size:17px;
-}
-
-.qualify-btn{
-  color: orangered;
-}
-
-.profile-btn{
-  transition: all 0.5s ease;
-  height: 50%;
-  width:150px;
-  margin-bottom: 10%;
-  display:block;
-}
-
-.profile-btn:hover{
-  color: white;
-  background-color: #3A598D;
-}
-
-.qualify{
-  height: 50%;
-  width:150px;
-  color: white;
-  background-color: orangered;
-}
-
-//.profile-container{
-//  display: table;
-//}
-//
-//.profile-inner  {
-//  min-height: 210px;
-//  padding-bottom: 20px;
-//  display: table-cell;
-//  height: auto;
-//  overflow: hidden;
-//
-//}

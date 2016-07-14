@@ -97,6 +97,7 @@
                                         <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': userForm.district.$touched , 'has-success' : userForm.district.$valid}">
                                             <span>Localidad</span>
                                             <select class="form-control input-lg" name="district" ng-model="provider.district" required ng-options="zona.name for zona in zonas track by zona.id">
+                                              <option value="">Seleccione una</option>
                                             </select>
                                             <div class="help-block" ng-messages="userForm.district.$error" ng-if="userForm.district.$touched">
                                                 <p ng-message="required">Localidad requerida</p>
@@ -122,6 +123,20 @@
                                             <div class="help-block" ng-messages="userForm.number.$error" ng-if="userForm.number.$touched">
                                                 <p ng-message="required">Altura requerida.</p>
                                                 <p ng-message="pattern">Altura incorrecta.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 form-group bg-dangerr">
+                                            <span>Foto</span>
+                                            <div class="input-group">
+                                                <label class="input-group-btn">
+                                                    <span class="btn btn-default">
+                                                        Selecciona <input type="file" ng-model="file" name="file" id="file" style="display: none;" accept="image/png,image/jpg,image/jpeg">
+                                                    </span>
+                                                </label>
+                                                <input type="text" class="form-control" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -231,7 +246,7 @@
                                     <div class="row">
                                         <!-- Campo precio <-->
                                         <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': workForm.price.$touched && workForm.price.$invalid, 'has-success' : workForm.price.$valid}"  >
-                                            <span>Precio</span>
+                                            <span>Precio {{replicate}}</span>
                                             <input type="text" name="price"  class="form-control input-lg" ng-model="work.price"  ng-pattern="onlyNumbers" ng-required="true" >
                                             <div class="help-block" ng-messages="workForm.price.$error" ng-if="workForm.price.$touched">
                                                 <p ng-message="required">Ingrese un precio</p>
@@ -239,19 +254,29 @@
                                             </div>
                                         </div>
 
+                                        <div class="col-xs-12 col-sm-6 form-group" ng-hide="replicate == '3'">
+                                            <span>Localidad laboral</span>
+                                            <select class="form-control input-lg" name="district" ng-model="replicate" required>
+                                                <option value="">Seleccione una</option>
+                                                <option value="1">No tengo dirección laboral</option>
+                                                <option value="2">Dirección de residencia</option>
+                                                <option value="3">Nueva dirección</option>
+                                            </select>
+                                        </div>
+
                                         <!-- Campo localidad -->
-                                        <div class="col-xs-12 col-sm-6 form-group">
-                                            <span>Localidad laboral (Opcional)</span>
+                                        <div class="col-xs-12 col-sm-6 form-group" ng-show="replicate == '3'">
+                                            <span>Localidad laboral</span>
                                             <select class="form-control input-lg" name="district" ng-model="work.district" ng-options="zona.name for zona in zonas track by zona.id">
                                                 <option value="">Seleccione una</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row" ng-show="replicate  == '3'">
                                         <!-- Campo calle -->
                                         <div class="col-xs-12 col-sm-6 form-group bg-dangerr"  ng-class="{ 'has-error': workForm.street.$invalid}">
-                                            <span>Calle laboral (Opcional)</span>
+                                            <span>Calle laboral</span>
                                             <input type="text" name="street" ng-model="work.street" class="form-control input-lg" ng-pattern="street">
                                             <div class="help-block" ng-messages="workForm.street.$error" ng-if="workForm.street.$touched">
                                                 <p ng-message="pattern">Calle incorrecta.</p>
@@ -260,7 +285,7 @@
 
                                         <!-- Campo numero -->
                                         <div class="col-xs-12 col-sm-6 form-group bg-dangerr"  ng-class="{ 'has-error': workForm.number.$invalid}">
-                                            <span>Altura laboral (Opcional)</span>
+                                            <span>Altura laboral</span>
                                             <input type="text" name="number" ng-model="work.number" class="form-control input-lg" ng-pattern="onlyNumbers">
                                             <div class="help-block" ng-messages="workForm.number.$error" ng-if="workForm.number.$touched">
                                                 <p ng-message="pattern">Altura incorrecta.</p>
@@ -270,7 +295,7 @@
 
                                     <div class="row">
                                         <br>
-                                        <div class="col-xs-12"><input type="submit" value="Publicar" ng-disabled="workForm.$invalid" class="btn btn-primary btn-block btn-lg"></div>
+                                        <div class="col-xs-12"><button type="submit" ng-disabled="workForm.$invalid" class="btn button-1 logo-color-bg btn-block btn-lg center">Publicar</button></div>
                                     </div>
 
                                         <!--<div class="row" ng-hide="userRegister">-->

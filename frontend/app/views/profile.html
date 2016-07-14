@@ -1,19 +1,19 @@
 <navbar-secondary></navbar-secondary>
-<div class="resume col-md-12 col-xs-12 container-fluid">
-  <div >
-    <div class="profile-container">
+<div class="resume container-fluid">
 
+  <profile-dutymap></profile-dutymap>
 
-    <profile-dutymap></profile-dutymap>
+  <div class="container-fluid col-md-9 col-xs-12">
 
     <div class="col-md-9 profile-inner">
 
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" data-target="#profile">Mi perfil</a></li>
-        <div class="nav nav-tabs" ng-show="fromUser == user.idUser">
+        <!--<div class="nav nav-tabs" ng-show="fromUser == user.idUser"> ACTIVAR DESPUES-->
+        <!--<div class="nav nav-tabs" >-->
           <li><a data-toggle="tab" data-target="#settings">Editar perfil</a></li>
           <li><a data-toggle="tab" data-target="#transaction-history">Historial de transacciones</a></li>
-        </div>
+        <!--</div>-->
       </ul>
 
       <div class="tab-content">
@@ -69,40 +69,40 @@
         <div id="settings" class="tab-pane fade">
           <h3>Editar perfil</h3>
 
-              <div class="col-sm-6 settings-data">
-                <p>Nombre: </p>
-                <input type="text" class="form-control input-md" ng-value="user.name">
+          <div class="col-sm-6 settings-data">
+            <p>Nombre: </p>
+            <input type="text" class="form-control input-md" ng-value="user.name">
 
-              </div>
-              <div class="col-sm-6">
-                <p>Apellido: </p>
-                <input type="text" class="form-control input-md" ng-value="user.surname">
-              </div>
+          </div>
+          <div class="col-sm-6">
+            <p>Apellido: </p>
+            <input type="text" class="form-control input-md" ng-value="user.surname">
+          </div>
 
-              <div class="col-sm-6">
-                <p>Dirección: </p>
-                <input type="text" class="form-control input-md" ng-value="user.name">
+          <div class="col-sm-6">
+            <p>Dirección: </p>
+            <input type="text" class="form-control input-md" ng-value="user.name">
 
-              </div>
-              <div class="col-sm-6">
-                <p>Email: </p>
-                <input type="text" class="form-control input-md" ng-value="user.email">
-              </div>
+          </div>
+          <div class="col-sm-6">
+            <p>Email: </p>
+            <input type="text" class="form-control input-md" ng-value="user.email">
+          </div>
 
-              <div class="col-xs-12 col-sm-6">
-                <p>Teléfono: </p>
-                <input type="text" class="form-control input-md" ng-value="user.phone">
+          <div class="col-xs-12 col-sm-6">
+            <p>Teléfono: </p>
+            <input type="text" class="form-control input-md" ng-value="user.phone">
 
-              </div>
-              <div class="col-sm-6">
-                <p>Cambiar contraseña </p>
-                <input type="password" class="form-control input-md">
-              </div>
+          </div>
+          <div class="col-sm-6">
+            <p>Cambiar contraseña </p>
+            <input type="password" class="form-control input-md">
+          </div>
 
-              <div class="col-md-6 col-sm-6">
-                <p>Foto de perfil</p>
-                <input type="file" id="exampleInputFile" class="col-xs-12">
-              </div>
+          <div class="col-md-6 col-sm-6">
+            <p>Foto de perfil</p>
+            <input type="file" id="exampleInputFile" class="col-xs-12">
+          </div>
 
           <div class="col-md-12">
             <button class="btn logo-color-bg profile-btn center">Guardar cambios</button>
@@ -114,8 +114,9 @@
         <div  id="transaction-history" class="tab-pane fade">
 
           <div class="col-xs-12">
-          <h3>Mis transacciones</h3>
+            <h3>Mis transacciones</h3>
 
+            <div  class="col-xs-12 col-md-12"ng-repeat="transaction in transactions">
               <div class="col-xs-12 col-sm-2 col-md-2">
                 <p class="text-center"><img class="img-circle" src="https://pbs.twimg.com/profile_images/600061604319887360/PqDUDBEt.jpg" alt=""> </p>
               </div>
@@ -134,18 +135,21 @@
                 <!--<p>Valoración : </p>-->
                 <!--<p>Costo : ${{aWork.price}}</p>-->
 
-                  <button class="btn qualify">Calificar</button>
+                <button class="btn qualify">Calificar</button>
 
-                  <button class="btn profile-btn logo-color-bg">Ver perfil</button>
+                <button class="btn profile-btn logo-color-bg">Ver perfil</button>
 
               </div>
-
+            </div>
           </div>
         </div>
-        </div>
+      </div>
     </div>
-</div>
-</div>
-</div>
-  </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    </div>
+
+   </div>
 <footer-dutymap></footer-dutymap>

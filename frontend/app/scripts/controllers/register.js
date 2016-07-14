@@ -9,16 +9,20 @@ angular.module('dutymap')
         $scope.onlyChar=/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/;
         $scope.charAndNumbers=/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/;
         $scope.passwordRegex=/^(?=.*[a-z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-
+        $scope.replicate = '';
         $scope.provider={};
-       $scope.work = {};
+        $scope.work = {};
 
         $scope.userRegister=false;
         $scope.userProveedor=false;
         $scope.createWork = false;
 
         $scope.saveUser = function(){
-            var user = {'name':$scope.provider.name,
+
+          var formData = new FormData();
+
+
+          var user = {'name':$scope.provider.name,
                         'surname': $scope.provider.surname,
                         'username': $scope.provider.username,
                         'email': $scope.provider.email,
@@ -29,18 +33,29 @@ angular.module('dutymap')
                         'password': $scope.provider.password,
                         'type': $scope.userRegister ? 'comprador' : 'proveedor'};
 
-            UserResources.save(user, function(response){
-                if(user.type == 'proveedor') {
-                  NotificationService.success('Se ha registrado correctamente. Ingrese los datos de su servicio.');
-                  $scope.work.idUser = response.idUser;
-                  $scope.createWork = true;
-                }else{
-                NotificationService.success('Se ha registrado correctamente. Inicie sesión.');
-                  $location.url('/login')
-                }
-            }, function(error){
-                NotificationService.error(error);
-            });
+          formData.append('user', angular.toJson(user,true));
+          formData.append('file', file.files[0]);
+
+          $http({
+            method: 'POST',
+            url: '/api/user/create',
+            headers: {'Content-Type': undefined},
+            data: formData,
+            transformRequest:angular.identity
+
+          }).success(function(response) {
+            if(user.type == 'proveedor') {
+              NotificationService.success('Se ha registrado correctamente. Ingrese los datos de su servicio.');
+              $scope.work.idUser = response.idUser;
+              $scope.createWork = true;
+            }else{
+              NotificationService.success('Se ha registrado correctamente. Inicie sesión.');
+              $location.url('/login')
+            }
+          }).error(function(error) {
+              NotificationService.error(error);
+          });
+
         };
 
         $scope.zonas = [{id:1 ,name: '20 de Junio'},
@@ -76,14 +91,6 @@ angular.module('dutymap')
             $scope.filter = type;
         };
 
-        $('#pass, #cpass').on('keyup', function () {
-            if ($('#pass').val() == $('#cpass').val()) {
-                $scope.providerForm.passwordConfirmation.$setValidity('noMatchea', true);
-            }
-            else
-                $scope.providerForm.passwordConfirmation.$setValidity('noMatchea', false);
-        });
-
         $scope.tipoUsuario=function(){
             $scope.userRegister=true;
             $scope.userProveedor=false;
@@ -104,11 +111,12 @@ angular.module('dutymap')
               'name':$scope.work.name,
               'idUser': $scope.work.idUser,
               'description': $scope.work.description,
-              'idCategory': $scope.work.category.id,
+              'idCategory': $scope.work.category != '' && $scope.work.category != undefined ? $scope.work.category.id : null,
               'price': $scope.work.price,
               'street': $scope.work.street,
               'number': $scope.work.number,
-              'idDistrict': $scope.work.district.id};
+              'typeAddress' : $scope.replicate,
+              'idDistrict': $scope.work.district != '' && $scope.work.district != undefined ? $scope.work.district.id : null};
 
             WorkResources.save(newWork, function(){
               NotificationService.success('Ha creado un servicio correctamente.');
@@ -116,7 +124,31 @@ angular.module('dutymap')
             }, function(error){
               NotificationService.error(error);
             });
-        }
+        };
+
+        $(document).on('change', ':file', function() {
+            var input = $(this),
+              numFiles = input.get(0).files ? input.get(0).files.length : 1,
+              label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+              input.trigger('fileselect', [numFiles, label]);
+        });
+
+        $(document).ready( function() {
+            $(':file').on('fileselect', function(event, numFiles, label) {
+
+              var input = $(this).parents('.input-group').find(':text'),
+                log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+              if( input.length ) {
+                input.val(log);
+              } else {
+                if( log ) alert(log);
+              }
+
+            });
+        });
+
+
     }]);
 
 

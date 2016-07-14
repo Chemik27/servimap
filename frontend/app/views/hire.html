@@ -4,28 +4,34 @@
     <!--Datos del usuario y acuerdos de fecha-->
     <div class="col-md-12">
       <p class="text-center header-title">Contratar a <span ng-bind="toUser.fullName"></span></p>
-
       <p class="text-center header-subtitle" ng-bind="mainWork.name"></p>
     </div>
 
     <div class="col-sm-9 col-md-9">
 
-      <p class="hire-description">Qué incluye el servicio</p>
+      <p class="hire-description">Descripción del trabajo </p>
+      <p ng-bind="mainWork.description"></p>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores assumenda autem blanditiis, consectetur corporis doloremque in ipsum magni modi molestiae nemo nisi officia placeat quam sed sint soluta. In.</p>
+      <!--<p class="hire-description">Qué incluye el servicio</p>-->
 
-      <p class="hire-description">Qué no incluye el servicio</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, culpa dignissimos eius explicabo fuga harum minima nemo nesciunt nihil nisi perspiciatis quia quibusdam reiciendis sed unde vel voluptatum. Officiis, praesentium!</p>
+      <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores assumenda autem blanditiis, consectetur corporis doloremque in ipsum magni modi molestiae nemo nisi officia placeat quam sed sint soluta. In.</p>-->
 
-      <p class="hire-description">Elegi qué día querés concretar el servicio</p>
+      <!--<p class="hire-description">Qué no incluye el servicio</p>-->
+      <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, culpa dignissimos eius explicabo fuga harum minima nemo nesciunt nihil nisi perspiciatis quia quibusdam reiciendis sed unde vel voluptatum. Officiis, praesentium!</p>-->
+
+      <p class="hire-description">Elige qué día quieres concretar el servicio</p>
       <md-datepicker class="hire-datepicker" name="agreedDate" ng-model="transaction.agreedDate" md-placeholder="Fecha" md-min-date="today"></md-datepicker>
       <div>
         <p>ACLARACIÓN</p>
-        <p>Luego de confirmar la contratación podés modificar la fecha y horario con el proveedor. </p>
+        <p>Luego de confirmar la contratación puedes modificar la fecha y horario con el proveedor. </p>
       </div>
     </div>
      <!--Confirmar servicio-->
     <div class="col-sm-3 confirm-section">
+      <p class="text-center image-profile">
+        <img class="img-circle" ng-src="data:image/png;base64,{{toUser.photo}}" alt="">
+      </p>
+
       <p class="hire-data">Confirmada la contratación podrás obtener los datos.</p>
 
       <div class="row hire-prices">
@@ -33,32 +39,37 @@
           <p class="">Precio por hora</p>
         </div>
         <div class="col-xs-6 col-md-4 ">
-          <p><span ng-bind="mainWork.price"></span></p>
+          <p>$<span ng-bind="mainWork.price"></span></p>
         </div>
       </div>
-
-
          <button type="submit" ng-click="confirmTransaction(transaction)" class="btn logo-color-bg confirm-button">Confirmar</button>
     </div>
-
-
   </div>
 
   <!--Seccion datos confirmados-->
   <div ng-show="confirm">
       <div class="col-md-12">
           <p class="confirmated-text text-center">Has contratado a <span ng-bind="toUser.fullName"></span> correctamente!</p>
+          <p class="text-center image-profile">
+            <img class="img-circle" ng-src="data:image/png;base64,{{toUser.photo}}" alt="">
+            <div class="profile-rating">
+            <p class="text-center">
+              <span ng-repeat="star in stars"><i class="fa fa-star gold" aria-hidden="true"></i> </span>
+              <span ng-repeat="star in emptyStars"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
+            </p>
+      </div>
+          </p>
           <p class="hire-description">A continuación podrás visualizar los datos del proveedor:</p>
 
-          <div class="confirmated-data">
-            <p>Proveedor: <span ng-bind="toUser.fullName"></span></p>
-            <p>Email: <span ng-bind="toUser.email"></span></p>
-            <p>Documento: <span ng-bind="toUser.dni"> </span></p>
-            <p>Fecha acordada: <time>{{ transaction.agreedDate | date : "dd/MM/y" }}</time></p>
-            <p>Teléfono: <span ng-bind="toUser.phone"> </span></p>
+          <div class="confirmated-data col-md-12">
+              <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Proveedor: <span ng-bind="toUser.fullName"></span></p>
+              <p><span class="glyphicon glyphicon-envelope"></span> Email: <span ng-bind="toUser.email"></span></p>
+            <!--<p>Documento: <span ng-bind="toUser.dni"> </span></p>-->
+              <p><span class="glyphicon glyphicon-calendar"></span> Fecha acordada: <time>{{ transaction.agreedDate | date : "dd/MM/y" }}</time></p>
+              <p></span><span class="glyphicon glyphicon-earphone"></span> Teléfono: <span ng-bind="toUser.phone"> </span></p>
           </div>
           <p>Podrás consultar los datos del proveedor en cualquier momento en tu <a href="">historial de transacciones</a></p>
-          <p>Recordá calificar al proveedor una vez que el servicio se concrete, asi ayudarás a más personas a la hora de elegir a su proveedor!</p>
+          <p>Recuerda calificar al proveedor una vez que el servicio se concrete, asi ayudarás a más personas a la hora de elegir a su proveedor!</p>
       </div>
   </div>
 </div>

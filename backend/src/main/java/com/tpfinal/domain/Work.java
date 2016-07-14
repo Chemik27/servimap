@@ -10,15 +10,15 @@ public class Work {
     private String name;
     private String description;
     private Category category;
-    private Long idUser;
+    private User user;
     private Address address;
     private Double price;
 
-    public Work(String name, String description, Category category, Long idUser, Address address, Double price) {
+    public Work(String name, String description, Category category, User user, Address address, Double price) {
         this.name = name;
         this.description = description;
         this.category = category;
-        this.idUser = idUser;
+        this.user = user;
         this.address = address;
         this.price = price;
     }
@@ -65,13 +65,14 @@ public class Work {
         this.category = category;
     }
 
-    @Column(name = "id_user")
-    public Long getIdUser() {
-        return idUser;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_user", nullable = false)
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)

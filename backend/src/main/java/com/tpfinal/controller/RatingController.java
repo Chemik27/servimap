@@ -39,7 +39,7 @@ public class RatingController {
         rating.setPerformance(rating.getPerformance());
         rating.setRecommendation(rating.getRecommendation());
         rating.setReliability(rating.getReliability());
-        rating.setId_provider(rating.getId_provider());
+        rating.setIdProvider(rating.getIdProvider());
         rating.setId_user(rating.getId_user());
         rating.setReview_text(rating.getReview_text());
         ratingService.createNew(rating);

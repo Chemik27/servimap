@@ -50,10 +50,21 @@
             <div class="module col-sm-6 col-md-5 col-xs-12">
               <h3><i class="fa fa-users" aria-hidden="true"></i> Feedback</h3>
               <div id="feedback-info">
-                <p>reliability {{user.rating.reliability}}</p>
-                <p>performance {{user.rating.performance}}</p>
-                <p>consideration {{user.rating.consideration}}</p>
-                <p>recommendation {{user.rating.recommendation}}</p>
+                <p>Confiabilidad<span ng-repeat="star in starReliability"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
+                  <span ng-repeat="star in emptyStarsReliability"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
+                </p>
+                <p>Desempeño
+                <span ng-repeat="star in starPerformance"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
+                <span ng-repeat="star in emptyStarsPerformance"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
+                </p>
+                <p>Consideración
+                  <span ng-repeat="star in starConsideration"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
+                  <span ng-repeat="star in emptyStarsConsideration"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
+                </p>
+                <p>Recomendación
+                  <span ng-repeat="star in starRecommendation"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
+                  <span ng-repeat="star in emptyStarsRecommendation"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
+                </p>
               </div>
             </div>
 

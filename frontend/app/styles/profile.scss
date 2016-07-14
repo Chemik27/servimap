@@ -1,4 +1,5 @@
 @import "variables";
+
 .resume{
   font-family: $font-stack;
   color: $font-color;
@@ -6,10 +7,12 @@
   padding: 0;
   display: flex; display: -webkit-flex; display: flex;
 
+
   .module-main{
     background-color: $background-blue-side;
     color: lightgrey;
     flex:1;
+    display: table-cell;
   }
 
   .module-size{
@@ -77,4 +80,39 @@
 
 .gold{
   color: gold;
+}
+
+.nav-tabs> li{
+  cursor:pointer;
+}
+
+#settings{
+  font-size:17px;
+}
+
+.qualify-btn{
+  color: orangered;
+}
+
+.profile-btn-T{
+  transition: all 0.5s ease;
+  height: 50%;
+  width:150px;
+  margin-bottom: 10%;
+  display:block;
+}
+
+.profile-btn-T:hover{
+  color: white;
+  background-color: #3A598D;
+}
+
+.qualify{
+  height: 50%;
+  width:150px;
+  color: white;
+  background-color: orangered;
+}
+.padding-tam-1{
+  padding:2%;
 }

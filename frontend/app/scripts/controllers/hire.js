@@ -2,8 +2,8 @@
  * Created by nico on 30/06/16.
  */
 angular.module('dutymap')
-  .controller('HireCtrl', ['$scope', '$http' ,'$resource','profileSelected','$rootScope','NotificationService','HireResources',
-    function ($scope, $http, $resource, profileSelected,$rootScope,NotificationService,HireResources) {
+  .controller('HireCtrl', ['$scope', '$http' ,'$resource','profileSelected','$rootScope','NotificationService','HireResources', 'NgMap',
+    function ($scope, $http, $resource, profileSelected,$rootScope,NotificationService,HireResources, NgMap) {
 
        $scope.profile = profileSelected;
        $scope.toUser = profileSelected.toUser;
@@ -15,7 +15,7 @@ angular.module('dutymap')
       $scope.time = $scope.transactions.agreedDate;
       $scope.confirm=false;
 
-      $scope.confirmTransaction =function(){
+      $scope.confirmTransaction = function(){
 
         HireResources.save({
           'toUser':$scope.toUser.idUser,
@@ -28,4 +28,11 @@ angular.module('dutymap')
           NotificationService.error("Se ha producido un error en la transacción, intentá de nuevo o contactanos")
         });
       };
+
+      NgMap.getMap().then(function(map) {
+        console.log(map.getCenter());
+        console.log('markers', map.markers);
+        console.log('shapes', map.shapes);
+      });
+
     }]);

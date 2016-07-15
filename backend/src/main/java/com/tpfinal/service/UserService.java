@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -24,7 +26,14 @@ public class UserService {
     AddressService addressService;
 
     @Autowired
+    TransactionService transactionService;
+
+    @Autowired
     WorkService workService;
+
+
+    @Autowired
+    RatingService ratingService;
 
     public User findByIdUser(Long idUser) {
         return userRepository.findByIdUser(idUser);
@@ -62,4 +71,14 @@ public class UserService {
         return hashedPassword;
     }
 
+    public Map<String, Object> getProfile(Long idUser) {
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("user", findByIdUser(idUser));
+        result.put("lastTransactions", transactionService.findByFromUser(idUser)); // yo contraté
+        result.put("transactions", transactionService.findByInfoToUser(idUser)); // me contrataron
+        result.put("works", workService.findByIdUser(idUser));
+        result.put("rating", ratingService.getRatingAndComments(idUser));
+
+        return result;
+    }
 }

@@ -40,8 +40,8 @@ public class RatingController {
         rating.setRecommendation(rating.getRecommendation());
         rating.setReliability(rating.getReliability());
         rating.setIdProvider(rating.getIdProvider());
-        rating.setId_user(rating.getId_user());
-        rating.setReview_text(rating.getReview_text());
+        rating.setIdUser(rating.getIdUser());
+        rating.setReviewText(rating.getReviewText());
         ratingService.createNew(rating);
     }
 

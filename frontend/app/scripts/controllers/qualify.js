@@ -41,16 +41,17 @@ angular.module('dutymap')
           'consideration': $scope.rating3,
           'recommendation': $scope.rating4,
           'idProvider':  $scope.toUser.idUser ,
-          'general_average':  $scope.resultRating,
-          'id_user': $rootScope.idUser,
-          'id_transaction': 1
+          'reviewText': $scope.review_text,
+          'generalAverage':  $scope.resultRating,
+          'idUser': $rootScope.idUser,
+          'idTransaction': 1
         };
 
           QualifyResources.save(calificar, function(){
           NotificationService.success('Se ha calificado correctamente al proveedor.');
           $location.url('/perfil/'+ $rootScope.idUser)
         }, function(error){
-          NotificationService.error(error);
+          NotificationService.error('No se ha podido calificar al proveedor');
         });
 
       };

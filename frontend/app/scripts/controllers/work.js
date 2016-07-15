@@ -30,7 +30,16 @@ angular.module('dutymap')
               {id:15 ,name: 'Virrey del Pino'}];
 
             $scope.categories = [
-              {id:1, name: 'Armar set de datos'}
+              {id:1, name: 'Hogar'},
+              {id:2, name: 'Educación'},
+              {id:3, name: 'Salud'},
+              {id:4, name: 'Estética'},
+              {id:5, name: 'Entretenimiento'},
+              {id:6, name: 'Profesional'},
+              {id:7, name: 'Técnico'},
+              {id:8, name: 'Automotriz'},
+              {id:9, name: 'Otros'}
+
             ];
 
 

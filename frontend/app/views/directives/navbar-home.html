@@ -21,7 +21,7 @@
 
         <ul class="nav navbar-nav navbar-right">
           <li class="navbar-secondary-title" ng-hide="authenticated"><a href="/#/registro">Registrarme</a></li>
-          <li class="navbar-secondary-title" ng-show="authenticated"><a href="/#/perfil">Mi Perfil</a></li>
+          <li class="navbar-secondary-title" ng-show="authenticated"><a href="/#/perfil/{{$root.idUser}}">Mi Perfil</a></li>
           <li class="navbar-secondary-title" ng-show="authenticated"><a ng-click="logout()"><b>Cerrar Sesión</b></a></li>
           <li class="navbar-secondary-title" ng-hide="authenticated"><a ng-href="/#/login"><b>Iniciar Sesión</b></a></li>
         </ul>

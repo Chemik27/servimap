@@ -13,7 +13,6 @@ angular.module('dutymap')
             $http.get('/api/user', {headers : $scope.headers}).then(function(response) {
                 if (response.data.name) {
                     $rootScope.authenticated = true;
-                    sessionStorage.userService = angular.toJson(response.data.name);
                     $rootScope.idUser = response.data.name; // Validar si hay que quitarlo
                 } else {
                     $rootScope.authenticated = false;

@@ -57,7 +57,7 @@
                                         <!-- Campo apellido <-->
                                         <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': userForm.surName.$touched && userForm.surName.$invalid, 'has-success' : userForm.surName.$valid}">
                                             <span>Apellido</span>
-                                            <input type="text" name="surName" class="form-control input-lg" ng-model="provider.surname" ng-required="true" ng-pattern="onlyChar">
+                                            <input type="text" name="surName" class="form-control input-lg" ng-minlength="2" ng-model="provider.surname" ng-required="true" ng-pattern="onlyChar">
                                             <div class="help-block" ng-messages="userForm.surName.$error" ng-if="userForm.surName.$touched">
                                                 <p ng-message="minlength">El apellido es muy corto.</p>
                                                 <p ng-message="required">Ingrese un apellido</p>
@@ -70,9 +70,10 @@
                                         <!-- Campo nombre de usuario <-->
                                         <div class="col-xs-12 col-sm-6 form-group " ng-class="{'has-error': userForm.userName.$touched && userForm.userName.$invalid, 'has-success' : userForm.userName.$valid} ">
                                             <span>Usuario</span>
-                                            <input type="text" name="userName" class="form-control input-lg" ng-model="provider.username" ng-required="true">
+                                            <input type="text" name="userName" class="form-control input-lg" ng-model="provider.userName" ng-pattern="charAndNumbersNoSpace" ng-required="true">
                                             <div class="help-block" ng-messages="userForm.userName.$error" ng-if="userForm.userName.$touched">
                                                 <p ng-message="required">Escribe el nombre de usuario</p>
+                                                <p ng-message="pattern">No se permiten espacios en blanco</p>
                                             </div>
                                         </div>
                                         <!-- Campo email <-->
@@ -86,7 +87,7 @@
                                     <div class="row">
                                         <!-- Campo telefono <-->
                                         <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': userForm.telephone.$touched && userForm.telephone.$invalid, 'has-success' : userForm.telephone.$valid}">
-                                            <span>Telefono</span>
+                                            <span>Teléfono</span>
                                             <input type="text" name="telephone" ng-model="provider.telephone" class="form-control input-lg" ng-pattern="onlyNumbers" ng-required="true">
                                             <div class="help-block" ng-messages="userForm.telephone.$error" ng-if="userForm.telephone.$touched">
                                               <p ng-message="required">Teléfono requerido.</p>
@@ -133,7 +134,7 @@
                                             <div class="input-group">
                                                 <label class="input-group-btn">
                                                     <span class="btn btn-default">
-                                                        Selecciona <input type="file" ng-model="file" name="file" id="file" style="display: none;" accept="image/png,image/jpg,image/jpeg">
+                                                        Selecciona <input type="file" ng-model="file" name="file" id="file" max-size=7168 style="display: none;" accept="image/png,image/jpg,image/jpeg">
                                                     </span>
                                                 </label>
                                                 <input type="text" class="form-control" readonly>
@@ -171,7 +172,7 @@
                                           <!-- Checkbox terminos y condiciones <-->
                                           <div class="col-xs-12 col-sm-8 col-md-12">
                                               <span class="button-checkbox">
-                                                  <input type="checkbox" ng-model="provider.accept" value="Acepto">Acepto <a href="#/terminos" target="_blank"> Términos y condiciones</a>
+                                                  <input type="checkbox" ng-model-options="{ updateOn: 'click' }" ng-model="provider.accept" value="Acepto">Acepto <a href="#/terminos" target="_blank"> Términos y condiciones</a>
                                               </span>
                                           </div>
                                     </div>

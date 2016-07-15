@@ -6,8 +6,10 @@ angular.module('dutymap')
 
         $scope.onlyNumbers= /^\d+$/;
         $scope.document=/^(\d{8})$/;
-        $scope.onlyChar=/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/;
+
+        $scope.onlyChar=/^[a-zA-Z-\u00C0-\u017F,]+(\s{0,1}[a-zA-Z-\u00C0-\u017F, ])*$/;
         $scope.charAndNumbers=/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/;
+        $scope.charAndNumbersNoSpace=/^\S[a-z\S]*$/
         $scope.passwordRegex=/^(?=.*[a-z])(?=.*\d)[a-zA-Z\d]{8,}$/;
         $scope.replicate = '';
         $scope.provider={};
@@ -31,7 +33,8 @@ angular.module('dutymap')
                         'number': $scope.provider.number,
                         'idDistrict': $scope.provider.district.id,
                         'password': $scope.provider.password,
-                        'type': $scope.userRegister ? 'comprador' : 'proveedor'};
+                        'type': $scope.userRegister ? 'comprador' : 'proveedor'}
+
 
           formData.append('user', angular.toJson(user,true));
           formData.append('file', file.files[0]);

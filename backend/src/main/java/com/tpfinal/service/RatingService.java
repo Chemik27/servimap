@@ -17,7 +17,7 @@ public class RatingService {
         return ratingRepository.save(rating);
     }
 
-    public Rating findByIdProvider(Long idUser) {
+    public List<Rating> findByIdProvider(Long idUser) {
         return ratingRepository.findByIdProvider(idUser);
     }
 }

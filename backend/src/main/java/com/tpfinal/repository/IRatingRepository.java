@@ -8,5 +8,5 @@ import java.util.List;
 public interface IRatingRepository extends JpaRepository<Rating, Long> {
     public Rating save(Rating rating);
 
-    public Rating findByIdProvider(Long idUser);
+    public List<Rating> findByIdProvider(Long idUser);
 }

@@ -14,18 +14,19 @@
       <span ng-repeat="star in emptyStars"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
     </p>
   </div>
+  <br>
 
   <div class="box-info">
-    <div class="col-md-6 blue">
-      7 trabajos concretados
-    </div>
+    <!--<div class="col-md-6">-->
+      <!--7 trabajos concretados-->
+    <!--</div>-->
 
-    <div class="col-md-6">
-      Hora $20
+    <div class="col-md-12 text-center">
+      Servicio / Hora <br> <b>${{mainWork.price}}</b>
     </div>
   </div>
 
-  <button class="btn profile-btn logo-color-bg center">Contactar</button>
+  <button class="btn profile-btn logo-color-bg center" ng-if="$root.idUser != user.idUser">Contratar</button>
 
 </div >
 

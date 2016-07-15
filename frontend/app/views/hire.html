@@ -7,6 +7,20 @@
       <p class="text-center header-subtitle" ng-bind="mainWork.name"></p>
     </div>
 
+    <div class="col-lg-6">
+        <div ng-show="mainWork.address.latitude != null && mainWork.address.length != null">
+            <ng-map zoom="16" center="[{{mainWork.address.latitude}}, {{mainWork.address.length}}]">
+              <marker position="{{mainWork.address.latitude}}, {{mainWork.address.length}}"
+                      title="You are here"
+                      centered="true"></marker>
+            </ng-map>
+        </div>
+
+        <div ng-hide="mainWork.address.latitude != null && mainWork.address.length != null">
+            El usuario no dispone de una ubicación.
+        </div>
+    </div>
+
     <div class="col-sm-9 col-md-9">
 
       <p class="hire-description">Descripción del trabajo </p>

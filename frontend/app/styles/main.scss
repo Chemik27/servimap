@@ -75,6 +75,13 @@ html, body {
   color: white;
   transition: all 0.5s ease
 }
+
+.logo-color-bg:hover{
+  background-color: #3A598D;
+  color: white;
+  transition: all 0.5s ease
+}
+
 .logo-color{
   color: $background-blue;
 }

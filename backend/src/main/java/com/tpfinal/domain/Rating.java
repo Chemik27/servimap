@@ -12,21 +12,21 @@ public class Rating {
     private Integer consideration; //consideracion
     private Integer recommendation; //recomendacion
     private Long idProvider; //id proveedor
-    private String review_text; //texto de opinion
-    private Integer general_average; // promedio general
-    private Long id_user; //recomendacion
-    private Long id_transaction; //recomendacion
+    private String reviewText; //texto de opinion
+    private Integer generalAverage; // promedio general
+    private Long idUser; //recomendacion
+    private Long idTransaction; //recomendacion
 
-    public Rating(Integer reliability, Integer performance, Integer consideration, Integer recommendation, Long idProvider, String review_text, Integer general_average, Long id_user, Long id_transaction ) {
+    public Rating(Integer reliability, Integer performance, Integer consideration, Integer recommendation, Long idProvider, String reviewText, Integer generalAverage, Long idUser, Long idTransaction ) {
         this.reliability = reliability;
         this.performance = performance;
         this.consideration = consideration;
         this.recommendation = recommendation;
         this.idProvider = idProvider;
-        this.review_text = review_text;
-        this.general_average = general_average;
-        this.id_user = id_user;
-        this.id_transaction = id_transaction;
+        this.reviewText = reviewText;
+        this.generalAverage = generalAverage;
+        this.idUser = idUser;
+        this.idTransaction = idTransaction;
     }
 
     public Rating() {
@@ -88,38 +88,38 @@ public class Rating {
         this.idProvider = idProvider;
     }
     @Column(name="review_text")
-    public String getReview_text() {
-        return review_text;
+    public String getReviewText() {
+        return reviewText;
     }
 
-    public void setReview_text(String review_text) {
-        this.review_text = review_text;
+    public void setReviewText(String reviewText) {
+        this.reviewText = reviewText;
     }
 
     @Column(name="general_average")
-    public Integer getGeneral_average() {
-        return general_average;
+    public Integer getGeneralAverage() {
+        return generalAverage;
     }
 
-    public void setGeneral_average(Integer general_average) {
-        this.general_average = general_average;
+    public void setGeneralAverage(Integer generalAverage) {
+        this.generalAverage = generalAverage;
     }
 
     @Column(name="id_user")
-    public Long getId_user() {
-        return id_user;
+    public Long getIdUser() {
+        return idUser;
     }
 
-    public void setId_user(Long id_user) {
-        this.id_user = id_user;
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
     @Column(name="id_transaction")
-    public Long getId_transaction() {
-        return id_transaction;
+    public Long getIdTransaction() {
+        return idTransaction;
     }
 
-    public void setId_transaction(Long id_transaction) {
-        this.id_transaction = id_transaction;
+    public void setIdTransaction(Long idTransaction) {
+        this.idTransaction = idTransaction;
     }
 }

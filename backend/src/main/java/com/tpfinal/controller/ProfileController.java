@@ -1,5 +1,6 @@
 package com.tpfinal.controller;
 
+import com.tpfinal.service.RatingService;
 import com.tpfinal.service.TransactionService;
 import com.tpfinal.service.UserService;
 import com.tpfinal.service.WorkService;
@@ -27,6 +28,11 @@ public class ProfileController {
     @Autowired
     WorkService workService;
 
+
+    @Autowired
+    RatingService ratingService;
+
+
     @RequestMapping(method = RequestMethod.GET, value = "/{idUser}")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Object> getProfile(@PathVariable Long idUser){
@@ -36,6 +42,8 @@ public class ProfileController {
         result.put("lastTransactions", transactionService.findByFromUser(idUser));
         result.put("transactions", transactionService.findByInfoToUser(idUser));
         result.put("works", workService.findByIdUser(idUser));
+        result.put("rating", ratingService.findByIdProvider(idUser));
+
         return result;
     }
 }

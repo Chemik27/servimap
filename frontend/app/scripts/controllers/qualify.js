@@ -17,6 +17,7 @@ angular.module('dutymap')
       $scope.transactions = profileSelected.lastTransactions;
       $scope.works = profileSelected.works;
       $scope.jobname = profileSelected.works.description;
+      $scope.rating = profileSelected.rating;
       //Calificaciones 4
       $scope.rating1 = 1;
       $scope.rating2 = 1;
@@ -39,7 +40,7 @@ angular.module('dutymap')
           'performance': $scope.rating2,
           'consideration': $scope.rating3,
           'recommendation': $scope.rating4,
-          'id_provider':  $scope.toUser.idUser ,
+          'idProvider':  $scope.toUser.idUser ,
           'general_average':  $scope.resultRating,
           'id_user': $rootScope.idUser,
           'id_transaction': 1

@@ -43,6 +43,7 @@ angular.module('dutymap')
 
         $scope.logout = function() {
             $http.post('/api/logout', {}).finally(function() {
+              $rootScope.idUser = null;
               $rootScope.authenticated = false;
               $location.path("/");
             });

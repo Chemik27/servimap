@@ -47,10 +47,10 @@
                                 <h5><p class="text-center">{{aPremium.description}}</p></h5>
                                 <h3><p class="text-center">$ {{aPremium.price}}</p></h3>
                                 <hr>
-                                <div class="text-center">$
-                                    <div><a class="btn btn-success profile" href="">Contratar</a></div>
+                                <div class="text-center">
+                                    <div><a class="btn hire-btn profile" href="/#/contratar/{{aPremium.user.idUser}}">Contratar</a></div>
                                     <br>
-                                    <div><a class="btn btn-info profile" href="/#/perfil/{{aPremium.user.idUser}}">Ver perfil</a></div>
+                                    <div><a class="btn logo-color-bg profile" href="/#/perfil/{{aPremium.user.idUser}}">Ver perfil</a></div>
                                 </div>
                             </div>
                         </div>
@@ -82,10 +82,10 @@
                     <!--<p>Valoración : </p>-->
                     <!--<p>Costo : ${{aWork.price}}</p>-->
                     <div class="pull-right border-service">
-                        <button class="btn btn-success">Contratar</button>
+                        <a class="btn hire-btn" ng-href="/#/contratar/{{aWork.user.idUser}}">Contratar</a>
                         <br>
                         <br>
-                        <button class="btn btn-info" ng-click="saveIdProvider(aWork.user.idUser)">Ver perfil</button>
+                        <a class="btn logo-color-bg confirm-button" ng-href="/#/perfil/{{aWork.user.idUser}}">Ver perfil</a>
                     </div>
                 </div>
             </div>

@@ -11,18 +11,24 @@ angular.module('dutymap')
        $scope.works = profileSelected.works;
        $scope.mainWork = $scope.works[0];
 
+
       $scope.today=new Date();
       $scope.time = $scope.transactions.agreedDate;
       $scope.confirm=false;
 
+
       $scope.confirmTransaction = function(){
 
+        if($scope.transaction == null) {
+          NotificationService.error('Debe indicar el dia a contratar');
+        }
         HireResources.save({
           'toUser':$scope.toUser.idUser,
           'fromUser': $rootScope.idUser,
           'agreedDate': $scope.transaction.agreedDate,
           'done':false
-        }, function(response){
+        }
+        , function(response){
           $scope.confirm=true;
         },function(error){
           NotificationService.error("Se ha producido un error en la transacción, intentá de nuevo o contactanos")

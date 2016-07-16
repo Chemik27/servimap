@@ -1,53 +1,44 @@
 <navbar-secondary></navbar-secondary>
 <div class="container-fluid">
-  <div ng-show="!confirm" class="col-md-12">
+  <div ng-show="!confirm" class="col-md-12 padding-tam3">
     <!--Datos del usuario y acuerdos de fecha-->
     <div class="col-md-12">
       <p class="text-center header-title">Contratar a <span ng-bind="toUser.fullName"></span></p>
       <p class="text-center header-subtitle" ng-bind="mainWork.name"></p>
     </div>
 
-    <div class="col-lg-6">
-        <div ng-show="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null">
-            <ng-map zoom="16" center="{{mainWork.address.street}} {{mainWork.address.number}} {{mainWork.address.district.name}}">
-              <marker position="{{mainWork.address.street}} {{mainWork.address.number}} {{mainWork.address.district.name}}"
-                      title="{{mainWork.name}}"
-                      centered="true"></marker>
-            </ng-map>
-        </div>
-
-        <div ng-hide="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null">
-            El usuario no dispone de una ubicación.
-        </div>
-    </div>
-
     <div class="col-sm-9 col-md-9">
 
-      <p class="hire-description">Descripción del trabajo </p>
-      <p ng-bind="mainWork.description"></p>
-
+      <div class="col-md-12 padding-tam1" >
+          <p class="hire-description">Descripción del trabajo </p>
+          <p ng-bind="mainWork.description" class="padding-tam2"></p>
+      </div>
       <!--<p class="hire-description">Qué incluye el servicio</p>-->
 
       <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores assumenda autem blanditiis, consectetur corporis doloremque in ipsum magni modi molestiae nemo nisi officia placeat quam sed sint soluta. In.</p>-->
 
       <!--<p class="hire-description">Qué no incluye el servicio</p>-->
       <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, culpa dignissimos eius explicabo fuga harum minima nemo nesciunt nihil nisi perspiciatis quia quibusdam reiciendis sed unde vel voluptatum. Officiis, praesentium!</p>-->
-
-      <p class="hire-description">Elige qué día quieres concretar el servicio</p>
-      <md-datepicker class="hire-datepicker" name="agreedDate" ng-model="transaction.agreedDate" md-placeholder="Fecha" md-min-date="today"></md-datepicker>
+      <div class="col-md-12 padding-tam1">
+      <p class="hire-description">Elige que día quieres concretar el servicio</p>
+      <md-datepicker class="hire-datepicker" name="agreedDate" ng-model="transaction.agreedDate" style="color:blue;"md-placeholder="Fecha" md-min-date="today"></md-datepicker>
       <div>
-        <p>ACLARACIÓN</p>
-        <p>Luego de confirmar la contratación puedes modificar la fecha y horario con el proveedor. </p>
+        <small><i class="glyphicon glyphicon-warning-sign" style="color:red;"> </i> ACLARACIÓN : </small>
+        <small>Luego de confirmar la contratación puedes modificar la fecha y horario con el proveedor. </small>
+      </div>
       </div>
     </div>
      <!--Confirmar servicio-->
     <div class="col-sm-3 confirm-section">
-      <p class="text-center image-profile">
+      <p class="text-center image-profile ">
         <img class="img-circle" ng-src="data:image/png;base64,{{toUser.photo}}" alt="">
       </p>
 
-      <p class="hire-data">Confirmada la contratación podrás obtener los datos.</p>
-
+      <p class="hire-data" style="text-align: center">Contrata su servicio</p>
+      <p><span>Nombre : </span><span ng-bind="toUser.fullName"></span></p>
+      <p><span>Servicio : </span><span ng-bind=" mainWork.name"></span></p>
+      <p><span><small><i class="	Try it
+glyphicon glyphicon-info-sign"> </i> Obtene mas informacion contratando este servicio</small></span></p>
       <div class="row hire-prices">
         <div class="col-xs-6 col-md-8 hire-amount ">
           <p class="">Precio por hora</p>
@@ -62,29 +53,46 @@
 
   <!--Seccion datos confirmados-->
   <div ng-show="confirm">
-      <div class="col-md-12">
+      <div class="col-md-12 padding-tam3">
           <p class="confirmated-text text-center">Has contratado a <span ng-bind="toUser.fullName"></span> correctamente!</p>
-          <p class="text-center image-profile">
-            <img class="img-circle" ng-src="data:image/png;base64,{{toUser.photo}}" alt="">
+          <p class="text-center image-profile padding-tam4">
+            <img class="img-circle " ng-src="data:image/png;base64,{{toUser.photo}}" alt="">
             <div class="profile-rating">
             <p class="text-center">
               <span ng-repeat="star in stars"><i class="fa fa-star gold" aria-hidden="true"></i> </span>
               <span ng-repeat="star in emptyStars"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
             </p>
-      </div>
+            </div>
           </p>
-          <p class="hire-description">A continuación podrás visualizar los datos del proveedor:</p>
-
-          <div class="confirmated-data col-md-12">
-              <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Proveedor: <span ng-bind="toUser.fullName"></span></p>
-              <p><span class="glyphicon glyphicon-envelope"></span> Email: <span ng-bind="toUser.email"></span></p>
+          <div class="confirmated-data col-md-6">
+            <p class="hire-description">A continuación podrás visualizar los datos del proveedor:</p>
+            <div class="padding-tam2">
+              <p ><span class="iconcolor glyphicon glyphicon-user" aria-hidden="true"></span> Proveedor: <span ng-bind="toUser.fullName"></span></p>
+              <p ><span class="iconcolor glyphicon glyphicon-envelope"></span> Email: <span ng-bind="toUser.email"></span></p>
             <!--<p>Documento: <span ng-bind="toUser.dni"> </span></p>-->
-              <p><span class="glyphicon glyphicon-calendar"></span> Fecha acordada: <time>{{ transaction.agreedDate | date : "dd/MM/y" }}</time></p>
-              <p></span><span class="glyphicon glyphicon-earphone"></span> Teléfono: <span ng-bind="toUser.phone"> </span></p>
+              <p><span class="iconcolor glyphicon glyphicon-calendar"></span> Fecha acordada: <time>{{ transaction.agreedDate | date : "dd/MM/y" }}</time></p>
+              <p></span><span class="iconcolor glyphicon glyphicon-earphone"></span> Teléfono: <span ng-bind="toUser.phone"> </span></p>
+            </div>
           </div>
-          <p>Podrás consultar los datos del proveedor en cualquier momento en tu <a href="">historial de transacciones</a></p>
+          <div class="col-lg-6">
+          <div ng-show="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null">
+            <ng-map zoom="16" center="{{mainWork.address.street}} {{mainWork.address.number}} {{mainWork.address.district.name}}">
+              <marker position="{{mainWork.address.street}} {{mainWork.address.number}} {{mainWork.address.district.name}}"
+                      title="{{mainWork.name}}"
+                      centered="true"></marker>
+            </ng-map>
+          </div>
+
+          <div ng-hide="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null">
+            El usuario no dispone de una ubicación.
+          </div>
+        </div>
+          <div class="col-md-12 padding-tam1"><p>Podrás consultar los datos del proveedor en cualquier momento en tu <b><a href="">Historial de transacciones</a></b></p>
           <p>Recuerda calificar al proveedor una vez que el servicio se concrete, asi ayudarás a más personas a la hora de elegir a su proveedor!</p>
+          </div>
       </div>
+
+
   </div>
 </div>
 <footer-dutymap></footer-dutymap>

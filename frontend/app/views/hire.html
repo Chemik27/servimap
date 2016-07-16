@@ -8,15 +8,15 @@
     </div>
 
     <div class="col-lg-6">
-        <div ng-show="mainWork.address.latitude != null && mainWork.address.length != null">
-            <ng-map zoom="16" center="[{{mainWork.address.latitude}}, {{mainWork.address.length}}]">
-              <marker position="{{mainWork.address.latitude}}, {{mainWork.address.length}}"
-                      title="You are here"
+        <div ng-show="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null">
+            <ng-map zoom="16" center="{{mainWork.address.street}} {{mainWork.address.number}} {{mainWork.address.district.name}}">
+              <marker position="{{mainWork.address.street}} {{mainWork.address.number}} {{mainWork.address.district.name}}"
+                      title="{{mainWork.name}}"
                       centered="true"></marker>
             </ng-map>
         </div>
 
-        <div ng-hide="mainWork.address.latitude != null && mainWork.address.length != null">
+        <div ng-hide="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null">
             El usuario no dispone de una ubicación.
         </div>
     </div>

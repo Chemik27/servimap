@@ -25,6 +25,15 @@
 
         <h2 class="text-center">H&eacute;mos encontrado a los mejores</h2>
 
+        <!--Mapa-->
+        <div class="col-lg-12">
+            <ng-map zoom="13" center="San justo Buenos Aires">
+              <marker ng-repeat="marker in worksFound" position="{{marker.address.street}} {{marker.address.number}} {{marker.address.district.name}}"
+                      title="{{marker.name}}"
+                      centered="true"></marker>
+            </ng-map>
+        </div>
+
         <div class="container-fluid">
         <! -- CONTACTOS PREMIUM -->
             <div ng-class="{'col-md-4 col-md-push-4': worksFound.length == 1, 'col-sm-4 col-md-4 col-lg-4 col-md-push-2': worksFound.length == 2,

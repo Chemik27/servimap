@@ -33,7 +33,6 @@ public class TransactionService {
     }
 
     public Transaction createTransactionFromDTO(TransactionDTO transactionDTO){
-        System.out.println("ID WORK "+transactionDTO.getIdWork());
         Transaction transaction = new Transaction();
         User user = userRepository.findByIdUser(transactionDTO.getToUser());
         Work work = new Work();
@@ -55,5 +54,9 @@ public class TransactionService {
     public List<Transaction> findByInfoToUser(Long idUser){
 
         return  transactionRepository.findTop10ByWorkUserIdUserOrderByCreationDateDesc(idUser);
+    }
+
+    public Transaction findByIdTransaccion(Long idTrx) {
+        return transactionRepository.findOne(idTrx);
     }
 }

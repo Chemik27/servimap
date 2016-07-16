@@ -19,12 +19,10 @@ angular.module('dutymap')
         if($scope.transaction == undefined)
         {
           NotificationService.error("Debe seleccionar la fecha en la que se concrete el servicio");
-          console.log($scope.mainWork.idWork);
           return false;
         }
 
         if($rootScope.idUser != undefined){
-          console.log($scope.mainWork.idWork);
           HireResources.save({
             'creationDate': new Date(),
             'toUser':$scope.toUser.idUser,

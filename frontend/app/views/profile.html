@@ -92,41 +92,41 @@
 
                 <div class="col-sm-6 settings-data">
                   <p>Nombre: </p>
-                  <input type="text" class="form-control input-md" ng-value="user.name">
+                  <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.name">
 
                 </div>
                 <div class="col-sm-6">
                   <p>Apellido: </p>
-                  <input type="text" class="form-control input-md" ng-value="user.surname">
+                  <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.surname">
                 </div>
 
                 <div class="col-sm-6">
                   <p>Dirección: </p>
-                  <input type="text" class="form-control input-md" ng-value="user.name">
+                  <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.name">
 
                 </div>
                 <div class="col-sm-6">
                   <p>Email: </p>
-                  <input type="text" class="form-control input-md" ng-value="user.email">
+                  <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.email">
                 </div>
 
                 <div class="col-xs-12 col-sm-6">
                   <p>Teléfono: </p>
-                  <input type="text" class="form-control input-md" ng-value="user.phone">
+                  <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.phone">
 
                 </div>
                 <div class="col-sm-6">
                   <p>Cambiar contraseña </p>
-                  <input type="password" class="form-control input-md">
+                  <input type="password" ng-disabled="true" class="form-control input-md">
                 </div>
 
                 <div class="col-md-6 col-sm-6">
                   <p>Foto de perfil</p>
-                  <input type="file" id="exampleInputFile" class="col-xs-12">
+                  <input type="file" ng-disabled="true" id="" class="col-xs-12">
                 </div>
 
-                <div class="col-md-12">
-                  <button class="btn logo-color-bg profile-btn center">Guardar cambios</button>
+                <div class="col-md-12 text-center">
+                  <button ng-disabled="true" class="btn logo-color-bg profile-btn">Guardar cambios</button>
                 </div>
 
               </div>
@@ -155,10 +155,9 @@
                 <div class="col-xs-12 col-sm-2 col-md-3">
                   <!--<p>Valoración : </p>-->
                   <!--<p>Costo : ${{aWork.price}}</p>-->
-
-                  <button class="btn qualify">Calificar</button>
-
-                  <button class="btn profile-btn-T logo-color-bg" ng-click="saveIdProvider(t.toUser)">Ver perfil</button>
+                  
+                  <a ng-href="/#/calificar/{{t.idTransaction}}" class="btn qualify">Calificar</a>
+                  <a class="btn profile-btn-T logo-color-bg" ng-href="/#/perfil/{{t.work.user.idUser}}" ng-click="saveIdProvider(t.toUser)">Ver perfil</a>
 
                 </div>
                 <div class="col-md-12">

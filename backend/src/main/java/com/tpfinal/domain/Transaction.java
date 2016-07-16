@@ -11,7 +11,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_transaction", nullable = false, updatable = false)
 
-    private Integer idTransaction;
+    private Long idTransaction;
     private Date creationDate;
     private Long toUser; // proveedor
     private Long fromUser; //usuario
@@ -33,11 +33,11 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_transaction", nullable = false, updatable = false)
-    public Integer getIdTransaction() {
+    public Long getIdTransaction() {
         return idTransaction;
     }
 
-    public void setIdTransaction(Integer idTransaction) {
+    public void setIdTransaction(Long idTransaction) {
         this.idTransaction = idTransaction;
     }
 

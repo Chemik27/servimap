@@ -136,7 +136,7 @@
             <h3>Mis transacciones</h3>
             <div class="col-xs-12 formqualify padding-tam-1 ">
 
-
+              <div ng-show="myTransactions.length == 0">No posee transacciones</div>
               <div  class="col-xs-12 col-md-12 " ng-repeat="t in myTransactions">
                 <div class="col-xs-12 col-sm-2 col-md-2">
                   <p class="text-center"> <img class="img-circle" ng-src="data:image/png;base64,{{user.photo}}" alt=""> </p>

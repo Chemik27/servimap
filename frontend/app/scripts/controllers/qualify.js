@@ -41,7 +41,7 @@ angular.module('dutymap')
           'performance': $scope.rating2,
           'consideration': $scope.rating3,
           'recommendation': $scope.rating4,
-          'idProvider':  $scope.toUser.idUser ,
+          'idProvider':  $scope.user.idUser ,
           'reviewText': $scope.review_text,
           'generalAverage':  $scope.resultRating,
           'idUser': $rootScope.idUser,

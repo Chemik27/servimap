@@ -3,6 +3,7 @@ package com.tpfinal.service;
 import com.tpfinal.domain.Rating;
 import com.tpfinal.domain.Transaction;
 import com.tpfinal.domain.User;
+import com.tpfinal.domain.Work;
 import com.tpfinal.dto.TransactionDTO;
 import com.tpfinal.repository.ITransactionRepository;
 import com.tpfinal.repository.IUserRepository;
@@ -32,15 +33,17 @@ public class TransactionService {
     }
 
     public Transaction createTransactionFromDTO(TransactionDTO transactionDTO){
-
         Transaction transaction = new Transaction();
-        transaction.setCreationDate(new Date());
         User user = userRepository.findByIdUser(transactionDTO.getToUser());
+        Work work = new Work();
+        work.setIdWork(transactionDTO.getIdWork());
+        transaction.setCreationDate(new Date());
         transaction.setToUser(user.getIdUser());
         transaction.setFromUser(transactionDTO.getFromUser());
         transaction.setAgreedDate(transactionDTO.getAgreedDate());
         transaction.setDone(transactionDTO.getDone());
 
+        transaction.setWork(work);
         return transaction;
     }
 

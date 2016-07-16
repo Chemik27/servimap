@@ -12,7 +12,7 @@
               <li class="active"><a data-toggle="tab" data-target="#profile">Mi perfil</a></li>
               <li ng-show="$root.idUser == user.idUser"><a data-toggle="tab" data-target="#settings">Editar perfil</a></li>
               <li ng-show="$root.idUser == user.idUser"><a data-toggle="tab" data-target="#transaction-history">Mis transacciones</a></li>
-              <li ng-show="$root.idUser == user.idUser"><a data-toggle="tab" data-target="#service-history">Me han contratado</a></li>
+              <li ng-show="$root.idUser == user.idUser && user.type == 'proveedor'"><a data-toggle="tab" data-target="#service-history">Me han contratado</a></li>
           </ul>
 
           <div class="tab-content">
@@ -136,7 +136,7 @@
             <h3>Mis transacciones</h3>
             <div class="col-xs-12 formqualify padding-tam-1 ">
 
-
+              <div ng-show="myTransactions.length == 0">No posee transacciones</div>
               <div  class="col-xs-12 col-md-12 " ng-repeat="t in myTransactions">
                 <div class="col-xs-12 col-sm-2 col-md-2">
                   <p class="text-center"> <img class="img-circle" ng-src="data:image/png;base64,{{user.photo}}" alt=""> </p>
@@ -155,7 +155,7 @@
                 <div class="col-xs-12 col-sm-2 col-md-3">
                   <!--<p>Valoración : </p>-->
                   <!--<p>Costo : ${{aWork.price}}</p>-->
-                  
+
                   <a ng-href="/#/calificar/{{t.idTransaction}}" class="btn qualify">Calificar</a>
                   <a class="btn profile-btn-T logo-color-bg" ng-href="/#/perfil/{{t.work.user.idUser}}" ng-click="saveIdProvider(t.toUser)">Ver perfil</a>
 

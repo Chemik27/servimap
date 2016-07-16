@@ -18,21 +18,28 @@ angular.module('dutymap')
 
 
       $scope.confirmTransaction = function(){
+        if($scope.transaction == undefined)
+        {
+          NotificationService.error("Debe seleccionar la fecha en la que se concrete el servicio");
+          return false;
+        }
 
-        if($scope.transaction == null) {
-          NotificationService.error('Debe indicar el dia a contratar');
-        }
-        HireResources.save({
-          'toUser':$scope.toUser.idUser,
-          'fromUser': $rootScope.idUser,
-          'agreedDate': $scope.transaction.agreedDate,
-          'done':false
-        }
-        , function(response){
-          $scope.confirm=true;
-        },function(error){
-          NotificationService.error("Se ha producido un error en la transacción, intentá de nuevo o contactanos")
-        });
+        if($rootScope.idUser != undefined){
+          HireResources.save({
+            'creationDate': new Date(),
+            'toUser':$scope.toUser.idUser,
+            'fromUser': $rootScope.idUser,
+            'agreedDate': $scope.transaction.agreedDate,
+            'done':false,
+            'idWork': $scope.mainWork.idWork
+          }, function(response){
+            $scope.confirm=true;
+          },function(error){
+            NotificationService.error("Se ha producido un error en la transacción, intentá de nuevo o contactanos")
+          });
+        }else
+            NotificationService.error("Debe loguearse para poder contratar un servicio");
+
       };
 
       NgMap.getMap().then(function(map) {

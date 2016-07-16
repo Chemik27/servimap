@@ -58,7 +58,7 @@ angular
       .when('/politicas', {
         templateUrl: 'views/policies.html'
       })
-      .when('/calificar/:id', {
+      .when('/calificar/:idTrx', {
         templateUrl: 'views/qualify.html',
         controller: 'QualifyUserCtrl',
         resolve: {profileSelected: ['$route','HireResources', function($route, HireResources) {

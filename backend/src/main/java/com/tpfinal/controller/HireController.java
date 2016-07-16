@@ -33,15 +33,18 @@ public class HireController {
     @Autowired
     WorkService workService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{idUser}")
+    @RequestMapping(method = RequestMethod.GET, value = "/{idTrx}")
     @ResponseStatus(HttpStatus.OK)
-    public Map<String, Object> getProfile(@PathVariable Long idUser){
+    public Map<String, Object> getProfile(@PathVariable Long idTrx){
         logger.info("GET");
+
+        Transaction trx = transactionService.findByIdTransaccion(idTrx);
+
         Map<String, Object> result = new HashMap<String, Object>();
-        result.put("toUser", userService.findByIdUser(idUser));
-        result.put("lastTransactions", transactionService.findByFromUser(idUser));
-        result.put("transaction", transactionService.findByInfoToUser(idUser));
-        result.put("works", workService.findByIdUser(idUser));
+        result.put("toUser", userService.findByIdUser(trx.getToUser()));
+        result.put("lastTransactions", transactionService.findByFromUser(trx.getToUser()));
+        result.put("transaction", transactionService.findByInfoToUser(trx.getToUser()));
+        result.put("works", workService.findByIdUser(trx.getToUser()));
         return result;
     }
 

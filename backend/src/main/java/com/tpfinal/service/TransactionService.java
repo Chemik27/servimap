@@ -52,4 +52,8 @@ public class TransactionService {
 
         return  transactionRepository.findTop10ByWorkUserIdUserOrderByCreationDateDesc(idUser);
     }
+
+    public Transaction findByIdTransaccion(Long idTrx) {
+        return transactionRepository.findOne(idTrx);
+    }
 }

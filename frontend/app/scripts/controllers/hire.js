@@ -25,6 +25,11 @@ angular.module('dutymap')
         }
 
         if($rootScope.idUser != undefined){
+          if($rootScope.idUser == $scope.toUser.idUser){
+            NotificationService.error("No puede contratar su propio servicio");
+            return false;
+          }
+
           HireResources.save({
             'creationDate': new Date(),
             'toUser':$scope.toUser.idUser,

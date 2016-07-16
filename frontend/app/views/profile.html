@@ -148,7 +148,7 @@
                     <p>{{t.work.name}} </p>
                   </div>
                   <div class="col-xs-12 col-sm-6">
-                    <h3><i class="fa fa-map-marker fa-1x text-dutymap" aria-hidden="true"></i> {{t.work.address.district.name}}</h3>
+                    <h3><i class="fa fa-map-marker fa-1x text-dutymap" aria-hidden="true"></i> {{t.work.address.district.name != undefined ? t.work.address.district.name : 'A domicilio'}}</h3>
                   </div>
                 </div>
 
@@ -156,7 +156,7 @@
                   <!--<p>Valoración : </p>-->
                   <!--<p>Costo : ${{aWork.price}}</p>-->
 
-                  <a ng-href="/#/calificar/{{t.idTransaction}}" class="btn qualify">Calificar</a>
+                  <a ng-href="/#/calificar/{{t.idTransaction}}" class="btn qualify">Calificar</a><br><br>
                   <a class="btn profile-btn-T logo-color-bg" ng-href="/#/perfil/{{t.work.user.idUser}}" ng-click="saveIdProvider(t.toUser)">Ver perfil</a>
 
                 </div>

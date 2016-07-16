@@ -12,7 +12,8 @@ angular.module('dutymap')
       $scope.tran = profileSelected.transaction;
 
       $scope.profile = profileSelected;
-      $scope.toUser = profileSelected.toUser;
+      $scope.user = profileSelected.toUser;
+      $scope.mainWork = profileSelected.works[0];
       $scope.fullname= profileSelected.toUser.fullName;
       $scope.transactions = profileSelected.lastTransactions;
       $scope.works = profileSelected.works;

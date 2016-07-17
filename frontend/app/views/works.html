@@ -27,10 +27,20 @@
 
         <!--Mapa-->
         <div class="col-lg-12">
-            <ng-map zoom="13" center="San justo Buenos Aires">
-              <marker ng-repeat="marker in worksFound" position="{{marker.address.street}} {{marker.address.number}} {{marker.address.district.name}}"
+            <ng-map default-style="true" zoom="13" center="San justo Buenos Aires">
+
+              <info-window id="myInfoWindow" >
+                <div ng-non-bindable>
+                  <h4>{{worker.name}}</h4>
+                  <a ng-href="/#/perfil/{{worker.user.idUser}}">Ver perfil</a>
+                </div>
+              </info-window>
+
+              <marker ng-repeat="marker in worksFound"
+                      position="{{marker.address.street}} {{marker.address.number}} {{marker.address.district.name}}"
                       title="{{marker.name}}"
-                      centered="true"></marker>
+                      id="{{marker.idWork}}"
+                      centered="true" on-click="showCity(event, marker)"></marker>
             </ng-map>
         </div>
 

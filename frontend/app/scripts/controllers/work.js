@@ -8,8 +8,8 @@
  * Controller of the dutymap
  */
 angular.module('dutymap')
-    .controller('WorkCtrl', ['$scope', '$routeParams', 'WorkResources','works', 'NotificationService','ProfileResources',
-        function ($scope, $routeParams, WorkResources, works, NotificationService, ProfileResources) {
+    .controller('WorkCtrl', ['$scope', '$routeParams', 'WorkResources','works', 'NotificationService','ProfileResources', 'NgMap',
+        function ($scope, $routeParams, WorkResources, works, NotificationService, ProfileResources, NgMap) {
 
             $scope.worksFound = works.content;
             $scope.districts = [
@@ -64,8 +64,16 @@ angular.module('dutymap')
                 })
             };
 
-            $scope.goToProfile = function(id){
-                ProfileResources
-            }
 
-    }]);
+          NgMap.getMap().then(function(map) {
+            $scope.map = map;
+          });
+
+          $scope.showCity = function(event, marker) {
+            console.log(marker);
+            $scope.worker = marker;
+            $scope.map.showInfoWindow('myInfoWindow', this);
+          };
+
+
+        }]);

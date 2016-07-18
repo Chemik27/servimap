@@ -73,6 +73,42 @@ glyphicon glyphicon-info-sign"> </i> Obtene mas informacion contratando este ser
               <p><span class="iconcolor glyphicon glyphicon-calendar"></span> Fecha acordada: <time>{{ transaction.agreedDate | date : "dd/MM/y" }}</time></p>
               <p></span><span class="iconcolor glyphicon glyphicon-earphone"></span> Teléfono: <span ng-bind="toUser.phone"> </span></p>
             </div>
+            <div class="padding-tam1">
+              <a class="btn logo-color-bg " href="/#/perfil/{{$root.idUser}}"><i class="glyphicon glyphicon-share-alt" > </i> Volver al Perfil</a>
+              <button class="btn btn-success" data-toggle="modal" data-target="#myModal" > <i class="glyphicon glyphicon-search"> </i> Busca otro servicio </button>
+
+              <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Busca un nuevo servicio</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form class="navbar-form navbar-left navbar-width " role="search">
+                        <div class="form-group navbar-width " style="padding-top: 0.1em">
+                          <div class="input-group stylish-input-group navbar-width ">
+                            <input type="text" class="form-control navbar-search navbar-width" placeholder="Buscar servicios" ng-model="toFind">
+                            <a class="input-group-addon navbar-search-border" ng-href="/#/servicio/{{toFind}}">
+                              <button type="submit" >
+                                <span class="glyphicon glyphicon-search "></span>
+                              </button>
+                            </a>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
           </div>
           <div class="col-lg-6">
           <div ng-show="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null">
@@ -86,6 +122,7 @@ glyphicon glyphicon-info-sign"> </i> Obtene mas informacion contratando este ser
           <div ng-hide="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null">
             El usuario no dispone de una ubicación.
           </div>
+
         </div>
           <div class="col-md-12 padding-tam1"><p>Podrás consultar los datos del proveedor en cualquier momento en tu <b><a href="/#/perfil/{{$root.idUser}}">Historial de transacciones</a></b></p>
           <p>Recuerda calificar al proveedor una vez que el servicio se concrete, asi ayudarás a más personas a la hora de elegir a su proveedor!</p>

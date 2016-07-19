@@ -1,7 +1,7 @@
 <navbar-secondary></navbar-secondary>
     <section class="register">
         <div class="container-fluid">
-            <div ng-hide="userRegister || userProveedor || createWork">
+            <div ng-hide="userRegister || userProveedor || createWork || confirmation">
                 <div class="row">
                   <div class="col-md-12">
                     <h1 class="text-center">¿Qué estás buscando?</h1>
@@ -25,15 +25,44 @@
             </div>
 
             <!--Ventana Modal Usuario -->
-            <div ng-show="(userRegister || userProveedor) && !createWork">
+            <div ng-show="(userRegister || userProveedor) && !createWork && !confirmation">
                 <div>
                     <div class="modal-header">
                         <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
                         <div class="col-md-12 modal-title modal-label col-md-12">
                         <button class="btn button-1 logo-color-bg col-md-1" ng-click="back()"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
-                            <div class="col-md-8 col-md-offset-1">
-                            <h4 class="modal-title modal-label"> Registro {{userRegister == true ? "usuario" : "proveedor" }}</h4>
+                          <div class=" col-md-9 tex-center col-md-offset-1 text-center">
+                            <div class="col-md-12">
+                              <div class="col-md-3" ng-show="userProveedor">
+                                <a href="" type="button" class="btn btn-primary btn-circle">1</a>
+                                <hr/>
+                                <div class="col-md-12">  <small><b>Registrate</b></small></div>
+                              </div>
+                              <div class="col-md-3 col-md-offset-2" ng-show="userRegister">
+                                <a href="" type="button" class="btn btn-primary btn-circle">1</a>
+                                <hr/>
+                                <div class="col-md-12">  <small><b>Registrate</b></small></div>
+                              </div>
+                              <div class="col-md-4 text-center" ng-show="userProveedor">
+                                <a href="" type="button" class="btn btn-primary btn-circle" disabled="disabled" >2</a>
+                                <hr/>
+                                <div class="col-md-12" ><small>Carga tu trabajo</small></div>
+                              </div>
+                              <div class="col-md-4" ng-show="userRegister">
+                                <a href="" type="button" class="btn btn-primary btn-circle" disabled="disabled">2</a>
+                                <hr/>
+                                <div class="col-md-12"> <small>Confirmacion</small></div>
+                              </div>
+                              <div class="col-md-4" ng-show="userProveedor">
+                                <a href="" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                <hr/>
+                                <div class="col-md-12"> <small>Confirmacion</small></div>
+                              </div>
                             </div>
+                          </div>
+                            <!--<div class="col-md-8 col-md-offset-1">-->
+                            <!--<h4 class="modal-title modal-label"> Registro {{userRegister == true ? "usuario" : "proveedor" }}</h4>-->
+                            <!--</div>-->
                         </div>
                     </div>
                     <div class="modal-body">
@@ -41,7 +70,7 @@
                             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                                 <!-- Formulario -->
                                 <form role="form" name="userForm"  ng-submit="saveUser()" ng-model-options="{ updateOn: 'blur' }">
-                                    <h3><b>Regístrate gratis!</b> <div class="small"><h4>Por favor, completa los siguientes campos.</h4></div></h3>
+                                    <h3><b>Regístrate como  {{userRegister == true ? "usuario" : "proveedor" }} gratis!</b> <div class="small"><h4>Por favor, completa los siguientes campos.</h4></div></h3>
                                     <div class="row">
                                         <!-- Campo nombre <-->
                                         <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': userForm.firstName.$touched && userForm.firstName.$invalid, 'has-success' : userForm.firstName.$valid}"  >
@@ -192,21 +221,45 @@
             </div>
 
             <!--Ventana Nuevo trabajo -->
-            <div ng-show="createWork">
+            <div ng-show="createWork && !confirmation">
                 <div>
                     <div class="modal-header">
                         <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
-                        <div class="col-md-12 modal-title modal-label col-md-12">
-                            <div class="col-md-8 col-md-offset-2">
-                                <h4 class="modal-title modal-label"> Cuéntanos de tu trabajo</h4>
+                      <div class="col-md-12 modal-title modal-label col-md-12">
+                        <button class="btn button-1 logo-color-bg col-md-1" ng-click="back()"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
+                        <div class=" col-md-9 tex-center col-md-offset-1 text-center">
+                          <div class="col-md-12">
+                            <div class="col-md-3">
+                              <a href="" type="button" class="btn btn-primary btn-circle">1</a>
+                              <hr/>
+                              <div class="col-md-12">  <small>Registrate</small></div>
                             </div>
+                            <div class="col-md-4 text-center" >
+                              <a href="" type="button" class="btn btn-primary btn-circle" >2</a>
+                              <hr/>
+                              <div class="col-md-12" ><small><b>Carga tu trabajo</b></small></div>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="" type="button" class="btn btn-primary btn-circle" disabled="disabled">3</a>
+                              <hr/>
+                              <div class="col-md-12"> <small>Confirmacion</small></div>
+                            </div>
+                          </div>
                         </div>
+
+                      </div>
+                        <!--<div class="col-md-12 modal-title modal-label col-md-12">-->
+                            <!--<div class="col-md-8 col-md-offset-2">-->
+                                <!--<h4 class="modal-title modal-label"> Cuéntanos de tu trabajo</h4>-->
+                            <!--</div>-->
+                        <!--</div>-->
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                                 <!-- Formulario workForm -->
                                 <form role="form" name="workForm"  ng-submit="saveWork()" ng-model-options="{ updateOn: 'blur' }">
+                                  <!--<h4 class="modal-title modal-label"> Cuéntanos de tu trabajo</h4>-->
                                     <h3><b>Házte conocido!</b> <div class="small"><h4>Por favor, completa los siguientes campos de información laboral.</h4></div></h3>
 
                                     <div class="row">
@@ -320,6 +373,51 @@
                     </div>
                 </div>
             </div>
+
+           <div ng-show="confirmation">
+             <div class="modal-header">
+               <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
+               <div class="col-md-12 modal-title modal-label col-md-12">
+                 <button class="btn button-1 logo-color-bg col-md-1" ng-click="back()"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
+                 <div class=" col-md-9 tex-center col-md-offset-1 text-center">
+                   <div class="col-md-12">
+                     <div class="col-md-3" ng-show="userProveedor">
+                       <a href="" type="button" class="btn btn-primary btn-circle">1</a>
+                       <hr/>
+                       <div class="col-md-12">  <small>Registrate</small></div>
+                     </div>
+                     <div class="col-md-3 col-md-offset-2" ng-show="userRegister">
+                       <a href="" type="button" class="btn btn-primary btn-circle">1</a>
+                       <hr/>
+                       <div class="col-md-12">  <small>Registrate </small></div>
+                     </div>
+                     <div class="col-md-4 text-center" ng-show="userProveedor">
+                       <a href="" type="button" class="btn btn-primary btn-circle"  >2</a>
+                       <hr/>
+                       <div class="col-md-12" ><small>Carga tu trabajo</small></div>
+                     </div>
+                     <div class="col-md-4" ng-show="userRegister">
+                       <a href="" type="button" class="btn btn-primary btn-circle" >2</a>
+                       <hr/>
+                       <div class="col-md-12"> <small><b>Confirmacion</b></small></div>
+                     </div>
+                     <div class="col-md-4" ng-show="userProveedor">
+                       <a href="" type="button" class="btn btn-primary btn-circle">3</a>
+                       <hr/>
+                       <div class="col-md-12"> <small><b>Confirmación</b></small></div>
+                     </div>
+                   </div>
+                 </div>
+                 <!--<div class="col-md-8 col-md-offset-1">-->
+                 <!--<h4 class="modal-title modal-label"> Registro {{userRegister == true ? "usuario" : "proveedor" }}</h4>-->
+                 <!--</div>-->
+               </div>
+             </div>
+             <div>
+               <h4> REGISTRO CONFIRMADO </h4>
+               <span> Ahora podes ingresar al sitio con tu usuario y password.</span>
+             </div>
+           </div>
         </div>
     </section>
 <footer-dutymap></footer-dutymap>

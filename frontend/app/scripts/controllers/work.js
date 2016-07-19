@@ -12,6 +12,11 @@ angular.module('dutymap')
         function ($scope, $routeParams, WorkResources, works, NotificationService, ProfileResources, NgMap) {
 
             $scope.worksFound = works.content;
+            $scope.workerLength = $scope.worksFound.length;
+            $scope.bestWorkers = _.first($scope.worksFound, 1);
+            $scope.otherWorkers = _.last($scope.worksFound, $scope.workerLength - 1);
+
+
             $scope.districts = [
               {id:1 ,name: '20 de Junio'},
               {id:2 ,name: 'Aldo Bonzi'},
@@ -49,6 +54,9 @@ angular.module('dutymap')
             $scope.searchByDistrict = function(id){
                 WorkResources.searchByDistrict({id:id}, function(response){
                     $scope.worksFound = response.content;
+                    $scope.workerLength = $scope.worksFound.length;
+                    $scope.bestWorkers = _.first($scope.worksFound, 1);
+                    $scope.otherWorkers = _.last($scope.worksFound, $scope.workerLength - 1);
                 },function(error){
                     console.log(error);
                     NotificationService.error("No se pudo realizar la busqueda");
@@ -58,6 +66,9 @@ angular.module('dutymap')
             $scope.searchByCategory = function(id){
                 WorkResources.searchByCategory({id:id}, function(response){
                     $scope.worksFound = response.content;
+                    $scope.workerLength = $scope.worksFound.length;
+                    $scope.bestWorkers = _.first($scope.worksFound, 1);
+                    $scope.otherWorkers = _.last($scope.worksFound, $scope.workerLength - 1);
                 },function(error){
                     console.log(error);
                     NotificationService.error("No se pudo realizar la busqueda");

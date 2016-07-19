@@ -15,7 +15,8 @@
     "angular-messages": "~1.5.6",
     "jquery": "^2.0.0",
     "pnotify": "~3.0.0",
-    "ngmap": "~1.17.3"
+    "ngmap": "~1.17.3",
+    "adm-dtp": "*"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

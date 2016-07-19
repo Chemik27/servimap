@@ -18,7 +18,7 @@ angular.module('dutymap')
 
 
       $scope.confirmTransaction = function(){
-        if($scope.transaction == undefined)
+        if($scope.date == undefined)
         {
           NotificationService.error("Debe seleccionar la fecha en la que se concrete el servicio");
           return false;
@@ -29,12 +29,14 @@ angular.module('dutymap')
             NotificationService.error("No puede contratar su propio servicio");
             return false;
           }
+          var time = $scope.date;
+          time = time + ':00';
 
           HireResources.save({
             'creationDate': new Date(),
             'toUser':$scope.toUser.idUser,
             'fromUser': $rootScope.idUser,
-            'agreedDate': $scope.transaction.agreedDate,
+            'agreedDate': new Date(time),
             'done':false,
             'idWork': $scope.mainWork.idWork
           }, function(response){

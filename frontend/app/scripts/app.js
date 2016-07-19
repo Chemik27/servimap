@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'ngMessages',
     'ngMaterial',
-    'ngMap'
+    'ngMap',
+    'ADM-dateTimePicker'
   ])
   .config(function ($routeProvider) {
     $routeProvider

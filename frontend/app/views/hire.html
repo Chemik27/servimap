@@ -13,6 +13,11 @@
           <p class="hire-description">Descripción del trabajo </p>
           <p ng-bind="mainWork.description" class="padding-tam2"></p>
       </div>
+      <div class="col-md-12 padding-tam1" >
+        <p class="hire-description">Lugar del trabajo</p>
+        <p ng-if="mainWork.address != null" ng-bind="mainWork.address.street + ' ' + mainWork.address.number + ' - ' + mainWork.address.district.name" class="padding-tam2"></p>
+        <p ng-if="mainWork.address == null" class="padding-tam2">Será el acordado con el proveedor</p>
+      </div>
       <!--<p class="hire-description">Qué incluye el servicio</p>-->
 
       <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores assumenda autem blanditiis, consectetur corporis doloremque in ipsum magni modi molestiae nemo nisi officia placeat quam sed sint soluta. In.</p>-->
@@ -20,8 +25,11 @@
       <!--<p class="hire-description">Qué no incluye el servicio</p>-->
       <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, culpa dignissimos eius explicabo fuga harum minima nemo nesciunt nihil nisi perspiciatis quia quibusdam reiciendis sed unde vel voluptatum. Officiis, praesentium!</p>-->
       <div class="col-md-12 padding-tam1">
-      <p class="hire-description">Elige que día quieres concretar el servicio</p>
-      <md-datepicker class="hire-datepicker" name="agreedDate" ng-model="transaction.agreedDate" style="color:blue;"md-placeholder="Fecha" md-min-date="today"></md-datepicker>
+      <p class="hire-description">Elige que día y horario que quieres concretar el servicio</p>
+        <adm-dtp ng-model='date' full-data='date_details' options='{calType: "gregorian", format: "YYYY/MM/DD hh:mm", default: "today"}'>
+          <input type='text' ng-model='date' dtp-input />
+          <button dtp-open class="btn logo-color-bg ng-binding ng-scope">Calendario</button>
+        </adm-dtp>
       <div>
         <small><i class="glyphicon glyphicon-warning-sign" style="color:red;"> </i> ACLARACIÓN : </small>
         <small>Luego de confirmar la contratación puedes modificar la fecha y horario con el proveedor. </small>

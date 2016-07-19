@@ -92,9 +92,6 @@
   font-size:17px;
 }
 
-.qualify-btn{
-  color: orangered;
-}
 
 .profile-btn-T{
   transition: all 0.5s ease;
@@ -107,13 +104,19 @@
 .profile-btn-T:hover{
   color: white;
   background-color: #3A598D;
+
 }
 
 .qualify{
-  height: 50%;
-  width:150px;
   color: white;
+  background-color: #c8582f;
+  transition: all 0.5s ease;
+}
+
+.qualify:hover{
+  color:white;
   background-color: orangered;
+  transition: all 0.5s ease;
 }
 .padding-tam-1 {
   padding: 2%;

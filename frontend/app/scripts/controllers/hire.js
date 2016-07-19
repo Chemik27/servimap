@@ -2,8 +2,16 @@
  * Created by nico on 30/06/16.
  */
 angular.module('dutymap')
-  .controller('HireCtrl', ['$scope', '$http' ,'$resource','profileSelected','$rootScope','NotificationService','HireResources', 'NgMap',
-    function ($scope, $http, $resource, profileSelected,$rootScope,NotificationService,HireResources, NgMap) {
+  .controller('HireCtrl', ['$scope', '$http' ,'$resource','profileSelected','$rootScope','NotificationService','HireResources', 'NgMap','$location',
+    function ($scope, $http, $resource, profileSelected,$rootScope,NotificationService,HireResources, NgMap, $location) {
+
+      //Elimino estilos de modal manualmente cuando redirijo
+      $scope.removeModal= function(){
+        $('#myModal').modal('hide');
+        $('body').removeClass('modal-open');
+        $('body').css('padding-right','0px');
+        $('.modal-backdrop').remove();
+      };
 
        $scope.profile = profileSelected;
        $scope.toUser = profileSelected.toUser;

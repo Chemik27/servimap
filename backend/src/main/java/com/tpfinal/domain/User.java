@@ -1,6 +1,7 @@
 package com.tpfinal.domain;
 
 import javax.persistence.*;
+import javax.sound.sampled.BooleanControl;
 
 @Entity
 @Table(name = "user")
@@ -16,14 +17,14 @@ public class User extends BaseEntity {
     private String type;
     private String email;
     private String phone;
-    private Long enabled;
+    private Boolean premium;
     private Long idAddress;
     private byte[] photo;
 
     //Transient values
     private String fullName;
 
-    public User(Long idUser, String name, String surname, String password, String type, String email, String phone, Long enabled, Long idAddress) {
+    public User(Long idUser, String name, String surname, String password, String type, String email, String phone, Boolean premium, Long idAddress) {
         this.idUser = idUser;
         this.name = name;
         this.surname = surname;
@@ -31,7 +32,7 @@ public class User extends BaseEntity {
         this.type = type;
         this.email = email;
         this.phone = phone;
-        this.enabled = enabled;
+        this.premium = premium;
         this.idAddress = idAddress;
     }
 
@@ -103,13 +104,13 @@ public class User extends BaseEntity {
         this.phone = phone;
     }
 
-    @Column(name = "enabled")
-    public Long getEnabled() {
-        return enabled;
+    @Column(name = "premium")
+    public Boolean getPremium() {
+        return premium;
     }
 
-    public void setEnabled(Long enabled) {
-        this.enabled = enabled;
+    public void setPremium(Boolean premium) {
+        this.premium = premium;
     }
 
     @Column(name = "id_address")

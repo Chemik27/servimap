@@ -59,7 +59,7 @@ public class UserService {
         user.setPhone(userDTO.getPhone());
         user.setCreationDate(new Date());
         user.setPassword(codePassword(userDTO.getPassword()));
-        user.setEnabled(1L);
+        user.setPremium(false);
 
         Address address = addressService.createAddressFromDTO(userDTO.getStreet(), userDTO.getNumber(), userDTO.getIdDistrict(), null, Address.NEW_ADDRESS);
         user.setIdAddress(address.getIdAddress());

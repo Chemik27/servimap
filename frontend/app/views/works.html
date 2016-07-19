@@ -47,8 +47,8 @@
 
         <div class="container-fluid">
         <! -- CONTACTOS PREMIUM -->
-            <div ng-class="{'col-md-4 col-md-push-4': worksFound.length == 1, 'col-sm-4 col-md-4 col-lg-4 col-md-push-2': worksFound.length == 2,
-             'col-sm-4 col-md-4 col-lg-4': worksFound.length >2 }" ng-repeat="aPremium in worksFound" class="card-margin">
+            <div ng-class="{'col-md-4 col-md-push-4': bestWorkers.length == 1, 'col-sm-4 col-md-4 col-lg-4 col-md-push-2': bestWorkers.length == 2,
+             'col-sm-4 col-md-4 col-lg-4': bestWorkers.length >2 }" ng-repeat="aPremium in bestWorkers" class="card-margin">
                 <div class="flip-container padding" ontouchstart="this.classList.toggle('hover');">
                     <div class="flipper">
                         <div class="row">
@@ -56,7 +56,7 @@
                               <div class="ribbon"><span>Garantizado</span></div>
                                 <p class="text-center"><img class="img-circle"  ng-src="data:image/png;base64,{{aPremium.user.photo}}" alt=""> </p>
                                 <h2> <p class="text-center">{{aPremium.name}}</p></h2>
-                                <h5> <p class="text-center text-success"><b><i class="fa fa-street-view fa-1x" aria-hidden="true"></i> Premium</b></p></h5>
+                                <h5> <p class="text-center text-success"><b><i class="fa fa-street-view fa-1x" aria-hidden="true"></i> Destacado</b></p></h5>
                                 <hr>
                                 <h4><p class="text-center">{{aPremium.category.name}}</p></h4>
                               <br>
@@ -83,7 +83,7 @@
 
         <div class="container-fluid">
         <! -- CONTACTOS COMUNES -->
-            <div class="col-xs-10 col-sm-10 col-md-10 col-xs-push-1 border-service" ng-class="{'block': !$last}" ng-repeat="aWork in worksFound">
+            <div class="col-xs-10 col-sm-10 col-md-10 col-xs-push-1 border-service" ng-class="{'block': !$last}" ng-repeat="aWork in otherWorkers">
                 <div class="col-xs-12 col-sm-2 col-md-2">
                     <p class="text-center"><img class="img-circle" ng-src="data:image/png;base64,{{aWork.user.photo}}" alt=""> </p>
                 </div>

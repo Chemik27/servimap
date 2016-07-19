@@ -14,7 +14,7 @@ angular.module('dutymap')
         $scope.replicate = '';
         $scope.provider={};
         $scope.work = {};
-
+        $scope.confirmation=false;
         $scope.userRegister=false;
         $scope.userProveedor=false;
         $scope.createWork = false;
@@ -51,9 +51,12 @@ angular.module('dutymap')
               NotificationService.success('Se ha registrado correctamente. Ingrese los datos de su servicio.');
               $scope.work.idUser = response.idUser;
               $scope.createWork = true;
+              $scope.confirmation=false;
             }else{
-              NotificationService.success('Se ha registrado correctamente. Inicie sesión.');
-              $location.url('/login')
+              //NotificationService.success('Se ha registrado correctamente. Inicie sesión.');
+              //$location.url('/register')
+              $scope.confirmation=true;
+
             }
           }).error(function(error) {
               NotificationService.error(error);
@@ -122,8 +125,9 @@ angular.module('dutymap')
               'idDistrict': $scope.work.district != '' && $scope.work.district != undefined ? $scope.work.district.id : null};
 
             WorkResources.save(newWork, function(){
-              NotificationService.success('Ha creado un servicio correctamente.');
-              $location.url('/login')
+              //NotificationService.success('Ha creado un servicio correctamente.');
+              //$location.url('/register')
+              $scope.confirmation=true;
             }, function(error){
               NotificationService.error(error);
             });

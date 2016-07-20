@@ -1,5 +1,21 @@
 <navbar-secondary></navbar-secondary>
 <div class="container-fluid">
+
+  <div ng-show="toUser.idUser == null" class="text-center">
+    <div class="col-sm-6 col-sm-push-3 text-center not-found" ng-show="user.idUser == null">
+      <div>
+        <i class="fa fa-bullhorn fa-5x text-dutymap" aria-hidden="true"></i>
+      </div>
+      <div>
+        <h4 class="text-dutymap"><b>Psss! No hemos encontrado a ningún proveedor para que puedas contratarlo, intenta de nuevo<br><br>
+          <a href="/#/" class="btn logo-color-bg ">Volver a inicio</a>
+        </b></h4>
+      </div>
+    </div>
+  </div>
+
+  <div ng-hide="toUser.idUser == null">
+
   <div ng-show="!confirm" class="col-md-12 padding-tam3">
     <!--Datos del usuario y acuerdos de fecha-->
     <div class="col-md-12">
@@ -26,7 +42,7 @@
       <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, culpa dignissimos eius explicabo fuga harum minima nemo nesciunt nihil nisi perspiciatis quia quibusdam reiciendis sed unde vel voluptatum. Officiis, praesentium!</p>-->
       <div class="col-md-12 padding-tam1">
       <p class="hire-description">Elige que día y horario que quieres concretar el servicio</p>
-        <adm-dtp ng-model='date' full-data='date_details' options='{calType: "gregorian", format: "YYYY/MM/DD hh:mm", default: "today"}'>
+        <adm-dtp ng-model='date' full-data='date_details' options='{calType: "gregorian", format: "YYYY/MM/DD hh:mm", default: "today"}'  mindate="todaysDate" >
           <input type='text' ng-model='date' dtp-input />
           <button dtp-open class="btn logo-color-bg ng-binding ng-scope">Calendario</button>
         </adm-dtp>
@@ -140,4 +156,7 @@ glyphicon glyphicon-info-sign"> </i> Obtene mas informacion contratando este ser
 
   </div>
 </div>
+
+</div>
+
 <footer-dutymap></footer-dutymap>

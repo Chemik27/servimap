@@ -1,5 +1,18 @@
 <navbar-secondary></navbar-secondary>
-<div class="resume container-fluid">
+
+<div class="container-fluid">
+  <div class="col-sm-6 col-sm-push-3 text-center not-found" ng-show="user.idUser == null">
+    <div>
+      <i class="fa fa-bullhorn fa-5x text-dutymap" aria-hidden="true"></i>
+    </div>
+    <div>
+      <h4 class="text-dutymap"><b>Psss! No hemos encontrado el perfil que buscaste, intenta de nuevo <br><br>
+        <a href="/#/" class="btn logo-color-bg ">Volver a inicio</a>
+      </b></h4>
+    </div>
+  </div>
+</div>
+<div class="resume container-fluid" ng-hide="user.idUser == null">
 
   <profile-dutymap></profile-dutymap>
 

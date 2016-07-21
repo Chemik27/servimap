@@ -35,11 +35,12 @@ public class TransactionService {
     public Transaction createTransactionFromDTO(TransactionDTO transactionDTO){
         Transaction transaction = new Transaction();
         User user = userRepository.findByIdUser(transactionDTO.getToUser());
+        User fromUser = userRepository.findByIdUser(transactionDTO.getFromUser().getIdUser());
         Work work = new Work();
         work.setIdWork(transactionDTO.getIdWork());
         transaction.setCreationDate(new Date());
         transaction.setToUser(user.getIdUser());
-        transaction.setFromUser(transactionDTO.getFromUser());
+        transaction.setFromUser(fromUser);
         transaction.setAgreedDate(transactionDTO.getAgreedDate());
         transaction.setDone(transactionDTO.getDone());
 
@@ -48,12 +49,12 @@ public class TransactionService {
     }
 
     public List<Transaction> findByFromUser(Long idUser) {
-        return transactionRepository.findTop10ByFromUserOrderByCreationDateDesc(idUser);
+        return transactionRepository.findTop10ByFromUserIdUserOrderByCreationDateDesc(idUser);
     }
 
     public List<Transaction> findByInfoToUser(Long idUser){
 
-        return  transactionRepository.findTop10ByWorkUserIdUserOrderByCreationDateDesc(idUser);
+        return  transactionRepository.findTop10ByToUserOrderByCreationDateDesc(idUser);
     }
 
     public Transaction findByIdTransaccion(Long idTrx) {

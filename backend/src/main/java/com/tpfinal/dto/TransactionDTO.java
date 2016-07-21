@@ -1,5 +1,6 @@
 package com.tpfinal.dto;
 
+import com.tpfinal.domain.User;
 import com.tpfinal.domain.Work;
 
 import java.util.Date;
@@ -12,7 +13,7 @@ public class TransactionDTO {
     private Integer idTransaction;
     private Date creationDate;
     private Long toUser;
-    private Long fromUser;
+    private User fromUser;
     private Date agreedDate;
     private Boolean done;
     private Long idWork;
@@ -47,11 +48,11 @@ public class TransactionDTO {
         this.toUser = toUser;
     }
 
-    public Long getFromUser() {
+    public User getFromUser() {
         return fromUser;
     }
 
-    public void setFromUser(Long fromUser) {
+    public void setFromUser(User fromUser) {
         this.fromUser = fromUser;
     }
 

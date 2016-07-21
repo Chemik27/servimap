@@ -35,14 +35,7 @@ public class RatingController {
     @ResponseStatus(HttpStatus.OK)
     public void save(@RequestBody Rating rating){
         logger.info("Info rating:  " + rating);
-        rating.setConsideration(rating.getConsideration());
-        rating.setPerformance(rating.getPerformance());
-        rating.setRecommendation(rating.getRecommendation());
-        rating.setReliability(rating.getReliability());
-        rating.setIdProvider(rating.getIdProvider());
-        rating.setIdUser(rating.getIdUser());
-        rating.setReviewText(rating.getReviewText());
-        ratingService.createNew(rating);
+        ratingService.save(rating);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{idTransaction}")

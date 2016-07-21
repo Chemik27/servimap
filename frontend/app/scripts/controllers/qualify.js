@@ -19,6 +19,7 @@ angular.module('dutymap')
       $scope.works = profileSelected.works;
       $scope.jobname = profileSelected.works.description;
       $scope.rating = profileSelected.rating;
+      $scope.tx = profileSelected.tx;
       //Calificaciones 4
       $scope.rating1 = 1;
       $scope.rating2 = 1;

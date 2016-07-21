@@ -45,6 +45,7 @@ public class HireController {
         result.put("lastTransactions", transactionService.findByFromUser(trx.getToUser()));
         result.put("transaction", transactionService.findByInfoToUser(trx.getToUser()));
         result.put("works", workService.findByIdUser(trx.getToUser()));
+        result.put("tx", trx);
         return result;
     }
 

@@ -1,7 +1,10 @@
 package com.tpfinal.service;
 
 import com.tpfinal.domain.Rating;
+import com.tpfinal.domain.State;
+import com.tpfinal.domain.Transaction;
 import com.tpfinal.repository.IRatingRepository;
+import com.tpfinal.repository.ITransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +21,8 @@ public class RatingService {
     @Autowired
     IRatingRepository ratingRepository;
 
-    public Rating createNew(Rating rating){
-        return ratingRepository.save(rating);
-    }
+    @Autowired
+    ITransactionRepository transactionRepository;
 
     public List<Rating> findByIdProvider(Long idUser) {
         return ratingRepository.findByIdProvider(idUser);
@@ -67,5 +69,12 @@ public class RatingService {
         ratingAndComments.put("comments", comments);
 
         return ratingAndComments;
+    }
+
+    public void save(Rating rating) {
+        Transaction tx = transactionRepository.findOne(rating.getIdTransaction());
+        tx.setState(State.TRX_CLOSED);
+        transactionRepository.save(tx);
+        ratingRepository.save(rating);
     }
 }

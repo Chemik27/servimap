@@ -14,7 +14,6 @@ public class TransactionDTO {
     private Long toUser;
     private Long fromUser;
     private Date agreedDate;
-    private Boolean done;
     private Long idWork;
 
     public Long getIdWork() { return idWork; }
@@ -62,14 +61,5 @@ public class TransactionDTO {
     public void setAgreedDate(Date agreedDate) {
         this.agreedDate = agreedDate;
     }
-
-    public Boolean getDone() {
-        return done;
-    }
-
-    public void setDone(Boolean done) {
-        this.done = done;
-    }
-
 
 }

@@ -7,23 +7,20 @@ import java.util.Date;
 @Table(name = "transaction")
 public class Transaction {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_transaction", nullable = false, updatable = false)
-
     private Long idTransaction;
     private Date creationDate;
     private Long toUser; // proveedor
     private Long fromUser; //usuario
     private Date agreedDate;
-    private Boolean done;
+    private Long state;
     private Work work;
 
-    public Transaction(Date creationDate, Long toUser, Long fromUser,Date agreedDate, Work work) {
+    public Transaction(Date creationDate, Long toUser, Long fromUser, Date agreedDate, Long state, Work work) {
         this.creationDate = creationDate;
         this.toUser = toUser;
         this.fromUser = fromUser;
         this.agreedDate= agreedDate;
+        this.state = state;
         this.work = work;
     }
 
@@ -77,13 +74,13 @@ public class Transaction {
         this.agreedDate = agreedDate;
     }
 
-    @Column(name="done")
-    public Boolean getDone() {
-        return done;
+    @Column(name="state")
+    public Long getState() {
+        return state;
     }
 
-    public void setDone(Boolean done) {
-        this.done = done;
+    public void setState(Long state) {
+        this.state = state;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)

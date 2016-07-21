@@ -1,9 +1,6 @@
 package com.tpfinal.service;
 
-import com.tpfinal.domain.Rating;
-import com.tpfinal.domain.Transaction;
-import com.tpfinal.domain.User;
-import com.tpfinal.domain.Work;
+import com.tpfinal.domain.*;
 import com.tpfinal.dto.TransactionDTO;
 import com.tpfinal.repository.ITransactionRepository;
 import com.tpfinal.repository.IUserRepository;
@@ -41,7 +38,7 @@ public class TransactionService {
         transaction.setToUser(user.getIdUser());
         transaction.setFromUser(transactionDTO.getFromUser());
         transaction.setAgreedDate(transactionDTO.getAgreedDate());
-        transaction.setDone(transactionDTO.getDone());
+        transaction.setState(State.TRX_CREATED);
 
         transaction.setWork(work);
         return transaction;

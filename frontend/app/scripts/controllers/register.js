@@ -110,7 +110,9 @@ angular.module('dutymap')
         $scope.back = function(){
           $scope.userRegister=false;
           $scope.userProveedor=false;
-        }
+          $scope.confirmation=false;
+          $scope.createWork=false;
+        };
 
         $scope.saveWork = function(){
             var newWork = {

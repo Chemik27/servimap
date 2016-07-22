@@ -62,7 +62,7 @@ public class UserService {
         user.setPremium(false);
 
         Address address = addressService.createAddressFromDTO(userDTO.getStreet(), userDTO.getNumber(), userDTO.getIdDistrict(), null, Address.NEW_ADDRESS);
-        user.setIdAddress(address.getIdAddress());
+        user.setIdAddress(address);
         return user;
     }
     public String codePassword(String password){

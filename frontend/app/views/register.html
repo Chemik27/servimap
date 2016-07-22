@@ -423,17 +423,17 @@
 
                <div class="row">
                  <div class="col-xs-7 col-sm-8 col-md-6 col-sm-offset-1 col-md-offset-1 ">
-                    <h4> HAS REGISTRADO TUS DATOS EXITOSAMENTE! </h4>
-                   <p>Tus datos registrados:</p>
+                   <h4 style="color: #2f3a4c;"> <b>HAS REGISTRADO TUS DATOS EXITOSAMENTE! </b></h4>
+                   <p class="col-md-12">Tus datos registrados:</p>
                    <div class="col-xs-12 col-sm-8 col-md-12 margin-md-1">
                     <div>Nombre y Apellido : {{provider.name}} {{provider.username}}</div>
                     <div>Email : {{provider.email}} </div>
                     <div ng-show="userProveedor">Servicio : {{work.description}} </div>
                    </div>
                    <div>
-                     <div>Ahora podes ingresar al sitio con tu email y password.</div>
+                     <div class="col-md-12">Ahora podes ingresar al sitio con tu email y password.</div>
                      <div class="col-md-4">
-                       <button type="button" class="btn btn-primary"><a ng-href="/#/login">Ingresar a mi cuenta </a></button>
+                       <button type="button" class="btn button-1 logo-color-bg col-md-2 " ng-click="/#/login">Inicia sesion</button>
                      </div>
                    </div>
 

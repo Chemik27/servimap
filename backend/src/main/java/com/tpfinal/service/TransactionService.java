@@ -32,7 +32,7 @@ public class TransactionService {
     public Transaction createTransactionFromDTO(TransactionDTO transactionDTO){
         Transaction transaction = new Transaction();
         User user = userRepository.findByIdUser(transactionDTO.getToUser());
-        User fromUser = userRepository.findByIdUser(transactionDTO.getFromUser().getIdUser());
+        User fromUser = userRepository.findByIdUser(transactionDTO.getFromUser());
         Work work = new Work();
         work.setIdWork(transactionDTO.getIdWork());
         transaction.setCreationDate(new Date());

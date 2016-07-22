@@ -13,7 +13,7 @@ public class TransactionDTO {
     private Integer idTransaction;
     private Date creationDate;
     private Long toUser;
-    private User fromUser;
+    private Long fromUser;
     private Date agreedDate;
     private Long idWork;
 
@@ -47,11 +47,11 @@ public class TransactionDTO {
         this.toUser = toUser;
     }
 
-    public User getFromUser() {
+    public Long getFromUser() {
         return fromUser;
     }
 
-    public void setFromUser(User fromUser) {
+    public void setFromUser(Long fromUser) {
         this.fromUser = fromUser;
     }
 

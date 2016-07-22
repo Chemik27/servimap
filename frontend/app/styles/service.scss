@@ -6,7 +6,7 @@
 }
 
 .profile{
-  width:70%;
+  width:100px;
   margin-bottom:10px;
 }
 .hire{
@@ -163,4 +163,11 @@
   box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
   position: absolute;
   top: 19px; right: -21px;
+}
+
+@media only screen and (max-width:888px){
+  .profile{
+    width: 80%;
+  }
+
 }

@@ -40,20 +40,35 @@
 
       <!--<p class="hire-description">Qué no incluye el servicio</p>-->
       <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, culpa dignissimos eius explicabo fuga harum minima nemo nesciunt nihil nisi perspiciatis quia quibusdam reiciendis sed unde vel voluptatum. Officiis, praesentium!</p>-->
-      <div class="col-md-12 padding-tam1">
-      <p class="hire-description">Elige que día y horario que quieres concretar el servicio</p>
-        <adm-dtp ng-model='date' full-data='date_details' options='{calType: "gregorian", format: "YYYY/MM/DD hh:mm", default: "today"}'  mindate="todaysDate" >
-          <input type='text' ng-model='date' dtp-input />
-          <button dtp-open class="btn logo-color-bg ng-binding ng-scope">Calendario</button>
-        </adm-dtp>
       <div>
+        <div class="col-md-12 col-xs-12">
+          <p class="hire-description">¿Cual es tu problema?</p>
+          <textarea style="width:70%; color:black;"></textarea>
+        </div>
+        <div class="col-md-12 col-xs-12">
+          <p class="hire-description">El domicilio donde se concretara el trabajo:</p>
+          <div class="col-md-4 col-xs-4">
+          <input type="radio" name="domicilio" value="" checked="checked" />  <span>Mi lugar de domicilio</span></div>
+          <div class="col-md-4 col-xs-4">
+          <input type="radio" name="newdomicilio" value="" /> <span>Otra direcci&oacute;n</span> <input ng-model="newdomicilio"/>
+          </div>
+        </div>
+        <div class="col-md-12 col-xs-12">
+          <p class="hire-description">Elige que día y horario que quieres concretar el servicio</p>
+          <adm-dtp ng-model='date' full-data='date_details' options='{calType: "gregorian", format: "YYYY/MM/DD hh:mm", default: "today"}'  mindate="todaysDate" >
+            <input type='text' ng-model='date' dtp-input />
+            <button dtp-open class="btn logo-color-bg ng-binding ng-scope">Calendario</button>
+          </adm-dtp>
+        </div>
+
+      <div class="col-md-12 col-xs-12">
         <small><i class="glyphicon glyphicon-warning-sign" style="color:red;"> </i> ACLARACIÓN : </small>
         <small>Luego de confirmar la contratación puedes modificar la fecha y horario con el proveedor. </small>
       </div>
       </div>
     </div>
      <!--Confirmar servicio-->
-    <div class="col-sm-3 confirm-section">
+    <div class="col-sm-3 col-xs-12 confirm-section">
       <p class="text-center image-profile ">
         <img class="img-circle" ng-src="data:image/png;base64,{{toUser.photo}}" alt="">
       </p>

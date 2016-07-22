@@ -16,6 +16,9 @@ angular.module('dutymap')
             $scope.myServiceHistory = profileSelected.transactions;
             $scope.works = profileSelected.works;
             $scope.mainWork = $scope.works[0];
+            $scope.today = new Date();
+
+
             if(profileSelected.rating != undefined){
                 $scope.rating = profileSelected.rating.finalRating;
                 $scope.comments = profileSelected.rating.comments;

@@ -422,8 +422,9 @@
              <div class="modal-body">
 
                <!--Mensaje servicio agregado-->
-              <div class="col-md-12" ng-show="$root.idUser != null">
-                <p>Has agregado el trabajo correctamente! Puedes visualizarlo en tu <a href="/#/perfil/{{$root.idUser}}">Perfil</a></p>
+              <div class="col-md-12 text-center" ng-show="$root.idUser != null">
+                <h3 >Has agregado el trabajo correctamente!</h3>
+                 <a class="btn logo-color-bg profile-btn" href="/#/perfil/{{$root.idUser}}">Volver a Mi Perfil</a></p>
               </div>
 
                <div class="row" ng-show="$root.idUser == null">

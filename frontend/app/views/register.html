@@ -1,7 +1,7 @@
 <navbar-secondary></navbar-secondary>
     <section class="register">
         <div class="container-fluid">
-            <div ng-hide="userRegister || userProveedor || createWork || confirmation">
+            <div ng-hide="userRegister || userProveedor || createWork || confirmation || $root.idUser != null">
                 <div class="row">
                   <div class="col-md-12">
                     <h1 class="text-center">¿Qué estás buscando?</h1>
@@ -71,7 +71,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                                 <!-- Formulario -->
-                                <form role="form" name="userForm"  ng-submit="saveUser()" ng-model-options="{ updateOn: 'blur' }">
+                                <form role="form" name="userForm" ng-hide="$root.idUser != null" ng-submit="saveUser()" ng-model-options="{ updateOn: 'blur' }">
                                     <h3><b>Regístrate como  {{userRegister == true ? "usuario" : "proveedor" }} gratis!</b> <div class="small"><h4>Por favor, completa los siguientes campos.</h4></div></h3>
                                     <div class="row">
                                         <!-- Campo nombre <-->
@@ -223,11 +223,11 @@
             </div>
 
             <!--Ventana Nuevo trabajo -->
-            <div ng-show="createWork && !confirmation">
+            <div ng-show="createWork && !confirmation || $root.idUser != null">
                 <div>
                     <div class="modal-header">
                         <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
-                      <div class="col-md-12 modal-title modal-label col-md-12">
+                      <div class="col-md-12 modal-title modal-label col-md-12" ng-hide="$root.idUser != null">
                         <div class="col-md-2">
                         <button class="btn button-1 logo-color-bg col-md-1" ng-click="back()"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
                         </div>
@@ -258,13 +258,13 @@
                             <!--</div>-->
                         <!--</div>-->
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" ng-hide="confirmation">
                         <div class="row">
                             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                                 <!-- Formulario workForm -->
                                 <form role="form" name="workForm"  ng-submit="saveWork()" ng-model-options="{ updateOn: 'blur' }">
                                   <!--<h4 class="modal-title modal-label"> Cuéntanos de tu trabajo</h4>-->
-                                    <h3><b>Házte conocido!</b> <div class="small"><h4>Por favor, completa los siguientes campos de información laboral.</h4></div></h3>
+                                    <h3><b ng-show="$root.idUser == null">Házte conocido!</b><b ng-show="$root.idUser != null">Agrega un servicio!</b> <div class="small"><h4>Por favor, completa los siguientes campos de información laboral.</h4></div></h3>
 
                                     <div class="row">
                                         <!-- Campo categoria -->
@@ -379,7 +379,7 @@
             </div>
 
            <div ng-show="confirmation">
-             <div class="modal-header">
+             <div class="modal-header" ng-hide ="$root.idUser != null">
                <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
                <div class="col-md-12 modal-title modal-label col-md-12">
                  <div class="col-md-2">
@@ -421,7 +421,12 @@
              </div>
              <div class="modal-body">
 
-               <div class="row">
+               <!--Mensaje servicio agregado-->
+              <div class="col-md-12" ng-show="$root.idUser != null">
+                <p>Has agregado el trabajo correctamente! Puedes visualizarlo en tu <a href="/#/perfil/{{$root.idUser}}">Perfil</a></p>
+              </div>
+
+               <div class="row" ng-show="$root.idUser == null">
                  <div class="col-xs-7 col-sm-8 col-md-6 col-sm-offset-1 col-md-offset-1 ">
                    <h4 style="color: #2f3a4c;"> <b>HAS REGISTRADO TUS DATOS EXITOSAMENTE! </b></h4>
                    <p class="col-md-12">Tus datos registrados:</p>

@@ -101,47 +101,58 @@
               </div>
               <!--Seccion Editar perfil-->
               <div id="settings" class="tab-pane fade">
-                <h3>Editar perfil</h3>
+                <div class="row">
+                  <h3>Editar perfil</h3>
 
-                <div class="col-sm-6 settings-data">
-                  <p>Nombre: </p>
-                  <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.name">
+                  <div class="col-sm-6 settings-data">
+                    <p>Nombre: </p>
+                    <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.name">
 
+                  </div>
+                  <div class="col-sm-6">
+                    <p>Apellido: </p>
+                    <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.surname">
+                  </div>
+
+                  <div class="col-sm-6">
+                    <p>Dirección: </p>
+                    <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.name">
+
+                  </div>
+                  <div class="col-sm-6">
+                    <p>Email: </p>
+                    <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.email">
+                  </div>
+
+                  <div class="col-xs-12 col-sm-6">
+                    <p>Teléfono: </p>
+                    <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.phone">
+
+                  </div>
+                  <div class="col-sm-6">
+                    <p>Cambiar contraseña </p>
+                    <input type="password" ng-disabled="true" class="form-control input-md">
+                  </div>
+
+                  <div class="col-md-6 col-sm-6">
+                    <p>Foto de perfil</p>
+                    <input type="file" ng-disabled="true" id="" class="col-xs-12">
+                  </div>
+
+                  <div class="col-md-12 text-center">
+                    <button ng-disabled="true" class="btn logo-color-bg profile-btn">Guardar cambios</button>
+                  </div>
                 </div>
-                <div class="col-sm-6">
-                  <p>Apellido: </p>
-                  <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.surname">
-                </div>
 
-                <div class="col-sm-6">
-                  <p>Dirección: </p>
-                  <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.name">
-
+                <div class="row">
+                  <div class="col-md-12" >
+                    <h4> Mis servicios:</h4>
+                  <span ng-repeat="aWork in works" class="active-works glyphicon glyphicon-briefcase" ng-bind="aWork.name"> </span>
+                  <p class="text-center">
+                    <a class="btn logo-color-bg  profile-btn" href="/#/registro">Agregar servicio</a>
+                  </p>
+                  </div>
                 </div>
-                <div class="col-sm-6">
-                  <p>Email: </p>
-                  <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.email">
-                </div>
-
-                <div class="col-xs-12 col-sm-6">
-                  <p>Teléfono: </p>
-                  <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.phone">
-
-                </div>
-                <div class="col-sm-6">
-                  <p>Cambiar contraseña </p>
-                  <input type="password" ng-disabled="true" class="form-control input-md">
-                </div>
-
-                <div class="col-md-6 col-sm-6">
-                  <p>Foto de perfil</p>
-                  <input type="file" ng-disabled="true" id="" class="col-xs-12">
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <button ng-disabled="true" class="btn logo-color-bg profile-btn">Guardar cambios</button>
-                </div>
-
               </div>
               <!--Seccion mis de transacciones-->
               <div  id="transaction-history" class="tab-pane fade">

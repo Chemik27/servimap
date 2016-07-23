@@ -83,7 +83,6 @@
   color: gold;
 }
 
-
 .nav-tabs> li{
   cursor:pointer;
 }
@@ -138,3 +137,13 @@
   transition: all 0.5s ease;
 
 }
+
+.active-works{
+  width: 200px;
+  border: 5px solid #E5E5E5;
+  background-color: white;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+

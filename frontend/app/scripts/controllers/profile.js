@@ -8,12 +8,15 @@
  * Controller of the dutymap
  */
 angular.module('dutymap')
-  .controller('ProfileCtrl', ['$scope', '$http', 'ProfileResources','profileSelected',
-          function ($scope, $http, ProfileResources, profileSelected) {
+  .controller('ProfileCtrl', ['$scope', '$http', 'ProfileResources','profileSelected', 'HireResources', 'NotificationService', '$location',
+      function ($scope, $http, ProfileResources, profileSelected, HireResources, NotificationService, $location) {
             $scope.profile = profileSelected;
             $scope.user = profileSelected.user;
             $scope.myTransactions = profileSelected.lastTransactions;
             $scope.myServiceHistory = profileSelected.transactions;
+            $scope.newServices = _.countBy($scope.myServiceHistory, function(serv){
+              return serv.state == 1 ? 'newOne' : 'old'
+            });
             $scope.works = profileSelected.works;
             $scope.mainWork = $scope.works[0];
             $scope.today = new Date();
@@ -23,11 +26,6 @@ angular.module('dutymap')
                 $scope.rating = profileSelected.rating.finalRating;
                 $scope.comments = profileSelected.rating.comments;
             }
-
-
-
-
-
 
             if($scope.rating != undefined){
 
@@ -45,4 +43,30 @@ angular.module('dutymap')
               $scope.emptyStarsRecommendation = _.range(5 - $scope.rating.recommendation);
             }
 
+          $scope.rejectService = function(idTx){
+              HireResources.rejectTransaction(idTx, function(){
+                NotificationService.success('Se ha actualizado correctamente');
+                $location.reload();
+              },function(error){
+                NotificationService.error('Ha ocurrido un error inesperado');
+              })
+          };
+
+          $scope.acceptService = function(idTx){
+            HireResources.acceptTransaction(idTx, function(){
+              NotificationService.success('Se ha actualizado correctamente');
+              $location.reload();
+            },function(error){
+              NotificationService.error('Ha ocurrido un error inesperado');
+            })
+          };
+
+          $scope.finishService = function(idTx){
+            HireResources.finishTransaction(idTx, function(){
+              NotificationService.success('Se ha actualizado correctamente');
+              $location.reload();
+            },function(error){
+              NotificationService.error('Ha ocurrido un error inesperado');
+            })
+          };
     }]);

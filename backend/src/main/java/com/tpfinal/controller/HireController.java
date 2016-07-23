@@ -3,6 +3,7 @@
  */
 package com.tpfinal.controller;
 
+import com.tpfinal.domain.State;
 import com.tpfinal.domain.Transaction;
 import com.tpfinal.dto.TransactionDTO;
 import com.tpfinal.service.TransactionService;
@@ -68,5 +69,24 @@ public class HireController {
 
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/accept")
+    @ResponseStatus(HttpStatus.OK)
+    public void acceptTransaction(@RequestBody Long idTrx){
+        logger.info("Accept transaction: " + idTrx);
+        transactionService.updateTransactionState(idTrx, State.TRX_ACCEPTED);
+    }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/reject")
+    @ResponseStatus(HttpStatus.OK)
+    public void rejectTransaction(@RequestBody Long idTrx){
+        logger.info("Reject transaction: " + idTrx);
+        transactionService.updateTransactionState(idTrx, State.TRX_CANCELED);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/finish")
+    @ResponseStatus(HttpStatus.OK)
+    public void finishTransaction(@RequestBody Long idTrx){
+        logger.info("Reject transaction: " + idTrx);
+        transactionService.updateTransactionState(idTrx, State.TRX_COMPLETED);
+    }
 }

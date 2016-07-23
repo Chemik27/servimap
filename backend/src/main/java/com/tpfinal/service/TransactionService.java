@@ -57,4 +57,10 @@ public class TransactionService {
     public Transaction findByIdTransaccion(Long idTrx) {
         return transactionRepository.findOne(idTrx);
     }
+
+    public void updateTransactionState(Long idTrx, Long state){
+        Transaction transaction = transactionRepository.findOne(idTrx);
+        transaction.setState(state);
+        transactionRepository.save(transaction);
+    }
 }

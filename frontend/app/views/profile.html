@@ -25,7 +25,7 @@
               <li class="active"><a data-toggle="tab" data-target="#profile">Mi perfil</a></li>
               <li ng-show="$root.idUser == user.idUser"><a data-toggle="tab" data-target="#settings">Editar perfil</a></li>
               <li ng-show="$root.idUser == user.idUser"><a data-toggle="tab" data-target="#transaction-history">Mis contrataciones</a></li>
-              <li ng-show="$root.idUser == user.idUser && user.type == 'proveedor'"><a data-toggle="tab" data-target="#service-history">Mis clientes</a></li>
+              <li ng-show="$root.idUser == user.idUser && user.type == 'proveedor'"><a data-toggle="tab" data-target="#service-history">Mis clientes <span class="badge">{{newServices.newOne}}</span></a></li>
           </ul>
 
           <div class="tab-content">
@@ -162,19 +162,20 @@
                   </div>
                   <div class="col-xs-12 col-sm-6 col-sm-6">
                     <h3><i class="fa fa-map-marker fa-1x text-dutymap" aria-hidden="true"></i> {{t.work.address.district.name != undefined ? t.work.address.district.name : 'A domicilio'}}</h3>
+                    <br>
+                    <span ng-show="t.state == 1" class="label label-warning">Solicitud enviada</span>
+                    <span ng-show="t.state == 2" class="label label-success">Servicio aceptado</span>
+                    <span ng-show="t.state == 3" class="label label-danger">Servicio rechazado</span>
+                    <span ng-show="t.state == 5" class="label label-primary">Calificado</span>
                   </div>
                 </div>
 
                 <div class="col-xs-12  col-md-3 text-center">
                   <!--<p>Valoración : </p>-->
                   <!--<p>Costo : ${{aWork.price}}</p>-->
-                  <span ng-show="t.state == 1" class="text-info state-message glyphicon glyphicon-send">Solicitud enviada</span>
-                  <span ng-show="t.state == 2" class="text-success state-message glyphicon glyphicon-ok" >Solicitud Aceptada</span>
-                  <span ng-show="t.state == 3" class="text-danger state-message glyphicon glyphicon-remove">Solicitud rechazada</span>
-                  <span ng-show="t.state == 5" class="text-success state-message glyphicon glyphicon-ok" >Calificado</span>
                   <a ng-show="today >= t.agreedDate && t.state == 4 " ng-href="/#/calificar/{{t.idTransaction}}" class="btn qualify profile">Calificar</a>
                   <a ng-show="t.state != 3 " class="btn btn-agreement profile " data-toggle="modal" data-target="#dataProvider{{$index}}" >Ver acuerdo</a>
-                  <a class="btn  profile logo-color-bg" ng-href="/#/perfil/{{t.work.user.idUser}}" ng-click="saveIdProvider(t.toUser)">Ver perfil</a>
+                  <a class="btn  profile logo-color-bg" ng-href="/#/perfil/{{t.work.user.idUser}}">Ver perfil</a>
                 </div>
                 <div class="col-xs-12">
                 <hr/>
@@ -219,24 +220,28 @@
 
                     <div class="col-xs-12 col-sm-8  col-md-7">
                       <div class="col-xs-12 col-sm-6">
-                        <h3>{{history.fromUser.fullName}}</h3>
+                        <a style="text-decoration:none;" ng-href="/#/perfil/{{history.fromUser.idUser}}"><h3>{{history.fromUser.fullName}}</h3></a>
                         <!--<p>{{history.fromUser.name}} </p>-->
                       </div>
                       <div class="col-xs-12 col-sm-6">
                         <h3><i class="fa fa-map-marker fa-1x text-dutymap" aria-hidden="true"></i> {{history.fromUser.idAddress.district.name != undefined ? history.fromUser.idAddress.district.name : 'A domicilio'}}</h3>
+                        <br>
+                        <span ng-show="history.state == 1" class="label label-warning">Solicitud enviada</span>
+                        <span ng-show="history.state == 2" class="label label-success">Servicio aceptado</span>
+                        <span ng-show="history.state == 3" class="label label-danger">Servicio rechazado</span>
+                        <span ng-show="history.state == 5" class="label label-primary">Calificado</span>
+                        <span ng-show="history.state == 4 || history.state == 5" class="label label-primary">Servicio finalizado</span>
                       </div>
                     </div>
 
                       <div class="col-xs-12 col-md-3 text-center">
                         <!--<p>Valoración : </p>-->
                         <!--<p>Costo : ${{aWork.price}}</p>-->
-                        <span ng-show="history.state == 1" class="text-info state-message glyphicon glyphicon-send">Solicitud enviada</span>
-                        <span ng-show="history.state == 2" class="text-success state-message glyphicon glyphicon-ok" >Solicitud Aceptada</span>
-                        <span ng-show="history.state == 3" class="text-danger state-message glyphicon glyphicon-remove">Solicitud rechazada</span>
-                        <span ng-show="history.state == 5" class="text-success state-message glyphicon glyphicon-ok" >Calificado</span>
-                        <a ng-show="today >= history.agreedDate && history.state == 4 " ng-href="/#/calificar/{{t.idTransaction}}" class="btn qualify profile">Calificar</a>
+                        <a ng-show="today >= history.agreedDate && history.state == 4 " ng-href="/#/calificar/{{history.idTransaction}}" class="btn qualify profile">Calificar</a>
                         <a ng-show="history.state != 3 " class="btn btn-agreement profile " data-toggle="modal" data-target="#dataUser{{$index}}" >Ver acuerdo</a>
-                        <a class="btn  profile logo-color-bg" ng-href="/#/perfil/{{history.fromUser.idUser}}" ng-click="saveIdProvider(history.toUser)">Ver perfil</a>
+                        <button ng-show="history.state == 1 " class="btn btn-success profile" ng-click="acceptService(history.idTransaction)">Aceptar</button>
+                        <button ng-show="history.state == 1 " class="btn btn-danger profile" ng-click="rejectService(history.idTransaction)">Rechazar</button>
+                        <button ng-show="history.state == 2 " class="btn btn-primary profile" ng-click="finishService(history.idTransaction)">Finalizar</button>
                       </div>
                       <div class="col-sm-12">
                         <hr/>

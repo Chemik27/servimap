@@ -5,6 +5,7 @@ import com.tpfinal.domain.Rating;
 import com.tpfinal.domain.User;
 import com.tpfinal.domain.Work;
 import com.tpfinal.dto.UserDTO;
+import com.tpfinal.exception.BadRequestException;
 import com.tpfinal.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -40,6 +41,11 @@ public class UserService {
     }
 
     public User createUser(UserDTO userDTO, MultipartFile file){
+
+        User existUser = userRepository.findByEmail(userDTO.getEmail());
+        if(existUser != null)
+            throw new BadRequestException("Usuario existente");
+
         User user = createUserFromDTO(userDTO);
         try {
             user.setPhoto(file.getBytes());

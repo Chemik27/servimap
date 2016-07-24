@@ -53,13 +53,11 @@ angular.module('dutymap')
               $scope.createWork = true;
               $scope.confirmation=false;
             }else{
-              //NotificationService.success('Se ha registrado correctamente. Inicie sesión.');
-              //$location.url('/register')
               $scope.confirmation=true;
-
             }
           }).error(function(error) {
-              NotificationService.error(error);
+              console.log(error);
+              NotificationService.error(error.message);
           });
 
         };
@@ -129,9 +127,10 @@ angular.module('dutymap')
             WorkResources.save(newWork, function(){
               //NotificationService.success('Ha creado un servicio correctamente.');
               //$location.url('/register')
-             
+
               $scope.confirmation=true;
             }, function(error){
+              console.log()
               NotificationService.error(error);
             });
         };

@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/login")
 public class LoginController {
 
-    //Busqueda por ciudades
-    @RequestMapping(value = {"/recoverPassword/{email}"})
+    @RequestMapping(method = RequestMethod.POST, value = "/recoverPassword")
     @ResponseStatus(HttpStatus.OK)
-    public String recoverPassword(@PathVariable String email){
+    public String recoverPassword(@RequestBody String email){
         System.out.println("Controller login" + email);
         return "El email es";
     }

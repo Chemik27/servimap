@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic()
+        http.httpBasic().and().logout().logoutSuccessUrl("/login?logout")
                 .and()
                     .authorizeRequests()
                     .antMatchers("/").permitAll()
@@ -52,6 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/user/**").permitAll()
                     .antMatchers("/profile/*").permitAll()
                     .antMatchers("/login*").permitAll()
+                    .antMatchers("/login/recoverPassword").permitAll()
                     .antMatchers("/work/*").permitAll()
                     .antMatchers("/work/named/*").permitAll()
                     .antMatchers("/work/district/*").permitAll()

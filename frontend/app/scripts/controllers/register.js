@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('dutymap')
-    .controller('RegisterCtrl', ['$scope', '$http', 'UserResources', 'NotificationService', '$location', 'WorkResources',
-    function ($scope, $http, UserResources, NotificationService, $location, WorkResources) {
+    .controller('RegisterCtrl', ['$scope', '$http', 'UserResources', 'NotificationService', '$location', 'WorkResources','$rootScope',
+    function ($scope, $http, UserResources, NotificationService, $location, WorkResources,$rootScope) {
 
         $scope.onlyNumbers= /^\d+$/;
         $scope.document=/^(\d{8})$/;
@@ -117,7 +117,7 @@ angular.module('dutymap')
         $scope.saveWork = function(){
             var newWork = {
               'name':$scope.work.name,
-              'idUser': $scope.work.idUser,
+              'idUser': $scope.work.idUser == null ? $rootScope.idUser: $scope.work.idUser,
               'description': $scope.work.description,
               'idCategory': $scope.work.category != '' && $scope.work.category != undefined ? $scope.work.category.id : null,
               'price': $scope.work.price,
@@ -129,6 +129,7 @@ angular.module('dutymap')
             WorkResources.save(newWork, function(){
               //NotificationService.success('Ha creado un servicio correctamente.');
               //$location.url('/register')
+             
               $scope.confirmation=true;
             }, function(error){
               NotificationService.error(error);

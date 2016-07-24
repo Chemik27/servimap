@@ -23,6 +23,7 @@ angular.module('dutymap')
       $scope.today=new Date();
       $scope.time = $scope.transactions.agreedDate;
       $scope.confirm=false;
+      $scope.domicilio = profileSelected.transaction[0].fromUser.idAddress.street +' '+ profileSelected.transaction[0].fromUser.idAddress.number;
 
 
       $scope.confirmTransaction = function(){
@@ -46,7 +47,10 @@ angular.module('dutymap')
             'fromUser': $rootScope.idUser,
             'agreedDate': new Date(time),
             'done':false,
-            'idWork': $scope.mainWork.idWork
+            'idWork': $scope.mainWork.idWork,
+            'textProblem':$scope.textProblem,
+            'address': $scope.domicilio
+
           }, function(response){
             $scope.confirm=true;
           },function(error){

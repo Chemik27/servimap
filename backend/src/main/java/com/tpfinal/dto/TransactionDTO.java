@@ -16,6 +16,8 @@ public class TransactionDTO {
     private Long fromUser;
     private Date agreedDate;
     private Long idWork;
+    private String address;
+    private String textProblem;
 
     public Long getIdWork() { return idWork; }
 
@@ -63,4 +65,19 @@ public class TransactionDTO {
         this.agreedDate = agreedDate;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTextProblem() {
+        return textProblem;
+    }
+
+    public void setTextProblem(String textProblem) {
+        this.textProblem = textProblem;
+    }
 }

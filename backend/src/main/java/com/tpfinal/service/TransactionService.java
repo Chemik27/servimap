@@ -40,6 +40,8 @@ public class TransactionService {
         transaction.setFromUser(fromUser);
         transaction.setAgreedDate(transactionDTO.getAgreedDate());
         transaction.setState(State.TRX_CREATED);
+        transaction.setAddress(transactionDTO.getAddress());
+        transaction.setTextProblem(transactionDTO.getTextProblem());
 
         transaction.setWork(work);
         return transaction;

@@ -14,8 +14,10 @@ public class Transaction {
     private Date agreedDate;
     private Long state;
     private Work work;
+    private String textProblem;
+    private String address;
 
-    public Transaction(Date creationDate, Long toUser, User fromUser,Date agreedDate,Long state, Work work) {
+    public Transaction(Date creationDate, Long toUser, User fromUser,Date agreedDate,Long state, Work work,String address) {
 
         this.creationDate = creationDate;
         this.toUser = toUser;
@@ -23,6 +25,8 @@ public class Transaction {
         this.agreedDate= agreedDate;
         this.state = state;
         this.work = work;
+        this.textProblem = textProblem;
+        this.address = address;
     }
 
     public Transaction() {
@@ -93,5 +97,23 @@ public class Transaction {
 
     public void setWork(Work work) {
         this.work = work;
+    }
+
+    @Column(name="address")
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Column(name="text_problem")
+    public String getTextProblem() {
+        return textProblem;
+    }
+
+    public void setTextProblem(String textProblem) {
+        this.textProblem = textProblem;
     }
 }

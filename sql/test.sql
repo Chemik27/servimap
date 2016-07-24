@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 21-07-2016 a las 04:24:20
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 7.0.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 25-07-2016 a las 01:04:41
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `dutymap`
 --
-CREATE DATABASE IF NOT EXISTS `dutymap` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `dutymap`;
 
 -- --------------------------------------------------------
 
@@ -156,20 +154,22 @@ CREATE TABLE `transaction` (
   `from_user` bigint(20) NOT NULL,
   `agreed_date` datetime NOT NULL,
   `state` int(1) NOT NULL DEFAULT '1',
-  `work` bigint(20) DEFAULT NULL
+  `work` bigint(20) DEFAULT NULL,
+  `text_problem` varchar(500) NOT NULL,
+  `address` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `transaction`
 --
 
-INSERT INTO `transaction` (`id_transaction`, `creation_date`, `to_user`, `from_user`, `agreed_date`, `state`, `work`) VALUES
-(1, '2016-07-16 13:48:43', 39, 42, '2016-07-17 00:00:00', 5, 27),
-(2, '2016-07-16 14:07:15', 39, 43, '2016-07-21 00:00:00', 0, 27),
-(3, '2016-07-16 14:18:30', 39, 42, '2016-07-27 00:00:00', 0, 27),
-(4, '2016-07-16 15:21:04', 45, 44, '2016-07-23 00:00:00', 0, 30),
-(5, '2016-07-20 21:46:23', 39, 45, '2016-07-28 06:54:00', 0, 27),
-(6, '2016-07-20 23:14:20', 37, 45, '2016-07-20 00:00:00', 5, 25);
+INSERT INTO `transaction` (`id_transaction`, `creation_date`, `to_user`, `from_user`, `agreed_date`, `state`, `work`, `text_problem`, `address`) VALUES
+(1, '2016-07-16 13:48:43', 39, 42, '2016-07-17 00:00:00', 5, 27, '', ''),
+(2, '2016-07-16 14:07:15', 39, 43, '2016-07-21 00:00:00', 0, 27, '', ''),
+(3, '2016-07-16 14:18:30', 39, 42, '2016-07-27 00:00:00', 0, 27, '', ''),
+(4, '2016-07-16 15:21:04', 45, 44, '2016-07-23 00:00:00', 0, 30, '', ''),
+(5, '2016-07-20 21:46:23', 39, 45, '2016-07-28 06:54:00', 0, 27, '', ''),
+(6, '2016-07-20 23:14:20', 37, 45, '2016-07-20 00:00:00', 5, 25, '', '');
 
 -- --------------------------------------------------------
 

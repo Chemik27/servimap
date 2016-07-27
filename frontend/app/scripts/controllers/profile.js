@@ -8,8 +8,8 @@
  * Controller of the dutymap
  */
 angular.module('dutymap')
-  .controller('ProfileCtrl', ['$scope', '$http', 'ProfileResources','profileSelected', 'HireResources', 'NotificationService', '$location',
-      function ($scope, $http, ProfileResources, profileSelected, HireResources, NotificationService, $location) {
+  .controller('ProfileCtrl', ['$scope', '$http', 'ProfileResources','profileSelected', 'HireResources', 'NotificationService', '$route',
+      function ($scope, $http, ProfileResources, profileSelected, HireResources, NotificationService, $route) {
             $scope.profile = profileSelected;
             $scope.user = profileSelected.user;
             $scope.myTransactions = profileSelected.lastTransactions;
@@ -46,7 +46,7 @@ angular.module('dutymap')
           $scope.rejectService = function(idTx){
               HireResources.rejectTransaction(idTx, function(){
                 NotificationService.success('Se ha actualizado correctamente');
-                $location.reload();
+                $route.reload();
               },function(error){
                 NotificationService.error('Ha ocurrido un error inesperado');
               })
@@ -55,7 +55,7 @@ angular.module('dutymap')
           $scope.acceptService = function(idTx){
             HireResources.acceptTransaction(idTx, function(){
               NotificationService.success('Se ha actualizado correctamente');
-              $location.reload();
+              $route.reload();
             },function(error){
               NotificationService.error('Ha ocurrido un error inesperado');
             })
@@ -64,7 +64,7 @@ angular.module('dutymap')
           $scope.finishService = function(idTx){
             HireResources.finishTransaction(idTx, function(){
               NotificationService.success('Se ha actualizado correctamente');
-              $location.reload();
+              $route.reload();
             },function(error){
               NotificationService.error('Ha ocurrido un error inesperado');
             })

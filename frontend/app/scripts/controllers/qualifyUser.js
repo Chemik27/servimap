@@ -5,8 +5,8 @@
 
 
 angular.module('dutymap')
-  .controller('QualifyCtrl', ['$scope','QualifyResources','NotificationService','$location','profileSelected','$rootScope', '$routeParams',
-    function ($scope , QualifyResources,NotificationService,$location,profileSelected,$rootScope, $routeParams) {
+  .controller('QualifyUserCtrl', ['$scope','QualifyUserResources','NotificationService','$location','profileSelected','$rootScope', '$routeParams',
+    function ($scope , QualifyUserResources,NotificationService,$location,profileSelected,$rootScope, $routeParams) {
 
 
 
@@ -43,7 +43,7 @@ angular.module('dutymap')
           'idTransaction': $routeParams.idTrx
         };
 
-        QualifyResources.save(calificar, function(){
+        QualifyUserResources.save(calificar, function(){
           NotificationService.success('Se ha calificado correctamente al cliente.');
           $location.url('/perfil/'+ $rootScope.idUser)
         }, function(error){

@@ -21,32 +21,20 @@
     </div>
   </div>
 
-  <div ng-show="tx.fromUser != $root.idUser" class="text-center">
-    <div class="col-sm-6 col-sm-push-3 text-center not-found">
-      <div>
-        <i class="fa fa-bullhorn fa-5x text-dutymap" aria-hidden="true"></i>
-      </div>
-      <div>
-        <h4 class="text-dutymap"><b>Psss! No puedes calificar a este proveedor.<br><br>
-        </b></h4>
-        <a href="/#/perfil/{{$root.idUser}}" class="btn logo-color-bg ">Volver a Mi Perfil</a>
-      </div>
-    </div>
-  </div>
 </div>
 
-<div class="resume container-fluid" ng-show="tx.fromUser == $root.idUser && tx.state == 4 ">
+<div class="resume container-fluid" ng-show="tx.toUser == $root.idUser && tx.state == 4 ">
   <profile-dutymap></profile-dutymap>
 
   <div class="container-fluid col-md-9 col-xs-12">
     <div class="col-md-12 col-xs-12 text-center">
       <p>{{works.idWork}}</p>
       <h1>Califica el servicio!</h1>
-      <small>¿Que te parecio el Servicio del proveedor? </small></br>
+      <small>¿Que te parecio tu cliente? </small></br>
     </div>
     <div class="col-md-6 col-xs-12 col-md-offset-5">
       <div><span class="" star-rating rating-value="1" data-max="1"></span> duty : Malo</div>
-      <div><span class="" star-rating rating-value="2" data-max="2"></span> duty : Discoforme</div>
+      <div><span class="" star-rating rating-value="2" data-max="2"></span> duty : Disconforme</div>
       <div><span class="" star-rating rating-value="3" data-max="3"></span> duty : Regular</div>
       <div><span class="" star-rating rating-value="4" data-max="4"></span> duty : Bueno</div>
       <div><span class="" star-rating rating-value="5" data-max="5"></span> duty : Excelente</div>

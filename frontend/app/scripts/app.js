@@ -62,7 +62,7 @@ angular
       })
       .when('/calificar/:idTrx', {
         templateUrl: 'views/qualify.html',
-        controller: 'QualifyUserCtrl',
+        controller: 'QualifyCtrl',
         resolve: {profileSelected: ['$route','HireResources', function($route, HireResources) {
           return HireResources.getTransaction($route.current.pathParams).$promise;}]}
       })
@@ -72,7 +72,12 @@ angular
         resolve: {profileSelected: ['$route','ProfileResources', function($route, ProfileResources) {
           return ProfileResources.get($route.current.pathParams).$promise;}]}
       })
-
+      .when('/calificar/usuario/:idTrx', {
+        templateUrl: 'views/qualifyUser.html',
+        controller: 'QualifyUserCtrl',
+        resolve: {profileSelected: ['$route','HireResources', function($route, HireResources) {
+          return HireResources.getTransaction($route.current.pathParams).$promise;}]}
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -25,6 +25,8 @@ angular.module('dutymap')
       $scope.confirm=false;
       if(profileSelected.transaction > 0) {
         $scope.domicilio = profileSelected.transaction[0].fromUser.idAddress.street + ' ' + profileSelected.transaction[0].fromUser.idAddress.number;
+      }else{
+        $scope.domicilio="";
       }
 
       $scope.confirmTransaction = function(){

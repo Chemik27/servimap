@@ -3,7 +3,7 @@
  */
 angular.module('dutymap')
   .controller('HireCtrl', ['$scope', '$http' ,'$resource','profileSelected','$rootScope','NotificationService','HireResources', 'NgMap','$location',
-    function ($scope, $http, $resource, profileSelected,$rootScope,NotificationService,HireResources, NgMap, $location) {
+    function ($scope, $http, $resource, profileSelected,$rootScope,NotificationService,HireResources, NgMap) {
 
       //Elimino estilos de modal manualmente cuando redirijo
       $scope.removeModal= function(){
@@ -20,16 +20,32 @@ angular.module('dutymap')
        $scope.mainWork = $scope.works[0];
 
 
+<<<<<<< Updated upstream
       $scope.today=new Date();
       $scope.time = $scope.transactions.agreedDate;
       $scope.confirm=false;
       $scope.domicilio = profileSelected.transaction[0].fromUser.idAddress.street +' '+ profileSelected.transaction[0].fromUser.idAddress.number;
+=======
+       $scope.today=new Date();
+       $scope.unixDate = new Date().getTime();
+       $scope.time = $scope.transactions.agreedDate;
+       $scope.confirm=false;
+>>>>>>> Stashed changes
 
 
       $scope.confirmTransaction = function(){
+        $scope.dateConfirmation = new Date($scope.date).getTime();
+
         if($scope.date == undefined)
         {
           NotificationService.error("Debe seleccionar la fecha en la que se concrete el servicio");
+          return false;
+        }
+
+        if($scope.dateConfirmation  < Date.now()){
+
+          $scope.dateConfirmation = Date.now();
+          NotificationService.error("No puede ingresar una fecha pasada");
           return false;
         }
 

@@ -57,7 +57,7 @@
         </div>
         <div class="col-md-12 col-xs-12 padding-tam5">
           <p class="hire-description">Elige que día y horario que quieres concretar el servicio</p>
-          <adm-dtp ng-model='date' full-data='date_details' options='{calType: "gregorian", format: "YYYY/MM/DD hh:mm", default: "today"}'  mindate="todaysDate" >
+          <adm-dtp ng-model='date' full-data='date_details' options='{calType: "gregorian", format: "YYYY/MM/DD hh:mm", default: "today"}'  mindate="{{unixDate}}" >
             <input type='text' ng-model='date' dtp-input />
             <button dtp-open class="btn logo-color-bg ng-binding ng-scope">Calendario</button>
           </adm-dtp>

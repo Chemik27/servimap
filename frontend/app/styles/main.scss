@@ -72,7 +72,7 @@ html, body {
 
 .logo-color-bg{
   background-color: $background-blue;
-  color: white;
+  color: white !important;
   transition: all 0.5s ease;
 }
 

@@ -44,17 +44,7 @@
                     </div>
                   </div>
 
-                  <div ng-class="{'module-info col-md-5 col-sm-6': works.length > 1, 'module-size': works.length == 1}">
-                    <div>
-                      <p>&nbsp;</p>
-                    </div>
-                  </div>
 
-                  <div ng-class="{'module-info col-md-5 col-sm-6': works.length > 1, 'module-size': works.length == 1}">
-                    <div>
-                      <p>&nbsp;</p>
-                    </div>
-                  </div>
                 </div>
 
                 <div id="module-feedback" class="col-md-12">
@@ -201,12 +191,14 @@
                         <h4 class="modal-title">Datos de la contratación</h4>
                       </div>
                       <div class="modal-body">
+                        <h4>
                         <p><span class="iconcolor glyphicon glyphicon-user" aria-hidden="true"></span> Proveedor: <span ng-bind="t.work.user.fullName"></span></p>
                         <p><span class="iconcolor glyphicon glyphicon glyphicon-briefcase" aria-hidden="true"></span> Servicio: <span ng-bind="t.work.name"></span></p>
                         <p><span class="iconcolor glyphicon glyphicon-envelope"></span> Email: <span ng-bind="t.work.user.email"></span></p>
                         <p><span class="iconcolor glyphicon glyphicon-calendar"></span> Fecha acordada: <time>{{ t.agreedDate | date : "dd/MM/y"}}</time><p>
                         <p><span class="iconcolor glyphicon glyphicon-time"></span> Hora acordada: <time>{{ t.agreedDate | date : "h:mma"}}</time><p>
                         <p><span class="iconcolor glyphicon glyphicon-earphone"></span> Teléfono: <span ng-bind="t.work.user.phone"> </span></p>
+                        </h4>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -267,11 +259,13 @@
                               <h4 class="modal-title">Datos de la contratación</h4>
                             </div>
                             <div class="modal-body">
+                              <h4>
                               <p><span class="iconcolor glyphicon glyphicon-user" aria-hidden="true"></span> Cliente: <span ng-bind="history.fromUser.fullName"></span></p>
                               <p><span class="iconcolor glyphicon glyphicon-envelope"></span> Email: <span ng-bind="history.fromUser.email"></span></p>
                               <p><span class="iconcolor glyphicon glyphicon-calendar"></span> Fecha acordada: <time>{{ history.agreedDate | date : "dd/MM/y"}}</time><p>
                               <p><span class="iconcolor glyphicon glyphicon-time"></span> Hora acordada: <time>{{ history.agreedDate | date : "h:mma"}}</time><p>
                               <p><span class="iconcolor glyphicon glyphicon-earphone"></span> Teléfono: <span ng-bind="history.fromUser.phone"> </span></p>
+                              </h4>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

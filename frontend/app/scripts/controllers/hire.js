@@ -35,6 +35,12 @@ angular.module('dutymap')
           NotificationService.error("Debe seleccionar la fecha en la que se concrete el servicio");
           return false;
         }
+        if($scope.textProblem == undefined){
+          NotificationService.error("Debe escribir el problema para ayudar al proveedor a decidir si está apto para realizar el trabajo.");
+          return false;
+        }
+
+
 
         if($scope.dateConfirmation  < Date.now()){
 

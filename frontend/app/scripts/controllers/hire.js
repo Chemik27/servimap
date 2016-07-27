@@ -20,17 +20,11 @@ angular.module('dutymap')
        $scope.mainWork = $scope.works[0];
 
 
-<<<<<<< Updated upstream
-      $scope.today=new Date();
-      $scope.time = $scope.transactions.agreedDate;
-      $scope.confirm=false;
-      $scope.domicilio = profileSelected.transaction[0].fromUser.idAddress.street +' '+ profileSelected.transaction[0].fromUser.idAddress.number;
-=======
        $scope.today=new Date();
-       $scope.unixDate = new Date().getTime();
        $scope.time = $scope.transactions.agreedDate;
        $scope.confirm=false;
->>>>>>> Stashed changes
+       $scope.domicilio = profileSelected.transaction[0].fromUser.idAddress.street +' '+ profileSelected.transaction[0].fromUser.idAddress.number;
+       $scope.unixDate = new Date().getTime();
 
 
       $scope.confirmTransaction = function(){

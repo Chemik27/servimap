@@ -19,7 +19,8 @@ angular
     'ngMessages',
     'ngMaterial',
     'ngMap',
-    'ADM-dateTimePicker'
+    'ADM-dateTimePicker',
+    'noCAPTCHA'
   ])
   .config(function ($routeProvider) {
     $routeProvider

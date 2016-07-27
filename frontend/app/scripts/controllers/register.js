@@ -18,6 +18,7 @@ angular.module('dutymap')
         $scope.userRegister=false;
         $scope.userProveedor=false;
         $scope.createWork = false;
+        $scope.validUser = "";
 
         $scope.saveUser = function(){
 

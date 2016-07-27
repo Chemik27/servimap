@@ -43,6 +43,7 @@ module.exports = function(config) {
       'bower_components/pnotify/dist/pnotify.nonblock.js',
       'bower_components/ngmap/build/scripts/ng-map.js',
       'bower_components/adm-dtp/dist/ADM-dateTimePicker.min.js',
+      'bower_components/angular-no-captcha/src/angular-no-captcha.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

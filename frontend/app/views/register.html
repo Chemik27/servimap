@@ -200,17 +200,28 @@
                                     </div>
 
                                     <div class="row">
-                                          <!-- Checkbox terminos y condiciones <-->
-                                          <div class="col-xs-12 col-sm-8 col-md-12">
-                                              <span class="button-checkbox">
-                                                  <input type="checkbox" ng-model-options="{ updateOn: 'click' }" ng-model="provider.accept" value="Acepto">Acepto <a href="#/terminos" target="_blank"> Términos y condiciones</a>
-                                              </span>
-                                          </div>
+                                        <!-- Checkbox terminos y condiciones <-->
+
+                                        <div class="col-xs-12 col-sm-6 col-md-6">
+                                            <no-captcha
+                                                g-recaptcha-response="validUser"
+                                                theme='light'
+                                                control="noCaptchaControl"
+                                                site-key="6LeSDiYTAAAAABQruX0OSfDkNFLVOsRzuF3s3QKU">
+                                            </no-captcha>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-6 col-md-6">
+                                            <span class="button-checkbox">
+                                                <input type="checkbox" ng-model-options="{ updateOn: 'click' }" ng-model="provider.accept" value="Acepto">Acepto <a href="#/terminos" target="_blank"> Términos y condiciones</a>
+                                            </span>
+                                        </div>
+
                                     </div>
 
                                     <div class="row">
                                         <br>
-                                        <div class="col-xs-12"><button type="submit" ng-disabled="userForm.$invalid || !provider.accept" class="btn button-1 logo-color-bg btn-block btn-lg center">Registrarse</button></div>
+                                        <div class="col-xs-12"><button type="submit" ng-disabled="userForm.$invalid || !provider.accept || validUser == ''" class="btn button-1 logo-color-bg btn-block btn-lg center">Registrarse</button></div>
                                     </div>
                                       <!--<div class="col-md-12">-->
                                         <!--<h3 class="text-center ">O registrate con <a class="btn btn-fb" href="">Facebook</a></h3>-->

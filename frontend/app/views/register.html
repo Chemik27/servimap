@@ -315,7 +315,7 @@
                                     <div class="row">
                                         <!-- Campo precio <-->
                                         <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': workForm.price.$touched && workForm.price.$invalid, 'has-success' : workForm.price.$valid}"  >
-                                            <span>Precio {{replicate}}</span>
+                                            <span>Precio desde</span>
                                             <input type="text" name="price"  class="form-control input-lg" ng-model="work.price"  ng-pattern="onlyNumbers" ng-required="true" >
                                             <div class="help-block" ng-messages="workForm.price.$error" ng-if="workForm.price.$touched">
                                                 <p ng-message="required">Ingrese un precio</p>
@@ -443,17 +443,19 @@
 
                <div class="row" ng-show="$root.idUser == null">
                  <div class="col-xs-7 col-sm-8 col-md-6 col-sm-offset-1 col-md-offset-1 ">
-                   <h4 style="color: #2f3a4c;"> <b>HAS REGISTRADO TUS DATOS EXITOSAMENTE! </b></h4>
+                   <h3 style="color: #2f3a4c;"> <b>HAS REGISTRADO TUS DATOS EXITOSAMENTE! </b></h3>
+                   <h4 ng-show="userProveedor" class="text-success">Feliciationes! Te has convertido en usuario PREMIUM por un mes!</h4>
                    <p class="col-md-12">Tus datos registrados:</p>
                    <div class="col-xs-12 col-sm-8 col-md-12 margin-md-1">
-                    <div>Nombre y Apellido : {{provider.name}} {{provider.username}}</div>
-                    <div>Email : {{provider.email}} </div>
-                    <div ng-show="userProveedor">Servicio : {{work.description}} </div>
+                    <div><b>Nombre y Apellido :</b> {{provider.name}} {{provider.surname}}</div>
+                    <div><b>Email :</b> {{provider.email}} </div>
+                    <div ng-show="userProveedor"><b>Servicio :</b> {{work.description}} </div>
                    </div>
                    <div>
-                     <div class="col-md-12">Ahora podes ingresar al sitio con tu email y password.</div>
+                     <div class="col-md-12">Ahora puedes ingresar al sitio con tu email y contraseña.</div>
+                     <br>
                      <div class="col-md-4">
-                       <a type="button" class="btn button-1 logo-color-bg col-md-2 " ng-href="/#/login">Inicia sesion</a>
+                       <a type="button" class="btn button-1 logo-color-bg col-md-2 " ng-href="/#/login">Inicia sesión</a>
                      </div>
                    </div>
 

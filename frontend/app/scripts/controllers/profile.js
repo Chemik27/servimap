@@ -8,8 +8,8 @@
  * Controller of the dutymap
  */
 angular.module('dutymap')
-  .controller('ProfileCtrl', ['$scope', '$http', 'ProfileResources','profileSelected', 'HireResources', 'NotificationService', '$route',
-      function ($scope, $http, ProfileResources, profileSelected, HireResources, NotificationService, $route) {
+  .controller('ProfileCtrl', ['$scope', '$http', 'ProfileResources','profileSelected', 'HireResources', 'NotificationService', '$route','$location','QualifyResources',
+      function ($scope, $http, ProfileResources, profileSelected, HireResources, NotificationService, $route,$location,QualifyResources) {
             $scope.profile = profileSelected;
             $scope.user = profileSelected.user;
             $scope.myTransactions = profileSelected.lastTransactions;
@@ -69,4 +69,15 @@ angular.module('dutymap')
               NotificationService.error('Ha ocurrido un error inesperado');
             })
           };
+
+         $scope.qualifyService = function(idTx){
+
+            $location.path('/calificar/'+idTx)
+
+        };
+        $scope.qualifyUserService = function(idTx){
+
+            $location.path('/calificar/usuario/'+idTx)
+
+        };
     }]);

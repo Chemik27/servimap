@@ -1,11 +1,11 @@
 /**
- * Created by redbee on 01/07/16.
+ * Created by Chemik on 28/07/2016.
  */
 'use strict';
 
 
 angular.module('dutymap')
-  .controller('QualifyCtrl', ['$scope','QualifyResources','NotificationService','$location','profileSelected','$rootScope', '$routeParams',
+  .controller('QualifyUserCtrl', ['$scope','QualifyResources','NotificationService','$location','profileSelected','$rootScope', '$routeParams',
     function ($scope , QualifyResources,NotificationService,$location,profileSelected,$rootScope, $routeParams) {
 
       //tomo los datos
@@ -35,12 +35,6 @@ angular.module('dutymap')
 
 
       $scope.addQualify = function(){
-
-         QualifyResources.qualifyTransaction($scope.tx.idTransaction, function(){
-           NotificationService.success('Se ha calificado correctamente');
-          },function(error){
-            NotificationService.error('Ha ocurrido un error inesperado');
-          });
 
         var calificar = {'reliability': $scope.rating1,
           'performance': $scope.rating2,

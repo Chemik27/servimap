@@ -89,4 +89,5 @@ public class HireController {
         logger.info("Reject transaction: " + idTrx);
         transactionService.updateTransactionState(idTrx, State.TRX_COMPLETED);
     }
+
 }

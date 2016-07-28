@@ -12,12 +12,10 @@ angular.module('dutymap')
       $scope.tran = profileSelected.transaction;
 
       $scope.profile = profileSelected;
-      $scope.user = profileSelected.toUser;
-      $scope.mainWork = profileSelected.works[0];
-      $scope.fullname= profileSelected.toUser.fullName;
+      $scope.user = profileSelected.tx.fromUser;
+      $scope.toUser = profileSelected.toUser;
+      $scope.fullname= profileSelected.tx.fromUser.fullName;
       $scope.transactions = profileSelected.lastTransactions;
-      $scope.works = profileSelected.works;
-      $scope.jobname = profileSelected.works.description;
       $scope.rating = profileSelected.rating;
       $scope.tx = profileSelected.tx;
       //Calificaciones 4
@@ -40,7 +38,7 @@ angular.module('dutymap')
           'performance': $scope.rating2,
           'consideration': $scope.rating3,
           'recommendation': $scope.rating4,
-          'idProvider':  $scope.user.idUser ,
+          'idProvider':  $scope.toUser.idUser,
           'reviewText': $scope.review_text,
           'generalAverage':  $scope.resultRating,
           'idUser': $rootScope.idUser,

@@ -25,8 +25,8 @@
       Servicio / Hora <br> desde <b>${{mainWork.price}}</b>
     </div>
   </div>
-
+<div ng-show="user.type == 'proveedor'">
   <a class="btn profile-btn logo-color-bg center" ng-if="$root.idUser != user.idUser" ng-href="/#/contratar/{{mainWork.user.idUser}}">Contratar</a>
-
+</div>
 </div >
 

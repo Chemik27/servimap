@@ -5,7 +5,9 @@ import com.tpfinal.domain.Rating;
 import com.tpfinal.domain.User;
 import com.tpfinal.domain.Work;
 import com.tpfinal.dto.UserDTO;
+import com.tpfinal.repository.IUser2Repository;
 import com.tpfinal.repository.IUserRepository;
+import com.tpfinal.util.UtilDutymap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,7 +32,6 @@ public class UserService {
 
     @Autowired
     WorkService workService;
-
 
     @Autowired
     RatingService ratingService;
@@ -65,6 +66,16 @@ public class UserService {
         user.setIdAddress(address.getIdAddress());
         return user;
     }
+
+    public void changePassword(User user){
+
+        try {
+            userRepository.updatePassword(user.getPassword(), UtilDutymap.desencriptar(user.getEmail()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public String codePassword(String password){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(password);

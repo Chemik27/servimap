@@ -77,9 +77,19 @@ angular
       .when('/password/:email', {
         templateUrl: '/',
         controller: 'HelperCtrl',
-        resolve: {responsePassword: ['$route','LoginResources', function($route, LoginResources) {
-          return LoginResources.get($route.current.pathParams).$promise;}]}
+        resolve: {responsePassword: ['$route', '$resource', 'LoginResources', function($route, $resource, LoginResources) {
+            return LoginResources.sendEmail($route, $resource)
+            }]
+        }
       })
+      // .when('/passwordSecurity/:hash', {
+      //   templateUrl: 'views/passwordRecovery.html',
+      //   controller : 'PasswordCtrl'
+      // })
+      // .when('/changePassword', {
+      //   templateUrl: '/',
+      //   controller : 'PasswordCtrl'
+      // })
       .otherwise({
         redirectTo: '/'
       });

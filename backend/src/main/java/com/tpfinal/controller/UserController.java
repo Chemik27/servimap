@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.tpfinal.domain.User;
 import com.tpfinal.dto.UserDTO;
 import com.tpfinal.service.UserService;
+import com.tpfinal.util.UtilDutymap;
 import jdk.nashorn.internal.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +39,5 @@ public class UserController {
         logger.info("Creando usuario: ");
         return userService.createUser(gson.fromJson(user, UserDTO.class), file);
     }
-
 
 }

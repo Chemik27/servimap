@@ -49,4 +49,25 @@ angular.module('dutymap')
             });
         }
 
+
+        /**
+         * SUPER METODO PEOLA
+         */
+
+
+        // $scope.recoverPassword = function(){
+        //   console.log("entro al metodo");
+        //   $scope.authenticate2("asd", function() {
+        //     if ($rootScope.mailEnviado) {
+        //       $location.path("/");
+        //       $scope.error = false;
+        //     } else {
+        //       NotificationService.error('Datos incorrectos. Intenta nuevamente');
+        //       $location.path("/login");
+        //       $scope.error = true;
+        //     }
+        //   });
+        //
+        // }
+
     }]);

@@ -1,0 +1,5 @@
+projectKey=TpFinal
+serverUrl=http://localhost:9333
+dashboardUrl=http://localhost:9333/dashboard/index/TpFinal
+ceTaskId=AVYJoqPnLAroKK3_cFYs
+ceTaskUrl=http://localhost:9333/api/ce/task?id=AVYJoqPnLAroKK3_cFYs

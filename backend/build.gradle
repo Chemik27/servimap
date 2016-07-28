@@ -34,7 +34,9 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-security')
 	compile('mysql:mysql-connector-java:5.1.36')
     compile 'com.google.code.gson:gson:2.2.+'
+	compile('javax.mail:mail:1.4.7')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile('commons-codec:commons-codec:1.10')
 }
 
 

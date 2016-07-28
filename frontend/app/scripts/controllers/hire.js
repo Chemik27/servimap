@@ -23,7 +23,6 @@ angular.module('dutymap')
        $scope.today=new Date();
        $scope.time = $scope.transactions.agreedDate;
        $scope.confirm=false;
-       $scope.domicilio = profileSelected.transaction[0].fromUser.idAddress.street +' '+ profileSelected.transaction[0].fromUser.idAddress.number;
        $scope.unixDate = new Date().getTime();
 
 

@@ -154,8 +154,8 @@ glyphicon glyphicon-info-sign"> </i> Obtene mas informacion contratando este ser
             </ng-map>
           </div>
 
-          <div ng-hide="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null">
-            El usuario no dispone de una ubicación.
+          <div ng-hide="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null" style="text-align: center;padding: 10%;">
+            <i class="glyphicon-exclamation-sign"></i>El usuario no dispone de una ubicación. Porque trabaja a domicilio.
           </div>
 
         </div>

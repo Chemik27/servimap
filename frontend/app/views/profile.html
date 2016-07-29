@@ -33,9 +33,9 @@
               <div id="profile" class="tab-pane fade in active">
 
                 <h3>Mi perfil</h3>
-
-                <div id="module-work" class=" col-md-12 col-sm-12">
-                  <div class="module-work col-md-5 col-xs-12" ng-repeat="aWork in works">
+                <div class="col-md-12">
+                <div id="module-work" class=" col-sm-6 col-md-5 col-xs-12">
+                  <div class="module" ng-repeat="aWork in works">
                     <h3><i class="fa fa-briefcase" aria-hidden="true"></i> {{aWork.name}}</h3>
                     <div>
                       <p>{{aWork.description}}</p>
@@ -43,8 +43,15 @@
                       <p>{{aWork.address.district.name}}</p>
                     </div>
                   </div>
-
-
+                </div>
+                <div  class=" col-md-6 col-sm-12">
+                  <div class="col-md-5 col-xs-12" ng-repeat="aWork in works">
+                    //Poner la imagen de publicidad
+                  </div>
+                </div>
+                <div class="col-md-12" ng-hide="showSeccion">
+                 // Poner imagen completa de publiciddad
+                </div>
                 </div>
 
                 <div id="module-feedback" class="col-md-12">

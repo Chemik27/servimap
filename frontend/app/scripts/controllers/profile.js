@@ -21,6 +21,11 @@ angular.module('dutymap')
             $scope.mainWork = $scope.works[0];
             $scope.today = new Date();
 
+            $scope.showSeccion= true;
+
+            if($scope.works==0){
+               $scope.showSeccion=false;}
+
 
             if(profileSelected.rating != undefined){
                 $scope.rating = profileSelected.rating.finalRating;

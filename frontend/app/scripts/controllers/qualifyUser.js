@@ -7,13 +7,20 @@
 angular.module('dutymap')
   .controller('QualifyUserCtrl', ['$scope','QualifyResources','NotificationService','$location','profileSelected','$rootScope', '$routeParams',
     function ($scope , QualifyResources,NotificationService,$location,profileSelected,$rootScope, $routeParams) {
-
+      var idUserCalificar;
       //tomo los datos
       $scope.tran = profileSelected.transaction;
 
       $scope.profile = profileSelected;
       $scope.user = profileSelected.tx.fromUser;
       $scope.toUser = profileSelected.toUser;
+      $scope.fromUser = profileSelected.fromUser;
+
+      if($rootScope.idUser == $scope.user.idUser){
+        idUserCalificar = $scope.fromUser.idUser;
+      }else{
+        idUserCalificar = $scope.user.idUser;
+      }
       $scope.fullname= profileSelected.tx.fromUser.fullName;
       $scope.transactions = profileSelected.lastTransactions;
       $scope.rating = profileSelected.rating;
@@ -38,10 +45,10 @@ angular.module('dutymap')
           'performance': $scope.rating2,
           'consideration': $scope.rating3,
           'recommendation': $scope.rating4,
-          'idProvider':  $scope.toUser.idUser,
+          'idProvider':  idUserCalificar,
           'reviewText': $scope.review_text,
           'generalAverage':  $scope.resultRating,
-          'idUser': $rootScope.idUser,
+          'idUser': $scope.user.idUser,
           'idTransaction': $routeParams.idTrx
         };
 

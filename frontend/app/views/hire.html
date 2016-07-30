@@ -20,7 +20,9 @@
     <!--Datos del usuario y acuerdos de fecha-->
     <div class="col-md-12">
       <p class="text-center header-title">Contratar a <span ng-bind="toUser.fullName"></span></p>
-      <p class="text-center header-subtitle" ng-bind="mainWork.name"></p>
+      <p class="text-center">
+        <span class="header-subtitle" ng-repeat="aWork in works" ng-bind="aWork.name + ' ' "></span>
+      </p>
     </div>
 
     <div class="col-sm-9 col-md-9">
@@ -150,8 +152,8 @@ glyphicon glyphicon-info-sign"> </i> Obtene mas informacion contratando este ser
             </ng-map>
           </div>
 
-          <div ng-hide="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null">
-            El usuario no dispone de una ubicación.
+          <div ng-hide="mainWork.address.street != null ||mainWork.address.number != null || mainWork.address.district.name != null" style="text-align: center;padding: 10%;">
+            <i class="glyphicon-exclamation-sign"></i>El usuario no dispone de una ubicación. Porque trabaja a domicilio.
           </div>
 
         </div>

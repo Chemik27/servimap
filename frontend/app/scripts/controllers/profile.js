@@ -8,8 +8,10 @@
  * Controller of the dutymap
  */
 angular.module('dutymap')
-  .controller('ProfileCtrl', ['$scope', '$http', 'ProfileResources','profileSelected', 'HireResources', 'NotificationService', '$route','$location','QualifyResources',
-      function ($scope, $http, ProfileResources, profileSelected, HireResources, NotificationService, $route,$location,QualifyResources) {
+
+  .controller('ProfileCtrl', ['$scope', '$http', 'UserResources','profileSelected', 'HireResources', 'NotificationService', '$route','$location','QualifyResources','$rootScope',
+      function ($scope, $http, UserResources, profileSelected, HireResources, NotificationService, $route,$location,QualifyResources,$rootScope)  {
+
             $scope.profile = profileSelected;
             $scope.user = profileSelected.user;
             $scope.myTransactions = profileSelected.lastTransactions;
@@ -22,7 +24,20 @@ angular.module('dutymap')
             $scope.today = new Date();
 
 
-            if(profileSelected.rating != undefined){
+            $scope.showSeccion= true;
+
+            if($scope.works==0){
+               $scope.showSeccion=false;}
+
+
+            $scope.updateUser={};
+            $scope.onlyChar=/^[a-zA-Z-\u00C0-\u017F,]+(\s{0,1}[a-zA-Z-\u00C0-\u017F, ])*$/;
+            $scope.onlyNumbers= /^\d+$/;
+            $scope.passwordRegex=/^(?=.*[a-z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+
+
+        if(profileSelected.rating != undefined){
                 $scope.rating = profileSelected.rating.finalRating;
                 $scope.comments = profileSelected.rating.comments;
             }
@@ -42,6 +57,62 @@ angular.module('dutymap')
               $scope.starRecommendation = _.range($scope.rating.recommendation);
               $scope.emptyStarsRecommendation = _.range(5 - $scope.rating.recommendation);
             }
+
+        $scope.zonas = [{id:1 ,name: '20 de Junio'},
+          {id:2 ,name: 'Aldo Bonzi'},
+          {id:3 ,name: 'Ciudad Evita'},
+          {id:4 ,name: 'González Catán'},
+          {id:5 ,name: 'Gregorio de Laferrere'},
+          {id:6 ,name: 'Isidro Casanova'},
+          {id:7 ,name: 'La Tablada'},
+          {id:8 ,name: 'Lomas del Mirador'},
+          {id:9 ,name: 'Rafael Castillo'},
+          {id:10 ,name: 'Ramos Mejía'},
+          {id:11 ,name: 'San Justo'},
+          {id:12 ,name: 'Tapiales'},
+          {id:13 ,name: 'Villa Luzuriaga'},
+          {id:14 ,name: 'Villa Madero'},
+          {id:15 ,name: 'Virrey del Pino'}];
+
+
+         $scope.updateUser = function () {
+
+            if ($scope.updateUser.oldPassword != undefined &&  $scope.updateUser.newPassword == undefined && $scope.updateUser.passwordConfirmation == undefined){
+             NotificationService.error('Escribe las contraseñas.');
+             return false;
+           }else if($scope.updateUser.oldPassword != undefined  && $scope.updateUser.newPassword == undefined || $scope.updateUser.passwordConfirmation == undefined){
+              NotificationService.error('Ingrese las nuevas contraseñas.');
+              return false;
+            }
+           else if ($scope.updateUser.oldPassword != undefined && $scope.updateUser.oldPassword == $scope.updateUser.newPassword) {
+             NotificationService.error('La contraseña actual y la nueva son las mismas.');
+             return false;
+           }
+            else {
+
+             var updateUser = {
+               'idUser': $rootScope.idUser,
+               'name': $scope.updateUser.firstName == null ? $scope.user.name : $scope.updateUser.firstName,
+               'surname': $scope.updateUser.surname == null ? $scope.user.surname : $scope.updateUser.surname,
+               'email': $scope.updateUser.email == null ? $scope.user.email : $scope.updateUser.email,
+               'phone': $scope.updateUser.telephone == null ? $scope.user.phone : $scope.updateUser.telephone,
+               'oldPassword': $scope.updateUser.oldPassword,
+               'password': $scope.updateUser.newPassword
+             };
+
+           }
+           UserResources.update(updateUser, function (response) {
+             if($scope.updateUser.newPassword != undefined){
+               NotificationService.success('Tus datos han sido actualizados correctamente! Recuerda iniciar sesión la próxima con tu nueva contraseña.');
+             }else{
+               NotificationService.success('Tus datos han sido actualizados correctamente!');
+             }
+             $route.reload();
+
+           }, function (error) {
+             NotificationService.error('Ha ocurrido un error inesperado');
+           })
+         };
 
           $scope.rejectService = function(idTx){
               HireResources.rejectTransaction(idTx, function(){

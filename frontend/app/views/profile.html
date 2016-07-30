@@ -76,7 +76,7 @@
                     </div>
                     <div ng-hide="rating != undefined">
                         <br>
-                        <h4>Aun no obtuviste calificaciones</h4>
+                        <h4>Aún no obtuviste calificaciones</h4>
                         <br>
                         <br>
                     </div>
@@ -89,7 +89,7 @@
                     </div>
                     <div ng-hide="(comments.length != 0 && comments != undefined) || rating != undefined">
                       <br>
-                      <h4>Aun no obtuviste comentarios</h4>
+                      <h4>Aún no obtuviste comentarios</h4>
                       <br>
                       <br>
                     </div>
@@ -98,57 +98,146 @@
               </div>
               <!--Seccion Editar perfil-->
               <div id="settings" class="tab-pane fade">
-                <div class="row">
-                  <h3>Editar perfil</h3>
+                <h3>Editar perfil</h3>
+                <div class="col-md-12">
 
-                  <div class="col-sm-6 settings-data">
-                    <p>Nombre: </p>
-                    <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.name">
+                  <h4>Datos personales</h4>
+                  <form  role="form" name="userForm"  ng-submit="updateUser()" >
+                    <div class="row">
 
-                  </div>
-                  <div class="col-sm-6">
-                    <p>Apellido: </p>
-                    <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.surname">
-                  </div>
+                      <!-- Campo nombre <-->
+                      <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': userForm.name.$touched && userForm.name.$invalid, 'has-success' : userForm.name.$valid && userForm.name.$touched }"  >
+                        <span>Nombre</span>
+                        <input type="text" name="name"  class="form-control input-lg" ng-minlength="2" ng-model="updateUser.firstName"  ng-value="user.name" ng-pattern="onlyChar"  >
+                        <div class="help-block" ng-messages="userForm.name.$error" ng-if="userForm.name.$touched">
+                          <p ng-message="minlength">El nombre es muy corto.</p>
+                          <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
+                        </div>
+                      </div>
 
-                  <div class="col-sm-6">
-                    <p>Dirección: </p>
-                    <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.name">
+                      <!-- Campo apellido <-->
+                      <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': userForm.surName.$touched && userForm.surName.$invalid, 'has-success' : userForm.surName.$valid && userForm.surName.$touched  }"  >
+                        <span>Apellido</span>
+                        <input type="text" name="surName"  class="form-control input-lg" ng-minlength="2" ng-model="updateUser.surname" ng-value="user.surname"  ng-pattern="onlyChar"  >
+                        <div class="help-block" ng-messages="userForm.surName.$error" ng-if="userForm.surName.$touched">
+                          <p ng-message="minlength">El nombre es muy corto.</p>
+                          <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
+                        </div>
+                      </div>
 
-                  </div>
-                  <div class="col-sm-6">
-                    <p>Email: </p>
-                    <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.email">
-                  </div>
+                    </div>
 
-                  <div class="col-xs-12 col-sm-6">
-                    <p>Teléfono: </p>
-                    <input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.phone">
+                    <div class="row">
+                      <!-- Campo email <-->
+                      <div class="col-xs-12 col-sm-6 form-group " >
+                        <span>Email</span>
+                        <input type="text" class="form-control input-lg" ng-minlength="2" ng-model="updateUser.email" ng-value="user.email">
+                      </div>
 
-                  </div>
-                  <div class="col-sm-6">
-                    <p>Cambiar contraseña </p>
-                    <input type="password" ng-disabled="true" class="form-control input-md">
-                  </div>
+                      <!-- Campo teléfono <-->
 
-                  <div class="col-md-6 col-sm-6">
-                    <p>Foto de perfil</p>
-                    <input type="file" ng-disabled="true" id="" class="col-xs-12">
-                  </div>
+                      <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': userForm.telephone.$touched && userForm.telephone.$invalid, 'has-success' : userForm.telephone.$valid && userForm.telephone.$touched }">
+                        <span>Teléfono</span>
 
-                  <div class="col-md-12 text-center">
-                    <button ng-disabled="true" class="btn logo-color-bg profile-btn">Guardar cambios</button>
-                  </div>
+                        <input type="text" name="telephone" ng-model="updateUser.telephone" class="form-control input-lg" ng-pattern="onlyNumbers" ng-value="user.phone">
+                        <div class="help-block" ng-messages="userForm.telephone.$error" ng-if="userForm.telephone.$touched">
+                          <p ng-message="pattern">Sólo numeros.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <h4>Cambiar contraseña</h4>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 form-group">
+                          <span>Escribe la contraseña actual</span>
+                          <input type="password" class="form-control input-lg" name="oldPassword" ng-model="updateUser.oldPassword">
+                        </div>
+
+                        <!-- Campo contraseña <-->
+                        <div class="col-xs-12 col-md-4 form-group " ng-class="{'has-error': userForm.newPassword.$touched &&  userForm.newPassword.$invalid, 'has-success': userForm.newPassword.$valid && userForm.newPassword.$touched}">
+                          <span>Escribe la nueva contraseña</span>
+                          <input type="password" name="newPassword" ng-model-options="{ updateOn: 'keyup' }"  password-validation="updateUser.passwordConfirmation" class="form-control input-lg immediate-help" ng-model="updateUser.newPassword" ng-pattern="passwordRegex" >
+                          <div class="input-help">
+                            <h4>La contraseña debe tener:</h4>
+                            <ul>
+                              <li ng-class="pwdValidLength">Al menos <strong>8 caracteres</strong></li>
+                              <li ng-class="pwdHasLetter">Al menos <strong>una letra</strong></li>
+                              <li ng-class="pwdHasNumber">Al menos <strong>un número</strong></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- Campo confirmar contraseña <-->
+                        <div class="col-xs-12 col-md-4 form-group" ng-class="{'has-error': userForm.passwordConfirmation.$touched &&  userForm.passwordConfirmation.$invalid, 'has-success': userForm.passwordConfirmation.$valid && userForm.newPassword.$touched}">
+                          <span>Reescribe la contraseña</span>
+                          <input type="password" name="passwordConfirmation" id="pw1" class="form-control input-lg"
+                                 ng-model="updateUser.passwordConfirmation">
+                          <div class="help-block"  ng-messages="userForm.passwordConfirmation.$error" ng-if="userForm.passwordConfirmation.$touched">
+                            <p ng-message="required">Repite la contraseña</p>
+                            <p ng-message="noMatch">Las contraseñas no coinciden</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12 text-center">
+                          <button type="submit" class="btn  logo-color-bg profile-btn">Guardar cambios</button>
+                          <br>
+                          <br>
+                        </div>
+                    </div>
+                  </form>
+
+
+                  <!---->
+
+                  <!--<div class="col-sm-6 settings-data input-group">-->
+                    <!--<p>Nombre: </p>-->
+                    <!--<input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.name">-->
+
+                  <!--</div>-->
+                  <!--<div class="col-sm-6">-->
+                    <!--<p>Apellido: </p>-->
+                    <!--<input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.surname">-->
+                  <!--</div>-->
+
+                  <!--<div class="col-sm-6">-->
+                    <!--<p>Dirección: </p>-->
+                    <!--<input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.idAddress.district.name">-->
+
+                  <!--</div>-->
+                  <!--<div class="col-sm-6">-->
+                    <!--<p>Email: </p>-->
+                    <!--<input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.email">-->
+                  <!--</div>-->
+
+                  <!--<div class="col-xs-12 col-sm-6">-->
+                    <!--<p>Teléfono: </p>-->
+                    <!--<input type="text" ng-disabled="true" class="form-control input-md" ng-value="user.phone">-->
+
+                  <!--</div>-->
+                  <!--<div class="col-sm-6">-->
+                    <!--<p>Cambiar contraseña </p>-->
+                    <!--<input type="password" ng-disabled="true" class="form-control input-md">-->
+                  <!--</div>-->
+
+                  <!--<div class="col-md-6 col-sm-6">-->
+                    <!--<p>Foto de perfil</p>-->
+                    <!--<input type="file" ng-disabled="true" id="" class="col-xs-12">-->
+                  <!--</div>-->
+
+                  <!--<div class="col-md-12 text-center">-->
+                    <!--<button ng-disabled="true" class="btn logo-color-bg profile-btn">Guardar cambios</button>-->
+                  <!--</div>-->
+
+                  <div ng-show="user.type == 'proveedor' ">
+                   <h4>Mis servicios:</h4>
+                    <div class="col-md-12" >
+                    <span ng-repeat="aWork in works" class="active-works glyphicon glyphicon-briefcase" ng-bind="aWork.name"> </span>
+                    <p class="text-center">
+                      <a class="btn logo-color-bg  profile-btn" href="/#/registro">Agregar servicio</a>
+                    </p>
+                    </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-md-12" >
-                    <h4> Mis servicios:</h4>
-                  <span ng-repeat="aWork in works" class="active-works glyphicon glyphicon-briefcase" ng-bind="aWork.name"> </span>
-                  <p class="text-center">
-                    <a class="btn logo-color-bg  profile-btn" href="/#/registro">Agregar servicio</a>
-                  </p>
-                  </div>
                 </div>
               </div>
               <!--Seccion mis de transacciones-->

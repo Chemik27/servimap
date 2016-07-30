@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
   <!--Validaciones-->
-  <div ng-show="tx.fromUser.idUser == $root.idUser && tx.state != 4">
+  <div ng-show="tx.fromUser.idUser == $root.idUser && tx.state != 5">
       <div class="col-sm-6 col-sm-push-3 text-center not-found">
         <div>
           <i class="fa fa-bullhorn fa-5x text-dutymap" aria-hidden="true"></i>
@@ -14,7 +14,7 @@
           </b></h4>
           <h4 ng-show=" tx.state == 3 " class="text-dutymap"><b>Psss! El proveedor ha rechazado la propuesta.<br><br>
           </b></h4>
-          <h4 ng-show=" tx.state == 5 " class="text-dutymap"><b>Psss! Ya has calificado a este proveedor.<br><br>
+          <h4 ng-show=" tx.state == 6 " class="text-dutymap"><b>Psss! Ya has calificado a este proveedor.<br><br>
           </b></h4>
           <a href="/#/perfil/{{$root.idUser}}" class="btn logo-color-bg ">Volver a Mi Perfil</a>
         </div>
@@ -35,7 +35,7 @@
   </div>
 </div>
 
-  <div class="resume container-fluid" ng-show="tx.fromUser.idUser == $root.idUser && tx.state == 4 ">
+  <div class="resume container-fluid" ng-show="tx.fromUser.idUser == $root.idUser && tx.state == 5 ">
   <profile-dutymap></profile-dutymap>
 
   <div class="container-fluid col-md-9 col-xs-12">

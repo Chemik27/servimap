@@ -54,6 +54,6 @@ public class RatingController {
     @ResponseStatus(HttpStatus.OK)
     public void qualifyTransaction(@RequestBody Long idTrx){
         logger.info("Qualify transaction: " + idTrx);
-        transactionService.updateTransactionState(idTrx, State.TRX_CALIFICATED);
+        transactionService.updateTransactionState(idTrx, State.TRX_CALIFICATED_FOR_PROVIDER);
     }
 }

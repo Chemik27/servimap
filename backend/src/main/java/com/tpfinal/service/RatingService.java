@@ -73,9 +73,13 @@ public class RatingService {
 
     public void save(Rating rating) {
         Transaction tx = transactionRepository.findOne(rating.getIdTransaction());
-        if(tx.getState().toString().equals(State.TRX_CALIFICATED.toString()) ) {
+        if(tx.getState().toString().equals(State.TRX_CALIFICATED_FOR_PROVIDER.toString()) ) {
             tx.setState(State.TRX_CLOSED);
         }
+        if(tx.getState().toString().equals(State.TRX_COMPLETED.toString()) ) {
+            tx.setState(State.TRX_CALIFICATED_FOR_PROVIDER);
+        }
+
         transactionRepository.save(tx);
         ratingRepository.save(rating);
     }

@@ -1,12 +1,12 @@
 <navbar-secondary></navbar-secondary>
     <section class="register">
 
-      <div class="text-center" ng-show="user.type == proveedor || user.type == comprador">
-          <h3 class="text-dutymap">Debes cerrar sesión para registrar un usuario</h3>
-          <button class="btn logo-color-bg" ng-click="logout()">Cerrar sesión</button>
-        <br><br>
-      </div>
-        <div class="container-fluid" ng-hide="user.type == proveedor || user.type == comprador">
+      <!--<div class="text-center" ng-show="user.type == proveedor || user.type == comprador">-->
+          <!--<h3 class="text-dutymap">Debes cerrar sesión para registrar un usuario</h3>-->
+          <!--<button class="btn logo-color-bg" ng-click="logout()">Cerrar sesión</button>-->
+        <!--<br><br>-->
+      <!--</div>-->
+        <div class="container-fluid">
             <div ng-hide="userRegister || userProveedor || createWork || confirmation || $root.idUser != null">
                 <div class="row">
                   <div class="col-md-12">

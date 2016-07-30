@@ -1,5 +1,11 @@
 <navbar-secondary></navbar-secondary>
     <section class="register">
+
+      <!--<div class="text-center" ng-show="user.type == proveedor || user.type == comprador">-->
+          <!--<h3 class="text-dutymap">Debes cerrar sesión para registrar un usuario</h3>-->
+          <!--<button class="btn logo-color-bg" ng-click="logout()">Cerrar sesión</button>-->
+        <!--<br><br>-->
+      <!--</div>-->
         <div class="container-fluid">
             <div ng-hide="userRegister || userProveedor || createWork || confirmation || $root.idUser != null">
                 <div class="row">
@@ -71,7 +77,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                                 <!-- Formulario -->
-                                <form role="form" name="userForm" ng-hide="$root.idUser != null" ng-submit="saveUser()" ng-model-options="{ updateOn: 'blur' }">
+                                <form role="form" name="userForm" ng-hide="$root.idUser != null " ng-submit="saveUser()" ng-model-options="{ updateOn: 'blur' }">
                                     <h3><b>Regístrate como  {{userRegister == true ? "usuario" : "proveedor" }} gratis!</b> <div class="small"><h4>Por favor, completa los siguientes campos.</h4></div></h3>
                                     <div class="row">
                                         <!-- Campo nombre <-->
@@ -269,7 +275,7 @@
                             <!--</div>-->
                         <!--</div>-->
                     </div>
-                    <div class="modal-body" ng-hide="confirmation">
+                    <div class="modal-body" ng-hide="confirmation ">
                         <div class="row">
                             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                                 <!-- Formulario workForm -->
@@ -444,12 +450,13 @@
                <div class="row" ng-show="$root.idUser == null">
                  <div class="col-xs-7 col-sm-8 col-md-6 col-sm-offset-1 col-md-offset-1 ">
                    <h3 style="color: #2f3a4c;"> <b>HAS REGISTRADO TUS DATOS EXITOSAMENTE! </b></h3>
-                   <h4 ng-show="userProveedor" class="text-success">Feliciationes! Te has convertido en usuario PREMIUM por un mes!</h4>
+                   <h4 ng-show="userProveedor" class="text-success">Felicitaciones! Te has convertido en usuario PREMIUM por un mes!</h4>
                    <p class="col-md-12">Tus datos registrados:</p>
                    <div class="col-xs-12 col-sm-8 col-md-12 margin-md-1">
                     <div><b>Nombre y Apellido :</b> {{provider.name}} {{provider.surname}}</div>
                     <div><b>Email :</b> {{provider.email}} </div>
-                    <div ng-show="userProveedor"><b>Servicio :</b> {{work.description}} </div>
+                    <div ng-show="userProveedor"><b>Servicio :</b> {{work.name}}</div>
+                    <div ng-show="userProveedor"><b>Descripci&oacute;n de servicio :</b> {{work.description}} </div>
                    </div>
                    <div>
                      <div class="col-md-12">Ahora puedes ingresar al sitio con tu email y contraseña.</div>
@@ -468,5 +475,6 @@
              </div>
            </div>
         </div>
+
     </section>
 <footer-dutymap></footer-dutymap>

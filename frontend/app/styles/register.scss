@@ -87,7 +87,7 @@ input.ng-pristine + .input-help {
 }
 
 /* Mostrar border verde cuando algo fue escrito y es valido */
-.ng-dirty.ng-valid {
+.registerinput .ng-dirty.ng-valid {
   border-color:#3a7d34;
 }
 

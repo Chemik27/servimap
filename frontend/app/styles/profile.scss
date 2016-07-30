@@ -11,7 +11,6 @@
   .module-main{
     background-color: $background-blue-side;
     color: lightgrey;
-    color: lightgrey;
     flex:1;
     display: table-cell;
   }
@@ -49,6 +48,11 @@
     }
   }
 
+}
+
+.prop{
+  max-width:100%;
+  max-height:100%;
 }
 
 .img-circle{

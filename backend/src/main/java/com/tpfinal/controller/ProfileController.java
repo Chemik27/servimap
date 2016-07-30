@@ -1,5 +1,8 @@
 package com.tpfinal.controller;
 
+import com.tpfinal.domain.User;
+import com.tpfinal.dto.UserDTO;
+import com.tpfinal.dto.UserUpdateDTO;
 import com.tpfinal.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

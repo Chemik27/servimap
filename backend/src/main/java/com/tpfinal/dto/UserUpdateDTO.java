@@ -1,27 +1,19 @@
 package com.tpfinal.dto;
 
-public class UserDTO {
+import com.tpfinal.domain.District;
+
+public class UserUpdateDTO {
 
     private Long idUser;
     private String name;
     private String surname;
     private String username;
     private String password;
-    private String type;
     private String email;
     private String phone;
     private String street;
     private Long number;
-    private Long idDistrict;
-    private String oldPassword;
-
-    public Long getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
-    }
+    private District idDistrict;
 
     public String getName() {
         return name;
@@ -53,14 +45,6 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getEmail() {
@@ -95,19 +79,22 @@ public class UserDTO {
         this.number = number;
     }
 
-    public Long getIdDistrict() {
+    public District getIdDistrict() {
         return idDistrict;
     }
 
-    public void setIdDistrict(Long idDistrict) {
+    public void setIdDistrict(District idDistrict) {
         this.idDistrict = idDistrict;
     }
 
-    public String getOldPassword() {
-        return oldPassword;
+
+
+    public Long getIdUser() {
+        return idUser;
     }
 
-    public void setOldPassword(String oldPassword) {
-        this.oldPassword = oldPassword;
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
+
 }

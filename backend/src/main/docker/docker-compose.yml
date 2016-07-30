@@ -1,0 +1,19 @@
+combinado_frontend:
+        build: ./frontend
+        container_name: "dutymap_frontend"
+        ports:
+            - "8181:80"
+        links:
+            - dutymap_backend:backend
+        restart: "always"
+combinado_backend:
+        build: ./backend
+        container_name: "dutymap_backend"
+        ports:
+            - "8900:8080"
+        external_links:
+            - emisor_container:emisor
+            - redis-cache-container:redis_container
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /etc/timezone:/etc/timezone:roa-mongo:/data/db

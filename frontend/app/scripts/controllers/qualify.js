@@ -37,9 +37,9 @@ angular.module('dutymap')
       $scope.addQualify = function(){
 
          QualifyResources.qualifyTransaction($scope.tx.idTransaction, function(){
-           NotificationService.success('Se ha calificado correctamente');
+
           },function(error){
-            NotificationService.error('Ha ocurrido un error inesperado');
+           NotificationService.error('Ha ocurrido un error inesperado');
           });
 
         var calificar = {'reliability': $scope.rating1,

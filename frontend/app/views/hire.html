@@ -103,7 +103,8 @@ glyphicon glyphicon-info-sign"> </i> Obtene mas informacion contratando este ser
               <p ><span class="iconcolor glyphicon glyphicon-user" aria-hidden="true"></span> Proveedor: <span ng-bind="toUser.fullName"></span></p>
               <p ><span class="iconcolor glyphicon glyphicon-envelope"></span> Email: <span ng-bind="toUser.email"></span></p>
             <!--<p>Documento: <span ng-bind="toUser.dni"> </span></p>-->
-              <p><span class="iconcolor glyphicon glyphicon-calendar"></span> Fecha acordada: <time>{{ transaction.agreedDate | date : "dd/MM/y" }}</time></p>
+              <p><span class="iconcolor glyphicon glyphicon-calendar"></span> Fecha acordada: <time>{{ date | date : "dd/MM/y" }}
+              </time></p>
               <p></span><span class="iconcolor glyphicon glyphicon-earphone"></span> Teléfono: <span ng-bind="toUser.phone"> </span></p>
             </div>
             <div class="padding-tam1">
@@ -120,7 +121,7 @@ glyphicon glyphicon-info-sign"> </i> Obtene mas informacion contratando este ser
                       <h4 class="modal-title">Busca un nuevo servicio</h4>
                     </div>
                     <div class="modal-body">
-                      <form class="navbar-form navbar-left navbar-width " role="search">
+                      <form role="search">
                         <div class="form-group navbar-width " style="padding-top: 0.1em">
                           <div class="input-group stylish-input-group navbar-width ">
                             <input type="text" class="form-control navbar-search navbar-width" placeholder="Buscar servicios" ng-model="toFind">

@@ -18,6 +18,15 @@ public class TransactionDTO {
     private Long idWork;
     private String address;
     private String textProblem;
+    private Long state;
+
+    public Long getState() {
+        return state;
+    }
+
+    public void setState(Long state) {
+        this.state = state;
+    }
 
     public Long getIdWork() { return idWork; }
 

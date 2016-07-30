@@ -1,0 +1,18 @@
+version: '2'
+services:
+    dutymap-backend:
+        image: dutymap/backend:latest
+        ports:
+         - "80809:8080"
+        links:
+        - dutymap-mysql
+    dutymap-ui:
+        image: dutymap/dutymap-ui:latest
+        ports:
+         - "19001:80"
+        links:
+         - dutymap-backend
+  dutymap-mysql:
+    image: mysql:5.7
+    ports:
+     - "3306:3306"

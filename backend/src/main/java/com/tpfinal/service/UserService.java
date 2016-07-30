@@ -47,7 +47,7 @@ public class UserService {
 
         User existUser = userRepository.findByEmail(userDTO.getEmail());
         if(existUser != null)
-            throw new BadRequestException("Usuario existente");
+            throw new BadRequestException("Este email ya se encuentra registrado");
 
         User user = createUserFromDTO(userDTO);
         try {
@@ -109,28 +109,29 @@ public class UserService {
         return result;
     }
 
-    public void updateProfile(User updateUser) {
+    public void updateProfile(UserDTO updateUser) {
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         User user = userRepository.findByIdUser(updateUser.getIdUser());
-        String passwords = updateUser.getPassword();
-        String[] parts = passwords.split(",");
-        String currentPassword = parts[0];
-        String newPassword = parts[1];
 
-        updateUser.setPassword(user.getPassword());
+        if(encoder.matches(updateUser.getOldPassword(), user.getPassword())){
 
-        if(encoder.matches(currentPassword, user.getPassword())){
 
-            if(!newPassword.equals("")){
-                updateUser.setPassword(codePassword(newPassword));
+            if(!updateUser.getPassword().equals("")){
+                user.setPassword(codePassword(updateUser.getPassword()));
 
             }else{
-                updateUser.setPassword(codePassword(user.getPassword()));
+                user.setPassword(codePassword(user.getPassword()));
             }
+        }else{
+           throw new BadRequestException("La contraseña actual no coincide");
         }
 
-        userRepository.save(updateUser);
+        user.setName(updateUser.getName());
+        user.setSurname(updateUser.getSurname());
+        user.setEmail(updateUser.getEmail());
+        user.setPhone(updateUser.getPhone());
+        userRepository.save(user);
 
          //Address address = addressRepository.findOne(user.getIdAddress().getIdAddress());
         //address.setStreet(updateUser.getStreet());

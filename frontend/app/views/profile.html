@@ -33,9 +33,8 @@
               <div id="profile" class="tab-pane fade in active">
 
                 <h3>Mi perfil</h3>
-                <div class="col-md-12">
-                <div id="module-work" class=" col-sm-6 col-md-5 col-xs-12">
-                  <div class="module" ng-repeat="aWork in works">
+                <div id="module-work" class=" col-md-12 col-sm-12">
+                  <div class="module-work col-md-5 col-xs-12" ng-repeat="aWork in works">
                     <h3><i class="fa fa-briefcase" aria-hidden="true"></i> {{aWork.name}}</h3>
                     <div>
                       <p>{{aWork.description}}</p>
@@ -43,27 +42,16 @@
                       <p>{{aWork.address.district.name}}</p>
                     </div>
                   </div>
-                </div>
-                <div  class=" col-md-6 col-sm-12">
-                  <div class="col-md-5 col-xs-12" ng-repeat="aWork in works">
-                    //Poner la imagen de publicidad
-                  </div>
-                </div>
-                <div class="col-md-12" ng-hide="showSeccion">
-                 // Poner imagen completa de publiciddad
-                </div>
-                </div>
 
-                <div id="module-feedback" class="col-md-12">
-                  <div class="module col-sm-6 col-md-5 col-xs-12">
+                  <div class="module-work col-sm-6 col-md-5 col-xs-12">
                     <h3><i class="fa fa-users" aria-hidden="true"></i> Feedback</h3>
                     <div id="feedback-info" ng-show="rating != undefined">
                       <p>Confiabilidad<span ng-repeat="star in starReliability"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
                         <span ng-repeat="star in emptyStarsReliability"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
                       </p>
                       <p>Desempeño
-                      <span ng-repeat="star in starPerformance"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
-                      <span ng-repeat="star in emptyStarsPerformance"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
+                        <span ng-repeat="star in starPerformance"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
+                        <span ng-repeat="star in emptyStarsPerformance"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
                       </p>
                       <p>Consideración
                         <span ng-repeat="star in starConsideration"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
@@ -75,10 +63,20 @@
                       </p>
                     </div>
                     <div ng-hide="rating != undefined">
-                        <br>
-                        <h4>Aún no obtuviste calificaciones</h4>
-                        <br>
-                        <br>
+                      <br>
+                      <h4>Aún no obtuviste calificaciones</h4>
+                      <br>
+                      <br>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div id="module-feedback" class="col-md-12">
+
+                  <div ng-hide="works.length == 0" class="module-size">
+                    <div id="publidutymap">
+                      <a href="#/"><img src="../images/prop.jpg" class="prop"></a>
                     </div>
                   </div>
 
@@ -146,17 +144,15 @@
                       </div>
                     </div>
 
-                    <h4>Cambiar contraseña</h4>
-
                     <div class="row">
                         <div class="col-xs-12 col-md-4 form-group">
-                          <span>Escribe la contraseña actual</span>
+                          <span>Contraseña actual</span>
                           <input type="password" class="form-control input-lg" name="oldPassword" ng-model="updateUser.oldPassword">
                         </div>
 
                         <!-- Campo contraseña <-->
                         <div class="col-xs-12 col-md-4 form-group " ng-class="{'has-error': userForm.newPassword.$touched &&  userForm.newPassword.$invalid, 'has-success': userForm.newPassword.$valid && userForm.newPassword.$touched}">
-                          <span>Escribe la nueva contraseña</span>
+                          <span>Nueva contraseña</span>
                           <input type="password" name="newPassword" ng-model-options="{ updateOn: 'keyup' }"  password-validation="updateUser.passwordConfirmation" class="form-control input-lg immediate-help" ng-model="updateUser.newPassword" ng-pattern="passwordRegex" >
                           <div class="input-help">
                             <h4>La contraseña debe tener:</h4>
@@ -169,7 +165,7 @@
                         </div>
                         <!-- Campo confirmar contraseña <-->
                         <div class="col-xs-12 col-md-4 form-group" ng-class="{'has-error': userForm.passwordConfirmation.$touched &&  userForm.passwordConfirmation.$invalid, 'has-success': userForm.passwordConfirmation.$valid && userForm.newPassword.$touched}">
-                          <span>Reescribe la contraseña</span>
+                          <span>Repite  la nueva contraseña</span>
                           <input type="password" name="passwordConfirmation" id="pw1" class="form-control input-lg"
                                  ng-model="updateUser.passwordConfirmation">
                           <div class="help-block"  ng-messages="userForm.passwordConfirmation.$error" ng-if="userForm.passwordConfirmation.$touched">
@@ -186,15 +182,15 @@
                     </div>
                   </form>
 
-                  <div ng-show="user.type == 'proveedor' ">
-                   <h4>Mis servicios:</h4>
-                    <div class="col-md-12" >
-                    <span ng-repeat="aWork in works" class="active-works glyphicon glyphicon-briefcase" ng-bind="aWork.name"> </span>
-                    <p class="text-center">
-                      <a class="btn logo-color-bg  profile-btn" href="/#/registro">Agregar servicio</a>
-                    </p>
-                    </div>
-                </div>
+                  <!--<div ng-show="user.type == 'proveedor' ">-->
+                   <!--<h4>Mis servicios:</h4>-->
+                    <!--<div class="col-md-12" >-->
+                    <!--<span ng-repeat="aWork in works" class="active-works glyphicon glyphicon-briefcase" ng-bind="aWork.name"> </span>-->
+                    <!--<p class="text-center">-->
+                      <!--<a class="btn logo-color-bg  profile-btn" href="/#/registro">Agregar servicio</a>-->
+                    <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
 
                 </div>
               </div>
@@ -267,6 +263,8 @@
           </div>
               <!--Seccion Me han contratado-->
               <div id="service-history" class="tab-pane fade">
+
+                <h3>Mis clientes</h3>
 
                 <div class="col-xs-12 formqualify padding-tam-1 ">
 

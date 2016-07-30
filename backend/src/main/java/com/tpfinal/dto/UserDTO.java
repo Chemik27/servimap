@@ -2,6 +2,7 @@ package com.tpfinal.dto;
 
 public class UserDTO {
 
+    private Long idUser;
     private String name;
     private String surname;
     private String username;
@@ -12,6 +13,15 @@ public class UserDTO {
     private String street;
     private Long number;
     private Long idDistrict;
+    private String oldPassword;
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
 
     public String getName() {
         return name;
@@ -91,5 +101,13 @@ public class UserDTO {
 
     public void setIdDistrict(Long idDistrict) {
         this.idDistrict = idDistrict;
+    }
+
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 }

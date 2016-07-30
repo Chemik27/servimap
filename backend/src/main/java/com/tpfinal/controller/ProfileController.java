@@ -27,13 +27,4 @@ public class ProfileController {
         logger.info("GET");
         return userService.getProfile(idUser);
     }
-
-    @RequestMapping(method = RequestMethod.PUT, value  ="/update")
-    @ResponseStatus(HttpStatus.OK)
-    public void updateProfile(@RequestBody User updateUser){
-
-        userService.updateProfile(updateUser);
-
-    }
-
 }

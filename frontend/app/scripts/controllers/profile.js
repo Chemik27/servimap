@@ -9,8 +9,8 @@
  */
 angular.module('dutymap')
 
-  .controller('ProfileCtrl', ['$scope', '$http', 'ProfileResources','profileSelected', 'HireResources', 'NotificationService', '$route','$location','QualifyResources','$rootScope',
-      function ($scope, $http, ProfileResources, profileSelected, HireResources, NotificationService, $route,$location,QualifyResources,$rootScope)  {
+  .controller('ProfileCtrl', ['$scope', '$http', 'UserResources','profileSelected', 'HireResources', 'NotificationService', '$route','$location','QualifyResources','$rootScope',
+      function ($scope, $http, UserResources, profileSelected, HireResources, NotificationService, $route,$location,QualifyResources,$rootScope)  {
 
             $scope.profile = profileSelected;
             $scope.user = profileSelected.user;
@@ -96,32 +96,18 @@ angular.module('dutymap')
                'surname': $scope.updateUser.surname == null ? $scope.user.surname : $scope.updateUser.surname,
                'email': $scope.updateUser.email == null ? $scope.user.email : $scope.updateUser.email,
                'phone': $scope.updateUser.telephone == null ? $scope.user.phone : $scope.updateUser.telephone,
-               'creationDate': $scope.user.creationDate,
-               'password': $scope.updateUser.oldPassword + "," + $scope.updateUser.newPassword,
-               'type': $scope.user.type,
-               'premium': $scope.user.premium,
-               'idAddress': $scope.user.idAddress,
-               'photo': $scope.user.photo,
-               'fullName': $scope.user.fullName,
-               'updateDate': $scope.user.updateDate,
-               'deletedDate': $scope.user.deletedDate,
-               'version': $scope.user.version
-
-
-
-               // 'street' : $scope.updateUser.street,
-               // 'number' : $scope.updateUser.number,
-               // 'idDistrict': $scope.updateUser.district.id
+               'oldPassword': $scope.updateUser.oldPassword,
+               'password': $scope.updateUser.newPassword
              };
 
            }
-           ProfileResources.update(updateUser, function () {
+           UserResources.update(updateUser, function (response) {
              if($scope.updateUser.newPassword != undefined){
                NotificationService.success('Tus datos han sido actualizados correctamente! Recuerda iniciar sesión la próxima con tu nueva contraseña.');
              }else{
                NotificationService.success('Tus datos han sido actualizados correctamente!');
              }
-             $route.reload(3000);
+             $route.reload();
 
            }, function (error) {
              NotificationService.error('Ha ocurrido un error inesperado');

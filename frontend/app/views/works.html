@@ -46,7 +46,7 @@
         </div>
 
         <div class="container-fluid">
-        <! -- CONTACTOS PREMIUM -->
+        <!-- CONTACTOS PREMIUM -->
             <div ng-class="{'col-md-4 col-md-push-4': bestWorkers.length == 1, 'col-sm-4 col-md-4 col-lg-4 col-md-push-2': bestWorkers.length == 2,
              'col-sm-4 col-md-4 col-lg-4': bestWorkers.length >2 }" ng-repeat="aPremium in bestWorkers" class="card-margin">
                 <div class="flip-container padding" ontouchstart="this.classList.toggle('hover');">
@@ -82,7 +82,7 @@
         <hr>
 
         <div class="container-fluid">
-        <! -- CONTACTOS COMUNES -->
+        <!-- CONTACTOS COMUNES -->
             <div class="col-xs-10 col-sm-10 col-md-10 col-xs-push-1 border-service" ng-class="{'block': !$last}" ng-repeat="aWork in otherWorkers">
                 <div class="col-xs-12 col-sm-2 col-md-2">
                     <p class="text-center"><img class="img-circle" ng-src="data:image/png;base64,{{aWork.user.photo}}" alt=""> </p>

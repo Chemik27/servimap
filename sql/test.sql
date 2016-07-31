@@ -26,6 +26,10 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `address`
 --
 
+create database dutymap;
+
+use dutymap;
+
 CREATE TABLE `address` (
   `id_address` bigint(20) NOT NULL,
   `street` varchar(35) NOT NULL,

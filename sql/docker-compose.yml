@@ -1,0 +1,9 @@
+ dutymap-mysql:
+        image: mysql:5.7
+        container_name: dutymap-mysql
+        ports:
+            - "3307:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: pwdutymap123
+        volumes:
+            - ./:/docker-entrypoint-initdb.d

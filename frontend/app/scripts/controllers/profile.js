@@ -141,14 +141,19 @@ angular.module('dutymap')
             })
           };
 
-         $scope.qualifyService = function(idTx){
+          $scope.updateProfile = function(work){
+            $scope.mainWork = work;
+          };
+
+          $scope.qualifyService = function(idTx){
 
             $location.path('/calificar/'+idTx)
 
-        };
-        $scope.qualifyUserService = function(idTx){
+          };
+
+          $scope.qualifyUserService = function(idTx){
 
             $location.path('/calificar/usuario/'+idTx)
 
-        };
+          };
     }]);

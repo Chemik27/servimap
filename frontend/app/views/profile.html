@@ -34,7 +34,7 @@
 
                 <h3>Mi perfil</h3>
                 <div id="module-work" class=" col-md-12 col-sm-12">
-                  <div class="module-work col-md-5 col-xs-12" ng-repeat="aWork in works">
+                  <div class="module-work col-md-5 col-xs-12" ng-repeat="aWork in works" ng-click="updateProfile(aWork);">
                     <h3><i class="fa fa-briefcase" aria-hidden="true"></i> {{aWork.name}}</h3>
                     <div>
                       <p>{{aWork.description}}</p>
@@ -182,15 +182,15 @@
                     </div>
                   </form>
 
-                  <!--<div ng-show="user.type == 'proveedor' ">-->
-                   <!--<h4>Mis servicios:</h4>-->
-                    <!--<div class="col-md-12" >-->
-                    <!--<span ng-repeat="aWork in works" class="active-works glyphicon glyphicon-briefcase" ng-bind="aWork.name"> </span>-->
-                    <!--<p class="text-center">-->
-                      <!--<a class="btn logo-color-bg  profile-btn" href="/#/registro">Agregar servicio</a>-->
-                    <!--</p>-->
-                    <!--</div>-->
-                <!--</div>-->
+                  <div ng-show="user.type == 'proveedor' ">
+                   <h4>Mis servicios:</h4>
+                    <div class="col-md-12" >
+                    <span ng-repeat="aWork in works" class="active-works glyphicon glyphicon-briefcase" ng-bind="aWork.name"> </span>
+                    <p class="text-center">
+                      <a class="btn logo-color-bg  profile-btn" href="/#/registro">Agregar servicio</a>
+                    </p>
+                    </div>
+                </div>
 
                 </div>
               </div>
@@ -217,9 +217,9 @@
                     <span ng-show="t.state == 1" class="label label-warning">Solicitud enviada</span>
                     <span ng-show="t.state == 2" class="label label-success">Servicio aceptado</span>
                     <span ng-show="t.state == 3" class="label label-danger">Servicio rechazado</span>
-                    <span ng-show="t.state == 4" class="label label-warning">Pendiente de calificacion</span>
-                    <span ng-show="t.state == 5" class="label label-primary">Calificado</span>
-                    <span ng-show="t.state == 6 || t.state==5" class="label label-primary">Servicio finalizado</span>
+                    <span ng-show="t.state == 4" class="label label-warning">Pendiente de calificacion por el proveedor</span>
+                    <span ng-show="t.state == 5" class="label label-primary">Pendiente de calificacion</span>
+                    <span ng-show="t.state == 6" class="label label-primary">Servicio finalizado</span>
                   </div>
                 </div>
 
@@ -287,8 +287,9 @@
                         <span ng-show="history.state == 1" class="label label-warning">Solicitud pendiente</span>
                         <span ng-show="history.state == 2" class="label label-success">Servicio aceptado</span>
                         <span ng-show="history.state == 3" class="label label-danger">Servicio rechazado</span>
+                        <span ng-show="history.state == 4" class="label label-primary">Servicio pendiente de calificacion</span>
                         <span ng-show="history.state == 5" class="label label-primary">Calificado</span>
-                        <span ng-show="history.state == 5 || history.state == 6" class="label label-primary">Servicio finalizado</span>
+                        <span ng-show="history.state == 6" class="label label-primary">Servicio finalizado</span>
                       </div>
                     </div>
 

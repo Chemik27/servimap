@@ -39,6 +39,10 @@ public class WorkService {
         return workRepository.findByUser(userService.findByIdUser(idUser));
     }
 
+    public Work findByIdWork(Long idUser){
+        return workRepository.findByIdWork(idUser);
+    }
+
     public Page<Work> findByCategory(Long idCategory){
         return workRepository.findByCategoryIdCategory(idCategory, new PageRequest(0,ITEMS_PER_PAGE));
     }

@@ -5,6 +5,7 @@ package com.tpfinal.controller;
 
 import com.tpfinal.domain.State;
 import com.tpfinal.domain.Transaction;
+import com.tpfinal.domain.Work;
 import com.tpfinal.dto.TransactionDTO;
 import com.tpfinal.service.TransactionService;
 import com.tpfinal.service.UserService;
@@ -56,10 +57,11 @@ public class HireController {
         logger.info("GET");
 
         Map<String, Object> result = new HashMap<String, Object>();
-        result.put("toUser", userService.findByIdUser(idUser));
-        result.put("lastTransactions", transactionService.findByFromUser(idUser));
-        result.put("transaction", transactionService.findByInfoToUser(idUser));
-        result.put("works", workService.findByIdUser(idUser));
+        Work work = workService.findByIdWork(idUser);
+        result.put("work", work);
+        result.put("toUser", userService.findByIdUser(work.getUser().getIdUser()));
+//        result.put("lastTransactions", transactionService.findByWork(idUser));
+//        result.put("transaction", transactionService.findByInfoToUser(idUser));
         return result;
     }
 

@@ -15,13 +15,13 @@ angular.module('dutymap')
 
        $scope.profile = profileSelected;
        $scope.toUser = profileSelected.toUser;
-       $scope.transactions = profileSelected.lastTransactions;
-       $scope.works = profileSelected.works;
-       $scope.mainWork = $scope.works[0];
+       // $scope.transactions = profileSelected.lastTransactions;
+       // $scope.works = profileSelected.works;
+       $scope.mainWork = profileSelected.work;
 
 
        $scope.today=new Date();
-       $scope.time = $scope.transactions.agreedDate;
+       // $scope.time = $scope.transactions.agreedDate;
        $scope.confirm=false;
        $scope.unixDate = new Date().getTime();
 

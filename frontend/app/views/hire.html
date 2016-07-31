@@ -100,12 +100,14 @@
             </div>
           </p>
           <div class="confirmated-data col-md-6">
-            <p class="hire-description">A continuación podrás visualizar los datos del proveedor:</p>
+            <p class="hire-description">A continuación podrás visualizar los datos del proveedor y la contratación:</p>
             <div class="padding-tam2">
               <p ><span class="iconcolor glyphicon glyphicon-user" aria-hidden="true"></span> Proveedor: <span ng-bind="toUser.fullName"></span></p>
               <p ><span class="iconcolor glyphicon glyphicon-envelope"></span> Email: <span ng-bind="toUser.email"></span></p>
             <!--<p>Documento: <span ng-bind="toUser.dni"> </span></p>-->
-              <p><span class="iconcolor glyphicon glyphicon-calendar"></span> Fecha acordada: <time>{{ date | date : "dd/MM/y" }}
+              <p><span class="iconcolor glyphicon glyphicon-calendar"></span> Fecha acordada: <time>{{ dateConfirmation | date: "dd/MM/y"  }}
+              </time></p>
+              <p><span class="iconcolor glyphicon glyphicon-time"></span> Hora acordada: <time>{{ dateConfirmation | date: "h:mma"  }}
               </time></p>
               <p></span><span class="iconcolor glyphicon glyphicon-earphone"></span> Teléfono: <span ng-bind="toUser.phone"> </span></p>
             </div>

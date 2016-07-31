@@ -109,7 +109,7 @@ angular.module('dutymap')
            }
            UserResources.update(updateUser, function (response) {
              if($scope.updateUser.newPassword != undefined){
-               NotificationService.success('Tus datos han sido actualizados correctamente! Recuerda iniciar sesión la próxima con tu nueva contraseña.');
+               NotificationService.success('Tus datos han sido actualizados correctamente! Recuerda iniciar sesión la próxima vez con tu nueva contraseña.');
              }else{
                NotificationService.success('Tus datos han sido actualizados correctamente!');
              }

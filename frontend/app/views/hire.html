@@ -19,7 +19,7 @@
   <div ng-show="!confirm" class="col-md-12 padding-tam3">
     <!--Datos del usuario y acuerdos de fecha-->
     <div class="col-md-12">
-      <p class="text-center header-title">Contratar a <span ng-bind="toUser.fullName"></span></p>
+      <p class="text-center header-title"><b>Contratar a <span ng-bind="toUser.fullName"></span></b></p>
       <p class="text-center">
         <span class="header-subtitle" ng-repeat="aWork in works" ng-bind="aWork.name + ' ' "></span>
       </p>
@@ -28,38 +28,44 @@
     <div class="col-sm-9 col-md-9">
 
       <div class="col-md-12 padding-tam1" >
-          <p class="hire-description">Descripción del trabajo </p>
+          <p class="hire-description"><b> Descripción del trabajo </b></p>
           <p ng-bind="mainWork.description" class="padding-tam2"></p>
       </div>
 
       <div class="col-md-12 padding-tam1" >
-        <p class="hire-description">Lugar del trabajo</p>
+        <p class="hire-description"><b>Lugar del trabajo</b> </p>
         <p ng-if="mainWork.address != null" ng-bind="mainWork.address.street + ' ' + mainWork.address.number + ' - ' + mainWork.address.district.name" class="padding-tam2"></p>
         <p ng-if="mainWork.address == null" class="padding-tam2">Será el acordado con el proveedor</p>
       </div>
 
       <div class="col-md-12 padding-tam1 col-xs-12">
-          <p class="hire-description">¿Cual es tu problema?</p>
+          <p class="hire-description"><b>¿Cu&aacute;l es tu problema?</b></p>
         <div class="col-md-12">
           <textarea class="form-control" ng-model="textProblem" style="width:70%; color:black;"></textarea>
         </div>
       </div>
         <div class="col-md-12 col-xs-12 padding-tam5">
-          <p class="hire-description">El domicilio donde se concretara el trabajo:</p>
-          <input ng-model="domicilio" name="newdomicilio" style="width:50%;" id="newdomicilio" />
+          <p class="hire-description"><b>El domicilio donde se concretar&aacute; el trabajo:</b></p>
+          <div class="col-md-12">
+            <input ng-model="domicilio"  class="form-control" name="newdomicilio" style="width:50%;" id="newdomicilio" />
+          </div>
         </div>
         <div class="col-md-12 col-xs-12 padding-tam5">
-          <p class="hire-description">Elige que día y horario que quieres concretar el servicio</p>
-          <adm-dtp ng-model='date' full-data='date_details' options='{calType: "gregorian", format: "YYYY/MM/DD hh:mm", default: "today"}'  mindate="{{unixDate}}" >
-            <input type='text' ng-model='date' dtp-input />
-            <button dtp-open class="btn logo-color-bg ng-binding ng-scope">Calendario</button>
-          </adm-dtp>
+          <p class="hire-description" ><b>Elige qu&eacute; día y horario quieres concretar el servicio</b></p>
+          <div class="col-md-12">
+            <adm-dtp ng-model='date'  full-data='date_details' options='{calType: "gregorian", format: "YYYY/MM/DD hh:mm", default: "today"}'  mindate="{{unixDate}}" >
+              <input type='text'  ng-model='date' dtp-input />
+              <button dtp-open class="btn logo-color-bg ng-binding ng-scope">Calendario</button>
+            </adm-dtp>
+          </div>
         </div>
-
-      <div class="col-md-12 col-xs-12">
-        <small><i class="glyphicon glyphicon-warning-sign" style="color:red;"> </i> ACLARACIÓN : </small>
-        <small>Luego de confirmar la contratación puedes modificar la fecha y horario con el proveedor. </small>
-      </div>
+      <div class="has-error col-md-12 col-xs-12">
+        <div class="checkbox">
+          <label>
+            ACLARACIÓN : Luego de confirmar la contratación puedes modificar la fecha y horario con el proveedor.
+          </label>
+        </div>
+        </div>
     </div>
      <!--Confirmar servicio-->
     <div class="col-sm-3 col-xs-12 confirm-section">
@@ -70,14 +76,10 @@
       <p class="hire-data" style="text-align: center">Contrata su servicio</p>
       <p><span>Nombre : </span><span ng-bind="toUser.fullName"></span></p>
       <p><span>Servicio : </span><span ng-bind=" mainWork.name"></span></p>
-      <p><span><small><i class="	Try it
-glyphicon glyphicon-info-sign"> </i> Obtene mas informacion contratando este servicio</small></span></p>
+      <p><span><small><i class="glyphicon glyphicon-info-sign"> </i> Obtene mas informacion contratando este servicio</small></span></p>
       <div class="row hire-prices">
-        <div class="col-xs-6 col-md-8 hire-amount ">
-          <p class="">Precio por hora</p>
-        </div>
-        <div class="col-xs-6 col-md-4 ">
-          <p>Desde $<span ng-bind="mainWork.price"></span></p>
+        <div class="col-xs-12 col-md-12 text-center ">
+          <p>Desde <b>$<span ng-bind="mainWork.price"></span></b></p>
         </div>
       </div>
          <button type="submit" ng-click="confirmTransaction(transaction)" class="btn logo-color-bg confirm-button">Confirmar</button>

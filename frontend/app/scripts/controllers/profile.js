@@ -23,10 +23,11 @@ angular.module('dutymap')
             $scope.mainWork = $scope.works[0];
             $scope.today = new Date();
             $scope.work = {};
-
+            $scope.showJob =false;
             $scope.showSeccion= true;
 
             if($scope.mainWork != undefined || $scope.mainWork != null){
+                $scope.showJob=true;
                 $scope.work.details = $scope.mainWork.description;
                 $scope.work.uprice = $scope.mainWork.price;
                 $scope.work.name = $scope.mainWork.name;

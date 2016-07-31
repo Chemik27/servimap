@@ -202,7 +202,7 @@
                     </div>
                   </form>
 
-                  <form role="form" name="workForm"  ng-submit="updateWork()">
+                  <form  ng-show="showJob" role="form" name="workForm"  ng-submit="updateWork()">
                     <div class="row">
 
                       <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': workForm.name.$touched && workForm.name.$invalid, 'has-success' : workForm.name.$valid}"  >

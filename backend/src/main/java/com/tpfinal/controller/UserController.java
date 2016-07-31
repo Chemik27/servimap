@@ -39,7 +39,7 @@ public class UserController {
         return userService.createUser(gson.fromJson(user, UserDTO.class), file);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    @RequestMapping(method = RequestMethod.PUT, value = "/update")
     @ResponseStatus(HttpStatus.OK)
     public void updateProfile(@RequestBody UserDTO userDTO){
         logger.info("Actualizando user");

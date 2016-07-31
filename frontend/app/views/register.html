@@ -147,7 +147,7 @@
                                         <!-- Campo calle -->
                                         <div class="col-xs-12 col-sm-6 form-group bg-dangerr"  ng-class="{ 'has-error': userForm.street.$touched , 'has-success' : userForm.street.$valid}">
                                             <span>Calle</span>
-                                            <input type="text" name="street" ng-model="provider.street" class="form-control input-lg" ng-pattern="street" ng-required="true">
+                                            <input type="text" name="street" ng-model="provider.street" class="form-control input-lg" ng-required="true">
                                             <div class="help-block" ng-messages="userForm.street.$error" ng-if="userForm.street.$touched">
                                                 <p ng-message="required">Calle requerida.</p>
                                                 <p ng-message="pattern">Calle incorrecta.</p>
@@ -157,7 +157,7 @@
                                         <!-- Campo numero -->
                                         <div class="col-xs-12 col-sm-6 form-group bg-dangerr"  ng-class="{ 'has-error': userForm.number.$touched , 'has-success' : userForm.number.$valid}">
                                             <span>Altura</span>
-                                            <input type="text" name="number" ng-model="provider.number" class="form-control input-lg" ng-pattern="number" ng-required="true">
+                                            <input type="text" name="number" ng-model="provider.number" class="form-control input-lg" ng-pattern="onlyNumbers" ng-required="true">
                                             <div class="help-block" ng-messages="userForm.number.$error" ng-if="userForm.number.$touched">
                                                 <p ng-message="required">Altura requerida.</p>
                                                 <p ng-message="pattern">Altura incorrecta.</p>

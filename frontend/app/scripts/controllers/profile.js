@@ -9,8 +9,8 @@
  */
 angular.module('dutymap')
 
-  .controller('ProfileCtrl', ['$scope', '$http', 'UserResources','profileSelected', 'HireResources', 'NotificationService', '$route','$location','QualifyResources','$rootScope',
-      function ($scope, $http, UserResources, profileSelected, HireResources, NotificationService, $route,$location,QualifyResources,$rootScope)  {
+  .controller('ProfileCtrl', ['$scope', '$http', 'UserResources','profileSelected', 'HireResources', 'NotificationService', '$route','$location','QualifyResources','$rootScope', 'WorkResources',
+      function ($scope, $http, UserResources, profileSelected, HireResources, NotificationService, $route,$location,QualifyResources,$rootScope, WorkResources)  {
 
             $scope.profile = profileSelected;
             $scope.user = profileSelected.user;
@@ -22,9 +22,13 @@ angular.module('dutymap')
             $scope.works = profileSelected.works;
             $scope.mainWork = $scope.works[0];
             $scope.today = new Date();
-
+            $scope.work = {};
 
             $scope.showSeccion= true;
+
+            $scope.work.details = $scope.mainWork.description;
+            $scope.work.uprice = $scope.mainWork.price;
+            $scope.work.name = $scope.mainWork.name;
 
             if($scope.works==0){
                $scope.showSeccion=false;}
@@ -84,10 +88,10 @@ angular.module('dutymap')
               NotificationService.error('Ingrese las nuevas contraseñas.');
               return false;
             }
-           else if ($scope.updateUser.oldPassword != undefined && $scope.updateUser.oldPassword == $scope.updateUser.newPassword) {
-             NotificationService.error('La contraseña actual y la nueva son las mismas.');
-             return false;
-           }
+           //else if ($scope.updateUser.oldPassword != undefined && $scope.updateUser.oldPassword == $scope.updateUser.newPassword) {
+           //  NotificationService.error('La contraseña actual y la nueva son las mismas.');
+           //  return false;
+           //}
             else {
 
              var updateUser = {
@@ -96,6 +100,8 @@ angular.module('dutymap')
                'surname': $scope.updateUser.surname == null ? $scope.user.surname : $scope.updateUser.surname,
                'email': $scope.updateUser.email == null ? $scope.user.email : $scope.updateUser.email,
                'phone': $scope.updateUser.telephone == null ? $scope.user.phone : $scope.updateUser.telephone,
+               'street': $scope.updateUser.street,
+               'number': $scope.updateUser.number,
                'oldPassword': $scope.updateUser.oldPassword,
                'password': $scope.updateUser.newPassword
              };
@@ -113,6 +119,24 @@ angular.module('dutymap')
              NotificationService.error('Ha ocurrido un error inesperado');
            })
          };
+
+          $scope.updateWork = function(){
+            var updatedWork = {
+              'name': $scope.work.name,
+              'description' : $scope.work.details,
+              'price': $scope.work.uprice,
+              'idUser' : $rootScope.idUser
+            };
+            console.log(updatedWork);
+
+            WorkResources.update(updatedWork, function (response) {
+                NotificationService.success('Tus datos han sido actualizados correctamente!');
+                $route.reload();
+
+            }, function (error) {
+              NotificationService.error('Ha ocurrido un error inesperado');
+            })
+          };
 
           $scope.rejectService = function(idTx){
               HireResources.rejectTransaction(idTx, function(){

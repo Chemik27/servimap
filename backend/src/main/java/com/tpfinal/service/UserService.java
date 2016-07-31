@@ -127,6 +127,9 @@ public class UserService {
            throw new BadRequestException("La contraseña actual no coincide");
         }
 
+        Address address = user.getIdAddress();
+        address.setStreet(updateUser.getStreet());
+        address.setNumber(updateUser.getNumber());
         user.setName(updateUser.getName());
         user.setSurname(updateUser.getSurname());
         user.setEmail(updateUser.getEmail());

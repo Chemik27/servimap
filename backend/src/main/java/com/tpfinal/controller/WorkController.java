@@ -52,4 +52,12 @@ public class WorkController {
         logger.info("Creando trabajo: " + workDTO.getName());
         workService.createFromDTO(workDTO);
     }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/update")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateProfile(@RequestBody WorkDTO workDTO){
+        logger.info("Actualizando work");
+        workService.updateWork(workDTO);
+
+    }
 }

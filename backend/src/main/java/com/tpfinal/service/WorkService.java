@@ -64,5 +64,13 @@ public class WorkService {
         return workRepository.save(work);
     }
 
+    public void updateWork(WorkDTO workDTO) {
+        Work work = workRepository.findByUserIdUser(workDTO.getIdUser());
+        work.setName(workDTO.getName());
+        work.setPrice(workDTO.getPrice());
+        work.setDescription(workDTO.getDescription());
+        workRepository.save(work);
+    }
+
 //    public List<Work> findByDescriptionContaining(String word){ return workRepository.findByDescriptionContaining(word); }
 }

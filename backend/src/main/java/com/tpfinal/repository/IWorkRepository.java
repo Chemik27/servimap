@@ -20,5 +20,7 @@ public interface IWorkRepository extends JpaRepository<Work, Long> {
 
     public Page<Work> findByAddressDistrictIdDistrict(Long idDistrict, Pageable pageable);
 
+    public Work findByUserIdUser(Long idUser);
+
 //    public List<Work> findByDescriptionContaining(String word);
 }

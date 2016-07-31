@@ -144,7 +144,25 @@
                       </div>
                     </div>
 
-                    <div class="row"></div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': userForm.street.$touched && userForm.street.$invalid, 'has-success' : userForm.street.$valid && userForm.street.$touched  }"  >
+                        <span>Calle</span>
+                        <input type="text" name="street"  class="form-control input-lg" ng-minlength="2" ng-model="updateUser.street" ng-value="user.idAddress.street"  ng-pattern="onlyChar"  >
+                        <div class="help-block" ng-messages="userForm.surName.$error" ng-if="userForm.surName.$touched">
+                          <p ng-message="minlength">La calle es inválida.</p>
+                          <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
+                        </div>
+                      </div>
+
+                      <div class="col-xs-12 col-sm-6 form-group" ng-class="{ 'has-error': userForm.number.$touched && userForm.number.$invalid, 'has-success' : userForm.number.$valid && userForm.number.$touched }">
+                        <span>Altura</span>
+
+                        <input type="text" name="number" ng-model="updateUser.number" class="form-control input-lg" ng-pattern="onlyNumbers" ng-value="user.idAddress.number">
+                        <div class="help-block" ng-messages="userForm.number.$error" ng-if="userForm.number.$touched">
+                          <p ng-message="pattern">Sólo numeros.</p>
+                        </div>
+                      </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-xs-12 col-md-4 form-group">
@@ -177,10 +195,49 @@
                         </div>
 
                         <div class="col-md-12 text-center">
-                          <button type="submit" class="btn  logo-color-bg profile-btn">Guardar cambios</button>
+                          <button type="submit" class="btn  logo-color-bg profile-btn">Guardar perfil</button>
                           <br>
                           <br>
                         </div>
+                    </div>
+                  </form>
+
+                  <form role="form" name="workForm"  ng-submit="updateWork()">
+                    <div class="row">
+
+                      <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': workForm.name.$touched && workForm.name.$invalid, 'has-success' : workForm.name.$valid}"  >
+                        <span>Nombre</span>
+                        <input type="text" name="name" ng-value="mainWork.name" class="form-control input-lg" ng-minlength="2" ng-model="work.name"  ng-pattern="onlyChar" ng-required="true" >
+                        <div class="help-block" ng-messages="workForm.name.$error" ng-if="workForm.name.$touched">
+                          <p ng-message="minlength">El nombre es muy corto.</p>
+                          <p ng-message="required">Ingrese un nombre</p>
+                        </div>
+                      </div>
+
+                      <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': workForm.price.$touched && workForm.price.$invalid, 'has-success' : workForm.price.$valid}"  >
+                        <span>Precio desde</span>
+                        <input type="text" name="price" ng-value="mainWork.price"  class="form-control input-lg" ng-model="work.uprice"  ng-pattern="onlyNumbers" ng-required="true" >
+                        <div class="help-block" ng-messages="workForm.price.$error" ng-if="workForm.price.$touched">
+                          <p ng-message="required">Ingrese un precio</p>
+                          <p ng-message="pattern">No se admiten letras ni caracteres especiales.</p>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 form-group " ng-class="{ 'has-error': workForm.description.$touched && workForm.description.$invalid, 'has-success' : workForm.description.$valid}"  >
+                        <span>Descripción (200 caracteres)</span>
+                        <textarea name="description" maxlength="200" class="form-control input-lg" rows="4" ng-model="work.details" ng-required="true"> </textarea>
+                        <div class="help-block" ng-messages="workForm.description.$error" ng-if="workForm.description.$touched">
+                          <p ng-message="required">Ingrese una descripción</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                      <button type="submit" class="btn  logo-color-bg profile-btn">Guardar trabajo</button>
+                      <br>
+                      <br>
                     </div>
                   </form>
 

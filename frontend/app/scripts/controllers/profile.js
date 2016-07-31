@@ -26,9 +26,11 @@ angular.module('dutymap')
 
             $scope.showSeccion= true;
 
-            $scope.work.details = $scope.mainWork.description;
-            $scope.work.uprice = $scope.mainWork.price;
-            $scope.work.name = $scope.mainWork.name;
+            if($scope.mainWork != undefined || $scope.mainWork != null){
+                $scope.work.details = $scope.mainWork.description;
+                $scope.work.uprice = $scope.mainWork.price;
+                $scope.work.name = $scope.mainWork.name;
+            }
 
             if($scope.works==0){
                $scope.showSeccion=false;}

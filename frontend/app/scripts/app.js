@@ -72,13 +72,8 @@ angular
           return ProfileResources.get($route.current.pathParams).$promise;}]}
       })
       .when('/passwordRecovery', {
-        templateUrl: 'views/passwordRecovery.html'
-      })
-      .when('/password/:email', {
-        templateUrl: '/',
-        controller: 'HelperCtrl',
-        resolve: {responsePassword: ['$route','LoginResources', function($route, LoginResources) {
-          return LoginResources.get($route.current.pathParams).$promise;}]}
+        templateUrl: 'views/passwordRecovery.html',
+        controller: 'HelperCtrl'
       })
       .otherwise({
         redirectTo: '/'

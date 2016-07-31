@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('dutymap')
-    .controller('HelperCtrl', ['$scope', '$routeParams', 'LoginResources', 'NotificationService', 'passwordRecovered',
-    function ($scope, $routeParams, LoginResources, NotificationService, responsePassword) {
-        console.log(responsePassword.content  );
-        console.log("Helper");
-        // LoginResources.get($routeParams.email, function (response) {
-        //     NotificationService.success('lalala')
-        // }, function (error) {
-        //     NotificationService.error('lalala')
-        // });
+    .controller('HelperCtrl', ['$scope', '$routeParams', 'LoginResources', 'NotificationService',
+    function ($scope, $routeParams, LoginResources, NotificationService) {
 
+          $scope.recover = function() {
+              LoginResources.recover($scope.email, function (response) {
+                NotificationService.success('lololo');
+              }, function (error) {
+                NotificationService.error('lalala');
+              });
+          }
     }]);

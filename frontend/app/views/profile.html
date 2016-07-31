@@ -276,8 +276,8 @@
                     <span ng-show="t.state == 1" class="label label-warning">Solicitud enviada</span>
                     <span ng-show="t.state == 2" class="label label-success">Servicio aceptado</span>
                     <span ng-show="t.state == 3" class="label label-danger">Servicio rechazado</span>
-                    <span ng-show="t.state == 4" class="label label-warning">Pendiente de calificacion</span>
-                    <span ng-show="t.state == 5" class="label label-primary">Calificado</span>
+                    <span ng-show="t.state == 4 && root.idUser == t.toUser || t.state == 5 && root.idUser != t.toUser " class="label label-warning">Pendiente de calificacion</span>
+                    <span ng-show="t.state == 5 && root.idUser == t.toUser ||t.state == 6    " class="label label-primary">Calificado</span>
                     <span ng-show="t.state == 6 || t.state==5" class="label label-primary">Servicio finalizado</span>
                   </div>
                 </div>
@@ -346,7 +346,8 @@
                         <span ng-show="history.state == 1" class="label label-warning">Solicitud pendiente</span>
                         <span ng-show="history.state == 2" class="label label-success">Servicio aceptado</span>
                         <span ng-show="history.state == 3" class="label label-danger">Servicio rechazado</span>
-                        <span ng-show="history.state == 5" class="label label-primary">Calificado</span>
+                        <span  ng-show="history.state == 4" class="label label-warning">Pendiente de calificacion</span>
+                        <span ng-show="history.state == 5 || history.state == 6" class="label label-primary">Calificado</span>
                         <span ng-show="history.state == 5 || history.state == 6" class="label label-primary">Servicio finalizado</span>
                       </div>
                     </div>

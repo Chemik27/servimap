@@ -19,27 +19,22 @@ import java.util.Map;
 @RequestMapping("/login")
 public class LoginController {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-
-    @Autowired
-    UserService userService;
-
-    @RequestMapping(method = RequestMethod.GET, value = {"/recoverPassword/{email}"})
+    @RequestMapping(method = RequestMethod.POST, value = {"/recoverPassword"})
     @ResponseStatus(HttpStatus.OK)
-        public Map<String, Object> recoverPassword(@PathVariable String email){
+    public Map<String, Object> recoverPassword(@RequestBody String email){
         System.out.println("Controller login" + email);
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("email", new String("asd"));
         return result;
     }
 
-    @RequestMapping(method= RequestMethod.POST, value = "/changePassword/{user}")
-    @ResponseStatus(HttpStatus.OK)
-    public User changePassword(@PathVariable User user){
-        logger.info("Cambiando password del usuario: ");
-        System.out.println("Cambiando password del usuario");
-        userService.changePassword(user);
-
-        return new User();
-    }
+//    @RequestMapping(method= RequestMethod.POST, value = "/changePassword/{user}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public User changePassword(@PathVariable User user){
+//        logger.info("Cambiando password del usuario: ");
+//        System.out.println("Cambiando password del usuario");
+//        userService.changePassword(user);
+//
+//        return new User();
+//    }
 }

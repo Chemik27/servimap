@@ -18,13 +18,13 @@ public class User extends BaseEntity {
     private String email;
     private String phone;
     private Boolean premium;
-    private Long idAddress;
+    private Address idAddress;
     private byte[] photo;
 
     //Transient values
     private String fullName;
 
-    public User(Long idUser, String name, String surname, String password, String type, String email, String phone, Boolean premium, Long idAddress) {
+    public User(Long idUser, String name, String surname, String password, String type, String email, String phone, Boolean premium, Address idAddress) {
         this.idUser = idUser;
         this.name = name;
         this.surname = surname;
@@ -113,12 +113,13 @@ public class User extends BaseEntity {
         this.premium = premium;
     }
 
-    @Column(name = "id_address")
-    public Long getIdAddress() {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_address", nullable = false)
+    public Address getIdAddress() {
         return idAddress;
     }
 
-    public void setIdAddress(Long idAddress) {
+    public void setIdAddress(Address idAddress) {
         this.idAddress = idAddress;
     }
 

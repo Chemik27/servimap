@@ -32,7 +32,7 @@ public class WorkService {
 //    }
 
     public Page<Work> findByNameContaining(String name){
-        return workRepository.findByNameContaining(name, new PageRequest(0,ITEMS_PER_PAGE));
+        return workRepository.findByNameContainingOrderByUserPremiumDesc(name, new PageRequest(0,ITEMS_PER_PAGE));
     }
 
     public List<Work> findByIdUser(Long idUser){
@@ -40,11 +40,11 @@ public class WorkService {
     }
 
     public Page<Work> findByCategory(Long idCategory){
-        return workRepository.findByCategoryIdCategory(idCategory, new PageRequest(0,ITEMS_PER_PAGE));
+        return workRepository.findByCategoryIdCategoryOrderByUserPremiumDesc(idCategory, new PageRequest(0,ITEMS_PER_PAGE));
     }
 
     public Page<Work> findByDistrict(Long idDistrict){
-        return workRepository.findByAddressDistrictIdDistrict(idDistrict, new PageRequest(0,ITEMS_PER_PAGE));
+        return workRepository.findByAddressDistrictIdDistrictOrderByUserPremiumDesc(idDistrict, new PageRequest(0,ITEMS_PER_PAGE));
     }
 
     public Work createFromDTO(WorkDTO workDTO) {
@@ -62,6 +62,14 @@ public class WorkService {
         work.setAddress(address);
 
         return workRepository.save(work);
+    }
+
+    public void updateWork(WorkDTO workDTO) {
+        Work work = workRepository.findByUserIdUser(workDTO.getIdUser());
+        work.setName(workDTO.getName());
+        work.setPrice(workDTO.getPrice());
+        work.setDescription(workDTO.getDescription());
+        workRepository.save(work);
     }
 
 //    public List<Work> findByDescriptionContaining(String word){ return workRepository.findByDescriptionContaining(word); }

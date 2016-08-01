@@ -7,24 +7,26 @@ import java.util.Date;
 @Table(name = "transaction")
 public class Transaction {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_transaction", nullable = false, updatable = false)
-
     private Long idTransaction;
     private Date creationDate;
     private Long toUser; // proveedor
-    private Long fromUser; //usuario
+    private User fromUser; //usuario
     private Date agreedDate;
-    private Boolean done;
+    private Long state;
     private Work work;
+    private String textProblem;
+    private String address;
 
-    public Transaction(Date creationDate, Long toUser, Long fromUser,Date agreedDate, Work work) {
+    public Transaction(Date creationDate, Long toUser, User fromUser,Date agreedDate,Long state, Work work,String address) {
+
         this.creationDate = creationDate;
         this.toUser = toUser;
         this.fromUser = fromUser;
         this.agreedDate= agreedDate;
+        this.state = state;
         this.work = work;
+        this.textProblem = textProblem;
+        this.address = address;
     }
 
     public Transaction() {
@@ -59,12 +61,13 @@ public class Transaction {
         this.toUser = toUser;
     }
 
-    @Column(name = "from_user")
-    public Long getFromUser() {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "from_user", nullable = false)
+    public User getFromUser() {
         return fromUser;
     }
 
-    public void setFromUser(Long fromUser) {
+    public void setFromUser(User fromUser) {
         this.fromUser = fromUser;
     }
 
@@ -77,13 +80,13 @@ public class Transaction {
         this.agreedDate = agreedDate;
     }
 
-    @Column(name="done")
-    public Boolean getDone() {
-        return done;
+    @Column(name="state")
+    public Long getState() {
+        return state;
     }
 
-    public void setDone(Boolean done) {
-        this.done = done;
+    public void setState(Long state) {
+        this.state = state;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -94,5 +97,23 @@ public class Transaction {
 
     public void setWork(Work work) {
         this.work = work;
+    }
+
+    @Column(name="address")
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Column(name="text_problem")
+    public String getTextProblem() {
+        return textProblem;
+    }
+
+    public void setTextProblem(String textProblem) {
+        this.textProblem = textProblem;
     }
 }

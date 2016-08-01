@@ -11,7 +11,6 @@
   .module-main{
     background-color: $background-blue-side;
     color: lightgrey;
-    color: lightgrey;
     flex:1;
     display: table-cell;
   }
@@ -51,6 +50,11 @@
 
 }
 
+.prop{
+  max-width:100%;
+  max-height:100%;
+}
+
 .img-circle{
   width:120px;
   height: 120px;
@@ -82,7 +86,6 @@
 .gold{
   color: gold;
 }
-
 
 .nav-tabs> li{
   cursor:pointer;
@@ -123,4 +126,32 @@
 }
 .blue{
   color: #2F3A4C;
+}
+
+.btn-agreement{
+  color: white;
+  background-color: #01867C;
+  transition: all 0.5s ease;
+}
+
+
+.btn-agreement:hover{
+  color: white;
+  background-color: #03AB9E;
+  transition: all 0.5s ease;
+
+}
+
+.active-works{
+  width: 200px;
+  border: 5px solid #E5E5E5;
+  background-color: white;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.icon-works{
+  width: 70px;
+  heigth: 70px;
 }

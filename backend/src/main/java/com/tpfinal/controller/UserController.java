@@ -1,13 +1,9 @@
 package com.tpfinal.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.Gson;
 import com.tpfinal.domain.User;
 import com.tpfinal.dto.UserDTO;
 import com.tpfinal.service.UserService;
-import com.tpfinal.util.UtilDutymap;
-import jdk.nashorn.internal.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.security.Principal;
 
 @RestController
@@ -40,4 +35,11 @@ public class UserController {
         return userService.createUser(gson.fromJson(user, UserDTO.class), file);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/update")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateProfile(@RequestBody UserDTO userDTO){
+        logger.info("Actualizando user");
+        userService.updateProfile(userDTO);
+
+    }
 }

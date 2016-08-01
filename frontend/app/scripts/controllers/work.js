@@ -13,8 +13,8 @@ angular.module('dutymap')
 
             $scope.worksFound = works.content;
             $scope.workerLength = $scope.worksFound.length;
-            $scope.bestWorkers = _.first($scope.worksFound, 1);
-            $scope.otherWorkers = _.last($scope.worksFound, $scope.workerLength - 1);
+            $scope.bestWorkers = _.first($scope.worksFound, 3);
+            $scope.otherWorkers = _.last($scope.worksFound, $scope.workerLength - 3);
 
 
             $scope.districts = [
@@ -55,8 +55,8 @@ angular.module('dutymap')
                 WorkResources.searchByDistrict({id:id}, function(response){
                     $scope.worksFound = response.content;
                     $scope.workerLength = $scope.worksFound.length;
-                    $scope.bestWorkers = _.first($scope.worksFound, 1);
-                    $scope.otherWorkers = _.last($scope.worksFound, $scope.workerLength - 1);
+                  $scope.bestWorkers = _.first($scope.worksFound, 3);
+                  $scope.otherWorkers = _.last($scope.worksFound, $scope.workerLength - 3);
                 },function(error){
                     console.log(error);
                     NotificationService.error("No se pudo realizar la busqueda");
@@ -67,8 +67,8 @@ angular.module('dutymap')
                 WorkResources.searchByCategory({id:id}, function(response){
                     $scope.worksFound = response.content;
                     $scope.workerLength = $scope.worksFound.length;
-                    $scope.bestWorkers = _.first($scope.worksFound, 1);
-                    $scope.otherWorkers = _.last($scope.worksFound, $scope.workerLength - 1);
+                    $scope.bestWorkers = _.first($scope.worksFound, 3);
+                    $scope.otherWorkers = _.last($scope.worksFound, $scope.workerLength - 3);
                 },function(error){
                     console.log(error);
                     NotificationService.error("No se pudo realizar la busqueda");

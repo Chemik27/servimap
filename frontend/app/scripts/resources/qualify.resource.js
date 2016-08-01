@@ -5,6 +5,7 @@
 angular.module('dutymap')
   .factory('QualifyResources', ['$resource',function QualifyResources($resource) {
     return $resource('api/qualify/:idtransaction', {idtransaction:'@idtransaction'}, {
-      save:{method: "POST", url: "api/qualify/save"}
+      save:{method: "POST", url: "api/qualify/save"},
+      qualifyTransaction: {method:'PUT', url: 'api/qualify/proveedor/:idTrx'}
     });
   }]);

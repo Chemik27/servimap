@@ -3,7 +3,7 @@
  */
 angular.module('dutymap')
   .controller('HireCtrl', ['$scope', '$http' ,'$resource','profileSelected','$rootScope','NotificationService','HireResources', 'NgMap','$location',
-    function ($scope, $http, $resource, profileSelected,$rootScope,NotificationService,HireResources, NgMap, $location) {
+    function ($scope, $http, $resource, profileSelected,$rootScope,NotificationService,HireResources, NgMap) {
 
       //Elimino estilos de modal manualmente cuando redirijo
       $scope.removeModal= function(){
@@ -20,15 +20,31 @@ angular.module('dutymap')
        $scope.mainWork = $scope.works[0];
 
 
-      $scope.today=new Date();
-      $scope.time = $scope.transactions.agreedDate;
-      $scope.confirm=false;
+       $scope.today=new Date();
+       $scope.time = $scope.transactions.agreedDate;
+       $scope.confirm=false;
+       $scope.unixDate = new Date().getTime();
 
 
       $scope.confirmTransaction = function(){
+        $scope.dateConfirmation = new Date($scope.date).getTime();
+
         if($scope.date == undefined)
         {
           NotificationService.error("Debe seleccionar la fecha en la que se concrete el servicio");
+          return false;
+        }
+        if($scope.textProblem == undefined){
+          NotificationService.error("Debe escribir el problema para ayudar al proveedor a decidir si está apto para realizar el trabajo.");
+          return false;
+        }
+
+
+
+        if($scope.dateConfirmation  < Date.now()){
+
+          $scope.dateConfirmation = Date.now();
+          NotificationService.error("No puede ingresar una fecha pasada");
           return false;
         }
 
@@ -46,7 +62,10 @@ angular.module('dutymap')
             'fromUser': $rootScope.idUser,
             'agreedDate': new Date(time),
             'done':false,
-            'idWork': $scope.mainWork.idWork
+            'idWork': $scope.mainWork.idWork,
+            'textProblem':$scope.textProblem,
+            'address': $scope.domicilio
+
           }, function(response){
             $scope.confirm=true;
           },function(error){

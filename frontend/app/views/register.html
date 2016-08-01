@@ -1,7 +1,13 @@
 <navbar-secondary></navbar-secondary>
     <section class="register">
+
+      <!--<div class="text-center" ng-show="user.type == proveedor || user.type == comprador">-->
+          <!--<h3 class="text-dutymap">Debes cerrar sesión para registrar un usuario</h3>-->
+          <!--<button class="btn logo-color-bg" ng-click="logout()">Cerrar sesión</button>-->
+        <!--<br><br>-->
+      <!--</div>-->
         <div class="container-fluid">
-            <div ng-hide="userRegister || userProveedor || createWork || confirmation">
+            <div ng-hide="userRegister || userProveedor || createWork || confirmation || $root.idUser != null">
                 <div class="row">
                   <div class="col-md-12">
                     <h1 class="text-center">¿Qué estás buscando?</h1>
@@ -30,33 +36,35 @@
                     <div class="modal-header">
                         <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
                         <div class="col-md-12 modal-title modal-label col-md-12">
-                        <button class="btn button-1 logo-color-bg col-md-1" ng-click="back()"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
-                          <div class=" col-md-9 tex-center col-md-offset-1 text-center">
+                          <div class="col-md-2">
+                            <button class="btn button-1 logo-color-bg col-md-1" ng-click="back()"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
+                          </div>
+                          <div class=" col-md-9 tex-center">
                             <div class="col-md-12">
                               <div class="col-md-3" ng-show="userProveedor">
                                 <a href="" type="button" class="btn btn-primary btn-circle">1</a>
                                 <hr/>
-                                <div class="col-md-12">  <small><b>Registrate</b></small></div>
+                                <div class="col-md-12">  <small><b>Regístrate</b></small></div>
                               </div>
                               <div class="col-md-3 col-md-offset-2" ng-show="userRegister">
                                 <a href="" type="button" class="btn btn-primary btn-circle">1</a>
                                 <hr/>
-                                <div class="col-md-12">  <small><b>Registrate</b></small></div>
+                                <div class="col-md-12">  <small><b>Regístrate</b></small></div>
                               </div>
                               <div class="col-md-4 text-center" ng-show="userProveedor">
                                 <a href="" type="button" class="btn btn-primary btn-circle" disabled="disabled" >2</a>
                                 <hr/>
-                                <div class="col-md-12" ><small>Carga tu trabajo</small></div>
+                                <div class="col-md-12" ><small>Cargá tu trabajo</small></div>
                               </div>
                               <div class="col-md-4" ng-show="userRegister">
                                 <a href="" type="button" class="btn btn-primary btn-circle" disabled="disabled">2</a>
                                 <hr/>
-                                <div class="col-md-12"> <small>Confirmacion</small></div>
+                                <div class="col-md-12"> <small>Confirmación</small></div>
                               </div>
                               <div class="col-md-4" ng-show="userProveedor">
                                 <a href="" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
                                 <hr/>
-                                <div class="col-md-12"> <small>Confirmacion</small></div>
+                                <div class="col-md-12"> <small>Confirmación</small></div>
                               </div>
                             </div>
                           </div>
@@ -69,7 +77,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                                 <!-- Formulario -->
-                                <form role="form" name="userForm"  ng-submit="saveUser()" ng-model-options="{ updateOn: 'blur' }">
+                                <form role="form" name="userForm" ng-hide="$root.idUser != null " ng-submit="saveUser()" ng-model-options="{ updateOn: 'blur' }">
                                     <h3><b>Regístrate como  {{userRegister == true ? "usuario" : "proveedor" }} gratis!</b> <div class="small"><h4>Por favor, completa los siguientes campos.</h4></div></h3>
                                     <div class="row">
                                         <!-- Campo nombre <-->
@@ -139,7 +147,7 @@
                                         <!-- Campo calle -->
                                         <div class="col-xs-12 col-sm-6 form-group bg-dangerr"  ng-class="{ 'has-error': userForm.street.$touched , 'has-success' : userForm.street.$valid}">
                                             <span>Calle</span>
-                                            <input type="text" name="street" ng-model="provider.street" class="form-control input-lg" ng-pattern="street" ng-required="true">
+                                            <input type="text" name="street" ng-model="provider.street" class="form-control input-lg" ng-required="true">
                                             <div class="help-block" ng-messages="userForm.street.$error" ng-if="userForm.street.$touched">
                                                 <p ng-message="required">Calle requerida.</p>
                                                 <p ng-message="pattern">Calle incorrecta.</p>
@@ -149,7 +157,7 @@
                                         <!-- Campo numero -->
                                         <div class="col-xs-12 col-sm-6 form-group bg-dangerr"  ng-class="{ 'has-error': userForm.number.$touched , 'has-success' : userForm.number.$valid}">
                                             <span>Altura</span>
-                                            <input type="text" name="number" ng-model="provider.number" class="form-control input-lg" ng-pattern="number" ng-required="true">
+                                            <input type="text" name="number" ng-model="provider.number" class="form-control input-lg" ng-pattern="onlyNumbers" ng-required="true">
                                             <div class="help-block" ng-messages="userForm.number.$error" ng-if="userForm.number.$touched">
                                                 <p ng-message="required">Altura requerida.</p>
                                                 <p ng-message="pattern">Altura incorrecta.</p>
@@ -198,17 +206,28 @@
                                     </div>
 
                                     <div class="row">
-                                          <!-- Checkbox terminos y condiciones <-->
-                                          <div class="col-xs-12 col-sm-8 col-md-12">
-                                              <span class="button-checkbox">
-                                                  <input type="checkbox" ng-model-options="{ updateOn: 'click' }" ng-model="provider.accept" value="Acepto">Acepto <a href="#/terminos" target="_blank"> Términos y condiciones</a>
-                                              </span>
-                                          </div>
+                                        <!-- Checkbox terminos y condiciones <-->
+
+                                        <div class="col-xs-12 col-sm-6 col-md-6">
+                                            <no-captcha
+                                                g-recaptcha-response="validUser"
+                                                theme='light'
+                                                control="noCaptchaControl"
+                                                site-key="6LeSDiYTAAAAABQruX0OSfDkNFLVOsRzuF3s3QKU">
+                                            </no-captcha>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-6 col-md-6">
+                                            <span class="button-checkbox">
+                                                <input type="checkbox" ng-model-options="{ updateOn: 'click' }" ng-model="provider.accept" value="Acepto">Acepto <a href="#/terminos" target="_blank"> Términos y condiciones</a>
+                                            </span>
+                                        </div>
+
                                     </div>
 
                                     <div class="row">
                                         <br>
-                                        <div class="col-xs-12"><button type="submit" ng-disabled="userForm.$invalid || !provider.accept" class="btn button-1 logo-color-bg btn-block btn-lg center">Registrarse</button></div>
+                                        <div class="col-xs-12"><button type="submit" ng-disabled="userForm.$invalid || !provider.accept || validUser == ''" class="btn button-1 logo-color-bg btn-block btn-lg center">Registrarse</button></div>
                                     </div>
                                       <!--<div class="col-md-12">-->
                                         <!--<h3 class="text-center ">O registrate con <a class="btn btn-fb" href="">Facebook</a></h3>-->
@@ -221,28 +240,30 @@
             </div>
 
             <!--Ventana Nuevo trabajo -->
-            <div ng-show="createWork && !confirmation">
+            <div ng-show="createWork && !confirmation || $root.idUser != null">
                 <div>
                     <div class="modal-header">
                         <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
-                      <div class="col-md-12 modal-title modal-label col-md-12">
+                      <div class="col-md-12 modal-title modal-label col-md-12" ng-hide="$root.idUser != null">
+                        <div class="col-md-2">
                         <button class="btn button-1 logo-color-bg col-md-1" ng-click="back()"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
-                        <div class=" col-md-9 tex-center col-md-offset-1 text-center">
+                        </div>
+                        <div class=" col-md-9 tex-center">
                           <div class="col-md-12">
                             <div class="col-md-3">
                               <a href="" type="button" class="btn btn-primary btn-circle">1</a>
                               <hr/>
-                              <div class="col-md-12">  <small>Registrate</small></div>
+                              <div class="col-md-12">  <small>Regístrate</small></div>
                             </div>
                             <div class="col-md-4 text-center" >
                               <a href="" type="button" class="btn btn-primary btn-circle" >2</a>
                               <hr/>
-                              <div class="col-md-12" ><small><b>Carga tu trabajo</b></small></div>
+                              <div class="col-md-12" ><small><b>Cargá tu trabajo</b></small></div>
                             </div>
                             <div class="col-md-4">
                               <a href="" type="button" class="btn btn-primary btn-circle" disabled="disabled">3</a>
                               <hr/>
-                              <div class="col-md-12"> <small>Confirmacion</small></div>
+                              <div class="col-md-12"> <small>Confirmación</small></div>
                             </div>
                           </div>
                         </div>
@@ -254,13 +275,13 @@
                             <!--</div>-->
                         <!--</div>-->
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" ng-hide="confirmation ">
                         <div class="row">
                             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                                 <!-- Formulario workForm -->
                                 <form role="form" name="workForm"  ng-submit="saveWork()" ng-model-options="{ updateOn: 'blur' }">
                                   <!--<h4 class="modal-title modal-label"> Cuéntanos de tu trabajo</h4>-->
-                                    <h3><b>Házte conocido!</b> <div class="small"><h4>Por favor, completa los siguientes campos de información laboral.</h4></div></h3>
+                                    <h3><b ng-show="$root.idUser == null">Házte conocido!</b><b ng-show="$root.idUser != null">Agrega un servicio!</b> <div class="small"><h4>Por favor, completa los siguientes campos de información laboral.</h4></div></h3>
 
                                     <div class="row">
                                         <!-- Campo categoria -->
@@ -300,7 +321,7 @@
                                     <div class="row">
                                         <!-- Campo precio <-->
                                         <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': workForm.price.$touched && workForm.price.$invalid, 'has-success' : workForm.price.$valid}"  >
-                                            <span>Precio {{replicate}}</span>
+                                            <span>Precio desde</span>
                                             <input type="text" name="price"  class="form-control input-lg" ng-model="work.price"  ng-pattern="onlyNumbers" ng-required="true" >
                                             <div class="help-block" ng-messages="workForm.price.$error" ng-if="workForm.price.$touched">
                                                 <p ng-message="required">Ingrese un precio</p>
@@ -308,7 +329,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-xs-12 col-sm-6 form-group" ng-hide="replicate == '3'">
+                                        <div class="col-xs-12 col-sm-6 form-group">
                                             <span>Localidad laboral</span>
                                             <select class="form-control input-lg" name="district" ng-model="replicate" required>
                                                 <option value="">Seleccione una</option>
@@ -318,15 +339,18 @@
                                             </select>
                                         </div>
 
-                                        <!-- Campo localidad -->
-                                        <div class="col-xs-12 col-sm-6 form-group" ng-show="replicate == '3'">
-                                            <span>Localidad laboral</span>
-                                            <select class="form-control input-lg" name="district" ng-model="work.district" ng-options="zona.name for zona in zonas track by zona.id">
-                                                <option value="">Seleccione una</option>
-                                            </select>
-                                        </div>
+
                                     </div>
 
+                                    <div class="row" ng-show="replicate  == '3'">
+                                      <!-- Campo localidad -->
+                                      <div class="col-xs-12 col-sm-6 form-group" ng-show="replicate == '3'">
+                                        <span>Localidad laboral</span>
+                                        <select class="form-control input-lg" name="district" ng-model="work.district" ng-options="zona.name for zona in zonas track by zona.id">
+                                          <option value="">Seleccione una</option>
+                                        </select>
+                                      </div>
+                                    </div>
                                     <div class="row" ng-show="replicate  == '3'">
                                         <!-- Campo calle -->
                                         <div class="col-xs-12 col-sm-6 form-group bg-dangerr"  ng-class="{ 'has-error': workForm.street.$invalid}">
@@ -375,31 +399,33 @@
             </div>
 
            <div ng-show="confirmation">
-             <div class="modal-header">
+             <div class="modal-header" ng-hide ="$root.idUser != null">
                <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
                <div class="col-md-12 modal-title modal-label col-md-12">
+                 <div class="col-md-2">
                  <button class="btn button-1 logo-color-bg col-md-1" ng-click="back()"><i class="glyphicon glyphicon-share-alt">  </i> Volver</button>
-                 <div class=" col-md-9 tex-center col-md-offset-1 text-center">
+                  </div>
+                 <div class=" col-md-9 text-center">
                    <div class="col-md-12">
                      <div class="col-md-3" ng-show="userProveedor">
                        <a href="" type="button" class="btn btn-primary btn-circle">1</a>
                        <hr/>
-                       <div class="col-md-12">  <small>Registrate</small></div>
+                       <div class="col-md-12">  <small>Regístrate</small></div>
                      </div>
                      <div class="col-md-3 col-md-offset-2" ng-show="userRegister">
                        <a href="" type="button" class="btn btn-primary btn-circle">1</a>
                        <hr/>
-                       <div class="col-md-12">  <small>Registrate </small></div>
+                       <div class="col-md-12">  <small>Regístrate </small></div>
                      </div>
                      <div class="col-md-4 text-center" ng-show="userProveedor">
                        <a href="" type="button" class="btn btn-primary btn-circle"  >2</a>
                        <hr/>
-                       <div class="col-md-12" ><small>Carga tu trabajo</small></div>
+                       <div class="col-md-12" ><small>Cargá tu trabajo</small></div>
                      </div>
                      <div class="col-md-4" ng-show="userRegister">
                        <a href="" type="button" class="btn btn-primary btn-circle" >2</a>
                        <hr/>
-                       <div class="col-md-12"> <small><b>Confirmacion</b></small></div>
+                       <div class="col-md-12"> <small><b>Confirmación</b></small></div>
                      </div>
                      <div class="col-md-4" ng-show="userProveedor">
                        <a href="" type="button" class="btn btn-primary btn-circle">3</a>
@@ -413,11 +439,45 @@
                  <!--</div>-->
                </div>
              </div>
-             <div>
-               <h4> REGISTRO CONFIRMADO </h4>
-               <span> Ahora podes ingresar al sitio con tu usuario y password.</span>
+             <div class="modal-body">
+
+               <!--Mensaje servicio agregado-->
+              <div class="col-md-12 text-center" ng-show="$root.idUser != null">
+
+                <h3>Has agregado el servicio correctamente!</h3>
+                <img class="icon-works" src="images/briefcase.png" alt="">
+                <h4>Podrás visualizar el nuevo servicio agregado en tu perfil</h4>
+                 <a class="btn logo-color-bg profile-btn" href="/#/perfil/{{$root.idUser}}">Volver a Mi Perfil</a></p>
+              </div>
+
+               <div class="row" ng-show="$root.idUser == null">
+                 <div class="col-xs-7 col-sm-8 col-md-6 col-sm-offset-1 col-md-offset-1 ">
+                   <h3 style="color: #2f3a4c;"> <b>HAS REGISTRADO TUS DATOS EXITOSAMENTE! </b></h3>
+                   <h4 ng-show="userProveedor" class="text-success">Felicitaciones! Te has convertido en usuario PREMIUM por un mes!</h4>
+                   <p class="col-md-12">Tus datos registrados:</p>
+                   <div class="col-xs-12 col-sm-8 col-md-12 margin-md-1">
+                    <div><b>Nombre y Apellido :</b> {{provider.name}} {{provider.surname}}</div>
+                    <div><b>Email :</b> {{provider.email}} </div>
+                    <div ng-show="userProveedor"><b>Servicio :</b> {{work.name}}</div>
+                    <div ng-show="userProveedor"><b>Descripci&oacute;n de servicio :</b> {{work.description}} </div>
+                   </div>
+                   <div>
+                     <div class="col-md-12">Ahora puedes ingresar al sitio con tu email y contraseña.</div>
+                     <br>
+                     <div class="col-md-4">
+                       <a type="button" class="btn button-1 logo-color-bg col-md-2 " ng-href="/#/login">Inicia sesión</a>
+                     </div>
+                   </div>
+
+                   </div>
+                   <div class="col-xs-4 col-sm-2 col-md-4">
+                     <img ng-show="userRegister" class="images-register center" src="images/userr.png" alt="">
+                     <img ng-show="userProveedor"  class="images-register center " src="images/worker.png" alt="">
+                   </div>
+                 </div>
              </div>
            </div>
         </div>
+
     </section>
 <footer-dutymap></footer-dutymap>

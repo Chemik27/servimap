@@ -1,5 +1,6 @@
 package com.tpfinal.dto;
 
+import com.tpfinal.domain.User;
 import com.tpfinal.domain.Work;
 
 import java.util.Date;
@@ -14,8 +15,18 @@ public class TransactionDTO {
     private Long toUser;
     private Long fromUser;
     private Date agreedDate;
-    private Boolean done;
     private Long idWork;
+    private String address;
+    private String textProblem;
+    private Long state;
+
+    public Long getState() {
+        return state;
+    }
+
+    public void setState(Long state) {
+        this.state = state;
+    }
 
     public Long getIdWork() { return idWork; }
 
@@ -63,13 +74,19 @@ public class TransactionDTO {
         this.agreedDate = agreedDate;
     }
 
-    public Boolean getDone() {
-        return done;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDone(Boolean done) {
-        this.done = done;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
+    public String getTextProblem() {
+        return textProblem;
+    }
 
+    public void setTextProblem(String textProblem) {
+        this.textProblem = textProblem;
+    }
 }

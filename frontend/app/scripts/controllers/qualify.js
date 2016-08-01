@@ -5,8 +5,8 @@
 
 
 angular.module('dutymap')
-  .controller('QualifyUserCtrl', ['$scope','QualifyResources','NotificationService','$location','profileSelected','$rootScope',
-    function ($scope , QualifyResources,NotificationService,$location,profileSelected,$rootScope) {
+  .controller('QualifyCtrl', ['$scope','QualifyResources','NotificationService','$location','profileSelected','$rootScope', '$routeParams',
+    function ($scope , QualifyResources,NotificationService,$location,profileSelected,$rootScope, $routeParams) {
 
       //tomo los datos
       $scope.tran = profileSelected.transaction;
@@ -19,6 +19,7 @@ angular.module('dutymap')
       $scope.works = profileSelected.works;
       $scope.jobname = profileSelected.works.description;
       $scope.rating = profileSelected.rating;
+      $scope.tx = profileSelected.tx;
       //Calificaciones 4
       $scope.rating1 = 1;
       $scope.rating2 = 1;
@@ -35,7 +36,11 @@ angular.module('dutymap')
 
       $scope.addQualify = function(){
 
-        $scope.resultRating = Math.round(($scope.rating1 + $scope.rating2 + $scope.rating3 + $scope.rating4)/4);
+         QualifyResources.qualifyTransaction($scope.tx.idTransaction, function(){
+
+          },function(error){
+           NotificationService.error('Ha ocurrido un error inesperado');
+          });
 
         var calificar = {'reliability': $scope.rating1,
           'performance': $scope.rating2,
@@ -45,15 +50,20 @@ angular.module('dutymap')
           'reviewText': $scope.review_text,
           'generalAverage':  $scope.resultRating,
           'idUser': $rootScope.idUser,
-          'idTransaction': 1
+          'idTransaction': $routeParams.idTrx
         };
 
-          QualifyResources.save(calificar, function(){
+        QualifyResources.save(calificar, function(){
           NotificationService.success('Se ha calificado correctamente al proveedor.');
           $location.url('/perfil/'+ $rootScope.idUser)
         }, function(error){
           NotificationService.error('No se ha podido calificar al proveedor');
         });
+        $scope.resultRating = Math.round(($scope.rating1 + $scope.rating2 + $scope.rating3 + $scope.rating4)/4);
+
+
+
+
 
       };
 

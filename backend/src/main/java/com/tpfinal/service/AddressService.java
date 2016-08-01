@@ -32,7 +32,7 @@ public class AddressService {
         }
         if(typeAddress.equals(Address.SAME_RECIDENTIAL_ADDRESS)){
             User user = userService.findByIdUser(idUser);
-            return addressRepository.findOne(user.getIdAddress());
+            return addressRepository.findOne(user.getIdAddress().getIdAddress());
         }else{
             Address address = new Address();
             address.setStreet(street);

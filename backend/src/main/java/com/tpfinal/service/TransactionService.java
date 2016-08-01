@@ -1,9 +1,6 @@
 package com.tpfinal.service;
 
-import com.tpfinal.domain.Rating;
-import com.tpfinal.domain.Transaction;
-import com.tpfinal.domain.User;
-import com.tpfinal.domain.Work;
+import com.tpfinal.domain.*;
 import com.tpfinal.dto.TransactionDTO;
 import com.tpfinal.repository.ITransactionRepository;
 import com.tpfinal.repository.IUserRepository;
@@ -35,28 +32,37 @@ public class TransactionService {
     public Transaction createTransactionFromDTO(TransactionDTO transactionDTO){
         Transaction transaction = new Transaction();
         User user = userRepository.findByIdUser(transactionDTO.getToUser());
+        User fromUser = userRepository.findByIdUser(transactionDTO.getFromUser());
         Work work = new Work();
         work.setIdWork(transactionDTO.getIdWork());
         transaction.setCreationDate(new Date());
         transaction.setToUser(user.getIdUser());
-        transaction.setFromUser(transactionDTO.getFromUser());
+        transaction.setFromUser(fromUser);
         transaction.setAgreedDate(transactionDTO.getAgreedDate());
-        transaction.setDone(transactionDTO.getDone());
+        transaction.setState(State.TRX_CREATED);
+        transaction.setAddress(transactionDTO.getAddress());
+        transaction.setTextProblem(transactionDTO.getTextProblem());
 
         transaction.setWork(work);
         return transaction;
     }
 
     public List<Transaction> findByFromUser(Long idUser) {
-        return transactionRepository.findTop10ByFromUserOrderByCreationDateDesc(idUser);
+        return transactionRepository.findTop10ByFromUserIdUserOrderByCreationDateDesc(idUser);
     }
 
     public List<Transaction> findByInfoToUser(Long idUser){
 
-        return  transactionRepository.findTop10ByWorkUserIdUserOrderByCreationDateDesc(idUser);
+        return  transactionRepository.findTop10ByToUserOrderByCreationDateDesc(idUser);
     }
 
     public Transaction findByIdTransaccion(Long idTrx) {
         return transactionRepository.findOne(idTrx);
+    }
+
+    public void updateTransactionState(Long idTrx, Long state){
+        Transaction transaction = transactionRepository.findOne(idTrx);
+        transaction.setState(state);
+        transactionRepository.save(transaction);
     }
 }

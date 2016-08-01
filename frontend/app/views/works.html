@@ -32,7 +32,7 @@
               <info-window id="myInfoWindow" >
                 <div ng-non-bindable>
                   <h4><a ng-href="/#/perfil/{{worker.user.idUser}}">{{worker.name}}</a></h4>
-                  <div class="text-center"><b>${{worker.price}}</b></div>
+                  <div class="text-center"><b>Desde ${{worker.price}}</b></div>
                 </div>
               </info-window>
 
@@ -65,7 +65,7 @@
                             <div class="back">
                                 <h3 class="text-center">Descripci&oacute;n del servicio</h3>
                                 <h5><p class="text-center">{{aPremium.description}}</p></h5>
-                                <h3><p class="text-center">$ {{aPremium.price}}</p></h3>
+                                <h3><p class="text-center">Desde ${{aPremium.price}}</p></h3>
                                 <hr>
                                 <div class="text-center">
                                     <div><a class="btn hire-btn profile" href="/#/contratar/{{aPremium.user.idUser}}">Contratar</a></div>

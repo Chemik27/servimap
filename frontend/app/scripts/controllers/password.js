@@ -10,7 +10,7 @@ angular.module('dutymap')
           $rootScope.newPassowrd = $scope.password;
           var user = {email: $rootScope.emailHashed, password: $scope.newPassword}
           LoginResources.updatePassword(user,  function (response) {
-            NotificationService.success('Su password ah sido modificado satisfactoriamente');
+            NotificationService.success('Su contraseña ha sido modificada satisfactoriamente');
             $location.path("/");
           }, function (error) {
             NotificationService.error('Se produjo un error al modificar su password, intentelo nuevamente mas tarde');

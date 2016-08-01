@@ -51,7 +51,7 @@ public class MailService {
                     "Hola, <br> Para generar una nueva contraseña hace click sobre el link <a href=\"http://localhost:9000/#/passwordSecurity/" + emailHashed + "\"" +
                     ">Generar password</a>", "text/html"
             );
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress("s.maximilianno@gmail.com"));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
 
             transport.connect();
             transport.sendMessage(message, message.getRecipients(Message.RecipientType.TO));

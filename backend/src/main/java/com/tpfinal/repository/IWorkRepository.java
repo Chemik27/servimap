@@ -12,13 +12,13 @@ import java.util.List;
 
 public interface IWorkRepository extends JpaRepository<Work, Long> {
 
-    public Page<Work> findByNameContaining(String name, Pageable pageable);
+    public Page<Work> findByNameContainingOrderByUserPremiumDesc(String name, Pageable pageable);
 
     public List<Work> findByUser(User user);
 
-    public Page<Work> findByCategoryIdCategory(Long idCategory, Pageable pageable);
+    public Page<Work> findByCategoryIdCategoryOrderByUserPremiumDesc(Long idCategory, Pageable pageable);
 
-    public Page<Work> findByAddressDistrictIdDistrict(Long idDistrict, Pageable pageable);
+    public Page<Work> findByAddressDistrictIdDistrictOrderByUserPremiumDesc(Long idDistrict, Pageable pageable);
 
     public Work findByUserIdUser(Long idUser);
 

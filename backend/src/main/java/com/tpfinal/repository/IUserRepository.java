@@ -13,8 +13,8 @@ public interface IUserRepository extends CrudRepository<User, Long> {
 
     public User findByEmail(String email);
 
-    @Modifying
-    @Query("UPDATE User u SET u.password = :password WHERE  u.email = :email")
-    public void updatePassword(@Param("password") String password, @Param("email") String email);
+//    @Modifying
+//    @Query("UPDATE User u SET u.password = :password WHERE  u.id_user = :idUser")
+//    public void updatePassword(@Param("password") String password, @Param("idUser") Long idUser);
 
 }

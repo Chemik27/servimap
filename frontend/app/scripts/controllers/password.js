@@ -1,27 +1,20 @@
 'use strict';
 
 angular.module('dutymap')
-  .controller('PasswordCtrl', ['$scope', '$routeParams', 'NotificationService', '$rootScope',
-    function ($scope, $routeParams, NotificationService, $rootScope) {
+  .controller('PasswordCtrl', ['$scope', '$routeParams', 'LoginResources', 'NotificationService', '$rootScope', '$location',
+    function ($scope, $routeParams, LoginResources, NotificationService, $rootScope, $location) {
       $scope.changePasswordValidator = true;
       $rootScope.emailHashed = $routeParams.hash;
-      
-      $scope.savePassword = function(){
-        $rootScope.newPassowrd = $scope.password;
-        // $location.path("/#/changePassword");
 
-        // $scope.searchByDistrict = function(id){
-        //   WorkResources.searchByDistrict({id:id}, function(response){
-        //     $scope.worksFound = response.content;
-        //     $scope.workerLength = $scope.worksFound.length;
-        //     $scope.bestWorkers = _.first($scope.worksFound, 1);
-        //     $scope.otherWorkers = _.last($scope.worksFound, $scope.workerLength - 1);
-        //   },function(error){
-        //     console.log(error);
-        //     NotificationService.error("No se pudo realizar la busqueda");
-        //   })
-        // };
-
+      $scope.saveNewPassword = function(){
+          $rootScope.newPassowrd = $scope.password;
+          var user = {email: $rootScope.emailHashed, password: $scope.newPassword}
+          LoginResources.updatePassword(user,  function (response) {
+            NotificationService.success('Su password ah sido modificado satisfactoriamente');
+            $location.path("/");
+          }, function (error) {
+            NotificationService.error('Se produjo un error al modificar su password, intentelo nuevamente mas tarde');
+          });
       }
       console.log($routeParams.hash);
       console.log("Helper");

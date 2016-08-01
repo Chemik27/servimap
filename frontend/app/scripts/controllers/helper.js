@@ -6,9 +6,9 @@ angular.module('dutymap')
 
           $scope.recover = function() {
               LoginResources.recover($scope.email, function (response) {
-                NotificationService.success('lololo');
+                NotificationService.success('Recupera tu password desde el email que te enviamos a tu correo');
               }, function (error) {
-                NotificationService.error('lalala');
+                NotificationService.error('Se produjo un error, intentelo de nuevo mas tarde');
               });
           }
     }]);

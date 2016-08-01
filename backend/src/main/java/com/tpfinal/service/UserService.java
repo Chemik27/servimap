@@ -40,6 +40,17 @@ public class UserService {
         return userRepository.findByIdUser(idUser);
     }
 
+    public User findByEmail(String email) {
+        try {
+            email = email.replaceAll("asd753159asd","/");
+            String emailNotHashed = UtilDutymap.desencriptar(email);
+            return userRepository.findByEmail(emailNotHashed);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public User createUser(UserDTO userDTO, MultipartFile file){
         User user = createUserFromDTO(userDTO);
         try {
@@ -68,12 +79,8 @@ public class UserService {
     }
 
     public void changePassword(User user){
-
-        try {
-            userRepository.updatePassword(user.getPassword(), UtilDutymap.desencriptar(user.getEmail()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        user.setPassword(codePassword(user.getPassword()));
+        userRepository.save(user);
     }
 
     public String codePassword(String password){

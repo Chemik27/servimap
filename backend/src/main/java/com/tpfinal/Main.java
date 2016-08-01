@@ -1,7 +1,10 @@
 package com.tpfinal;
 
+import com.tpfinal.repository.IUserRepository;
+import com.tpfinal.service.UserService;
 import com.tpfinal.util.UtilDutymap;
 import org.apache.tomcat.util.codec.binary.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import sun.misc.BASE64Encoder;
 
 import java.lang.reflect.Array;
@@ -21,7 +24,8 @@ import javax.crypto.spec.SecretKeySpec;
 public class Main {
 
     public static void main(String [] args) {
-
+//        UserService userService = new UserService();
+//        userService.changePassword("zxc123zxc", "admin2@gmail.com");
 
 // Recipient's email ID needs to be mentioned.
 //        Properties props = new Properties();
@@ -57,14 +61,14 @@ public class Main {
 //        } catch (MessagingException e) {
 //            e.printStackTrace();
 //        }
-        String asd = "";
-            String lala =UtilDutymap.encriptar("maxi");
-        try {
-             asd = UtilDutymap.desencriptar(lala);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String response = lala;
+//        String asd = "";
+//            String lala =UtilDutymap.encriptar("maxi");
+//        try {
+//             asd = UtilDutymap.desencriptar(lala);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        String response = lala;
 
 //            String[] byteValues = response.substring(1, response.length() - 1).split(",");
 //            byte[] bytes = new byte[byteValues.length];
@@ -75,7 +79,7 @@ public class Main {
 //
 //            String str = new String(bytes);
 
-            System.out.println(asd);
+//            System.out.println(asd);
 //            System.out.println(str);
 //            byte[] buf = cipher.doFinal(plainTextBytes);
 //            byte[] base64Bytes = org.apache.tomcat.util.codec.binary.Base64.encodeBase64(buf);

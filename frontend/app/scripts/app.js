@@ -75,10 +75,10 @@ angular
         templateUrl: 'views/passwordRecovery.html',
         controller: 'HelperCtrl'
       })
-      // .when('/passwordSecurity/:hash', {
-      //   templateUrl: 'views/passwordRecovery.html',
-      //   controller : 'PasswordCtrl'
-      // })
+      .when('/passwordSecurity/:hash', {
+        templateUrl: 'views/passwordRecovery.html',
+        controller : 'PasswordCtrl'
+      })
       // .when('/changePassword', {
       //   templateUrl: '/',
       //   controller : 'PasswordCtrl'

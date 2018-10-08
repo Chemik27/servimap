@@ -44,7 +44,7 @@ public class MailService {
 
             MimeMessage message = new MimeMessage(mailSession);
 
-            message.setSubject("Recupera la clave de Dutymap");
+            message.setSubject("Recupera la clave de Servimap");
             message.setContent(
                     "<img src=\"cid:C:/xampp/htdocs/Tp_Final/tp-final/backend/src/main/java/com/tpfinal/a.jpg\"/>" +
                     "<br><br>" +

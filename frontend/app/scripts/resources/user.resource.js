@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dutymap')
+angular.module('servimap')
     .factory('UserResources', ['$resource',function UserResources($resource) {
     return $resource('api/user/:idUser', {idUser:'@idUser'}, {
       save:{method: "POST",  url: "api/user/create"},

@@ -4,7 +4,7 @@
 'use strict';
 
 
-angular.module('dutymap')
+angular.module('servimap')
   .controller('QualifyUserCtrl', ['$scope','QualifyResources','NotificationService','$location','profileSelected','$rootScope', '$routeParams',
     function ($scope , QualifyResources,NotificationService,$location,profileSelected,$rootScope, $routeParams) {
       var idUserCalificar;

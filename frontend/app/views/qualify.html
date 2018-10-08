@@ -5,16 +5,16 @@
   <div ng-show="tx.fromUser.idUser == $root.idUser && tx.state != 5">
       <div class="col-sm-6 col-sm-push-3 text-center not-found">
         <div>
-          <i class="fa fa-bullhorn fa-5x text-dutymap" aria-hidden="true"></i>
+          <i class="fa fa-bullhorn fa-5x text-servimap" aria-hidden="true"></i>
         </div>
         <div>
-          <h4 ng-show="tx.state == 1 " class="text-dutymap"><b>Psss! Solicitud de contratación pendiente.<br><br>
+          <h4 ng-show="tx.state == 1 " class="text-servimap"><b>Psss! Solicitud de contratación pendiente.<br><br>
           </b></h4>
-          <h4 ng-show="tx.state == 2 " class="text-dutymap"><b>Psss! Para calificar tienes que esperar a que el proveedor concrete el servicio.<br><br>
+          <h4 ng-show="tx.state == 2 " class="text-servimap"><b>Psss! Para calificar tienes que esperar a que el proveedor concrete el servicio.<br><br>
           </b></h4>
-          <h4 ng-show=" tx.state == 3 " class="text-dutymap"><b>Psss! El proveedor ha rechazado la propuesta.<br><br>
+          <h4 ng-show=" tx.state == 3 " class="text-servimap"><b>Psss! El proveedor ha rechazado la propuesta.<br><br>
           </b></h4>
-          <h4 ng-show=" tx.state == 6 " class="text-dutymap"><b>Psss! Ya has calificado a este proveedor.<br><br>
+          <h4 ng-show=" tx.state == 6 " class="text-servimap"><b>Psss! Ya has calificado a este proveedor.<br><br>
           </b></h4>
           <a href="/#/perfil/{{$root.idUser}}" class="btn logo-color-bg ">Volver a Mi Perfil</a>
         </div>
@@ -24,10 +24,10 @@
   <div ng-show="tx.fromUser.idUser != $root.idUser" class="text-center">
     <div class="col-sm-6 col-sm-push-3 text-center not-found">
       <div>
-        <i class="fa fa-bullhorn fa-5x text-dutymap" aria-hidden="true"></i>
+        <i class="fa fa-bullhorn fa-5x text-servimap" aria-hidden="true"></i>
       </div>
       <div>
-        <h4 class="text-dutymap"><b>Psss! No puedes calificar a este proveedor.<br><br>
+        <h4 class="text-servimap"><b>Psss! No puedes calificar a este proveedor.<br><br>
         </b></h4>
         <a href="/#/perfil/{{$root.idUser}}" class="btn logo-color-bg ">Volver a Mi Perfil</a>
       </div>
@@ -36,7 +36,7 @@
 </div>
 
   <div class="resume container-fluid" ng-show="tx.fromUser.idUser == $root.idUser && tx.state == 5 ">
-  <profile-dutymap></profile-dutymap>
+  <profile-servimap></profile-servimap>
 
   <div class="container-fluid col-md-9 col-xs-12">
     <div class="col-md-12 col-xs-12 text-center">
@@ -73,4 +73,4 @@
     </div>
   </div>
 </div>
-<footer-dutymap></footer-dutymap>
+<footer-servimap></footer-servimap>

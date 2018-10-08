@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dutymap')
+angular.module('servimap')
   .factory('LoginResources', ['$resource',function LoginResources($resource) {
 
         return $resource('/api/login/recoverPassword/:email', {email:'@email'},{

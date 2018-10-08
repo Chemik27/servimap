@@ -3,10 +3,10 @@
 <div class="container-fluid">
   <div class="col-sm-6 col-sm-push-3 text-center not-found" ng-show="user.idUser == null">
     <div>
-      <i class="fa fa-bullhorn fa-5x text-dutymap" aria-hidden="true"></i>
+      <i class="fa fa-bullhorn fa-5x text-servimap" aria-hidden="true"></i>
     </div>
     <div>
-      <h4 class="text-dutymap"><b>Psss! No hemos encontrado el perfil que buscaste, intenta de nuevo <br><br>
+      <h4 class="text-servimap"><b>Psss! No hemos encontrado el perfil que buscaste, intenta de nuevo <br><br>
         <a href="/#/" class="btn logo-color-bg ">Volver a inicio</a>
       </b></h4>
     </div>
@@ -14,7 +14,7 @@
 </div>
 <div class="resume container-fluid" ng-hide="user.idUser == null">
 
-  <profile-dutymap></profile-dutymap>
+  <profile-servimap></profile-servimap>
 
   <div class="container-fluid col-md-9 col-xs-12">
 
@@ -75,7 +75,7 @@
                 <div id="module-feedback" class="col-md-12">
 
                   <div ng-hide="works.length == 0" class="module-size">
-                    <div id="publidutymap">
+                    <div id="publiservimap>
                       <a href="#/"><img src="../images/prop.jpg" class="prop"></a>
                     </div>
                   </div>
@@ -271,7 +271,7 @@
                     <p>{{t.work.name}} </p>
                   </div>
                   <div class="col-xs-12 col-sm-6 col-sm-6">
-                    <h3><i class="fa fa-map-marker fa-1x text-dutymap" aria-hidden="true"></i> {{t.work.address.district.name != undefined ? t.work.address.district.name : 'A domicilio'}}</h3>
+                    <h3><i class="fa fa-map-marker fa-1x text-servimap" aria-hidden="true"></i> {{t.work.address.district.name != undefined ? t.work.address.district.name : 'A domicilio'}}</h3>
                     <br>
                     <span ng-show="t.state == 1" class="label label-warning">Solicitud enviada</span>
                     <span ng-show="t.state == 2" class="label label-success">Servicio aceptado</span>
@@ -341,7 +341,7 @@
                         <!--<p>{{history.fromUser.name}} </p>-->
                       </div>
                       <div class="col-xs-12 col-sm-6">
-                        <h3><i class="fa fa-map-marker fa-1x text-dutymap" aria-hidden="true"></i> {{history.fromUser.idAddress.district.name != undefined ? history.fromUser.idAddress.district.name : 'A domicilio'}}</h3>
+                        <h3><i class="fa fa-map-marker fa-1x text-servimap" aria-hidden="true"></i> {{history.fromUser.idAddress.district.name != undefined ? history.fromUser.idAddress.district.name : 'A domicilio'}}</h3>
                         <br>
                         <span ng-show="history.state == 1" class="label label-warning">Solicitud pendiente</span>
                         <span ng-show="history.state == 2" class="label label-success">Servicio aceptado</span>
@@ -398,4 +398,4 @@
       </div>
   </div>
 </div>
-<footer-dutymap></footer-dutymap>
+<footer-servimap></footer-servimap>

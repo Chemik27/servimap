@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dutymap')
+angular.module('servimap')
   .factory('WorkResources', ['$resource',function WorkResources($resource) {
       return $resource('api/work/named/:serviceRequest', {wordOfSearchTyped:'@serviceRequest'},{
           save:{method: "POST", url: "api/work/create"},

@@ -1,5 +1,5 @@
 'use strict';
-angular.module('dutymap')
+angular.module('servimap')
   .controller('ContactCtrl', ['$scope', '$http' ,
     function ($scope, $http) {
 

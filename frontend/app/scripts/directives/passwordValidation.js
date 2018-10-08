@@ -1,7 +1,7 @@
 /**
  * Created by nico on 09/06/16.
  */
-angular.module('dutymap')
+angular.module('servimap')
   .directive('passwordValidation', function () {
     return {
       require: 'ngModel',

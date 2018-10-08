@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the tpfinal
  */
-angular.module('dutymap')
+angular.module('servimap')
 
   .controller('MainCtrl', ['$scope', '$http',function ($scope, $http) {
 

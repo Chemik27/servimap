@@ -1,4 +1,4 @@
-angular.module('dutymap')
+angular.module('servimap')
   .factory('HireResources', ['$resource',function HireResources($resource) {
     return $resource('api/hire/:id', {id:'@id'},{
 

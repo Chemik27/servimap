@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name dutymap
+ * @name servimap
  * @description
  * # tpfinal
  *
  * Main module of the application.
  */
 angular
-  .module('dutymap', [
+  .module('servimap', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -19,7 +19,7 @@ angular
     'ngMessages',
     'ngMaterial',
     'ngMap',
-    'ADM-dateTimePicker',
+    // 'ADM-dateTimePicker',
     'noCAPTCHA'
   ])
   .config(function ($routeProvider) {
@@ -54,7 +54,7 @@ angular
       .when('/faq', {
         templateUrl: 'views/faq.html'
       })
-      .when('/acerca-de-dutymap', {
+      .when('/acerca-de-servimap', {
         templateUrl: 'views/about.html'
       })
       .when('/politicas', {

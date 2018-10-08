@@ -3,7 +3,7 @@
 describe('Controller: AboutCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('dutymap'));
+  beforeEach(module('servimap'));
 
   var AboutCtrl,
     scope;

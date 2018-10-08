@@ -1,7 +1,7 @@
 /**
  * Created by nico on 02/06/16.
  */
-angular.module('dutymap')
+angular.module('servimap')
   .directive('navbarHome', function () {
     return {
 

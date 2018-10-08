@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dutymap')
+angular.module('servimap')
     .controller('HelperCtrl', ['$scope', '$routeParams', 'LoginResources', 'NotificationService', '$location',
     function ($scope, $routeParams, LoginResources, NotificationService, $location) {
 

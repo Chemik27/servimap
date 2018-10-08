@@ -1,7 +1,7 @@
 /**
  * Created by redbee on 01/07/16.
  */
-angular.module('dutymap')
+angular.module('servimap')
   .directive('starRating', function () {
     return {
       restrict : 'A',

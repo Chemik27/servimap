@@ -5,9 +5,9 @@
  * @name tpfinal.controller:HomeCtrl
  * @description
  * # HomeCtrl
- * Controller of the dutymap
+ * Controller of the servimap
  */
-angular.module('dutymap')
+angular.module('servimap')
     .controller('WorkCtrl', ['$scope', '$routeParams', 'WorkResources','works', 'NotificationService','ProfileResources', 'NgMap',
         function ($scope, $routeParams, WorkResources, works, NotificationService, ProfileResources, NgMap) {
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dutymap')
+angular.module('servimap')
     .service('NotificationService',[function NotificationService() {
 
         PNotify.prototype.options.mouse_reset = false;

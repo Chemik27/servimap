@@ -1,7 +1,7 @@
 package com.tpfinal.service;
 
 
-import com.tpfinal.util.UtilDutymap;
+import com.tpfinal.util.UtilServimap;
 
 import java.util.Properties;
 import javax.mail.*;
@@ -13,7 +13,7 @@ public class MailService {
 
     public static String sendEmail(String email)
     {
-        String emailHashed = UtilDutymap.encriptar(email);
+        String emailHashed = UtilServimap.encriptar(email);
         emailHashed = emailHashed.replaceAll("/","asd753159asd");
 
 
@@ -29,7 +29,7 @@ public class MailService {
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("service.dutymap", "jonikarinico");
+                        return new PasswordAuthentication("service.servimap", "jonikarinico");
                     }
                 });
 
@@ -37,7 +37,7 @@ public class MailService {
             Session mailSession = Session.getDefaultInstance(props, new Authenticator() {
                 protected PasswordAuthentication  getPasswordAuthentication() {
                     return new PasswordAuthentication(
-                            "service.dutymap@gmail.com", "jonikarinico");
+                            "service.servimap@gmail.com", "jonikarinico");
                 }
             });
             Transport transport = mailSession.getTransport();

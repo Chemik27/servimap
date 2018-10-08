@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dutymap')
+angular.module('servimap')
   .controller('PasswordCtrl', ['$scope', '$routeParams', 'LoginResources', 'NotificationService', '$rootScope', '$location',
     function ($scope, $routeParams, LoginResources, NotificationService, $rootScope, $location) {
       $scope.changePasswordValidator = true;

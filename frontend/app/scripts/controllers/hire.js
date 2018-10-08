@@ -1,7 +1,7 @@
 /**
  * Created by nico on 30/06/16.
  */
-angular.module('dutymap')
+angular.module('servimap')
   .controller('HireCtrl', ['$scope', '$http' ,'$resource','profileSelected','$rootScope','NotificationService','HireResources', 'NgMap','$location',
     function ($scope, $http, $resource, profileSelected,$rootScope,NotificationService,HireResources, NgMap) {
 

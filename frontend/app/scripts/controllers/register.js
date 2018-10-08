@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dutymap')
+angular.module('servimap')
     .controller('RegisterCtrl', ['$scope', '$http', 'UserResources', 'NotificationService', '$location', 'WorkResources','$rootScope',
     function ($scope, $http, UserResources, NotificationService, $location, WorkResources,$rootScope) {
 

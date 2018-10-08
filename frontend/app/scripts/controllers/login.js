@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dutymap')
+angular.module('servimap')
     .controller('NavigationCtrl', ['$scope', '$rootScope', '$http', '$location' ,'NotificationService',
     function ($scope, $rootScope, $http, $location, NotificationService) {
 

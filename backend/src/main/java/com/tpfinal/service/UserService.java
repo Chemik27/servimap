@@ -7,7 +7,7 @@ import com.tpfinal.dto.UserUpdateDTO;
 import com.tpfinal.exception.BadRequestException;
 import com.tpfinal.repository.IAddressRepository;
 import com.tpfinal.repository.IUserRepository;
-import com.tpfinal.util.UtilDutymap;
+import com.tpfinal.util.UtilServimap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -46,7 +46,7 @@ public class UserService {
     public User findByEmail(String email) {
         try {
             email = email.replaceAll("asd753159asd","/");
-            String emailNotHashed = UtilDutymap.desencriptar(email);
+            String emailNotHashed = UtilServimap.desencriptar(email);
             return userRepository.findByEmail(emailNotHashed);
         } catch (Exception e) {
             e.printStackTrace();

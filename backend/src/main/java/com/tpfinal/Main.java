@@ -1,19 +1,5 @@
 package com.tpfinal;
 
-import com.tpfinal.repository.IUserRepository;
-import com.tpfinal.service.UserService;
-import com.tpfinal.util.UtilDutymap;
-import org.apache.tomcat.util.codec.binary.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import sun.misc.BASE64Encoder;
-
-import java.lang.reflect.Array;
-import java.nio.charset.Charset;
-import java.security.MessageDigest;
-import java.util.*;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 //import javax.mail.*;
 //import javax.mail.internet.*;
 //import javax.activation.*;
@@ -40,7 +26,7 @@ public class Main {
 //            Session mailSession = Session.getDefaultInstance(props, new Authenticator() {
 //                protected PasswordAuthentication  getPasswordAuthentication() {
 //                    return new PasswordAuthentication(
-//                            "service.dutymap@gmail.com", "jonikarinico");
+//                            "service.servimap@gmail.com", "jonikarinico");
 //                }
 //            });
 //            Transport transport = mailSession.getTransport();
@@ -62,9 +48,9 @@ public class Main {
 //            e.printStackTrace();
 //        }
 //        String asd = "";
-//            String lala =UtilDutymap.encriptar("maxi");
+//            String lala =UtilServimap.encriptar("maxi");
 //        try {
-//             asd = UtilDutymap.desencriptar(lala);
+//             asd = UtilServimap.desencriptar(lala);
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }

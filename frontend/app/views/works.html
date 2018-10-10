@@ -9,15 +9,10 @@
         <ul>
             <li><h4>Categor&iacute;a</h4>
                 <ul>
-                  <li class="mouse-pointer" ng-repeat="category in categories"><a ng-click="searchByCategory(category.id)">{{category.name}}</a></li>
+                  <li class="mouse-pointer" ng-repeat="category in categories"><a ng-click="#">{{category.name}}</a></li>
                 </ul>
             </li>
             <br>
-            <li><h4>Ubicación</h4>
-                <ul>
-                  <li class="mouse-pointer" ng-repeat="city in districts"><a ng-click="searchByDistrict(city.id)">{{city.name}}</a></li>
-                </ul>
-            </li>
         </ul>
     </div>
 
@@ -40,7 +35,6 @@
                       position="{{marker.address.street}} {{marker.address.number}} {{marker.address.district.name}}"
                       title="{{marker.name}}"
                       id="{{marker.idWork}}"
-                      icon="../../images/marker.ico"
                       centered="true" on-click="showCity(event, marker)"></marker>
             </ng-map>
         </div>
@@ -53,14 +47,13 @@
                     <div class="flipper">
                         <div class="row">
                             <div class="front">
-                              <div class="ribbon"><span>Garantizado</span></div>
                                 <p class="text-center"><img class="img-circle"  ng-src="data:image/png;base64,{{aPremium.user.photo}}" alt=""> </p>
                                 <h2> <p class="text-center">{{aPremium.name}}</p></h2>
                                 <h5> <p class="text-center text-success"><b><i class="fa fa-street-view fa-1x" aria-hidden="true"></i> Destacado</b></p></h5>
                                 <hr>
                                 <h4><p class="text-center">{{aPremium.category.name}}</p></h4>
                               <br>
-                                <h4 class="text-right"> <i class="fa fa-map-marker fa-2x text-servimap" aria-hidden="true"></i> {{aPremium.address.district.name}}</h4>
+                                <h4 class="text-right"> </i> {{aPremium.address.district.name}}</h4>
                             </div>
                             <div class="back">
                                 <h3 class="text-center">Descripci&oacute;n del servicio</h3>
@@ -68,7 +61,7 @@
                                 <h3><p class="text-center">Desde ${{aPremium.price}}</p></h3>
                                 <hr>
                                 <div class="text-center">
-                                    <div><a class="btn hire-btn profile" href="/#/contratar/{{aPremium.user.idUser}}">Contratar</a></div>
+                                    <div><a class="btn hire-btn profile">Contratar</a></div>
                                     <br>
                                     <div><a class="btn logo-color-bg profile" href="/#/perfil/{{aPremium.user.idUser}}">Ver perfil</a></div>
                                 </div>
@@ -81,35 +74,7 @@
 
         <hr>
 
-        <div class="container-fluid">
-        <! -- CONTACTOS COMUNES -->
-            <div class="col-xs-10 col-sm-10 col-md-10 col-xs-push-1 border-service" ng-class="{'block': !$last}" ng-repeat="aWork in otherWorkers">
-                <div class="col-xs-12 col-sm-2 col-md-2">
-                    <p class="text-center"><img class="img-circle" ng-src="data:image/png;base64,{{aWork.user.photo}}" alt=""> </p>
-                </div>
 
-                <div class="col-xs-12 col-sm-6 col-sm-push-1 col-md-7">
-                    <div class="col-xs-12 col-sm-6 top-space">
-                        <h3>{{aWork.name}}</h3>
-                        <p>{{aWork.category.name}}</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 top-space">
-                        <h3><i class="fa fa-map-marker fa-1x text-servimap" aria-hidden="true"></i> {{aWork.address.district.name}}</h3>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-2 col-md-3">
-                    <!--<p>Valoración : </p>-->
-                    <!--<p>Costo : ${{aWork.price}}</p>-->
-                    <div class="pull-right border-service">
-                        <a class="btn hire-btn" ng-href="/#/contratar/{{aWork.user.idUser}}">Contratar</a>
-                        <br>
-                        <br>
-                        <a class="btn logo-color-bg confirm-button" ng-href="/#/perfil/{{aWork.user.idUser}}">Ver perfil</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div ng-hide="worksFound.length != 0" class="container-fluid col-md-9 works-modules">

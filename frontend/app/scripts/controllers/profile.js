@@ -103,8 +103,8 @@ angular.module('servimap')
                'surname': $scope.updateUser.surname == null ? $scope.user.surname : $scope.updateUser.surname,
                'email': $scope.updateUser.email == null ? $scope.user.email : $scope.updateUser.email,
                'phone': $scope.updateUser.telephone == null ? $scope.user.phone : $scope.updateUser.telephone,
-               'street': $scope.updateUser.street,
-               'number': $scope.updateUser.number,
+               'street': $scope.updateUser.street == null || $scope.updateUser.street == undefined ? $scope.user.street : $scope.updateUser.street,
+               'number': $scope.updateUser.number == null || $scope.updateUser.number == undefined ? $scope.user.number : $scope.updateUser.number,
                'oldPassword': $scope.updateUser.oldPassword,
                'password': $scope.updateUser.newPassword
              };

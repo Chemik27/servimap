@@ -22,10 +22,8 @@
           <br>
 
           <ul class="nav nav-tabs">
-              <li class="active"><a data-toggle="tab" data-target="#profile">Mi perfil</a></li>
-              <li ng-show="$root.idUser == user.idUser"><a data-toggle="tab" data-target="#settings">Editar perfil</a></li>
-              <li ng-show="$root.idUser == user.idUser"><a data-toggle="tab" data-target="#transaction-history">Mis contrataciones</a></li>
-              <li ng-show="$root.idUser == user.idUser && user.type == 'proveedor'"><a data-toggle="tab" data-target="#service-history">Mis clientes <span class="badge">{{newServices.newOne}}</span></a></li>
+            <li class="active"><a data-toggle="tab" data-target="#profile">Mi perfil</a></li>
+            <li ng-show="$root.idUser == user.idUser"><a data-toggle="tab" data-target="#settings">Editar perfil</a></li>
           </ul>
 
           <div class="tab-content">
@@ -43,56 +41,28 @@
                     </div>
                   </div>
 
-                  <div class="module-work col-sm-6 col-md-5 col-xs-12">
-                    <h3><i class="fa fa-users" aria-hidden="true"></i> Feedback</h3>
-                    <div id="feedback-info" ng-show="rating != undefined">
-                      <p>Confiabilidad<span ng-repeat="star in starReliability"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
-                        <span ng-repeat="star in emptyStarsReliability"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
-                      </p>
-                      <p>Desempeño
-                        <span ng-repeat="star in starPerformance"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
-                        <span ng-repeat="star in emptyStarsPerformance"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
-                      </p>
-                      <p>Consideración
-                        <span ng-repeat="star in starConsideration"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
-                        <span ng-repeat="star in emptyStarsConsideration"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
-                      </p>
-                      <p>Recomendación
-                        <span ng-repeat="star in starRecommendation"><i class="fa fa-star blue" aria-hidden="true"></i> </span>
-                        <span ng-repeat="star in emptyStarsRecommendation"><i class="fa fa-star-o" aria-hidden="true"></i> </span>
-                      </p>
-                    </div>
-                    <div ng-hide="rating != undefined">
-                      <br>
-                      <h4>Aún no tiene calificaciones</h4>
-                      <br>
-                      <br>
-                    </div>
-                  </div>
+
 
                 </div>
 
-                <div id="module-feedback" class="col-md-12">
-
-                  <div ng-hide="works.length == 0" class="module-size">
-                    <div id="publiservimap>
-                      <a href="#/"><img src="../images/prop.jpg" class="prop"></a>
-                    </div>
-                  </div>
-
-                  <div class="module  col-md-5 col-sm-6 col-xs-12">
-                    <h3><i class="fa fa-comments-o" aria-hidden="true"></i> Comentarios</h3>
-                    <div ng-show="comments.length != 0 && rating != undefined " class="comments" ng-repeat="comment in comments track by $index">
-                      <p>{{comment}}</p>
-                    </div>
-                    <div ng-hide="(comments.length != 0 && comments != undefined) || rating != undefined">
-                      <br>
-                      <h4>Aún no tiene comentarios</h4>
-                      <br>
-                      <br>
-                    </div>
-                  </div>
-                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
               </div>
               <!--Seccion Editar perfil-->
               <div id="settings" class="tab-pane fade">
@@ -148,7 +118,7 @@
                       <div class="col-xs-12 col-sm-6 form-group " ng-class="{ 'has-error': userForm.street.$touched && userForm.street.$invalid, 'has-success' : userForm.street.$valid && userForm.street.$touched  }"  >
                         <span>Calle</span>
                         <input type="text" name="street"  class="form-control input-lg" ng-minlength="2" ng-model="updateUser.street" ng-value="user.idAddress.street"  ng-pattern="onlyChar"  >
-                        <div class="help-block" ng-messages="userForm.surName.$error" ng-if="userForm.surName.$touched">
+                        <div class="help-block" ng-messages="userForm.street.$error" ng-if="userForm.street.$touched">
                           <p ng-message="minlength">La calle es inválida.</p>
                           <p ng-message="pattern">No se admiten números ni caracteres especiales.</p>
                         </div>

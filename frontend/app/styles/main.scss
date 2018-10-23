@@ -37,7 +37,7 @@ html, body {
 }
 
 .searchbox:hover{
-  border:3px solid $background-blue;
+  border:3px solid $servimap-blue;
 }
 
 .icons-box.input-group-addon  {
@@ -71,15 +71,9 @@ html, body {
 
 
 .logo-color-bg{
-  background-color: $background-blue;
+  background-color: $servimap-blue;
   color: white !important;
   transition: all 0.5s ease;
-}
-
-.logo-color-bg:hover{
-  background-color: #3A598D;
-  color: white;
-  transition: all 0.5s ease
 }
 
 .logo-color{
@@ -123,15 +117,9 @@ html, body {
 
 
  .icons-box.input-group-addon  {
-  background-color:#2F3A4C !important ;
+  background-color: $servimap-blue !important ;
   color: white !important;
    transition: all 0.5s ease;
-
-}
-
-.icons-box.input-group-addon:hover  {
-  background-color: #3A598D !important;
-  transition: all 0.5s ease
 
 }
 
@@ -239,7 +227,7 @@ html, body {
   overflow: hidden;
 }
 .bg-primary{
-  background-color: $background-blue;
+  background-color: $servimap-blue;
 
 
   }

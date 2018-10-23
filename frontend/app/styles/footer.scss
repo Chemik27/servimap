@@ -1,6 +1,6 @@
 @import "variables";
 footer{
-  background-color: $background-blue;
+  background-color: $servimap-blue;
   color: white;
 }
 
@@ -8,13 +8,19 @@ footer{
 
   margin-top: 2%;
 }
+
+.footer-sub-nav{
+  text-align: left;
+}
+
 .footer-sub-nav-item a{
   color:white;
-
 }
+
 .footer-sub-nav-item  a:hover{
   color: white;
 }
+
 .homepage-footer-button{
   color:white !important;
 
@@ -22,10 +28,6 @@ footer{
 
 .social-networks i {
   font-size: 25px;
-}
-
-.social-networks i:hover {
-  color: #336699;
 }
 
 .footer-title{
@@ -37,8 +39,15 @@ footer{
 }
 
 .footer-logo{
-  width: 160px;
+  width: 400px;
   margin-top:2%;
   margin-bottom:2%;
 }
 
+.rowFooter:hover a:before{
+  content: "\f105"; /* FontAwesome Unicode */
+  font-family: FontAwesome;
+  display: inline-block;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  width: 1.3em; /* same as padding-left set on li */
+}

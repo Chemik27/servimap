@@ -93,3 +93,4 @@ gradle-app.setting
 
 backend/backend.iml
 backend/build
+frontend/app/components/version/version-directive.js

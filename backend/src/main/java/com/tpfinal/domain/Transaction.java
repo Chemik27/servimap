@@ -16,6 +16,7 @@ public class Transaction {
     private Work work;
     private String textProblem;
     private String address;
+    private String rejection;
 
     public Transaction(Date creationDate, Long toUser, User fromUser,Date agreedDate,Long state, Work work,String address) {
 
@@ -115,5 +116,14 @@ public class Transaction {
 
     public void setTextProblem(String textProblem) {
         this.textProblem = textProblem;
+    }
+
+    @Column(name="rejection")
+    public String getRejection() {
+        return rejection;
+    }
+
+    public void setRejection(String rejection) {
+        this.rejection = rejection;
     }
 }

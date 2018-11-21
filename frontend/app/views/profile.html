@@ -74,13 +74,7 @@
 
                 <div id="module-feedback" class="col-md-12">
 
-                  <div ng-hide="works.length == 0" class="module-size">
-                    <div id="publiservimap>
-                      <a href="#/"><img src="../images/prop.jpg" class="prop"></a>
-                    </div>
-                  </div>
-
-                  <div class="module  col-md-5 col-sm-6 col-xs-12">
+                  <div class="module col-md-5 col-sm-6 col-xs-12">
                     <h3><i class="fa fa-comments-o" aria-hidden="true"></i> Comentarios</h3>
                     <div ng-show="comments.length != 0 && rating != undefined " class="comments" ng-repeat="comment in comments track by $index">
                       <p>{{comment}}</p>
@@ -286,7 +280,7 @@
                   <!--<p>Valoración : </p>-->
                   <!--<p>Costo : ${{aWork.price}}</p>-->
                   <button ng-show="t.state == 4 && root.idUser == t.toUser || t.state == 5 && root.idUser != t.toUser" ng-click="qualifyService(t.idTransaction)" class="btn qualify profile">Calificar</button>
-                  <a ng-show="t.state != 3 " class="btn btn-agreement profile " data-toggle="modal" data-target="#dataProvider{{$index}}" >Ver acuerdo</a>
+                  <a ng-show="t.state != 6 " class="btn btn-agreement profile " data-toggle="modal" data-target="#dataProvider{{$index}}" >Ver acuerdo</a>
                 </div>
                 <div class="col-xs-12">
                 <hr/>
@@ -310,6 +304,7 @@
                         <p><span class="iconcolor glyphicon glyphicon-earphone"></span> Teléfono: <span ng-bind="t.work.user.phone"> </span></p>
                         <p><span class="iconcolor glyphicon glyphicon-map-marker"></span> Direcci&oacuten: <span ng-bind="t.address"> </span></p>
                         <p><i class="iconcolor fa fa-comment" aria-hidden="true"></i></span> Comentario: <span ng-bind="t.textProblem"> </span></p>
+                        <p ng-show="t.state == 3"><i class="iconcolor glyphicon glyphicon-remove" aria-hidden="true"></i></span> Rechazo: <span ng-bind="t.rejection"> </span></p>
                         </h4>
                       </div>
                       <div class="modal-footer">
@@ -356,11 +351,37 @@
                         <!--<p>Valoración : </p>-->
                         <!--<p>Costo : ${{aWork.price}}</p>-->
                         <button ng-show="history.state == 4 " ng-click="qualifyUserService(history.idTransaction)" class="btn qualify profile">Calificar</button>
-                        <a ng-show="history.state != 3 " class="btn btn-agreement profile " data-toggle="modal" data-target="#dataUser{{$index}}" >Ver acuerdo</a>
+                        <a ng-show="history.state != 6 " class="btn btn-agreement profile " data-toggle="modal" data-target="#dataUser{{$index}}" >Ver acuerdo</a>
                         <button ng-show="history.state == 1 " class="btn btn-success profile" ng-click="acceptService(history.idTransaction)">Aceptar</button>
-                        <button ng-show="history.state == 1 " class="btn btn-danger profile" ng-click="rejectService(history.idTransaction)">Rechazar</button>
+                        <button ng-show="history.state == 1 " class="btn btn-danger profile" data-toggle="modal" data-target="#reject{{$index}}">Rechazar</button>
                         <button ng-show="history.state == 2 " class="btn btn-primary profile" ng-click="finishService(history.idTransaction)">Finalizar</button>
                       </div>
+
+                      <!--reject modal-->
+                      <div id="reject{{$index}}" class="modal fade" tabindex="-1" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title">Rechazar servicio</h4>
+                            </div>
+                            <div class="modal-body">
+                              <form name="rejection" role="form" id="rejection">
+                              <h4>
+                                <p><i class="iconcolor fa fa-comment" aria-hidden="true"></i>
+                                  </span> Motivo de rechazo:</p>
+                                <textarea class="form-control" ng-model="reject" style="color:black;" required></textarea>
+                              </h4>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal" ng-disabled="rejection.$invalid" ng-click="rejectService(history.idTransaction, reject)">Rechazar</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                       <div class="col-sm-12">
                         <hr/>
                       </div>
@@ -382,6 +403,7 @@
                               <p><span class="iconcolor glyphicon glyphicon-earphone"></span> Teléfono: <span ng-bind="history.fromUser.phone"> </span></p>
                               <p><span class="iconcolor glyphicon glyphicon-map-marker"></span> Direcci&oacute;n acordada: <span ng-bind="history.address"> </span></p>
                               <p><i class="iconcolor fa fa-comment" aria-hidden="true"></i></span> Comentario: <span ng-bind="history.textProblem"> </span></p>
+                              <p ng-show="history.state == 3"><i class="iconcolor glyphicon glyphicon-remove" aria-hidden="true"></i></span> Rechazo: <span ng-bind="history.rejection"> </span></p>
                               </h4>
                             </div>
                             <div class="modal-footer">

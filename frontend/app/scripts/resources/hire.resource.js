@@ -5,7 +5,7 @@ angular.module('servimap')
       save: { method:'POST', url: 'api/hire/create'},
       getTransaction: { method:'GET', url: 'api/hire/transaction/:idTrx'},
       acceptTransaction: {method:'PUT', url: 'api/hire/accept/:idTrx'},
-      rejectTransaction: {method:'PUT', url: 'api/hire/reject/:idTrx'},
+      rejectTransaction: {method:'PUT', url: 'api/hire/reject'},
       finishTransaction: {method:'PUT', url: 'api/hire/finish/:idTrx'}
 
     });

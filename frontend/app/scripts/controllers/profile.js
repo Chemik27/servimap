@@ -141,8 +141,11 @@ angular.module('servimap')
             })
           };
 
-          $scope.rejectService = function(idTx){
-              HireResources.rejectTransaction(idTx, function(){
+          $scope.rejectService = function(idTx, reject){
+              var rejection={
+                "idTrx": idTx,
+                "rejection": reject};
+              HireResources.rejectTransaction(rejection, function(){
                 NotificationService.success('Se ha actualizado correctamente');
                 $route.reload();
               },function(error){

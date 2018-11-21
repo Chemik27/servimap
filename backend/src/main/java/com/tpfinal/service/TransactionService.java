@@ -1,6 +1,7 @@
 package com.tpfinal.service;
 
 import com.tpfinal.domain.*;
+import com.tpfinal.dto.RejectDTO;
 import com.tpfinal.dto.TransactionDTO;
 import com.tpfinal.repository.ITransactionRepository;
 import com.tpfinal.repository.IUserRepository;
@@ -63,6 +64,13 @@ public class TransactionService {
     public void updateTransactionState(Long idTrx, Long state){
         Transaction transaction = transactionRepository.findOne(idTrx);
         transaction.setState(state);
+        transactionRepository.save(transaction);
+    }
+
+    public void rejectTransaction(RejectDTO rejectDTO, Long state){
+        Transaction transaction = transactionRepository.findOne(rejectDTO.idTrx);
+        transaction.setState(state);
+        transaction.setRejection(rejectDTO.rejection);
         transactionRepository.save(transaction);
     }
 }

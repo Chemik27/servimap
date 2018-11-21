@@ -5,6 +5,7 @@ package com.tpfinal.controller;
 
 import com.tpfinal.domain.State;
 import com.tpfinal.domain.Transaction;
+import com.tpfinal.dto.RejectDTO;
 import com.tpfinal.dto.TransactionDTO;
 import com.tpfinal.service.TransactionService;
 import com.tpfinal.service.UserService;
@@ -78,9 +79,9 @@ public class HireController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/reject")
     @ResponseStatus(HttpStatus.OK)
-    public void rejectTransaction(@RequestBody Long idTrx){
-        logger.info("Reject transaction: " + idTrx);
-        transactionService.updateTransactionState(idTrx, State.TRX_CANCELED);
+    public void rejectTransaction(@RequestBody RejectDTO rejectDTO){
+        logger.info("Reject transaction: " + rejectDTO.idTrx);
+        transactionService.rejectTransaction(rejectDTO, State.TRX_CANCELED);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/finish")

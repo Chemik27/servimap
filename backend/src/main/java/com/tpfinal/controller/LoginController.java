@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,14 +21,17 @@ import java.util.Map;
 @RequestMapping("/login")
 public class LoginController {
 
-    MailService mailService = new MailService();
+    @Autowired
+    MailService mailService;
     @Autowired
     UserService userService;
 
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
     @RequestMapping(method = RequestMethod.POST, value = {"/recoverPassword"})
     @ResponseStatus(HttpStatus.OK)
-    public Map<String, Object> recoverPassword(@RequestBody String email){
-        System.out.println("Controller login" + email);
+    public Map<String, Object> recoverPassword(@RequestBody String email) throws MessagingException {
+        logger.info("Sending mail to: " + email);
         String resultado = mailService.sendEmail(email);
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("email", resultado);

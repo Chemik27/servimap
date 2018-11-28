@@ -2,63 +2,52 @@ package com.tpfinal.service;
 
 
 import com.tpfinal.util.UtilServimap;
+import org.springframework.stereotype.Service;
 
 import java.util.Properties;
-import javax.mail.*;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
+@Service
 public class MailService {
 
 
-    public static String sendEmail(String email)
-    {
+    public String sendEmail(String email) throws MessagingException {
+
         String emailHashed = UtilServimap.encriptar(email);
         emailHashed = emailHashed.replaceAll("/","asd753159asd");
 
-
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
+        Properties props = System.getProperties();
+        String host = "smtp.gmail.com";
         props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.user", "service.servimap");
+        props.put("mail.smtp.password", "jonikarinico");
         props.put("mail.smtp.port", "587");
-        props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.auth", "true");
 
-        Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("service.servimap", "jonikarinico");
-                    }
-                });
+        Session session = Session.getDefaultInstance(props);
+        MimeMessage message = new MimeMessage(session);
 
         try {
-            Session mailSession = Session.getDefaultInstance(props, new Authenticator() {
-                protected PasswordAuthentication  getPasswordAuthentication() {
-                    return new PasswordAuthentication(
-                            "service.servimap@gmail.com", "jonikarinico");
-                }
-            });
-            Transport transport = mailSession.getTransport();
+            message.setFrom(new InternetAddress("no-reply@servimap.com"));
+            InternetAddress toAddress = new InternetAddress(email);
 
-            MimeMessage message = new MimeMessage(mailSession);
-
+            message.addRecipient(Message.RecipientType.TO, toAddress);
             message.setSubject("Recupera la clave de Servimap");
-            message.setContent(
-                    "<img src=\"cid:C:/xampp/htdocs/Tp_Final/tp-final/backend/src/main/java/com/tpfinal/a.jpg\"/>" +
-                    "<br><br>" +
-                    "Hola, <br> Para generar una nueva contraseña hace click sobre el link <a href=\"http://localhost:9000/#/passwordSecurity/" + emailHashed + "\"" +
-                    ">Generar password</a>", "text/html"
-            );
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-
-            transport.connect();
-            transport.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            message.setContent("Hola, <br> Para generar una nueva contraseña hace click sobre el link <a href=\"http://localhost:9000/#/passwordSecurity/" + emailHashed + "\"" +
+                    ">Generar password</a>", "text/html");
+            Transport transport = session.getTransport("smtp");
+            transport.connect(host, "service.servimap", "jonikarinico");
+            transport.sendMessage(message, message.getAllRecipients());
             transport.close();
         } catch (MessagingException e) {
             e.printStackTrace();
-            return new String("FALLO");
+            throw e;
         }
         return new String("OK");
     }

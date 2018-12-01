@@ -21,7 +21,8 @@ angular
     'ngMap',
     'noCAPTCHA'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
+    $locationProvider.hashPrefix("");
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',

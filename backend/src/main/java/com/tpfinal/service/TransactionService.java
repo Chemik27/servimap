@@ -25,6 +25,9 @@ public class TransactionService {
     @Autowired
     IUserRepository userRepository;
 
+    @Autowired
+    MailService mailService;
+
     public void save(TransactionDTO transactionDTO){
         Transaction transaction= createTransactionFromDTO(transactionDTO);
         transactionRepository.save(transaction);
@@ -65,12 +68,15 @@ public class TransactionService {
         Transaction transaction = transactionRepository.findOne(idTrx);
         transaction.setState(state);
         transactionRepository.save(transaction);
+        if(state.equals(State.TRX_ACCEPTED))
+            mailService.confirmService(transaction);
     }
 
-    public void rejectTransaction(RejectDTO rejectDTO, Long state){
-        Transaction transaction = transactionRepository.findOne(rejectDTO.idTrx);
+    public void rejectTransaction(RejectDTO rejectDTO, Long state) {
+        Transaction transaction = transactionRepository.findOne(rejectDTO.getIdTrx());
         transaction.setState(state);
-        transaction.setRejection(rejectDTO.rejection);
+        transaction.setRejection(rejectDTO.getRejection());
         transactionRepository.save(transaction);
+        mailService.rejectService(transaction);
     }
 }

@@ -22,7 +22,7 @@
           <br>
 
           <ul class="nav nav-tabs">
-              <li class="active"><a data-toggle="tab" data-target="#profile">Mi perfil</a></li>
+              <li class="active"><a data-toggle="tab" data-target="#profile">Perfil</a></li>
               <li ng-show="$root.idUser == user.idUser"><a data-toggle="tab" data-target="#settings">Editar perfil</a></li>
               <li ng-show="$root.idUser == user.idUser"><a data-toggle="tab" data-target="#transaction-history">Mis contrataciones</a></li>
               <li ng-show="$root.idUser == user.idUser && user.type == 'proveedor'"><a data-toggle="tab" data-target="#service-history">Mis clientes <span class="badge">{{newServices.newOne}}</span></a></li>
@@ -32,7 +32,7 @@
               <!--Seccion Mi perfil-->
               <div id="profile" class="tab-pane fade in active">
 
-                <h3>Mi perfil</h3>
+                <h3>Perfil</h3>
                 <div id="module-work" class=" col-md-12 col-sm-12">
                   <div class="module-work col-md-5 col-xs-12" ng-repeat="aWork in works">
                     <h3><i class="fa fa-briefcase" aria-hidden="true"></i> {{aWork.name}}</h3>

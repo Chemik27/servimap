@@ -18,7 +18,7 @@ public class Transaction {
     private String address;
     private String rejection;
 
-    public Transaction(Date creationDate, Long toUser, User fromUser,Date agreedDate,Long state, Work work,String address) {
+    public Transaction(Date creationDate, Long toUser, User fromUser,Date agreedDate,Long state, Work work,String address, String rejection) {
 
         this.creationDate = creationDate;
         this.toUser = toUser;
@@ -28,6 +28,7 @@ public class Transaction {
         this.work = work;
         this.textProblem = textProblem;
         this.address = address;
+        this.rejection = rejection;
     }
 
     public Transaction() {

@@ -16,11 +16,14 @@
   border-radius: 1px;
   border: 1px solid #3597c7a6;
   background-color: #2c2f3017;
-
+  opacity: 0.95;
+  color: white;
 }
 
 .navbar-secondary-title{
   color:white !important;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {

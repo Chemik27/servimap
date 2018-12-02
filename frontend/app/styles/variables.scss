@@ -9,9 +9,11 @@ $font-color: #999999;
 $background-module-hover: #1b6d85;
 $servimap-blue: #3A598F;
 $header-secondary: #137cb0;
+$footer-color: #002040;
+$blue-power: #002040;
+$blue-light: #0289CB;
 
-
-/* MIXINGS */
+  /* MIXINGS */
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;

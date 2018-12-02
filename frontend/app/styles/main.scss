@@ -41,14 +41,14 @@ html, body {
 }
 
 .icons-box.input-group-addon  {
-  background-color:#2F3A4C !important ;
+  background-color: $blue-power !important ;
   color: white !important;
   transition: all 0.5s ease;
 
 }
 
 .icons-box.input-group-addon:hover  {
-  background-color: #3A598D !important;
+  background-color: $blue-light !important;
   transition: all 0.5s ease
 
 }
@@ -71,7 +71,7 @@ html, body {
 
 
 .logo-color-bg{
-  background-color: $servimap-blue;
+  background-color: #002040;
   color: white !important;
   transition: all 0.5s ease;
 }
@@ -87,7 +87,7 @@ html, body {
 .background{
   background-color:$background-grey;
   //background: url('../images/Pin-Map2.jpg') no-repeat center center fixed;
-  background: url('../images/pin-map-tranchi.jpg') no-repeat center center fixed;
+  background: rgba(255, 255, 255, .5) url('../images/pin-map-tranchi.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -117,7 +117,7 @@ html, body {
 
 
  .icons-box.input-group-addon  {
-  background-color: $servimap-blue !important ;
+  background-color: $blue-power !important ;
   color: white !important;
    transition: all 0.5s ease;
 

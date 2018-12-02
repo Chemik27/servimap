@@ -38,7 +38,7 @@ textarea {
 }
 
 .user-type{
-  padding-bottom: 7%;
+  padding: 10% 0 10% 0;
 }
 
 .modal-label{
@@ -218,4 +218,8 @@ input.ng-pristine + .input-help {
 
 .margin-md-1{
   margin:4%;
+}
+
+.register-step{
+  margin-top: 10em;
 }

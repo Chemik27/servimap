@@ -60,6 +60,7 @@ form.login input[type="submit"]
   cursor: pointer;
   letter-spacing: 1px;
   transition: all 0.5s ease;
+  background-color: #0289CB;
 }
 
 form.login input[type="submit"]:hover
@@ -159,6 +160,7 @@ form.login a
   cursor: pointer;
   letter-spacing: 1px;
   transition: all 0.5s ease;
+  background-color: #0289CB;
 }
 
 .pass-reset input[type="submit"]:hover
@@ -182,6 +184,8 @@ form.login a
 .boxLogin{
   justify-content: center;
   display: flex;
+  padding-top: 10em;
+
 }
 
 .form-login{

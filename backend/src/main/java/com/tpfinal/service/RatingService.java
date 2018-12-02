@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +64,7 @@ public class RatingService {
 
         List<String> comments = allRatings
                                     .stream()
-                                    .map(Rating::getReviewText)
+                                    .map(this::formatComment)
                                     .collect(Collectors.toList());
 
         Map <String, Object> ratingAndComments = new HashMap<String, Object>();
@@ -69,6 +72,13 @@ public class RatingService {
         ratingAndComments.put("comments", comments);
 
         return ratingAndComments;
+    }
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+
+    private String formatComment(Rating rating) {
+        String date = rating.getReviewDate() != null ? " - " + sdf.format(rating.getReviewDate()) : "";
+        return rating.getReviewText() + date;
     }
 
     public void save(Rating rating) {

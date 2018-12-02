@@ -50,7 +50,8 @@ angular.module('servimap')
           'reviewText': $scope.review_text,
           'generalAverage':  $scope.resultRating,
           'idUser': $rootScope.idUser,
-          'idTransaction': $routeParams.idTrx
+          'idTransaction': $routeParams.idTrx,
+          'reviewDate': new Date()
         };
 
         QualifyResources.save(calificar, function(){

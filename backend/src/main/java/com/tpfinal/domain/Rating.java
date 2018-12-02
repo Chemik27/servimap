@@ -1,6 +1,7 @@
 package com.tpfinal.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "rating")
@@ -16,8 +17,9 @@ public class Rating {
     private Integer generalAverage; // promedio general
     private Long idUser; //recomendacion
     private Long idTransaction; //recomendacion
+    private Date reviewDate; // fecha de opinion
 
-    public Rating(Integer reliability, Integer performance, Integer consideration, Integer recommendation, Long idProvider, String reviewText, Integer generalAverage, Long idUser, Long idTransaction ) {
+    public Rating(Integer reliability, Integer performance, Integer consideration, Integer recommendation, Long idProvider, String reviewText, Integer generalAverage, Long idUser, Long idTransaction, Date reviewDate ) {
         this.reliability = reliability;
         this.performance = performance;
         this.consideration = consideration;
@@ -27,6 +29,7 @@ public class Rating {
         this.generalAverage = generalAverage;
         this.idUser = idUser;
         this.idTransaction = idTransaction;
+        this.reviewDate = reviewDate;
     }
 
     public Rating() {
@@ -121,5 +124,14 @@ public class Rating {
 
     public void setIdTransaction(Long idTransaction) {
         this.idTransaction = idTransaction;
+    }
+
+    @Column(name="review_date")
+    public Date getReviewDate() {
+        return reviewDate;
+    }
+
+    public void setReviewDate(Date reviewDate) {
+        this.reviewDate = reviewDate;
     }
 }

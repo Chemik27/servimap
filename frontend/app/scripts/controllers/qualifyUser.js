@@ -49,14 +49,15 @@ angular.module('servimap')
           'reviewText': $scope.review_text,
           'generalAverage':  $scope.resultRating,
           'idUser': $scope.user.idUser,
-          'idTransaction': $routeParams.idTrx
+          'idTransaction': $routeParams.idTrx,
+          'reviewDate': new Date()
         };
 
         QualifyResources.save(calificar, function(){
-          NotificationService.success('Se ha calificado correctamente al proveedor.');
+          NotificationService.success('Se ha calificado correctamente al usuario.');
           $location.url('/perfil/'+ $rootScope.idUser)
         }, function(error){
-          NotificationService.error('No se ha podido calificar al proveedor');
+          NotificationService.error('No se ha podido calificar al usuario');
         });
         $scope.resultRating = Math.round(($scope.rating1 + $scope.rating2 + $scope.rating3 + $scope.rating4)/4);
 

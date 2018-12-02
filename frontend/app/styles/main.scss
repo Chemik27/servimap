@@ -340,8 +340,9 @@ html, body {
   }
 }
 
-
-
-
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #b5b7ab;
+  opacity: 1; /* Firefox */
+}
 
 

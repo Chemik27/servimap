@@ -32,13 +32,15 @@
 }
 
 .navbar-margin{
-  margin-top:15px;
+  padding-top: 15px;
+  background-color: #137cb0;
 }
 
 .collapsed{
-  margin-top:20px;
+  margin-top: 20px;
   background-color: white;
 }
+
 .navbar-logo{
    width: 190px;
 }
@@ -46,9 +48,17 @@
 .boxCenter{
   justify-content: center;
   display: flex;
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
 }
 
 .padding-top{
   padding-top: 0.5em;
 }
 
+.padding-tam-0{
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
+}

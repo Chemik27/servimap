@@ -37,3 +37,10 @@
 .separator {
   height: 85px;
 }
+
+.box-center{
+  flex-wrap: wrap;
+  align-items: center;
+  display: flex;
+  min-height: 700px;
+}

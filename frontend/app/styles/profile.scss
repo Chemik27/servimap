@@ -9,14 +9,13 @@
 
 
   .module-main{
-    background-color: $background-blue-side;
+    background-color: $profile-color;
     color: lightgrey;
     flex:1;
     display: table-cell;
   }
 
   .module-size{
-    width: 45%;
     margin:2%;
     display: inline-block;
   }

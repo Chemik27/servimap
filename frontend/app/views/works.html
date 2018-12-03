@@ -46,10 +46,10 @@
             </ng-map>
         </div>
 
-        <div class="container-fluid">
+        <div class="container-fluid col-sm-12 box-center">
         <! -- CONTACTOS PREMIUM -->
-            <div ng-class="{'col-md-4 col-md-push-4': bestWorkers.length == 1, 'col-sm-4 col-md-4 col-lg-4 col-md-push-2': bestWorkers.length == 2,
-             'col-sm-4 col-md-4 col-lg-4': bestWorkers.length >2 }" ng-repeat="aPremium in bestWorkers" class="card-margin">
+            <div ng-class="{'col-sm-12 col-xs-12 col-md-4 col-md-push-4': bestWorkers.length == 1, 'col-sm-12 col-xs-12 col-md-4 col-lg-4 col-md-push-2': bestWorkers.length == 2,
+             'col-sm-12 col-xs-12 col-md-4 col-lg-4': bestWorkers.length >2 }" ng-repeat="aPremium in bestWorkers" class="card-margin">
                 <div class="flip-container padding" ontouchstart="this.classList.toggle('hover');">
                     <div class="flipper">
                         <div class="row">

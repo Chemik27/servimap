@@ -79,3 +79,24 @@
 .separator {
   height: 85px;
 }
+
+.sub-title{
+  background-color: #002040;
+  color: white;
+  height: 40px;
+  margin: 1em 0 4em 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  > span {
+    color: white;
+  }
+}
+
+.header-hire{
+  font-size: 35px;
+  color: #2F3A4C;
+}
+.padding-tam-0{
+  padding:0;
+}

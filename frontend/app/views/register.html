@@ -240,6 +240,7 @@
 
             <!--Ventana Nuevo trabajo -->
             <div ng-show="createWork && !confirmation || $root.idUser != null">
+                <div class="separator"></div>
                 <div>
                     <div class="modal-header">
                         <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
@@ -275,6 +276,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-body" ng-hide="confirmation ">
+                      <div class="separator"></div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                                 <!-- Formulario workForm -->
@@ -398,6 +400,7 @@
             </div>
 
            <div ng-show="confirmation">
+             <div class="separator"></div>
              <div class="modal-header" ng-hide ="$root.idUser != null">
                <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>-->
                <div class="col-md-12 modal-title modal-label col-md-12">
@@ -442,14 +445,14 @@
 
                <!--Mensaje servicio agregado-->
               <div class="col-md-12 text-center" ng-show="$root.idUser != null">
-
+                <div class="separator"></div>
                 <h3>Has agregado el servicio correctamente!</h3>
                 <img class="icon-works" src="images/briefcase.png" alt="">
                 <h4>Podrás visualizar el nuevo servicio agregado en tu perfil</h4>
                  <a class="btn logo-color-bg profile-btn" href="/#/perfil/{{$root.idUser}}">Volver a Mi Perfil</a></p>
               </div>
 
-               <div class="row" ng-show="$root.idUser == null">
+               <div class="row tam-1" ng-show="$root.idUser == null">
                  <div class="col-xs-7 col-sm-8 col-md-6 col-sm-offset-1 col-md-offset-1 ">
                    <h3 style="color: #2f3a4c;"> <b>HAS REGISTRADO TUS DATOS EXITOSAMENTE! </b></h3>
                    <h4 ng-show="userProveedor" class="text-success">Felicitaciones! Te has convertido en usuario PREMIUM por un mes!</h4>

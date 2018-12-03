@@ -19,7 +19,8 @@ angular
     'ngMessages',
     'ngMaterial',
     'ngMap',
-    'noCAPTCHA'
+    'noCAPTCHA',
+    'moment-picker'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix("");

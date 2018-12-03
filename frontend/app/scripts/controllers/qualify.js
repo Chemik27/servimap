@@ -7,6 +7,7 @@
 angular.module('servimap')
   .controller('QualifyCtrl', ['$scope','QualifyResources','NotificationService','$location','profileSelected','$rootScope', '$routeParams',
     function ($scope , QualifyResources,NotificationService,$location,profileSelected,$rootScope, $routeParams) {
+      window.scrollTo(0, 0);
 
       //tomo los datos
       $scope.tran = profileSelected.transaction;

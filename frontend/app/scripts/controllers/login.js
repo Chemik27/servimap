@@ -3,6 +3,7 @@
 angular.module('servimap')
     .controller('NavigationCtrl', ['$scope', '$rootScope', '$http', '$location' ,'NotificationService',
     function ($scope, $rootScope, $http, $location, NotificationService) {
+      window.scrollTo(0, 0);
 
         $scope.authenticate = function(credentials, callback) {
 

@@ -5,6 +5,7 @@ angular.module('servimap')
     function ($scope, $routeParams, LoginResources, NotificationService, $rootScope, $location) {
       $scope.changePasswordValidator = true;
       $rootScope.emailHashed = $routeParams.hash;
+      window.scrollTo(0, 0);
 
       $scope.saveNewPassword = function(){
           $rootScope.newPassowrd = $scope.password;

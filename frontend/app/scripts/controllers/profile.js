@@ -11,6 +11,7 @@ angular.module('servimap')
 
   .controller('ProfileCtrl', ['$scope', '$http', 'UserResources','profileSelected', 'HireResources', 'NotificationService', '$route','$location','QualifyResources','$rootScope', 'WorkResources',
       function ($scope, $http, UserResources, profileSelected, HireResources, NotificationService, $route,$location,QualifyResources,$rootScope, WorkResources)  {
+        window.scrollTo(0, 0);
 
             $scope.profile = profileSelected;
             $scope.user = profileSelected.user;

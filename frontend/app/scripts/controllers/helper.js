@@ -3,6 +3,7 @@
 angular.module('servimap')
     .controller('HelperCtrl', ['$scope', '$routeParams', 'LoginResources', 'NotificationService', '$location',
     function ($scope, $routeParams, LoginResources, NotificationService, $location) {
+      window.scrollTo(0, 0);
 
           $scope.recover = function() {
               LoginResources.recover($scope.email, function (response) {

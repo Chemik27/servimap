@@ -47,18 +47,18 @@ angular.module('servimap')
             data: formData,
             transformRequest:angular.identity
 
-          }).success(function(response) {
+          }).then(function(response) {
             if(user.type == 'proveedor') {
               NotificationService.success('Se ha registrado correctamente. Ingrese los datos de su servicio.');
-              $scope.work.idUser = response.idUser;
+              $scope.work.idUser = response.data.idUser;
               $scope.createWork = true;
               $scope.confirmation=false;
             }else{
               $scope.confirmation=true;
             }
-          }).error(function(error) {
+          }).catch(function(error) {
               console.log(error);
-              NotificationService.error(error.message);
+              NotificationService.error(error.data.message);
           });
 
         };

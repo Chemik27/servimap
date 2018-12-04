@@ -6,13 +6,16 @@
 }
 
 .sidebar-filter{
-    background-color: $background-blue-side;
+    background-color: $profile-color;
     color: lightgrey;
     flex:1;
 }
 
 .mouse-pointer{
   cursor: pointer;
+  > a {
+    color: white;
+  }
 }
 
 .not-found{

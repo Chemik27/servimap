@@ -31,6 +31,7 @@ public class TransactionService {
     public void save(TransactionDTO transactionDTO){
         Transaction transaction= createTransactionFromDTO(transactionDTO);
         transactionRepository.save(transaction);
+        mailService.newTransaction(transaction);
     }
 
     public Transaction createTransactionFromDTO(TransactionDTO transactionDTO){

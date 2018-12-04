@@ -136,4 +136,41 @@ public class MailService {
             logger.error("Email no enviado", e);
         }
     }
+
+    public void newTransaction(Transaction transaction) {
+        Properties props = System.getProperties();
+        String host = "smtp.gmail.com";
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.user", "service.servimap");
+        props.put("mail.smtp.password", "jonikarinico");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+
+        Session session = Session.getDefaultInstance(props);
+        MimeMessage message = new MimeMessage(session);
+
+        try {
+            message.setFrom(new InternetAddress("no-reply@servimap.com"));
+            User proveedor = userService.findByIdUser(transaction.getToUser());
+            InternetAddress toAddress = new InternetAddress(proveedor.getEmail());
+
+
+            message.addRecipient(Message.RecipientType.TO, toAddress);
+            message.setSubject("Te quieren contratar");
+            message.setContent("Hola "+ proveedor.getFullName() + ", <br> " +
+                            "Queríamos avisarte que un usuario requiere de tus servicios. <br>" +
+                            "Ingresa a ServiMap y responde la solicitud." +
+                            "<br>"+
+                            "Muchas gracias por confiar en nosotros." +
+                            "<br> ServiMap."
+                    ,"text/html");
+            Transport transport = session.getTransport("smtp");
+            transport.connect(host, "service.servimap", "jonikarinico");
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+        } catch (MessagingException e) {
+            logger.error("Email no enviado", e);
+        }
+    }
 }

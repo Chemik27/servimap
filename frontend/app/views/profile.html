@@ -255,16 +255,16 @@
 
               <div ng-show="myTransactions.length == 0">No posee transacciones</div>
               <div  class="col-xs-12 col-md-12 " ng-repeat="t in myTransactions">
-                <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="col-xs-12 col-md-2">
                   <p class="text-center"> <img class="img-circle" ng-src="data:image/png;base64,{{t.work.user.photo}}" alt=""> </p>
                 </div>
 
-                <div class="col-xs-12 col-sm-7  col-md-7">
+                <div class="col-xs-12  col-md-7">
                   <div class="col-xs-12 col-sm-6">
                     <a style="text-decoration:none;" ng-href="/#/perfil/{{t.work.user.idUser}}"><h3>{{t.work.user.fullName}}</h3></a>
                     <p>{{t.work.name}} </p>
                   </div>
-                  <div class="col-xs-12 col-sm-6 col-sm-6">
+                  <div class="col-xs-12">
                     <h3><i class="fa fa-map-marker fa-1x text-servimap" aria-hidden="true"></i> {{t.work.address.district.name != undefined ? t.work.address.district.name : 'A domicilio'}}</h3>
                     <br>
                     <span ng-show="t.state == 1" class="label label-warning">Solicitud enviada</span>
@@ -326,16 +326,16 @@
 
                   <div ng-show="myServiceHistory.length == 0">No posee transacciones</div>
                   <div  class="col-xs-12 col-md-12 " ng-repeat="history in myServiceHistory">
-                    <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="col-xs-12 col-md-2">
                       <p class="text-center"> <img class="img-circle" ng-src="data:image/png;base64,{{history.fromUser.photo}}" alt=""> </p>
                     </div>
 
-                    <div class="col-xs-12 col-sm-8  col-md-7">
-                      <div class="col-xs-12 col-sm-6">
+                    <div class="col-xs-12 col-md-7">
+                      <div class="col-xs-12">
                         <a style="text-decoration:none;" ng-href="/#/perfil/{{history.fromUser.idUser}}"><h3>{{history.fromUser.fullName}}</h3></a>
                         <!--<p>{{history.fromUser.name}} </p>-->
                       </div>
-                      <div class="col-xs-12 col-sm-6">
+                      <div class="col-xs-12">
                         <h3><i class="fa fa-map-marker fa-1x text-servimap" aria-hidden="true"></i> {{history.fromUser.idAddress.district.name != undefined ? history.fromUser.idAddress.district.name : 'A domicilio'}}</h3>
                         <br>
                         <span ng-show="history.state == 1" class="label label-warning">Solicitud pendiente</span>
